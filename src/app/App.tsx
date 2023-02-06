@@ -6,7 +6,7 @@ import {classNames} from "shared/lib/helpers/classNames/classNames";
 import { useTheme } from 'app/providers/ThemeProvider';
 import {AppRouter} from "app/providers/RouterProvider";
 import {Navbar} from "widgets/Navbar";
-import {ThemeSwitcher} from "widgets/ThemeSwitcher";
+import {Sidebar} from "widgets/Sidebar";
 
 
 const App: FC = () => {
@@ -14,9 +14,12 @@ const App: FC = () => {
     return (
         <div className={classNames('app', {}, [theme])}>
             <Navbar/>
-
-            <AppRouter/>
-            <ThemeSwitcher/>
+            <div className='content'>
+                <Sidebar/>
+                <div className="wrapper">
+                    <AppRouter/>
+                </div>
+            </div>
         </div>
     )
 }

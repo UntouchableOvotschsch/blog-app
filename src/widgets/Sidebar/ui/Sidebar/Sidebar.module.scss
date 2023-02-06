@@ -1,0 +1,26 @@
+.Sidebar {
+  height: calc(100vh - var(--navbar-height));
+  width: var(--sidebar-width);
+  background: var(--inverted-bg-color);
+  position: relative;
+
+  transition: width 0.2s;
+}
+
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+  p {
+    display: none;
+  }
+}
+
+
+.switchers {
+  // Переписать на flex-direction: column
+  position: absolute;
+  display: flex;
+  bottom: 20px;
+  justify-content: center;
+  width: 100%;
+}
