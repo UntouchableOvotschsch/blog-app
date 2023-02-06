@@ -6,8 +6,13 @@ export default function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule
 
 
     const fileLoader = {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource'
+    }
+
+    const svgLoader = {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
     }
 
 
@@ -44,6 +49,7 @@ export default function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule
     return [
         typescriptLoader,
         cssLoader,
-        fileLoader
+        fileLoader,
+        svgLoader
     ]
 }
