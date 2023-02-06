@@ -4,6 +4,15 @@ import {BuildOptions} from "./types/config";
 
 export default function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
 
+
+    const fileLoader = {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
+    }
+
+
+
+
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -35,5 +44,6 @@ export default function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule
     return [
         typescriptLoader,
         cssLoader,
+        fileLoader
     ]
 }
