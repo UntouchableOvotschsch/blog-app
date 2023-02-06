@@ -21,6 +21,10 @@
   position: absolute;
   display: flex;
   bottom: 20px;
-  justify-content: center;
   width: 100%;
+  justify-content: space-evenly;
+}
+
+.lngBtn {
+  background-color: red;
 }
