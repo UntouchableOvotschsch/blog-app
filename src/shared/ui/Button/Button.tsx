@@ -1,9 +1,7 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react';
 
-import styles from './Button.module.scss'
-import {classNames} from "shared/lib/helpers/classNames/classNames";
-
-
+import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import styles from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear'
@@ -21,23 +19,23 @@ export const Button: FC<ButtonProps> = (props) => {
         children,
         onClick,
         theme = ThemeButton.CLEAR,
-        ...otherProps} = props
-
+        ...otherProps
+    } = props;
 
     return (
         <button
+            type="button"
             onClick={onClick}
             className={classNames(
                 styles.Button,
                 {},
-                [className, styles[theme]])
-            }
+                [className, styles[theme]],
+            )}
             {...otherProps}
         >
             {
                 children
             }
         </button>
-    )
-}
-
+    );
+};
