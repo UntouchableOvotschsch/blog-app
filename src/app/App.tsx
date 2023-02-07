@@ -9,6 +9,7 @@ import { Sidebar } from 'widgets/Sidebar';
 
 const App: FC = () => {
     const { theme } = useTheme();
+
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
