@@ -21,5 +21,9 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  // Для jest + react testing library
+  "include": [
+    "./config/jest/setupTests.ts",
+  ]
 }
