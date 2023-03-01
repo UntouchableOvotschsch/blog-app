@@ -10,7 +10,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed] = useState(false);
 
     return (
         <div
@@ -21,13 +21,13 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
                 [className],
             )}
         >
-            <button
-                data-testid="sidebar-toggle"
-                type="button"
-                onClick={() => setCollapsed((prevState) => !prevState)}
-            >
-                toggle
-            </button>
+            {/* <button */}
+            {/*    data-testid="sidebar-toggle" */}
+            {/*    type="button" */}
+            {/*    onClick={() => setCollapsed((prevState) => !prevState)} */}
+            {/* > */}
+            {/*    toggle */}
+            {/* </button> */}
             <div className={styles.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher />
