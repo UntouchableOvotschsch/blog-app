@@ -16,7 +16,6 @@ const reloadPage = () => {
 
 export const PageError: FC<PageErrorProps> = ({ className }) => {
     const { t } = useTranslation();
-
     return (
         <div className={classNames(styles.PageError, {}, [className])}>
             <p>{t('Произошла непредвиденная ошибка')}</p>

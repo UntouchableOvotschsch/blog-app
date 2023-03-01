@@ -4,7 +4,8 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Button.module.scss';
 
 export enum ThemeButton {
-    CLEAR = 'clear'
+    CLEAR = 'clear',
+    OUTLINE = 'outline'
 
 }
 

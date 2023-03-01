@@ -23,6 +23,10 @@
     justify-content: space-evenly;
 }
 
+.collapsed .switchers {
+    flex-direction: column;
+}
+
 .lngBtn {
     background-color: red;
 }
