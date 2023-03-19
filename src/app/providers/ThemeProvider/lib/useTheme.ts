@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { infinityToggle } from 'shared/lib/helpers/infinityToggle/infinityToggle';
 import { LOCAL_STORAGE_THEME_KEY, ThemeContext, Themes } from '../lib/ThemeContext';
 
 interface UseThemeResult {
@@ -10,7 +11,7 @@ export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     const toggleTheme = () => {
-        const newTheme = theme === Themes.LIGHT ? Themes.DARK : Themes.LIGHT;
+        const newTheme = infinityToggle(Object.values(Themes), theme);
         setTheme(newTheme);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
