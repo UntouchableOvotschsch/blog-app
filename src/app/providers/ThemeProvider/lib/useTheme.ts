@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { infinityToggle } from 'shared/lib/helpers/infinityToggle/infinityToggle';
-import { LOCAL_STORAGE_THEME_KEY, ThemeContext, Themes } from '../lib/ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, ThemeContext, Themes } from './ThemeContext';
 
 interface UseThemeResult {
     toggleTheme: () => void
