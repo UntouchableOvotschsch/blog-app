@@ -19,7 +19,7 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         className,
         children,
         to,
-        theme = AppLinkTheme.PRIMARY,
+        theme,
         ...otherProps
     } = props;
     return (

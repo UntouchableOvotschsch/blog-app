@@ -5,13 +5,24 @@ import styles from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',
-    OUTLINE = 'outline'
+    OUTLINE = 'outline',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'background_inverted'
+
+}
+
+export enum SizeButton {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl',
 
 }
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     className?: string,
     theme?: ThemeButton
+    square?: boolean
+    size?: SizeButton
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -20,8 +31,14 @@ export const Button: FC<ButtonProps> = (props) => {
         children,
         onClick,
         theme,
+        square,
+        size,
         ...otherProps
     } = props;
+
+    const mods: Record<string, boolean> = {
+        [styles.square]: square,
+    };
 
     return (
         <button
@@ -29,8 +46,8 @@ export const Button: FC<ButtonProps> = (props) => {
             onClick={onClick}
             className={classNames(
                 styles.Button,
-                {},
-                [className, styles[theme]],
+                mods,
+                [className, styles[theme], styles[size]],
             )}
             {...otherProps}
         >
