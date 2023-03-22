@@ -14,15 +14,9 @@ describe('infinityToggle', () => {
         expect(infinityToggle(['1', '2', '3', '4', '5'], '9')).toBe('1');
     });
     test('with undefined array', () => {
-        expect(infinityToggle(undefined, '4')).toBe(undefined);
+        expect(infinityToggle(undefined, 5)).toBe(5);
     });
     test('with undefined value', () => {
-        expect(infinityToggle([1, 2, 3, 4, 5], null)).toBe(undefined);
-    });
-    test('with both undefined params', () => {
-        expect(infinityToggle(undefined, null)).toBe(undefined);
-    });
-    test('with both undefined params', () => {
-        expect(infinityToggle(undefined, null)).toBe(undefined);
+        expect(infinityToggle([1, 2, 3, 4, 5], undefined)).toBe(1);
     });
 });

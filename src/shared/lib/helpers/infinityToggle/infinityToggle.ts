@@ -1,12 +1,11 @@
-export function infinityToggle(array: any[], value: any) {
-    if (!value || !array) {
-        return undefined;
-    }
-    const index = array.indexOf(value);
+export function infinityToggle <T>(array: Array<T>, value: T): T {
+    if (array && value) {
+        const index = array.indexOf(value);
 
-    if (index + 1 === array.length) {
-        return array[0];
+        if (index + 1 === array.length) {
+            return array[0];
+        }
+        return array.find((_, i) => i === index + 1);
     }
-
-    return array.find((_, i) => i === index + 1);
+    return value || array[0];
 }
