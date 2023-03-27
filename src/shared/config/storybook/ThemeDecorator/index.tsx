@@ -6,9 +6,7 @@ export const ThemeDecorator = (theme: Themes) => (StoryCom: Story) => {
     document.body.className = theme;
     return (
         <ThemeProvider>
-            <div className={`app ${theme}`}>
-                <StoryCom />
-            </div>
+            <StoryCom />
         </ThemeProvider>
     );
 };

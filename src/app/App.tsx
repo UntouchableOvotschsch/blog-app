@@ -1,6 +1,4 @@
-import { FC, Suspense } from 'react';
-
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { FC, Suspense, useEffect } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/RouterProvider';
 import { Navbar } from 'widgets/Navbar';
@@ -11,10 +9,12 @@ import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 const App: FC = () => {
     const { theme } = useTheme();
 
-    document.body.className = theme;
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     return (
-        <div className={classNames('app', {}, [theme])}>
+        <div className="app">
             <ErrorBoundary>
                 <Suspense fallback={<PageLoader />}>
                     <Navbar />
