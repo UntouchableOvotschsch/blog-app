@@ -14,10 +14,10 @@ import { Portal } from 'shared/ui/Portal/Portal';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
-    className?: string
-    children: ReactNode
-    visible: boolean
-    setVisible: Dispatch<SetStateAction<boolean>>
+    className?: string;
+    children: ReactNode;
+    visible: boolean;
+    setVisible: Dispatch<SetStateAction<boolean>>;
 
 }
 
