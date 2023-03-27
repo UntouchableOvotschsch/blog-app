@@ -1,6 +1,5 @@
 import { FC, Suspense } from 'react';
 
-import './styles/index.scss';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/RouterProvider';
@@ -11,6 +10,8 @@ import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 
 const App: FC = () => {
     const { theme } = useTheme();
+
+    document.body.className = theme;
 
     return (
         <div className={classNames('app', {}, [theme])}>
