@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import { renderForTests } from 'shared/config/jest/renderForTests';
 import { Counter, CounterSchema } from 'entities/Counter';
-import { userEvent } from '@storybook/testing-library';
+import userEvent from '@testing-library/user-event';
 
 describe('Counter', () => {
     const state: CounterSchema = { value: 0 };
