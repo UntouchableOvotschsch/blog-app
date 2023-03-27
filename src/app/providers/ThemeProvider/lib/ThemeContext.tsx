@@ -3,8 +3,8 @@ import DarkLogo from 'shared/assets/icons/theme-dark.svg';
 import LightLogo from 'shared/assets/icons/theme-light.svg';
 
 export enum Themes {
-    LIGHT = 'light',
-    DARK = 'dark'
+    LIGHT = 'app_light_theme',
+    DARK = 'app_dark_theme'
 }
 
 export const ThemesConfig: Record<Themes, ReactNode> = {
@@ -13,8 +13,8 @@ export const ThemesConfig: Record<Themes, ReactNode> = {
 };
 
 export interface IThemeContext {
-    theme?: Themes
-    setTheme?: (theme: Themes) => void
+    theme?: Themes;
+    setTheme?: (theme: Themes) => void;
 }
 
 export const ThemeContext = createContext<IThemeContext>({});

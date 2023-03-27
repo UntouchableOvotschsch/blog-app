@@ -1,5 +1,5 @@
 import {
-    FC, ReactNode, useMemo, useState,
+    FC, ReactNode, useEffect, useMemo, useState,
 } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, ThemeContext, Themes } from '../lib/ThemeContext';
 
@@ -17,6 +17,10 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
         theme,
         setTheme,
     }), [theme]);
+
+    useEffect(() => {
+        document.body.className = memoizeTheme.theme;
+    }, [memoizeTheme]);
 
     return (
         <ThemeContext.Provider value={memoizeTheme}>
