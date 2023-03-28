@@ -3,12 +3,15 @@ import { infinityToggle } from 'shared/lib/helpers/infinityToggle/infinityToggle
 import { LOCAL_STORAGE_THEME_KEY, ThemeContext, Themes } from './ThemeContext';
 
 interface UseThemeResult {
-    toggleTheme: () => void
-    theme: Themes
+    toggleTheme: () => void;
+    theme: Themes;
 }
 
 export const useTheme = (): UseThemeResult => {
-    const { theme, setTheme } = useContext(ThemeContext);
+    const {
+        theme,
+        setTheme,
+    } = useContext(ThemeContext);
 
     const toggleTheme = () => {
         const newTheme = infinityToggle(Object.values(Themes), theme);

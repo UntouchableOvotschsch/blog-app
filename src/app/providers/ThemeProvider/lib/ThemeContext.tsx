@@ -4,7 +4,7 @@ import LightLogo from 'shared/assets/icons/theme-light.svg';
 
 export enum Themes {
     LIGHT = 'app_light_theme',
-    DARK = 'app_dark_theme'
+    DARK = 'app_dark_theme',
 }
 
 export const ThemesConfig: Record<Themes, ReactNode> = {

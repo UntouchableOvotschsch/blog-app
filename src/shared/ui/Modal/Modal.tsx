@@ -61,7 +61,6 @@ export const Modal: FC<ModalProps> = (
     if (!visible) {
         return null;
     }
-
     return (
         <Portal>
             <div className={classNames(styles.Modal, mods, [className])}>
