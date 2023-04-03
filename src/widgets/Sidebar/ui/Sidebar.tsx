@@ -7,6 +7,7 @@ import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+
 import HomeIcon from 'shared/assets/icons/home.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import styles from './Sidebar.module.scss';
@@ -32,7 +33,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
                 <div className={styles.container}>
                     <AppLink
                         className={styles.link}
-                        to={RoutePath.main}
+                        to={RoutePath.main.link}
                         theme={AppLinkTheme.SECONDARY}
                     >
                         <HomeIcon className={styles.icon} />
@@ -42,7 +43,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
                     </AppLink>
                     <AppLink
                         className={styles.link}
-                        to={RoutePath.about}
+                        to={RoutePath.about.link}
                         theme={AppLinkTheme.SECONDARY}
                     >
                         <ListIcon className={styles.icon} />
