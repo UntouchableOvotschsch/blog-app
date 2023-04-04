@@ -2,8 +2,8 @@ import React, { FC, useCallback, useState } from 'react';
 
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUsername';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -15,7 +15,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 
     const [loginModal, setLoginModal] = useState(false);
 
-    const onLoginModalToggle = useCallback(() => {
+    const loginModalVisibility = useCallback(() => {
         setLoginModal((prevState) => !prevState);
     }, []);
 
@@ -24,15 +24,13 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
             <div className={styles.links}>
                 <Button
                     theme={ThemeButton.CLEAR_INVERTED}
-                    onClick={onLoginModalToggle}
+                    onClick={loginModalVisibility}
                 >
                     {t('Войти')}
                 </Button>
             </div>
 
-            <Modal visible={loginModal} setVisible={onLoginModalToggle}>
-                /
-            </Modal>
+            <LoginModal visible={loginModal} setVisible={loginModalVisibility} />
         </div>
     );
 };

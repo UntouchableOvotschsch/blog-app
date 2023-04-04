@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { memo } from 'react';
 
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Button.module.scss';
@@ -26,11 +26,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     size?: SizeButton
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
-        onClick,
         theme,
         square,
         size,
@@ -44,7 +43,6 @@ export const Button: FC<ButtonProps> = (props) => {
     return (
         <button
             type="button"
-            onClick={onClick}
             className={classNames(
                 styles.Button,
                 mods,
@@ -57,4 +55,4 @@ export const Button: FC<ButtonProps> = (props) => {
             }
         </button>
     );
-};
+});

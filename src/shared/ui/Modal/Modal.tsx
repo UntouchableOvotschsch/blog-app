@@ -30,16 +30,18 @@ export const Modal: FC<ModalProps> = (
     },
 ) => {
     const [closing, setClosing] = useState(false);
+    const [opening, setOpening] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const mods: Record<string, boolean> = {
-        [styles.visible]: visible,
+        [styles.visible]: opening,
         [styles.closing]: closing,
     };
 
     const setVisibleHandler = useCallback(() => {
         setClosing(true);
         timerRef.current = setTimeout(() => {
+            setOpening(false);
             setVisible((prevState) => !prevState);
             setClosing(false);
         }, 300);
@@ -51,12 +53,19 @@ export const Modal: FC<ModalProps> = (
                 setVisibleHandler();
             }
         };
+
+        if (visible) {
+            timerRef.current = setTimeout(() => {
+                setOpening(true);
+            }, 0);
+        }
+
         document.addEventListener('keydown', onEscCloseListener);
         return () => {
             document.removeEventListener('keydown', onEscCloseListener);
             clearTimeout(timerRef.current);
         };
-    }, [setVisibleHandler]);
+    }, [visible, setVisibleHandler]);
 
     if (!visible) {
         return null;
