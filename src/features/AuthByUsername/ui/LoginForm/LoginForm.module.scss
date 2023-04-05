@@ -1,17 +1,14 @@
 .loginForm {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
 }
 
 .loginForm > input {
     margin-bottom: 10px;
 }
 
-.loginForm > input:last-child {
-    margin-bottom: 0;
-}
-
 .loginBtn {
     margin-left: auto;
+    max-height: 38px;
 }

@@ -111,3 +111,11 @@ SquaredSizeXL.args = {
     theme: ThemeButton.BACKGROUND_INVERTED,
 };
 SquaredSizeXL.decorators = [ThemeDecorator(Themes.LIGHT)];
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: '>',
+    disabled: true,
+    theme: ThemeButton.OUTLINE,
+};
+Disabled.decorators = [ThemeDecorator(Themes.LIGHT)];

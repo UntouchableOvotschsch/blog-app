@@ -24,6 +24,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     theme?: ThemeButton
     square?: boolean
     size?: SizeButton
+    disabled?: boolean
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -33,11 +34,13 @@ export const Button = memo((props: ButtonProps) => {
         theme,
         square,
         size,
+        disabled,
         ...otherProps
     } = props;
 
     const mods: Record<string, boolean> = {
         [styles.square]: square,
+        [styles.disabled]: disabled,
     };
 
     return (
@@ -48,6 +51,7 @@ export const Button = memo((props: ButtonProps) => {
                 mods,
                 [className, styles[theme], styles[size]],
             )}
+            disabled={disabled}
             {...otherProps}
         >
             {

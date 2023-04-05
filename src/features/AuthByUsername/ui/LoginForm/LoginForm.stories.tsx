@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import LoginForm from './index';
 
 export default {
@@ -19,10 +20,42 @@ export const PrimaryLight = Template.bind({});
 PrimaryLight.args = {
     placeholder: 'Some Text',
 };
-PrimaryLight.decorators = [ThemeDecorator(Themes.LIGHT)];
+PrimaryLight.decorators = [
+    ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({}),
+];
 
 export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
     placeholder: 'Some Text',
 };
-PrimaryDark.decorators = [ThemeDecorator(Themes.DARK)];
+PrimaryDark.decorators = [
+    ThemeDecorator(Themes.DARK),
+    StoreDecorator({}),
+];
+
+export const Loading = Template.bind({});
+Loading.args = {
+    placeholder: 'Some Text',
+};
+Loading.decorators = [
+    ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({
+        login: {
+            isLoading: true,
+        },
+    }),
+];
+
+export const Error = Template.bind({});
+Error.args = {
+    placeholder: 'Some Text',
+};
+Error.decorators = [
+    ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({
+        login: {
+            error: 'Неверное имя пользователя или пароль',
+        },
+    }),
+];

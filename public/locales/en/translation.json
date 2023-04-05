@@ -7,5 +7,8 @@
   "Главная": "Main",
   "О нас": "About",
   "Свернуть": "Toggle",
-  "Войти": "Login"
+  "Войти": "Sign in",
+  "Имя пользователя": "Username",
+  "Пароль": "Password",
+  "Неверное имя пользователя или пароль": "Incorrect username or password"
 }
