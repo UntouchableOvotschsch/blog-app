@@ -19,4 +19,14 @@ describe('getLoginState', () => {
                 isLoading: false,
             });
     });
+
+    test('undefined state', () => {
+        expect(getLoginState(undefined))
+            .toEqual({
+                username: '',
+                password: '',
+                isLoading: false,
+                error: '',
+            });
+    });
 });

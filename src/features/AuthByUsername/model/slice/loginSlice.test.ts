@@ -1,4 +1,5 @@
-import { loginActions, loginReducer, LoginSchema } from 'features/AuthByUsername';
+import { loginActions, loginReducer } from '../slice/loginSlice';
+import type { LoginSchema } from '../types/loginSchema';
 
 describe('loginSlice', () => {
     const loginState: LoginSchema = {
