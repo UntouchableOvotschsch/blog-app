@@ -1,6 +1,4 @@
-import React, {
-    FC, useCallback, useEffect, useState,
-} from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
@@ -15,17 +13,11 @@ interface NavbarProps {
     className?: string
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
     const [loginModal, setLoginModal] = useState(false);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (authData) {
-            setLoginModal(false);
-        }
-    }, [authData]);
 
     const loginModalVisibility = useCallback(() => {
         setLoginModal((prevState) => !prevState);
@@ -62,7 +54,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
                 </Button>
             </div>
 
-            <LoginModal visible={loginModal} setVisible={loginModalVisibility} />
+            <LoginModal visible={loginModal} changeVisibility={loginModalVisibility} />
         </div>
     );
-};
+});

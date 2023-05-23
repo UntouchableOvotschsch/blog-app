@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo } from 'react';
 
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ const reloadPage = () => {
     location.reload();
 };
 
-export const PageError: FC<PageErrorProps> = ({ className }) => {
+export const PageError = memo(({ className }: PageErrorProps) => {
     const { t } = useTranslation();
     return (
         <div className={classNames(styles.PageError, {}, [className])}>
@@ -24,4 +24,4 @@ export const PageError: FC<PageErrorProps> = ({ className }) => {
             </Button>
         </div>
     );
-};
+});

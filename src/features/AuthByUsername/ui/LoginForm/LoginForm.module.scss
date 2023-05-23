@@ -1,11 +1,15 @@
-.loginForm {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+.formWrapper {
+    width: 320px;
+    height: 200px;
+    margin: auto;
 }
 
-.loginForm > input {
-    margin-bottom: 10px;
+.loginForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 }
 
 .loginBtn {

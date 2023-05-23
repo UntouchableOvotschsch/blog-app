@@ -8,13 +8,15 @@ import {
     Reducer,
     ReducersMapObject,
 } from '@reduxjs/toolkit';
+import { ProfileSchema } from 'entities/Profile';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema,
 
     // Async
-    login?: LoginSchema
+    login?: LoginSchema,
+    profile?: ProfileSchema
 }
 
 export interface ReducerManager {

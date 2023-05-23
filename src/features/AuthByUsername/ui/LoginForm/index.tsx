@@ -1,10 +1,11 @@
-import React, { memo, useCallback } from 'react';
+import React, { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
@@ -14,9 +15,13 @@ const initialReducer: ReducerList = {
     login: loginReducer,
 };
 
-const LoginForm = memo(() => {
+interface LoginFormProps {
+    changeVisibility: () => void
+}
+
+const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const {
         username,
@@ -31,57 +36,72 @@ const LoginForm = memo(() => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const submitLoginForm = useCallback(() => {
-        dispatch(loginByUsername({
+    const submitLoginForm = useCallback(async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const result = await dispatch(loginByUsername({
             username,
             password,
         }));
-    }, [dispatch, password, username]);
+
+        if (result.meta.requestStatus === 'fulfilled') {
+            changeVisibility();
+        }
+    }, [dispatch, password, changeVisibility, username]);
 
     return (
         <DynamicModuleLoader reducerList={initialReducer}>
-            <form className={styles.loginForm}>
-                {
-                    !error && <Text title={t('Войти')} />
-                }
+            <div className={styles.formWrapper}>
+                <form
+                    className={styles.loginForm}
+                    onSubmit={(e) => submitLoginForm(e)}
+                    id="login-form"
+                >
 
-                {
-                    error
-                    && (
-                        <Text
-                            theme={ThemeText.ERROR}
-                            title={t(error)}
-                        />
-                    )
-                }
-                <Input
-                    type="text"
-                    value={username}
-                    onChange={changeUsername}
-                    placeholder={t('Имя пользователя')}
-                    autoFocus
-                />
-                <Input
-                    type="password"
-                    value={password}
-                    onChange={changePassword}
-                    placeholder={t('Пароль')}
-                />
-                <div className={styles.loginBtn}>
+                    {
+                        !error && <Text title={t('Войти')} />
+                    }
 
-                    <Button
-                        className={styles.loginBtn}
-                        theme={ThemeButton.OUTLINE}
-                        onClick={submitLoginForm}
-                        disabled={isLoading}
-                        type="submit"
-                    >
-                        {t('Войти')}
-                    </Button>
+                    {
+                        error
+                            && (
+                                <div style={{ textAlign: 'center' }}>
+                                    <Text
+                                        theme={ThemeText.ERROR}
+                                        text={t(error)}
+                                    />
+                                </div>
+                            )
+                    }
+                    <Input
+                        type="text"
+                        value={username}
+                        onChange={changeUsername}
+                        placeholder={t('Имя пользователя')}
+                        autoFocus
+                    />
+                    <Input
+                        type="password"
+                        value={password}
+                        onChange={changePassword}
+                        placeholder={t('Пароль')}
+                    />
+                    <div className={styles.loginBtn}>
 
-                </div>
+                        <Button
+                            className={styles.loginBtn}
+                            theme={ThemeButton.OUTLINE}
+                            disabled={isLoading}
+                            /* eslint-disable-next-line i18next/no-literal-string */
+                            form="login-form"
+                            type="submit"
+                        >
+                            {t('Войти')}
+                        </Button>
 
-            </form>
+                    </div>
+
+                </form>
+            </div>
         </DynamicModuleLoader>
     );
 });

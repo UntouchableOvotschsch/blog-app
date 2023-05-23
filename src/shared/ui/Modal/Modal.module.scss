@@ -24,7 +24,8 @@
     background: var(--bg-color);
     transition: 0.3s transform;
     transform: scale(0.5);
-    max-width: 60%;
+    min-width: 400px;
+    min-height: 240px;
 }
 
 .visible {

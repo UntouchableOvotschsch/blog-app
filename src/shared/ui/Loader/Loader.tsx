@@ -1,10 +1,11 @@
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { memo } from 'react';
 import styles from './Loader.module.scss';
 
 interface LoaderProps {
         className?: string
 }
-export const Loader = ({ className }: LoaderProps) => (
+export const Loader = memo(({ className }: LoaderProps) => (
     <div className={classNames(styles.LdsRoller, {}, [className])}>
         <div />
         <div />
@@ -15,4 +16,4 @@ export const Loader = ({ className }: LoaderProps) => (
         <div />
         <div />
     </div>
-);
+));

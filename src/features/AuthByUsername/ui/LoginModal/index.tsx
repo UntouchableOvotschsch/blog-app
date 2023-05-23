@@ -1,16 +1,16 @@
-import React, { Dispatch, SetStateAction, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface LoginModalProps {
     visible: boolean
-    setVisible: Dispatch<SetStateAction<boolean>>
+    changeVisibility: () => void
 }
-const LoginModal = ({ visible, setVisible }: LoginModalProps) => (
-    <Modal visible={visible} setVisible={setVisible}>
+const LoginModal = ({ visible, changeVisibility }: LoginModalProps) => (
+    <Modal visible={visible} changeVisibility={changeVisibility}>
         <Suspense fallback={<Loader />}>
-            <LoginFormAsync />
+            <LoginFormAsync changeVisibility={changeVisibility} />
         </Suspense>
     </Modal>
 );

@@ -1,12 +1,5 @@
 import {
-    Dispatch,
-    FC,
-    ReactNode,
-    SetStateAction,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
+    FC, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
@@ -17,7 +10,7 @@ interface ModalProps {
     className?: string;
     children: ReactNode;
     visible: boolean;
-    setVisible: Dispatch<SetStateAction<boolean>>;
+    changeVisibility: () => void;
 
 }
 
@@ -26,7 +19,7 @@ export const Modal: FC<ModalProps> = (
         className,
         children,
         visible,
-        setVisible,
+        changeVisibility,
     },
 ) => {
     const [closing, setClosing] = useState(false);
@@ -42,10 +35,10 @@ export const Modal: FC<ModalProps> = (
         setClosing(true);
         timerRef.current = setTimeout(() => {
             setOpening(false);
-            setVisible((prevState) => !prevState);
+            changeVisibility();
             setClosing(false);
         }, 300);
-    }, [setVisible]);
+    }, [changeVisibility]);
 
     useEffect(() => {
         const onEscCloseListener = (event: KeyboardEvent) => {
