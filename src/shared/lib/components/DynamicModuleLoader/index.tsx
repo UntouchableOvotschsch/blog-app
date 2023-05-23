@@ -32,12 +32,8 @@ const DynamicModuleLoader = ({
         };
         // eslint-disable-next-line
     }, []);
-    return (
-        // eslint-disable-next-line react/jsx-no-useless-fragment
-        <>
-            { children }
-        </>
-    );
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <>{ children }</>;
 };
 
 export default DynamicModuleLoader;

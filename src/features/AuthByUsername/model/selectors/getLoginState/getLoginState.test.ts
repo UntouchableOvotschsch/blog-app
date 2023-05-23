@@ -29,4 +29,15 @@ describe('getLoginState', () => {
                 error: '',
             });
     });
+    test('should return error', () => {
+        const errorState: DeepPartial<StateSchema> = {
+            login: {
+                error: 'error',
+            },
+        };
+        expect(getLoginState(errorState as StateSchema))
+            .toEqual({
+                error: 'error',
+            });
+    });
 });

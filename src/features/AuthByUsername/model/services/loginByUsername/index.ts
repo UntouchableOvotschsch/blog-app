@@ -33,6 +33,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsername, { rejectV
             }
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data));
             thunkAPI.dispatch(userActions.setAuthData(data));
+            return data;
         } catch (e) {
             return thunkAPI.rejectWithValue(LoginErrorsKeys.INCORRECT_DATA);
         }

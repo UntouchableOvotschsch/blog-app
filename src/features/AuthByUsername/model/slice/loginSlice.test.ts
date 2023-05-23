@@ -1,3 +1,4 @@
+import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername';
 import { loginActions, loginReducer } from '../slice/loginSlice';
 import type { LoginSchema } from '../types/loginSchema';
 
@@ -21,6 +22,30 @@ describe('loginSlice', () => {
                 username: '',
                 password: 'Some password',
                 isLoading: false,
+            });
+    });
+
+    test('setLoading', () => {
+        const action = { type: loginByUsername.pending };
+        expect(loginReducer(loginState, action))
+            .toEqual<LoginSchema>({
+                username: '',
+                password: '',
+                isLoading: true,
+            });
+    });
+
+    test('setError', () => {
+        const action = {
+            type: loginByUsername.rejected,
+            payload: 'Ошибка',
+        };
+        expect(loginReducer(loginState, action))
+            .toEqual<LoginSchema>({
+                username: '',
+                password: '',
+                isLoading: false,
+                error: 'Ошибка',
             });
     });
 });
