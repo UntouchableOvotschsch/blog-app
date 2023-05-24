@@ -12,22 +12,23 @@ export default ({ config }: { config: webpack.Configuration }) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-        if (/svg/.test(rule.test as string)) {
-            return {
+    const rules = config.module!.rules as RuleSetRule[];
+    config.module!.rules = rules.map((rule) => (
+        /svg/.test(rule.test as string)
+            ? {
                 ...rule,
                 exclude: /\.svg$/i,
-            };
-        }
-        return rule;
-    });
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts, .tsx');
-    config.module.rules.push(buildCssLoader(true), buildSvgLoader());
+            }
+            : rule
+    ));
 
-    config.plugins.push(new webpack.DefinePlugin({
-        __IS_DEV__: true,
+    config!.resolve!.modules!.push(paths.src);
+    config!.resolve!.extensions!.push('.ts, .tsx');
+    config!.module!.rules!.push(buildCssLoader(true), buildSvgLoader());
+
+    config!.plugins!.push(new webpack.DefinePlugin({
+        __IS_DEV__: JSON.stringify(true),
+        __API_URL__: JSON.stringify(''),
     }));
     return config;
 };

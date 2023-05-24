@@ -5,7 +5,7 @@ import ListIcon from 'shared/assets/icons/list.svg';
 import Profile from 'shared/assets/icons/profile.svg';
 
 export interface ItemType {
-    path: string,
+    path: string | undefined,
     text: string,
     Icon: React.VFC<React.SVGProps<SVGSVGElement>>
 }

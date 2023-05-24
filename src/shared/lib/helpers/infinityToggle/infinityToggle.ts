@@ -1,5 +1,5 @@
-export function infinityToggle <T>(array: Array<T>, value: T): T {
-    if (array && value) {
+export function infinityToggle<T>(array: Array<T>, value: T): T | undefined {
+    if (value && array[0]) {
         const index = array.indexOf(value);
 
         if (index + 1 === array.length) {

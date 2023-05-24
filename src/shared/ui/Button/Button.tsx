@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Button.module.scss';
 
 export enum ThemeButton {
@@ -31,14 +31,14 @@ export const Button = memo((props: ButtonProps) => {
     const {
         className,
         children,
-        theme,
+        theme = ThemeButton.OUTLINE,
         square,
-        size,
+        size = SizeButton.M,
         disabled,
         ...otherProps
     } = props;
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [styles.square]: square,
         [styles.disabled]: disabled,
     };

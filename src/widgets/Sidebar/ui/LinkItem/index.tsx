@@ -14,7 +14,7 @@ const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
     return (
         <AppLink
             className={classNames(styles.link, { [styles.collapsed]: collapsed }, [])}
-            to={item.path}
+            to={item.path || '/'}
             theme={AppLinkTheme.SECONDARY}
         >
             <item.Icon className={styles.icon} />

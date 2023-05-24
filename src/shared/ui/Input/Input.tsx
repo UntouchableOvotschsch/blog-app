@@ -1,5 +1,5 @@
 import React, {
-    InputHTMLAttributes, memo, useEffect, useRef,
+    InputHTMLAttributes, memo, MutableRefObject, useEffect, useRef,
 } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Input.module.scss';
@@ -16,7 +16,7 @@ const Input = memo(({
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
     };
-    const inputRef = useRef<HTMLInputElement>();
+    const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
     useEffect(() => {
         if (inputRef.current && autoFocus) {

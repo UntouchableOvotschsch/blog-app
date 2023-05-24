@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { ThunkConfigType } from 'app/providers/StoreProvider';
 
 interface LoginByUsername {
     username: string,
@@ -12,30 +12,32 @@ enum LoginErrorsKeys {
     INCORRECT_DATA = 'Неверное имя пользователя или пароль'
 }
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsername, { rejectValue: string }>(
+export const loginByUsername = createAsyncThunk<User, LoginByUsername, ThunkConfigType<string>>(
     'login/loginByUsername',
     async ({
         username,
         password,
-        // eslint-disable-next-line consistent-return
     }: LoginByUsername, thunkAPI) => {
+        const {
+            extra,
+            dispatch,
+            rejectWithValue,
+        } = thunkAPI;
+
         try {
-            const { data } = await axios.post<User>('http://localhost:8000/login', {
+            const { data } = await extra.api.post<User>('/login', {
                 username,
                 password,
-            }, {
-                headers: {
-                    Authorization: 'Bearer ',
-                },
             });
             if (!data) {
                 throw new Error();
             }
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data));
-            thunkAPI.dispatch(userActions.setAuthData(data));
+            dispatch(userActions.setAuthData(data));
+            if (extra.navigator) extra.navigator('/about');
             return data;
         } catch (e) {
-            return thunkAPI.rejectWithValue(LoginErrorsKeys.INCORRECT_DATA);
+            return rejectWithValue(LoginErrorsKeys.INCORRECT_DATA);
         }
     },
 );

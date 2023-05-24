@@ -16,31 +16,39 @@ export default {
     },
 } as ComponentMeta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
+const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 
 export const Light = Template.bind({});
-Light.args = {
-    children: 'Some Text',
-};
 Light.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         profile: {
-            editable: true,
+            data: {
+                lastname: 'Solomatin',
+                firstname: 'Sergey',
+                username: 'admin',
+                age: 22,
+            },
+            editable: false,
             isLoading: false,
         },
     }),
 ];
 
 export const Dark = Template.bind({});
-Dark.args = {
-    children: 'Some Text',
-};
 Dark.decorators = [
     ThemeDecorator(Themes.DARK),
     StoreDecorator({
         profile: {
-            editable: true,
+            data: {
+                lastname: 'Solomatin',
+                firstname: 'Sergey',
+                username: 'admin',
+                age: 22,
+                // eslint-disable-next-line max-len
+                avatar: '',
+            },
+            editable: false,
             isLoading: false,
         },
     }),

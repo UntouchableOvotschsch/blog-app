@@ -19,7 +19,7 @@ export const AppLink = memo((props: AppLinkProps) => {
         className,
         children,
         to,
-        theme,
+        theme = AppLinkTheme.PRIMARY,
         ...otherProps
     } = props;
     return (

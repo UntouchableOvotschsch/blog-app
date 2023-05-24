@@ -1,4 +1,3 @@
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginState } from '.';
 
@@ -21,7 +20,7 @@ describe('getLoginState', () => {
     });
 
     test('undefined state', () => {
-        expect(getLoginState(undefined))
+        expect(getLoginState(undefined as unknown as StateSchema))
             .toEqual({
                 username: '',
                 password: '',

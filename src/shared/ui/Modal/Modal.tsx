@@ -1,8 +1,8 @@
 import {
-    FC, ReactNode, useCallback, useEffect, useRef, useState,
+    FC, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/Portal';
 import styles from './Modal.module.scss';
 
@@ -24,9 +24,9 @@ export const Modal: FC<ModalProps> = (
 ) => {
     const [closing, setClosing] = useState(false);
     const [opening, setOpening] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [styles.visible]: opening,
         [styles.closing]: closing,
     };
@@ -56,7 +56,7 @@ export const Modal: FC<ModalProps> = (
         document.addEventListener('keydown', onEscCloseListener);
         return () => {
             document.removeEventListener('keydown', onEscCloseListener);
-            clearTimeout(timerRef.current);
+            if (timerRef.current) clearTimeout(timerRef.current);
         };
     }, [visible, setVisibleHandler]);
 

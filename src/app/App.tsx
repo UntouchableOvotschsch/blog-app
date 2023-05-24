@@ -11,7 +11,7 @@ import { User, userActions } from 'entities/User';
 const App: FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        const user: User = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
+        const user: User = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY) || '');
         if (user) {
             dispatch(userActions.setAuthData(user));
         }
