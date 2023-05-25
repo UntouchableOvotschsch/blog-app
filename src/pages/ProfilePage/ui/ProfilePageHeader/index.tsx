@@ -8,8 +8,14 @@ interface ProfilePageProps {
     setEditMode: (value: boolean) => void
     cancelEditMode: (value: boolean) => void
     editable: boolean
+    isError?: string
 }
-const ProfileCardHeader = ({ setEditMode, cancelEditMode, editable }: ProfilePageProps) => {
+const ProfileCardHeader = ({
+    setEditMode,
+    cancelEditMode,
+    editable,
+    isError,
+}: ProfilePageProps) => {
     const { t } = useTranslation('profile');
     return (
         <div className={styles.header}>
@@ -26,6 +32,7 @@ const ProfileCardHeader = ({ setEditMode, cancelEditMode, editable }: ProfilePag
                     )
                     : (
                         <Button
+                            disabled={!!isError}
                             theme={ThemeButton.OUTLINE}
                             onClick={() => setEditMode(true)}
                         >

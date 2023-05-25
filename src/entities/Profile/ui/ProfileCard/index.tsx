@@ -52,6 +52,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     onChange={(value) => changeProfileData({ age: Number(value) })}
                     readOnly={!editable}
                     type="number"
+                    min="0"
                     placeholder={t('Ваш возраст')}
                 />
                 <CountrySelect

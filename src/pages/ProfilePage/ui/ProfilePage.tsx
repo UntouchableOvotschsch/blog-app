@@ -7,10 +7,12 @@ import {
     getProfileEditable,
     getProfileError,
     getProfileLoading,
+    getProfileValidationErrors,
     profileActions,
     ProfileCard,
     profileReducer,
     ProfileType,
+    ProfileValidationErrors,
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -32,6 +34,15 @@ const ProfilePage = () => {
     const isLoading = useSelector(getProfileLoading);
     const editable = useSelector(getProfileEditable);
     const formData = useSelector(getFormData);
+    const validationErrors = useSelector(getProfileValidationErrors);
+
+    const validationErrorsTranslation = {
+        [ProfileValidationErrors.INCORRECT_USER_DATA]: t('Некорректные пользовательские данные'),
+        [ProfileValidationErrors.INCORRECT_AGE]: t('Некорректный возраст'),
+        [ProfileValidationErrors.INCORRECT_COUNTRY]: t('Некорректная страна'),
+        [ProfileValidationErrors.SERVER_ERROR]: t('Ошибка сервера'),
+        [ProfileValidationErrors.NO_DATA]: t('Отсутствуют данные о профиле'),
+    };
 
     const setEditMode = useCallback((value: boolean) => {
         dispatch(profileActions.setEditable(value));
@@ -61,6 +72,7 @@ const ProfilePage = () => {
                     editable={editable}
                     setEditMode={setEditMode}
                     cancelEditMode={cancelEditMode}
+                    isError={isError}
                 />
 
                 {
@@ -101,6 +113,13 @@ const ProfilePage = () => {
                         </div>
                     )
                 }
+                {validationErrors?.length && editable ? validationErrors?.map((error) => (
+                    <Text
+                        text={validationErrorsTranslation[error]}
+                        theme={ThemeText.ERROR}
+                        key={error}
+                    />
+                )) : null}
             </div>
         </DynamicModuleLoader>
     );
