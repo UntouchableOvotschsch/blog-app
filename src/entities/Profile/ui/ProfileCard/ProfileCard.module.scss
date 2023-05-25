@@ -1,20 +1,7 @@
-.container {
-    padding: 20px;
-}
-
-.header {
+.data {
     display: flex;
-    justify-content: space-between;
-}
-
-.avatar {
-    margin: 10px auto;
-    width: 150px;
-    height: 150px;
-    border: 5px solid var(--inverted-bg-color);
-    box-sizing: border-box;
-    overflow: hidden;
-    border-radius: 50%;
+    align-items: center;
+    flex-direction: column;
 }
 
 .inputs {
@@ -22,5 +9,8 @@
     flex-direction: column;
     gap: 10px;
     width: 40%;
-    margin: auto;
+}
+
+.avatar {
+    margin: 10px 0;
 }

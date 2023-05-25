@@ -1,42 +1,93 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getProfileData, getProfileError, getProfileLoading } from 'entities/Profile';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import Text from 'shared/ui/Text/Text';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
+import { ProfileType } from 'entities/Profile';
+import Avatar from 'shared/ui/Avatar';
+import { CurrencySelect } from 'entities/Currency';
+import { CountrySelect } from 'entities/Country';
 import styles from './ProfileCard.module.scss';
 
-const ProfileCard = () => {
-    const { t } = useTranslation();
-    const data = useSelector(getProfileData);
-    const error = useSelector(getProfileError);
-    const isLoading = useSelector(getProfileLoading);
+interface ProfileCardProps {
+    data: ProfileType | undefined
+    editable: boolean
+    changeProfileData: (value: ProfileType) => void
+}
+
+const ProfileCard: FC<ProfileCardProps> = ({
+    data, editable, changeProfileData,
+}) => {
+    const { t } = useTranslation('profile');
+
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
-                <Text title={t('Профиль')} />
-                <Button theme={ThemeButton.OUTLINE}>
-                    {t('Редактировать')}
-                </Button>
+        <div className={styles.data}>
+            <div className={styles.avatar}>
+                <Avatar
+                    avatar={data?.avatar}
+                    width={148}
+                    height={148}
+                    alt={t('your avatar')}
+                />
             </div>
-            <div className={styles.data}>
-                <div className={styles.avatar}>
-                    <img
-                        src={data?.avatar}
-                        alt={t('your avatar')}
-                        width="148px"
-                        height="148px"
-                    />
-                </div>
-                <div className={styles.inputs}>
-                    <Input value={data?.firstname} disabled />
-                    <Input value={data?.lastname} disabled />
-                    <Input value={data?.username} disabled />
-                    <Input value={data?.age} disabled />
-                </div>
+            <div className={styles.inputs}>
+                <Input
+                    value={data?.firstname}
+                    onChange={(value) => changeProfileData({ firstname: value })}
+                    readOnly={!editable}
+                    placeholder={t('Ваше имя')}
+                />
+                <Input
+                    value={data?.lastname}
+                    onChange={(value) => changeProfileData({ lastname: value })}
+                    readOnly={!editable}
+                    placeholder={t('Ваша фамилия')}
+                />
+                <Input
+                    value={data?.username}
+                    onChange={(value) => changeProfileData({ username: value })}
+                    readOnly={!editable}
+                    placeholder={t('Ваша никнейм')}
+                />
+                <Input
+                    value={data?.age}
+                    onChange={(value) => changeProfileData({ age: Number(value) })}
+                    readOnly={!editable}
+                    type="number"
+                    placeholder={t('Ваш возраст')}
+                />
+                <CountrySelect
+                    selectValue={data?.country}
+                    editable={editable}
+                    onChange={(country) => changeProfileData({
+                        country,
+                    })}
+                />
+                <Input
+                    value={data?.city}
+                    onChange={(value) => changeProfileData({ city: value })}
+                    readOnly={!editable}
+                    placeholder={t('Ваш город')}
+                />
+                <CurrencySelect
+                    selectValue={data?.currency}
+                    editable={editable}
+                    onChange={(currency) => changeProfileData({
+                        currency,
+                    })}
+                />
+
+                {
+                    editable
+                    && (
+                        <Input
+                            value={data?.avatar}
+                            onChange={(value) => changeProfileData({ avatar: value })}
+                            placeholder={t('Введите ссылку на аватар')}
+                        />
+                    )
+                }
             </div>
         </div>
+
     );
 };
 

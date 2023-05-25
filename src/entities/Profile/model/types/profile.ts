@@ -1,16 +1,15 @@
-import { Currencies } from 'shared/const/currencies';
-import { Countries } from 'shared/const/countries';
-import { Cities } from 'shared/const/cities';
+import { Currencies } from 'entities/Currency/model/types/currencies';
+import { Countries } from 'entities/Country/model/types/countries';
 
 export interface ProfileType {
-    'firstname': string,
-    'lastname': string,
-    'age': number,
-    'currency': keyof Currencies,
-    'country': keyof Countries,
-    'city': typeof Cities,
-    'username': string,
-    'avatar': string
+    'firstname'?: string,
+    'lastname'?: string,
+    'age'?: number,
+    'currency'?: Currencies,
+    'country'?: Countries,
+    'city'?: string,
+    'username'?: string,
+    'avatar'?: string
 }
 
 export interface ProfileSchema {
@@ -18,5 +17,6 @@ export interface ProfileSchema {
     isLoading: boolean,
     error?: string
     editable: boolean
+    form?: ProfileType
 
 }

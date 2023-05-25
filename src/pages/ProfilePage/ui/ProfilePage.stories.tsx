@@ -3,6 +3,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Currencies } from 'entities/Currency';
+import { Countries } from 'entities/Country';
 import ProfilePage from './ProfilePage';
 
 export default {
@@ -19,35 +21,44 @@ export default {
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
 
 export const Light = Template.bind({});
+Light.args = {};
 Light.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         profile: {
-            data: {
-                lastname: 'Solomatin',
-                firstname: 'Sergey',
-                username: 'admin',
-                age: 22,
-            },
             editable: false,
             isLoading: false,
+            error: '',
+            form: {
+                country: Countries.Russia,
+                currency: Currencies.RUB,
+                avatar: '',
+                city: '',
+                age: 22,
+                username: '',
+                lastname: '',
+                firstname: '',
+            },
+            data: {
+                country: Countries.Russia,
+                currency: Currencies.RUB,
+                avatar: '',
+                city: '',
+                age: 22,
+                username: '',
+                lastname: '',
+                firstname: '',
+            },
         },
     }),
 ];
 
 export const Dark = Template.bind({});
+Dark.args = {};
 Dark.decorators = [
     ThemeDecorator(Themes.DARK),
     StoreDecorator({
         profile: {
-            data: {
-                lastname: 'Solomatin',
-                firstname: 'Sergey',
-                username: 'admin',
-                age: 22,
-                // eslint-disable-next-line max-len
-                avatar: '',
-            },
             editable: false,
             isLoading: false,
         },

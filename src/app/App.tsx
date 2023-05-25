@@ -6,14 +6,16 @@ import { PageLoader } from 'widgets/PageLoader/PageLoader';
 import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { useDispatch } from 'react-redux';
-import { User, userActions } from 'entities/User';
+import { userActions } from 'entities/User';
 
 const App: FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        const user: User = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY) || '');
+        //  Иначе стреляет стремной ошибкой о невозможности парсить такой JSON
+        const user: string | null = localStorage.getItem(USER_LOCALSTORAGE_KEY);
         if (user) {
-            dispatch(userActions.setAuthData(user));
+            const parsedUser = JSON.parse(user);
+            dispatch(userActions.setAuthData(parsedUser));
         }
     }, [dispatch]);
 

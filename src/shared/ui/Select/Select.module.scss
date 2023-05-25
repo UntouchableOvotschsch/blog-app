@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 34px;
+}
+
+.select {
+    background-color: var(--inverted-bg-color);
+    outline: none;
+    color: var(--bg-color);
+    border-radius: 10px;
+    height: 100%;
+    text-align: center;
+    appearance: none;
+}
+
+.option {
+    color: var(--inverted-primary-color);
+    background: var(--inverted-bg-color);
+}

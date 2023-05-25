@@ -3,6 +3,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { ItemType } from 'widgets/Sidebar/model/types/item';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { useAuthDataChecker } from 'shared/lib/hooks/isAuthed';
 import styles from './LinkItem.module.scss';
 
 interface LinkItemProps {
@@ -11,6 +12,10 @@ interface LinkItemProps {
 }
 const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
     const { t } = useTranslation();
+    const isAuthed = useAuthDataChecker();
+    if (item.authOnly && !isAuthed) {
+        return null;
+    }
     return (
         <AppLink
             className={classNames(styles.link, { [styles.collapsed]: collapsed }, [])}

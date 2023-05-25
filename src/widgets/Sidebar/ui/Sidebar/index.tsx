@@ -4,7 +4,6 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
-import { useTranslation } from 'react-i18next';
 import { ItemsLinksList } from 'widgets/Sidebar/model/types/item';
 import LinkItem from 'widgets/Sidebar/ui/LinkItem';
 import styles from './Sidebar.module.scss';
@@ -15,7 +14,6 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const { t } = useTranslation();
 
     const itemsList = useMemo(() => ItemsLinksList.map((item) => (
         <LinkItem

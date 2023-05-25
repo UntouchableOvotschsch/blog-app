@@ -8,6 +8,7 @@ export interface ItemType {
     path: string | undefined,
     text: string,
     Icon: React.VFC<React.SVGProps<SVGSVGElement>>
+    authOnly?: boolean
 }
 
 export const ItemsLinksList: ItemType[] = [
@@ -15,6 +16,7 @@ export const ItemsLinksList: ItemType[] = [
         path: routeConfig.profile.path,
         Icon: Profile,
         text: 'Мой профиль',
+        authOnly: true,
     },
     {
         path: routeConfig.main.path,

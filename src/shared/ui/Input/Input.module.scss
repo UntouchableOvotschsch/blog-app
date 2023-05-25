@@ -6,8 +6,21 @@
     border: none;
     background-color: var(--inverted-bg-color);
     color: var(--bg-color);
+
+    &[type="number"]::-webkit-outer-spin-button,
+    &[type="number"]::-webkit-inner-spin-button {
+        appearance: none;
+    }
+
+    &[type="number"] {
+        appearance: textfield;
+    }
 }
 
 .input::placeholder {
     color: var(--bg-color);
+}
+
+.readOnly {
+    opacity: 0.7;
 }
