@@ -35,7 +35,7 @@ Light.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -60,7 +60,7 @@ Dark.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -85,7 +85,7 @@ EditableLight.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -110,7 +110,7 @@ EditableDark.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -135,7 +135,7 @@ LoadingLight.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -160,7 +160,7 @@ LoadingDark.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -185,7 +185,7 @@ FetchErrorLight.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -210,7 +210,7 @@ FetchErrorDark.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -238,7 +238,7 @@ ValidationErrorLight.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -266,7 +266,7 @@ ValidationErrorDark.decorators = [
                 country: Countries.Russia,
                 currency: Currencies.RUB,
                 // eslint-disable-next-line max-len
-                avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',

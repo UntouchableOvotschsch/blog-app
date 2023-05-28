@@ -26,7 +26,7 @@ EditableCardLight.args = {
         country: Countries.Russia,
         currency: Currencies.RUB,
         // eslint-disable-next-line max-len
-        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -45,7 +45,7 @@ EditableCardDark.args = {
         country: Countries.Russia,
         currency: Currencies.RUB,
         // eslint-disable-next-line max-len
-        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -64,7 +64,7 @@ NonEditableCardLight.args = {
         country: Countries.Russia,
         currency: Currencies.RUB,
         // eslint-disable-next-line max-len
-        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -83,7 +83,7 @@ NonEditableCardDark.args = {
         country: Countries.Russia,
         currency: Currencies.RUB,
         // eslint-disable-next-line max-len
-        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
+        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
