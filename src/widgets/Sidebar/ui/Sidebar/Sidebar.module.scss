@@ -18,12 +18,20 @@
 }
 
 .switchers {
-    // Переписать на flex-direction: column
     position: absolute;
     display: flex;
     bottom: 20px;
     width: 100%;
     justify-content: space-evenly;
+
+    &.collapsed {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.lngSwitcher {
+    color: var(--bg-color);
 }
 
 .lngBtn {
