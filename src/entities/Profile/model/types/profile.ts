@@ -10,14 +10,14 @@ export enum ProfileValidationErrors {
 }
 
 export interface ProfileType {
-    'firstname'?: string,
-    'lastname'?: string,
-    'age'?: number,
-    'currency'?: Currencies,
-    'country'?: Countries,
-    'city'?: string,
-    'username'?: string,
-    'avatar'?: string
+    firstname?: string,
+    lastname?: string,
+    age?: number,
+    currency?: Currencies,
+    country?: Countries,
+    city?: string,
+    username?: string,
+    avatar?: string
 }
 
 export interface ProfileSchema {

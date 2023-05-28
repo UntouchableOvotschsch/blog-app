@@ -19,7 +19,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         <LinkItem
             item={item}
             collapsed={collapsed}
-            /* eslint-disable-next-line react/no-array-index-key */
             key={item.path}
         />
     )), [collapsed]);

@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Sidebar } from './index';
 
 export default {
@@ -18,10 +19,47 @@ export const Light = Template.bind({});
 Light.args = {};
 Light.decorators = [
     ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({
+        user: {
+            authData: undefined,
+        },
+    }),
 ];
 
 export const Dark = Template.bind({});
 Dark.args = {};
 Dark.decorators = [
     ThemeDecorator(Themes.DARK),
+    StoreDecorator({
+        user: {
+            authData: undefined,
+        },
+    }),
+];
+export const LightAuthed = Template.bind({});
+LightAuthed.args = {};
+LightAuthed.decorators = [
+    ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({
+        user: {
+            authData: {
+                username: 'Sergey',
+                id: '123',
+            },
+        },
+    }),
+];
+
+export const DarkAuthed = Template.bind({});
+DarkAuthed.args = {};
+DarkAuthed.decorators = [
+    ThemeDecorator(Themes.DARK),
+    StoreDecorator({
+        user: {
+            authData: {
+                username: 'Sergey',
+                id: '123',
+            },
+        },
+    }),
 ];

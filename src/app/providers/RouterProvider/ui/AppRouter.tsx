@@ -2,7 +2,7 @@ import { memo, Suspense, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'widgets/PageLoader/PageLoader';
-import { useAuthDataChecker } from 'shared/lib/hooks/isAuthed';
+import { useAuthDataChecker } from 'shared/lib/hooks/useAuthDataChecker';
 
 const AppRouter = memo(() => {
     const isAuth = useAuthDataChecker();

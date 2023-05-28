@@ -5,7 +5,7 @@ import { Themes } from 'app/providers/ThemeProvider';
 import CountrySelect from '.';
 
 export default {
-    title: 'entities/CountrySelect',
+    title: 'entities/Country/CountrySelect',
     component: CountrySelect,
     argTypes: {
         backgroundColor: { control: 'color' },

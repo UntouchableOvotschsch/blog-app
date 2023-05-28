@@ -3,7 +3,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { ItemType } from 'widgets/Sidebar/model/types/item';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { useAuthDataChecker } from 'shared/lib/hooks/isAuthed';
+import { useAuthDataChecker } from 'shared/lib/hooks/useAuthDataChecker';
 import styles from './LinkItem.module.scss';
 
 interface LinkItemProps {

@@ -58,11 +58,15 @@ const ProfilePage = () => {
     }, [dispatch]);
 
     const updateProfile = useCallback(() => {
-        dispatch(updateProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(updateProfileData());
+        }
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     return (
@@ -113,13 +117,13 @@ const ProfilePage = () => {
                         </div>
                     )
                 }
-                {validationErrors?.length && editable ? validationErrors?.map((error) => (
+                {validationErrors?.length && editable && validationErrors?.map((error) => (
                     <Text
                         text={validationErrorsTranslation[error]}
                         theme={ThemeText.ERROR}
                         key={error}
                     />
-                )) : null}
+                ))}
             </div>
         </DynamicModuleLoader>
     );

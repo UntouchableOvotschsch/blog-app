@@ -4,5 +4,4 @@
 npm run lint:ts
 npm run lint:scss
 npm run test:unit
-# Пока не разберусь с ProfilePage, почему то не может получить snapshot
-#npm run test:ui
+npm run test:ui

@@ -1,10 +1,14 @@
 import { ProfileType } from 'entities/Profile';
 import { ProfileValidationErrors } from 'entities/Profile/model/types/profile';
+import { emptyObjChecker } from 'shared/lib/helpers/emptyObjChecker';
 
 export const profileDataValidator = (profile?: ProfileType): ProfileValidationErrors[] => {
-    if (!profile) {
+    const isEmpty = emptyObjChecker(profile);
+    if (!profile || isEmpty) {
         return [ProfileValidationErrors.NO_DATA];
     }
+    const errors: ProfileValidationErrors[] = [];
+
     const {
         age,
         lastname,
@@ -12,8 +16,6 @@ export const profileDataValidator = (profile?: ProfileType): ProfileValidationEr
         country,
         firstname,
     } = profile;
-
-    const errors: ProfileValidationErrors[] = [];
 
     if (!username || !firstname || !lastname) {
         errors.push(ProfileValidationErrors.INCORRECT_USER_DATA);

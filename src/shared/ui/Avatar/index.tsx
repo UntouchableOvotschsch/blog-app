@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Avatar.module.scss';
-import DefaultAvatar from './assets/defaultImage.jpg';
 
 type ImageAttributes = Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'alt' >
 interface AvatarProps extends ImageAttributes{
@@ -8,7 +7,7 @@ interface AvatarProps extends ImageAttributes{
     alt: string
 }
 const Avatar = ({
-    avatar = DefaultAvatar, alt, width = 150, height = 150, ...args
+    avatar, alt, width = 150, height = 150, ...args
 }: AvatarProps) => (
     <div className={styles.container}>
         {
