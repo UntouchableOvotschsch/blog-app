@@ -5,7 +5,6 @@ import { Themes } from 'app/providers/ThemeProvider';
 import ProfileCard from 'entities/Profile/ui/ProfileCard/index';
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
-import DefaultAvatar from 'shared/ui/Avatar/assets/defaultImage.jpg';
 
 export default {
     title: 'entities/Profile/ProfileCard',
@@ -26,7 +25,8 @@ EditableCardLight.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        avatar: DefaultAvatar,
+        // eslint-disable-next-line max-len
+        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -44,7 +44,8 @@ EditableCardDark.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        avatar: DefaultAvatar,
+        // eslint-disable-next-line max-len
+        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -62,7 +63,8 @@ NonEditableCardLight.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        avatar: DefaultAvatar,
+        // eslint-disable-next-line max-len
+        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -80,7 +82,8 @@ NonEditableCardDark.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        avatar: DefaultAvatar,
+        // eslint-disable-next-line max-len
+        avatar: 'https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg',
         city: 'Moscow',
         age: 22,
         username: 'admin',
