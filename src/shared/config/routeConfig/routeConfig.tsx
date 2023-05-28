@@ -3,6 +3,7 @@ import { MainPage } from 'pages/MainPage';
 import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
+import AuthWrapper from 'app/providers/RouterProvider/ui/wrappers/AuthWrapper';
 
 type AppRoutesProps = RouteProps & {
     authOnly?: boolean
@@ -40,7 +41,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 
     [AppRoutes.PROFILE]: {
         path: RoutePath.profile,
-        element: <ProfilePage />,
+        element: (
+            <AuthWrapper>
+                <ProfilePage />
+            </AuthWrapper>
+        ),
         authOnly: true,
     },
 
