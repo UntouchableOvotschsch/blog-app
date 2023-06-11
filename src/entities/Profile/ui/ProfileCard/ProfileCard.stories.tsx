@@ -25,8 +25,6 @@ EditableCardLight.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        // eslint-disable-next-line max-len
-        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -44,8 +42,6 @@ EditableCardDark.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        // eslint-disable-next-line max-len
-        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -63,8 +59,6 @@ NonEditableCardLight.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        // eslint-disable-next-line max-len
-        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',
@@ -82,8 +76,6 @@ NonEditableCardDark.args = {
     data: {
         country: Countries.Russia,
         currency: Currencies.RUB,
-        // eslint-disable-next-line max-len
-        avatar: '',
         city: 'Moscow',
         age: 22,
         username: 'admin',

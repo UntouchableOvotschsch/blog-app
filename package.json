@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "start:server": "node ./json-server/index.js",
-    "start:dev": "concurrently \"npm start\" \"npm run start:server\" \"npm run storybook\"",
+    "start:dev": "concurrently \"npm start\" \"npm run start:server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
@@ -32,6 +32,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@loki/create-async-callback": "^0.31.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",

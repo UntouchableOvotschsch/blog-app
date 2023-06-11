@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
-import Text, { ThemeText } from 'shared/ui/Text/Text';
+import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
 
 export default {
     title: 'shared/Text',
@@ -60,3 +60,27 @@ Error.args = {
     theme: ThemeText.ERROR,
 };
 Error.decorators = [ThemeDecorator(Themes.LIGHT)];
+
+export const SizeM = Template.bind({});
+SizeM.args = {
+    title: 'Some title',
+    text: 'Some text',
+    size: TextSize.M,
+};
+SizeM.decorators = [ThemeDecorator(Themes.LIGHT)];
+
+export const SizeL = Template.bind({});
+SizeL.args = {
+    title: 'Some title',
+    text: 'Some text',
+    size: TextSize.L,
+};
+SizeL.decorators = [ThemeDecorator(Themes.LIGHT)];
+
+export const SizeXL = Template.bind({});
+SizeXL.args = {
+    title: 'Some title',
+    text: 'Some text',
+    size: TextSize.XL,
+};
+SizeXL.decorators = [ThemeDecorator(Themes.LIGHT)];

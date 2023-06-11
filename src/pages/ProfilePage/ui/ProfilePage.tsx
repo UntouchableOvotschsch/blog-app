@@ -16,7 +16,7 @@ import {
 } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import { Loader } from 'shared/ui/Loader/Loader';
 import Text, { TextAlign, ThemeText } from 'shared/ui/Text/Text';
 import { updateProfileData } from 'entities/Profile/model/services/updateProfileData';
@@ -83,7 +83,7 @@ const ProfilePage = () => {
                     isLoading || isError
                         ? (
                             <div className={styles.status}>
-                                {isLoading && <Loader />}
+                                {isLoading && <Loader /> }
                                 {isError && (
                                     <Text
                                         theme={ThemeText.ERROR}
@@ -93,7 +93,6 @@ const ProfilePage = () => {
                                     />
                                 )}
                             </div>
-
                         )
                         : (
                             <ProfileCard
@@ -103,27 +102,29 @@ const ProfilePage = () => {
                             />
                         )
                 }
-
                 {
                     editable
-                    && (
-                        <div className={styles.saveBtn}>
+                        && (
+
                             <Button
                                 theme={ThemeButton.OUTLINE}
                                 onClick={updateProfile}
+                                size={SizeButton.M}
+                                className={styles.saveBtn}
                             >
                                 {t('Сохранить')}
                             </Button>
-                        </div>
-                    )
+                        )
                 }
-                {validationErrors?.length && editable && validationErrors?.map((error) => (
+
+                {validationErrors?.length && validationErrors?.map((error) => (
                     <Text
                         text={validationErrorsTranslation[error]}
                         theme={ThemeText.ERROR}
                         key={error}
                     />
                 ))}
+
             </div>
         </DynamicModuleLoader>
     );

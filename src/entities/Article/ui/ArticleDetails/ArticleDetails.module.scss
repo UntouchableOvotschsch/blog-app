@@ -1,0 +1,25 @@
+.header {
+    margin-bottom: 15px;
+}
+
+.avatar {
+    margin: auto;
+}
+
+.articleInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    margin-bottom: 15px;
+}

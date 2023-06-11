@@ -30,12 +30,9 @@ Light.decorators = [
             editable: false,
             isLoading: false,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -55,12 +52,9 @@ Dark.decorators = [
             editable: false,
             isLoading: false,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -80,12 +74,9 @@ EditableLight.decorators = [
             editable: true,
             isLoading: false,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -105,12 +96,9 @@ EditableDark.decorators = [
             editable: true,
             isLoading: false,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -130,12 +118,9 @@ LoadingLight.decorators = [
             editable: false,
             isLoading: true,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -155,12 +140,9 @@ LoadingDark.decorators = [
             editable: false,
             isLoading: true,
             error: '',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -180,12 +162,9 @@ FetchErrorLight.decorators = [
             editable: false,
             isLoading: false,
             error: 'Ошибка при получения профиля',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -205,12 +184,9 @@ FetchErrorDark.decorators = [
             editable: false,
             isLoading: false,
             error: 'Ошибка при получения профиля',
-            validationError: [],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -237,8 +213,6 @@ ValidationErrorLight.decorators = [
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',
@@ -265,8 +239,6 @@ ValidationErrorDark.decorators = [
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
-                // eslint-disable-next-line max-len
-                avatar: '',
                 city: 'Moscow',
                 age: 22,
                 username: 'admin',

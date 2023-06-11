@@ -7,10 +7,17 @@ export enum ThemeText {
     ERROR = 'error',
 }
 
+export enum TextSize {
+    M = 'size_m',
+    L = 'size_l',
+    XL = 'size_xl',
+}
+
 export enum TextAlign {
     RIGHT = 'right',
     LEFT = 'left',
-    CENTER = 'center'
+    CENTER = 'center',
+    JUSTIFY = 'justify'
 }
 
 interface TextProps {
@@ -19,6 +26,7 @@ interface TextProps {
     text?: string
     theme?: ThemeText
     align?: TextAlign
+    size?: TextSize
 }
 const Text = memo(({
     classname,
@@ -26,11 +34,12 @@ const Text = memo(({
     text,
     theme = ThemeText.PRIMARY,
     align = TextAlign.LEFT,
+    size = TextSize.M,
 }: TextProps) => (
     <div className={classNames(
-        styles.container,
+        '',
         {},
-        [classname, styles[theme], styles[align]],
+        [classname, styles[theme], styles[align], styles[size]],
     )}
     >
         {title && <h3 className={styles.title}>{title}</h3>}

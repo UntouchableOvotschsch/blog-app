@@ -6,7 +6,6 @@
 import path from 'path';
 
 export default {
-
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
@@ -46,7 +45,7 @@ export default {
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.(s?css)$': 'identity-obj-proxy',
-        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '\\.(svg|jpeg|jpg|png)': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     },
     globals: {
         __IS_DEV__: true,

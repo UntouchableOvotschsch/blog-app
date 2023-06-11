@@ -3,6 +3,7 @@ import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import HomeIcon from 'shared/assets/icons/home.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import Profile from 'shared/assets/icons/profile.svg';
+import ArticlesIcon from 'shared/assets/icons/articles.svg';
 
 export interface ItemType {
     path: string | undefined,
@@ -22,6 +23,12 @@ export const ItemsLinksList: ItemType[] = [
         path: routeConfig.main.path,
         Icon: HomeIcon,
         text: 'Главная',
+    },
+    {
+        path: routeConfig.articles.path,
+        Icon: ArticlesIcon,
+        text: 'Статьи',
+        authOnly: true,
     },
     {
         path: routeConfig.about.path,

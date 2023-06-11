@@ -1,0 +1,26 @@
+.Code {
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    background: var(--code-bg);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.codeWrapper {
+    overflow: auto;
+}
+
+.copyBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.icon {
+    stroke: var(--primary-color);
+    width: 20px;
+    height: 20px;
+}

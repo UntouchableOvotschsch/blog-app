@@ -1,7 +1,3 @@
-.container {
-    height: 32px;
-}
-
 .title {
     font: var(--font-l);
 }
@@ -40,4 +36,38 @@
 
 .right * {
     text-align: right;
+}
+
+.justify * {
+    text-align: justify;
+}
+
+.size_m {
+    .title {
+        font: var(--font-m);
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
+
+.size_l {
+    .title {
+        font: var(--font-l);
+    }
+
+    .text {
+        font: var(--font-m);
+    }
+}
+
+.size_xl {
+    .title {
+        font: var(--font-xl);
+    }
+
+    .text {
+        font: var(--font-l);
+    }
 }

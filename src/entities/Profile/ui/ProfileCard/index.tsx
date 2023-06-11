@@ -5,6 +5,7 @@ import { ProfileType } from 'entities/Profile';
 import Avatar from 'shared/ui/Avatar';
 import { CurrencySelect } from 'entities/Currency';
 import { CountrySelect } from 'entities/Country';
+import avatarImg from 'shared/assets/tests/profileImage.jpg';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -22,9 +23,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
         <div className={styles.data}>
             <div className={styles.avatar}>
                 <Avatar
-                    avatar={data?.avatar}
-                    width={148}
-                    height={148}
+                    avatar={__PROJECT__ === 'storybook' ? avatarImg : data?.avatar}
                     alt={t('your avatar')}
                 />
             </div>
