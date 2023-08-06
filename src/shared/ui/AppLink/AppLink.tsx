@@ -24,7 +24,7 @@ export const AppLink = memo((props: AppLinkProps) => {
     } = props;
     return (
         <Link
-            to={to}
+            to={__PROJECT__ !== 'storybook' ? to : '#'}
             className={
                 classNames(
                     styles.AppLink,

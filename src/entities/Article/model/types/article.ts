@@ -1,3 +1,5 @@
+import { User } from 'entities/User';
+
 export enum ArticleBlockTypes {
     TEXT = 'TEXT',
     IMAGE = 'IMAGE',
@@ -42,11 +44,12 @@ export interface Article {
     views: number;
     createdAt: string;
     type: ArticleTypes[];
-    blocks: ArticleBlock[];
+    blocks?: ArticleBlock[];
+    user: User;
 }
 
-export interface ArticleDetailsSchema {
-    isLoading: boolean;
-    error?: string;
-    data?: Article;
+export enum ArticleViewTypes {
+    BIG_TILE = 'BIG_TILE',
+    SMALL_TILE = 'SMALL_TILE'
+
 }

@@ -20,6 +20,6 @@ describe('getProfileValidationErrors.test', () => {
     });
     test('with empty state', () => {
         expect(getProfileValidationErrors({} as StateSchema))
-            .toBe(undefined);
+            .toEqual([]);
     });
 });

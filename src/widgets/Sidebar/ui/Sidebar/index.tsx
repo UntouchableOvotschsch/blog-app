@@ -4,8 +4,9 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
-import { ItemsLinksList } from 'widgets/Sidebar/model/types/item';
 import LinkItem from 'widgets/Sidebar/ui/LinkItem';
+import { useSelector } from 'react-redux';
+import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -15,13 +16,15 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
+    const ItemsLinksList = useSelector(getItemsLinksList);
+
     const itemsList = useMemo(() => ItemsLinksList.map((item) => (
         <LinkItem
             item={item}
             collapsed={collapsed}
             key={item.path}
         />
-    )), [collapsed]);
+    )), [ItemsLinksList, collapsed]);
 
     return (
         <div

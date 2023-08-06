@@ -5,27 +5,55 @@ import { ProfileType } from 'entities/Profile';
 import Avatar from 'shared/ui/Avatar';
 import { CurrencySelect } from 'entities/Currency';
 import { CountrySelect } from 'entities/Country';
-import avatarImg from 'shared/assets/tests/profileImage.jpg';
+import Text, { TextAlign, ThemeText } from 'shared/ui/Text/Text';
+import { Loader } from 'shared/ui/Loader/Loader';
 import styles from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
-    data: ProfileType | undefined
-    editable: boolean
+    data?: ProfileType
+    editable?: boolean
     changeProfileData: (value: ProfileType) => void
+    isLoading?: boolean
+    isError?: string
 }
 
 const ProfileCard: FC<ProfileCardProps> = ({
-    data, editable, changeProfileData,
+    data,
+    editable,
+    changeProfileData,
+    isLoading,
+    isError,
 }) => {
     const { t } = useTranslation('profile');
 
+    if (isLoading || isError) {
+        return (
+            <div className={styles.status}>
+                {isLoading && <Loader /> }
+                {isError && (
+                    <Text
+                        theme={ThemeText.ERROR}
+                        title={t('Произошла ошибка при получении профиля')}
+                        text={t('Попробуйте обновить страницу')}
+                        align={TextAlign.CENTER}
+                    />
+                )}
+            </div>
+
+        );
+    }
     return (
         <div className={styles.data}>
             <div className={styles.avatar}>
-                <Avatar
-                    avatar={__PROJECT__ === 'storybook' ? avatarImg : data?.avatar}
-                    alt={t('your avatar')}
-                />
+                {
+                    data?.avatar
+                    && (
+                        <Avatar
+                            avatar={data?.avatar}
+                            alt={t('your avatar')}
+                        />
+                    )
+                }
             </div>
             <div className={styles.inputs}>
                 <Input

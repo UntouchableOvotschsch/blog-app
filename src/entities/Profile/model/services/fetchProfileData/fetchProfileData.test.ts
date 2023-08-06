@@ -6,6 +6,7 @@ import { fetchProfileData } from '.';
 
 describe('fetchProfileData', () => {
     const fetchedProfile: ProfileType = {
+        id: 1,
         country: Countries.Russia,
         currency: Currencies.RUB,
         avatar: '',
@@ -19,7 +20,7 @@ describe('fetchProfileData', () => {
     test('Fulfilled fetching', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockResolvedValue({ data: fetchedProfile });
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.get)
             .toHaveBeenCalled();
@@ -34,7 +35,7 @@ describe('fetchProfileData', () => {
     test('Rejected fetching', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockRejectedValue({ status: 403 });
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.get)
             .toHaveBeenCalled();

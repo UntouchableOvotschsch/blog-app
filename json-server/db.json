@@ -8,39 +8,59 @@
   ],
   "comments": [
     {
-      "id": "1",
+      "id": 1,
       "text": "Крутая статья",
       "articleId": "1",
       "userId": "1"
     },
     {
-      "id": "2",
+      "id": 2,
       "text": "Информативно",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "id": 3,
+      "text": "Информативно",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": 4,
+      "text": "Информативно",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "text": "adaslkcna",
+      "articleId": 1,
+      "userId": "1",
+      "id": 5
     }
   ],
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "roles": [
         "ADMIN"
       ],
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album"
     },
     {
-      "id": "2",
+      "id": 2,
       "roles": [
         "USER"
       ],
       "username": "testUser",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://icon-library.com/images/avatar-png-icon/avatar-png-icon-13.jpg"
     }
   ],
   "articles": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
@@ -51,7 +71,7 @@
       ],
       "blocks": [
         {
-          "id": "1",
+          "id": 1,
           "type": "TEXT",
           "title": "Заголовок этого блока",
           "paragraphs": [
@@ -61,12 +81,12 @@
           ]
         },
         {
-          "id": "4",
+          "id": 4,
           "type": "CODE",
           "code": "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;"
         },
         {
-          "id": "5",
+          "id": 5,
           "type": "TEXT",
           "title": "Заголовок этого блока",
           "paragraphs": [
@@ -75,18 +95,18 @@
           ]
         },
         {
-          "id": "2",
+          "id": 2,
           "type": "IMAGE",
           "src": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
           "title": "Рисунок 1 - скриншот сайта"
         },
         {
-          "id": "3",
+          "id": 3,
           "type": "CODE",
           "code": "const path = require('path');\n\nconst server = jsonServer.create();\n\nconst router = jsonServer.router(path.resolve(__dirname, 'db.json'));\n\nserver.use(jsonServer.defaults({}));\nserver.use(jsonServer.bodyParser);"
         },
         {
-          "id": "7",
+          "id": 7,
           "type": "TEXT",
           "title": "Заголовок этого блока",
           "paragraphs": [
@@ -95,13 +115,13 @@
           ]
         },
         {
-          "id": "8",
+          "id": 8,
           "type": "IMAGE",
           "src": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
           "title": "Рисунок 1 - скриншот сайта"
         },
         {
-          "id": "9",
+          "id": 9,
           "type": "TEXT",
           "title": "Заголовок этого блока",
           "paragraphs": [
@@ -111,14 +131,28 @@
       ]
     }
   ],
-  "profile": {
-    "firstname": "Sergey",
-    "lastname": "Solomatin",
-    "age": 22,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album"
-  }
+  "profile": [
+    {
+      "id": 1,
+      "firstname": "Sergey",
+      "lastname": "Solomatin",
+      "age": 22,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album"
+    },
+    {
+      "id": 2,
+      "firstname": "Test1",
+      "lastname": "Test",
+      "age": 25,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "Test",
+      "avatar": "https://icon-library.com/images/avatar-png-icon/avatar-png-icon-13.jpg"
+    }
+  ]
 }

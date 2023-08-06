@@ -1,0 +1,27 @@
+.container {
+    margin-top: 20px;
+    height: 70px;
+}
+
+.commentForm {
+    display: flex;
+}
+
+.input {
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 117px;
+    height: 38px;
+}
+
+.checkIcon {
+    width: 30px;
+    height: 30px;
+    fill: var(--inverted-bg-color);
+}

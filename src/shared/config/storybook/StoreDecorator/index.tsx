@@ -1,15 +1,17 @@
 import React from 'react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { Story } from '@storybook/react';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+import { authByUsernameReducer } from 'features/AuthByUsername';
 import { profileReducer } from 'entities/Profile';
 import { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
+import { addNewCommentReducer } from 'features/AddNewComment';
 
 const defaultReducers: ReducerList = {
-    login: loginReducer,
+    authByUsername: authByUsernameReducer,
     profile: profileReducer,
-    articleDetails: articleDetailsReducer,
+    articlesDetailsPage: articleDetailsPageReducer,
+    addNewComment: addNewCommentReducer,
 };
 
 export const StoreDecorator = (

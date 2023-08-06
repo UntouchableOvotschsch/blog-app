@@ -30,6 +30,7 @@ EditableCardLight.args = {
         username: 'admin',
         lastname: 'Solomatin',
         firstname: 'Sergey',
+        avatar: 'asd-asd',
     },
 };
 EditableCardLight.decorators = [
@@ -47,6 +48,7 @@ EditableCardDark.args = {
         username: 'admin',
         lastname: 'Solomatin',
         firstname: 'Sergey',
+        avatar: 'asd-asd',
     },
 };
 EditableCardDark.decorators = [
@@ -64,6 +66,7 @@ NonEditableCardLight.args = {
         username: 'admin',
         lastname: 'Solomatin',
         firstname: 'Sergey',
+        avatar: 'asd-asd',
     },
 };
 NonEditableCardLight.decorators = [
@@ -81,6 +84,7 @@ NonEditableCardDark.args = {
         username: 'admin',
         lastname: 'Solomatin',
         firstname: 'Sergey',
+        avatar: 'asd-asd',
     },
 };
 NonEditableCardDark.decorators = [

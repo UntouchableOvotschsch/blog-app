@@ -8,11 +8,14 @@ import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicM
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+import {
+    authByUsernameActions,
+    authByUsernameReducer,
+} from '../../model/slice/authByUsernameSlice';
 import styles from './LoginForm.module.scss';
 
 const initialReducer: ReducerList = {
-    login: loginReducer,
+    authByUsername: authByUsernameReducer,
 };
 
 interface LoginFormProps {
@@ -30,10 +33,10 @@ const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
         error,
     } = useSelector(getLoginState);
     const changeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
+        dispatch(authByUsernameActions.setUsername(value));
     }, [dispatch]);
     const changePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
+        dispatch(authByUsernameActions.setPassword(value));
     }, [dispatch]);
 
     const submitLoginForm = useCallback(async (e: FormEvent<HTMLFormElement>) => {

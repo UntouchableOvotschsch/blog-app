@@ -4,15 +4,32 @@ import React, {
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Input.module.scss';
 
-type InputAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'readOnly'>
+export enum InputAlign {
+    LEFT = 'left',
+    CENTER = 'center',
+    RIGHT = 'right'
+}
+
+type InputAttributes = Omit<InputHTMLAttributes<HTMLInputElement>,
+    'onChange' |
+    'readOnly' |
+    'value'>
 interface InputProps extends InputAttributes {
     className?: string
     onChange?: (value: string) => void
     autoFocus?: boolean
     readOnly?: boolean
+    align?: InputAlign
+    value: string | number | undefined
 }
 const Input = memo(({
-    className, onChange, autoFocus, readOnly, ...args
+    className,
+    onChange,
+    autoFocus,
+    readOnly,
+    align = InputAlign.CENTER,
+    value,
+    ...args
 }: InputProps) => {
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -31,8 +48,9 @@ const Input = memo(({
             className={classNames(
                 styles.input,
                 mods,
-                [className],
+                [className, styles[align]],
             )}
+            value={value || ''}
             onChange={changeHandler}
             readOnly={readOnly}
             ref={inputRef}

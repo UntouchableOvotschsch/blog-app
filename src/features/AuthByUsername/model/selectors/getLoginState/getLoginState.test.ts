@@ -3,7 +3,7 @@ import { getLoginState } from '.';
 
 describe('getLoginState', () => {
     const state: DeepPartial<StateSchema> = {
-        login: {
+        authByUsername: {
             username: 'Some Username',
             password: 'Some Password',
             isLoading: false,
@@ -30,7 +30,7 @@ describe('getLoginState', () => {
     });
     test('should return error', () => {
         const errorState: DeepPartial<StateSchema> = {
-            login: {
+            authByUsername: {
                 error: 'error',
             },
         };

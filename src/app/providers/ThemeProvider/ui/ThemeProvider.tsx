@@ -20,7 +20,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     }), [theme]);
 
     useEffect(() => {
-        // Без подобных манимуляций плывут скрины в сторибуке (
+        // Без подобных манипуляций плывут скрины в сторибуке (
         document.body.classList.add(memoizeTheme.theme);
 
         return () => document.body.classList.remove(memoizeTheme.theme);

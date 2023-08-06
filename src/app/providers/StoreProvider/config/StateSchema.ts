@@ -1,6 +1,6 @@
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features/AuthByUsername';
+import { AuthByUsernameSchema } from 'features/AuthByUsername';
 import {
     AnyAction,
     CombinedState,
@@ -11,16 +11,19 @@ import {
 import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router';
-import { ArticleDetailsSchema } from 'entities/Article';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
+import { AddNewCommentSchema } from 'features/AddNewComment';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema,
 
     // Async
-    login?: LoginSchema,
+    authByUsername?: AuthByUsernameSchema,
     profile?: ProfileSchema
-    articleDetails?: ArticleDetailsSchema
+    articlesDetailsPage?: ArticleDetailsPageSchema
+
+    addNewComment?: AddNewCommentSchema
 }
 
 export interface ReducerManager {

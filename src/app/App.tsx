@@ -2,14 +2,12 @@ import { FC, Suspense, useEffect } from 'react';
 import { AppRouter } from 'app/providers/RouterProvider';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
-import { PageLoader } from 'widgets/PageLoader/PageLoader';
-import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
-import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 const App: FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     useEffect(() => {
         //  Иначе стреляет стремной ошибкой о невозможности парсить такой JSON
         const user: string | null = localStorage.getItem(USER_LOCALSTORAGE_KEY);
@@ -21,17 +19,15 @@ const App: FC = () => {
 
     return (
         <div className="app">
-            <ErrorBoundary>
-                <Suspense fallback={<PageLoader />}>
-                    <Navbar />
-                    <div className="content">
-                        <Sidebar />
-                        <div className="wrapper">
-                            <AppRouter />
-                        </div>
+            <Suspense fallback="">
+                <Navbar />
+                <div className="content">
+                    <Sidebar />
+                    <div className="wrapper">
+                        <AppRouter />
                     </div>
-                </Suspense>
-            </ErrorBoundary>
+                </div>
+            </Suspense>
         </div>
     );
 };

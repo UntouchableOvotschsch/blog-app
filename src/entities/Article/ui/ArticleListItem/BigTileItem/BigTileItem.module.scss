@@ -1,0 +1,51 @@
+.container {
+    width: 1000px;
+    margin-bottom: 10px;
+    transition: 0.2s;
+
+    &:hover {
+        transform: scale(1.01);
+        opacity: 0.8;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.articleImg {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin: 20px 0;
+}
+
+.textBlock {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.views {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title {
+    margin: 10px 0;
+}

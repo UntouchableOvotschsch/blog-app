@@ -2,6 +2,7 @@ import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
 import { ProfileType } from 'entities/Profile';
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
+import { UserRoles } from 'entities/User';
 import { updateProfileData } from '.';
 
 describe('updateProfileData', () => {
@@ -14,6 +15,7 @@ describe('updateProfileData', () => {
         username: 'admin',
         lastname: 'Solomatin',
         firstname: 'Sergey',
+        id: 1,
     };
 
     test('Fulfilled updating', async () => {
@@ -21,9 +23,19 @@ describe('updateProfileData', () => {
             profile: {
                 form: updatedProfile,
             },
+            user: {
+                authData: {
+                    roles: [
+                        UserRoles.ADMIN,
+                    ],
+                    id: '1',
+                    avatar: '',
+                    username: '',
+                },
+            },
         });
-        thunk.api.put.mockResolvedValue({ data: updatedProfile });
-        const result = await thunk.callThunk();
+        thunk.api.put.mockResolvedValue(Promise.resolve({ data: updatedProfile }));
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put)
             .toHaveBeenCalled();
@@ -40,13 +52,23 @@ describe('updateProfileData', () => {
             profile: {
                 form: updatedProfile,
             },
+            user: {
+                authData: {
+                    roles: [
+                        UserRoles.ADMIN,
+                    ],
+                    id: '1',
+                    avatar: '',
+                    username: '',
+                },
+            },
         });
         thunk.api.put.mockRejectedValue(
             {
                 status: 403,
             },
         );
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put)
             .toHaveBeenCalled();
@@ -66,9 +88,19 @@ describe('updateProfileData', () => {
                     lastname: '',
                 },
             },
+            user: {
+                authData: {
+                    roles: [
+                        UserRoles.ADMIN,
+                    ],
+                    id: '1',
+                    avatar: '',
+                    username: '',
+                },
+            },
         });
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk('1');
 
         expect(thunk.api.put)
             .toHaveBeenCalledTimes(0);

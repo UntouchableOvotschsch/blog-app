@@ -1,5 +1,6 @@
 import { User, userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
+import { UserRoles } from 'entities/User/model/types/user';
 import { loginByUsername } from './index';
 
 describe('loginByUsername', () => {
@@ -9,6 +10,7 @@ describe('loginByUsername', () => {
     };
 
     const authData: User = {
+        roles: [UserRoles.USER],
         username: 'Sergey',
         id: '123',
     };

@@ -5,7 +5,7 @@ import { Currencies } from '../../model/types/currencies';
 interface CurrencySelectProps {
     selectValue: Currencies | undefined
     onChange?: (value: Currencies) => void
-    editable: boolean
+    editable?: boolean
 }
 const CurrencySelect = memo(({ editable = true, onChange, selectValue }: CurrencySelectProps) => {
     const currencies = useMemo(() => Object.entries(Currencies).map(([_, value]) => ({

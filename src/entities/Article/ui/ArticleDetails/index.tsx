@@ -1,47 +1,32 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { memo, useCallback, useEffect } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { getArticleDetailsData } from 'entities/Article/model/selectors/getArticleDetailsData';
+import { memo, useCallback } from 'react';
 import Text, { TextAlign, TextSize, ThemeText } from 'shared/ui/Text/Text';
-import { getArticleDetailsError, getArticleDetailsLoading } from 'entities/Article';
 import Avatar from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import Calendar from 'shared/assets/icons/calendar.svg';
 import Icon from 'shared/ui/Icon';
 import ArticleDetailsSkeleton from './ArticleDetailsSkeleton';
-import { fetchArticleById } from '../../model/services/fetchArticleById';
 import styles from './ArticleDetails.module.scss';
-import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
-import { ArticleBlock, ArticleBlockTypes } from '../../model/types/article';
+import { Article, ArticleBlock, ArticleBlockTypes } from '../../model/types/article';
 import ArticleTextBlockCom from '../ArticleTextBlockCom';
 import ArticleCodeBlockCom from '../ArticleCodeBlockCom';
 import ArticleImageBlockCom from '../ArticleImageBlockCom';
 
-const reducers: ReducerList = {
-    articleDetails: articleDetailsReducer,
-};
-
 interface ArticleDetailsProps {
     className?: string;
-    id: string
+    article?: Article
+    isLoading: boolean
+    isError?: string
 }
 
-const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
+const ArticleDetails = memo(({
+    className,
+    article,
+    isLoading,
+    isError,
+}: ArticleDetailsProps) => {
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-    const data = useSelector(getArticleDetailsData);
-
-    const isLoading = useSelector(getArticleDetailsLoading);
-    const isError = useSelector(getArticleDetailsError);
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id));
-        }
-    }, [dispatch, id]);
 
     const renderBlocks = useCallback((blocks: ArticleBlock[]) => blocks.map((block, index) => {
         switch (block.type) {
@@ -78,52 +63,48 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 
     if (isLoading || isError) {
         return (
-            <DynamicModuleLoader reducerList={reducers}>
-                <div className={classNames(styles.status, { [styles.error]: isError }, [])}>
-                    {isLoading && <ArticleDetailsSkeleton />}
-                    {isError && (
-                        <Text
-                            theme={ThemeText.ERROR}
-                            title={t('Произошла ошибка')}
-                            text={t(isError)}
-                            align={TextAlign.CENTER}
-                        />
-                    )}
-                </div>
-            </DynamicModuleLoader>
+            <div className={classNames(styles.status, { [styles.error]: isError }, [])}>
+                {isLoading && <ArticleDetailsSkeleton />}
+                {isError && (
+                    <Text
+                        theme={ThemeText.ERROR}
+                        title={t('Произошла ошибка')}
+                        text={t(isError)}
+                        align={TextAlign.CENTER}
+                    />
+                )}
+            </div>
         );
     }
     return (
-        <DynamicModuleLoader reducerList={reducers}>
-            <div className={classNames(styles.ArticleDetails, {}, [className])}>
-                <div className={styles.header}>
-                    <Avatar
-                        avatar={data?.img}
-                        alt={t('Аватар статьи')}
-                        className={styles.avatar}
-                        width="150px"
-                        height="150px"
-                    />
-                    <Text
-                        title={data?.title}
-                        text={data?.subtitle}
-                        size={TextSize.XL}
-                    />
-                    <div className={styles.articleInfo}>
-                        <Icon Icon={EyeIcon} size="20" />
-                        <Text text={data?.views.toString()} size={TextSize.L} />
-                    </div>
-                    <div className={styles.articleInfo}>
-                        <Icon Icon={Calendar} size="20" />
-                        <Text text={data?.createdAt} size={TextSize.L} />
-                    </div>
+        <div className={classNames(styles.ArticleDetails, {}, [className])}>
+            <div className={styles.header}>
+                <Avatar
+                    avatar={article?.img}
+                    alt={t('Аватар статьи')}
+                    className={styles.avatar}
+                    width="150px"
+                    height="150px"
+                />
+                <Text
+                    title={article?.title}
+                    text={article?.subtitle}
+                    size={TextSize.XL}
+                />
+                <div className={styles.articleInfo}>
+                    <Icon Icon={EyeIcon} size="20" />
+                    <Text text={article?.views.toString()} size={TextSize.L} />
                 </div>
-
-                {
-                    data?.blocks && renderBlocks(data?.blocks)
-                }
+                <div className={styles.articleInfo}>
+                    <Icon Icon={Calendar} size="20" />
+                    <Text text={article?.createdAt} size={TextSize.L} />
+                </div>
             </div>
-        </DynamicModuleLoader>
+
+            {
+                article?.blocks && renderBlocks(article.blocks)
+            }
+        </div>
     );
 });
 

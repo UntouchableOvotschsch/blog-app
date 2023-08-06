@@ -4,6 +4,7 @@
     background: var(--inverted-bg-color);
     position: relative;
     transition: width 0.2s;
+    flex-shrink: 0;
 }
 
 .menu {
@@ -42,6 +43,7 @@
     position: absolute;
     bottom: 32px;
     right: -32px;
+    z-index: 10;
 }
 
 .collapsed {

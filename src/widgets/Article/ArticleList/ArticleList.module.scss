@@ -1,0 +1,14 @@
+.ArticleList {
+    display: block;
+}
+
+.SMALL_TILE {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.BIG_TILE {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

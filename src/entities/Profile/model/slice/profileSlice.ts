@@ -9,7 +9,7 @@ const initialState: ProfileSchema = {
 };
 
 const profileSlice = createSlice({
-    name: 'profile',
+    name: 'pages/profilePage',
     initialState,
     reducers: {
         changeProfileData: (state, action: PayloadAction<ProfileType>) => {
@@ -22,6 +22,7 @@ const profileSlice = createSlice({
             state.editable = action.payload;
         },
         cancelFormChanging: (state) => {
+            state.editable = false;
             state.form = state.data;
             state.validationError = undefined;
         },
@@ -35,6 +36,7 @@ const profileSlice = createSlice({
         builder
             .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
                 state.isLoading = false;
+                state.error = undefined;
                 state.data = action.payload;
                 state.form = action.payload;
             });

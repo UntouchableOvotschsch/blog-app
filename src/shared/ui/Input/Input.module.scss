@@ -1,6 +1,5 @@
 .input {
     border-radius: 10px;
-    text-align: center;
     padding: 5px 10px;
     outline: none;
     border: none;
@@ -23,4 +22,16 @@
 
 .readOnly {
     opacity: 0.7;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
 }

@@ -1,22 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigType } from 'app/providers/StoreProvider';
+import { UserRoles } from 'entities/User';
 import { profileDataValidator } from '../profileDataValidator';
-import { getFormData } from '../../selectors/getFormData';
 import { ProfileType, ProfileValidationErrors } from '../../types/profile';
 
 export const updateProfileData = createAsyncThunk<
     ProfileType,
-    void,
+    string,
     ThunkConfigType<ProfileValidationErrors[]>>(
         'profile/updateProfileData',
-        async (updatedProfile, thunkAPI) => {
+        async (profileId, thunkAPI) => {
             const {
                 extra,
                 rejectWithValue,
                 getState,
             } = thunkAPI;
 
-            const formData = getFormData(getState());
+            const state = getState();
+            const userId = state.user.authData?.id;
+            const roles = state.user.authData?.roles;
+            const canEdit = roles?.includes(UserRoles.ADMIN);
+
+            if (!userId || (profileId !== userId && !canEdit)) {
+                return rejectWithValue([ProfileValidationErrors.NO_RIGHTS_TO_EDIT]);
+            }
+            const formData = state.profile?.form;
 
             if (!formData) {
                 return rejectWithValue([ProfileValidationErrors.NO_DATA]);
@@ -31,7 +39,7 @@ export const updateProfileData = createAsyncThunk<
             try {
                 const {
                     data,
-                } = await extra.api.put<ProfileType>('/profile', formData);
+                } = await extra.api.put<ProfileType>(`/profile/${profileId}`, formData);
                 if (!data) {
                     throw new Error();
                 }

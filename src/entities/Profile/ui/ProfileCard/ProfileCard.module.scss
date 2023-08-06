@@ -14,3 +14,11 @@
 .avatar {
     margin: 10px 0;
 }
+
+.status {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}

@@ -66,6 +66,7 @@ module.exports = {
             'warn',
             { argsIgnorePattern: '^_' },
         ],
+        'react/no-array-index-key': 'off',
     },
     globals: {
         __IS_DEV__: true,

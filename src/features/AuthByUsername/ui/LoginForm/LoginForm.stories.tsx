@@ -32,7 +32,7 @@ export const Loading = Template.bind({});
 Loading.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
-        login: {
+        authByUsername: {
             isLoading: true,
         },
     }),
@@ -42,7 +42,7 @@ export const Error = Template.bind({});
 Error.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
-        login: {
+        authByUsername: {
             error: 'Неверное имя пользователя или пароль',
         },
     }),

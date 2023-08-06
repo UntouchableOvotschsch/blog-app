@@ -17,9 +17,9 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
-import { Loader } from 'shared/ui/Loader/Loader';
-import Text, { TextAlign, ThemeText } from 'shared/ui/Text/Text';
+import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { updateProfileData } from 'entities/Profile/model/services/updateProfileData';
+import { useParams } from 'react-router-dom';
 import styles from './ProfilePage.module.scss';
 import ProfilePageHeader from './ProfilePageHeader';
 
@@ -29,12 +29,12 @@ const reducers: ReducerList = {
 const ProfilePage = () => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
-
     const isError = useSelector(getProfileError);
     const isLoading = useSelector(getProfileLoading);
     const editable = useSelector(getProfileEditable);
     const formData = useSelector(getFormData);
     const validationErrors = useSelector(getProfileValidationErrors);
+    const { id } = useParams<{id: string}>();
 
     const validationErrorsTranslation = {
         [ProfileValidationErrors.INCORRECT_USER_DATA]: t('Некорректные пользовательские данные'),
@@ -42,14 +42,14 @@ const ProfilePage = () => {
         [ProfileValidationErrors.INCORRECT_COUNTRY]: t('Некорректная страна'),
         [ProfileValidationErrors.SERVER_ERROR]: t('Ошибка сервера'),
         [ProfileValidationErrors.NO_DATA]: t('Отсутствуют данные о профиле'),
+        [ProfileValidationErrors.NO_RIGHTS_TO_EDIT]: t('Нет прав для редактирования'),
     };
 
     const setEditMode = useCallback((value: boolean) => {
         dispatch(profileActions.setEditable(value));
     }, [dispatch]);
 
-    const cancelEditMode = useCallback((value: boolean) => {
-        dispatch(profileActions.setEditable(value));
+    const cancelEditMode = useCallback(() => {
         dispatch(profileActions.cancelFormChanging());
     }, [dispatch]);
 
@@ -58,16 +58,17 @@ const ProfilePage = () => {
     }, [dispatch]);
 
     const updateProfile = useCallback(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(updateProfileData());
+        if (__PROJECT__ !== 'storybook' && id) {
+            dispatch(updateProfileData(id));
         }
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook' && id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <DynamicModuleLoader reducerList={reducers}>
@@ -79,29 +80,14 @@ const ProfilePage = () => {
                     isError={isError}
                 />
 
-                {
-                    isLoading || isError
-                        ? (
-                            <div className={styles.status}>
-                                {isLoading && <Loader /> }
-                                {isError && (
-                                    <Text
-                                        theme={ThemeText.ERROR}
-                                        title={t('Произошла ошибка при получении профиля')}
-                                        text={t('Попробуйте обновить страницу')}
-                                        align={TextAlign.CENTER}
-                                    />
-                                )}
-                            </div>
-                        )
-                        : (
-                            <ProfileCard
-                                editable={editable}
-                                data={formData}
-                                changeProfileData={changeProfileData}
-                            />
-                        )
-                }
+                <ProfileCard
+                    editable={editable}
+                    data={formData}
+                    changeProfileData={changeProfileData}
+                    isLoading={isLoading}
+                    isError={isError}
+                />
+
                 {
                     editable
                         && (
@@ -117,7 +103,7 @@ const ProfilePage = () => {
                         )
                 }
 
-                {validationErrors?.length && validationErrors?.map((error) => (
+                {!!validationErrors?.length && validationErrors?.map((error) => (
                     <Text
                         text={validationErrorsTranslation[error]}
                         theme={ThemeText.ERROR}

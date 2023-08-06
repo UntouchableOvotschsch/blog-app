@@ -5,7 +5,7 @@ import { Countries } from '../../model/types/countries';
 interface CountrySelectProps {
     selectValue: Countries | undefined
     onChange?: (value: Countries) => void
-    editable: boolean
+    editable?: boolean
 }
 const CountrySelect = ({ editable = true, onChange, selectValue }: CountrySelectProps) => {
     const countries = useMemo(() => Object.entries(Countries).map(([_, value]) => ({
