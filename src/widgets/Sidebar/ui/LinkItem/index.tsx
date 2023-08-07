@@ -15,7 +15,6 @@ const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
     const { t } = useTranslation();
     const isAuthed = useAuthDataChecker();
     const location = useLocation();
-    console.log(location);
     const mods: Mods = {
         [styles.collapsed]: collapsed,
         [styles.disabled]: item.path === location.pathname,

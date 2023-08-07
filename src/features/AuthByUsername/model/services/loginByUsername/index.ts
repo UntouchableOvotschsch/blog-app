@@ -35,7 +35,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsername, ThunkConf
             }
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data));
             dispatch(userActions.setAuthData(data));
-            if (extra.navigator) extra.navigator(RoutePath.profile);
+            if (extra.navigator) extra.navigator(`${RoutePath.profile}/${data.id}`);
             return data;
         } catch (e) {
             return rejectWithValue(LoginErrorsKeys.INCORRECT_DATA);

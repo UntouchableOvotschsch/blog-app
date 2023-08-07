@@ -13,6 +13,7 @@ import { AxiosInstance } from 'axios';
 import { NavigateOptions, To } from 'react-router';
 import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { AddNewCommentSchema } from 'features/AddNewComment';
+import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -22,8 +23,8 @@ export interface StateSchema {
     authByUsername?: AuthByUsernameSchema,
     profile?: ProfileSchema
     articlesDetailsPage?: ArticleDetailsPageSchema
-
     addNewComment?: AddNewCommentSchema
+    articlesPage?: ArticlesPageSchema
 }
 
 export interface ReducerManager {

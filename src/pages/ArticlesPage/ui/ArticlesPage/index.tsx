@@ -1,69 +1,69 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import ArticleList from 'widgets/Article/ArticleList';
-import { articlesArrayTemplate, ArticleViewTypes } from 'entities/Article';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import Icon from 'shared/ui/Icon';
-import ListViewIcon from 'shared/assets/icons/list-view-icon.svg';
-import TileViewIcon from 'shared/assets/icons/tile-view-icon.svg';
+import { ArticleViewTypes } from 'entities/Article';
 import { ARTICLE_VIEW_KEY } from 'shared/const/localStorage';
+import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { ChangeViewType } from 'features/ChangeViewType';
+import { getArticleError } from 'pages/ArticlesPage/model/selectors/getArticlesError';
+import { fetchArticles } from '../../model/service/fetchArticles';
 import styles from './ArticlesPage.module.scss';
+import {
+    articlesPageActions,
+    articlesPageReducer,
+    articlesSelectors,
+} from '../../model/slice/articlesPageSlice';
+import { getArticleView } from '../../model/selectors/getArticleView';
+import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 
 interface ArticlesPageProps {
     className?: string;
 }
+const reducers: ReducerList = {
+    articlesPage: articlesPageReducer,
+};
 
 const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     const { t } = useTranslation();
     const localStorageView = localStorage
-        .getItem(ARTICLE_VIEW_KEY) as ArticleViewTypes || ArticleViewTypes.SMALL_TILE;
+        .getItem(ARTICLE_VIEW_KEY) as ArticleViewTypes;
 
-    const [view, changeView] = useState(localStorageView);
+    const dispatch = useAppDispatch();
 
-    const changeToBigTile = useCallback(() => {
-        changeView(ArticleViewTypes.BIG_TILE);
-        localStorage.setItem(ARTICLE_VIEW_KEY, ArticleViewTypes.BIG_TILE);
-    }, []);
+    const view = useSelector(getArticleView);
+    const articles = useSelector(articlesSelectors.selectAll);
+    const isLoading = useSelector(getArticleLoading);
+    const error = useSelector(getArticleError);
 
-    const changeToSmallTile = useCallback(() => {
-        changeView(ArticleViewTypes.SMALL_TILE);
-        localStorage.setItem(ARTICLE_VIEW_KEY, ArticleViewTypes.SMALL_TILE);
-    }, []);
+    useEffect(() => {
+        if (localStorageView) {
+            dispatch(articlesPageActions.setArticlesView(localStorageView));
+        }
+
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchArticles());
+        }
+    }, [dispatch, localStorageView]);
+
+    const changeView = useCallback((view: ArticleViewTypes) => {
+        dispatch(articlesPageActions.setArticlesView(view));
+        localStorage.setItem(ARTICLE_VIEW_KEY, view);
+    }, [dispatch]);
 
     return (
-        <div className={classNames(styles.ArticlesPage, {}, [className])}>
-            <div>
-                <Button
-                    theme={ThemeButton.CLEAR}
-                    onClick={changeToBigTile}
-                >
-                    <Icon
-                        Icon={ListViewIcon}
-                        className={classNames('', {
-                            [styles.active]: view === ArticleViewTypes.BIG_TILE,
-                        }, [])}
-                    />
-                </Button>
-                <Button
-                    theme={ThemeButton.CLEAR}
-                    onClick={changeToSmallTile}
-                >
-                    <Icon
-                        Icon={TileViewIcon}
-                        className={
-                            classNames('', {
-                                [styles.active]: view === ArticleViewTypes.SMALL_TILE,
-                            }, [])
-                        }
-                    />
-                </Button>
+        <DynamicModuleLoader reducerList={reducers}>
+            <div className={classNames(styles.ArticlesPage, {}, [className])}>
+                <ChangeViewType currentView={view} changeView={changeView} />
+                <ArticleList
+                    articles={articles}
+                    view={view}
+                    isLoading={isLoading}
+                />
             </div>
-            <ArticleList
-                articles={articlesArrayTemplate}
-                view={view}
-            />
-        </div>
+        </DynamicModuleLoader>
     );
 });
 
