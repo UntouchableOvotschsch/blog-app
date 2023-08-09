@@ -20,7 +20,7 @@ const views = [
 
 interface ChangeViewTypeProps {
     className?: string
-    currentView: ArticleViewTypes
+    currentView?: ArticleViewTypes
     changeView?: (view: ArticleViewTypes) => void
 }
 
@@ -34,6 +34,7 @@ const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewT
             theme={ThemeButton.CLEAR}
             onClick={changeViewType(view.type)}
             key={view.type}
+            disabled={currentView === view.type}
         >
             <Icon
                 Icon={view.icon}

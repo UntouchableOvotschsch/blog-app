@@ -22,37 +22,47 @@ const ArticleList = ({
 }: ArticleListProps) => {
     const { t } = useTranslation();
 
-    const renderArticleList = useMemo(() => {
+    const renderArticleLoadingList = useMemo(() => {
         switch (view) {
         case ArticleViewTypes.BIG_TILE: {
-            if (isLoading) {
-                return new Array(5).fill(0).map((_, index) => (
-                    <BigTileItemSkeleton key={index} />
-                ));
-            }
-            return articles.map((article) => (
-                <BigTileItem article={article} isLoading={isLoading} key={article.id} />
-            ), []);
+            return new Array(3).fill(0).map((_, index) => (
+                <BigTileItemSkeleton key={index} />
+            ));
         }
         case ArticleViewTypes.SMALL_TILE: {
-            if (isLoading) {
-                return new Array(20).fill(0).map((_, index) => (
-                    <SmallTileItemSkeleton key={index} />
-                ));
+            return new Array(20).fill(0).map((_, index) => (
+                <SmallTileItemSkeleton key={index} />
+            ));
+        }
+        default: return null;
+        }
+    }, [view]);
+
+    const renderArticleList = useMemo(() => {
+        if (!isLoading) {
+            switch (view) {
+            case ArticleViewTypes.BIG_TILE: {
+                return articles.map((article) => (
+                    <BigTileItem article={article} isLoading={isLoading} key={article.id} />
+                ), []);
             }
-            return articles.map((article) => (
-                <SmallTileItem article={article} isLoading={isLoading} key={article.id} />
-            ), []);
+            case ArticleViewTypes.SMALL_TILE: {
+                return articles.map((article) => (
+                    <SmallTileItem article={article} isLoading={isLoading} key={article.id} />
+                ), []);
+            }
+            default:
+                return null;
+            }
         }
-        default:
-            return null;
-        }
+        return null;
     }, [articles, isLoading, view]);
 
     return (
         <div className={classNames(styles.ArticleList, {}, [className])}>
             <div className={classNames('', {}, [styles[view]])}>
-                {renderArticleList}
+                {articles.length > 0 && renderArticleList}
+                {isLoading && renderArticleLoadingList}
             </div>
         </div>
     );
