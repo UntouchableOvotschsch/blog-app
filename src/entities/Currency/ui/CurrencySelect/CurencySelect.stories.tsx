@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
+import PageWrapper from 'shared/ui/PageWrapper';
 import CurrencySelect from '.';
 
 export default {
@@ -15,7 +16,11 @@ export default {
     },
 } as ComponentMeta<typeof CurrencySelect>;
 
-const Template: ComponentStory<typeof CurrencySelect> = (args) => <CurrencySelect {...args} />;
+const Template: ComponentStory<typeof CurrencySelect> = (args) => (
+    <PageWrapper>
+        <CurrencySelect {...args} />
+    </PageWrapper>
+);
 
 export const EditableTrueLight = Template.bind({});
 EditableTrueLight.args = {

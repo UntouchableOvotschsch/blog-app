@@ -4,6 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { articleTemplate } from 'entities/Article';
+import PageWrapper from 'shared/ui/PageWrapper';
 import ArticleDetails from '.';
 
 export default {
@@ -14,7 +15,11 @@ export default {
     },
 } as ComponentMeta<typeof ArticleDetails>;
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+const Template: ComponentStory<typeof ArticleDetails> = (args) => (
+    <PageWrapper>
+        <ArticleDetails {...args} />
+    </PageWrapper>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {

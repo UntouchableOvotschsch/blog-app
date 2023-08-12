@@ -4,17 +4,22 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { UserRoles } from 'entities/User';
+import PageWrapper from 'shared/ui/PageWrapper';
 import Comment from '.';
 
 export default {
-    title: 'entity/Comment',
+    title: 'entities/Comment',
     component: Comment,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof Comment>;
 
-const Template: ComponentStory<typeof Comment> = (args) => <Comment {...args} />;
+const Template: ComponentStory<typeof Comment> = (args) => (
+    <PageWrapper>
+        <Comment {...args} />
+    </PageWrapper>
+);
 
 export const Light = Template.bind({});
 Light.args = {

@@ -11,20 +11,10 @@ const PageWrapper = ({
     children,
     wrapperRef,
     className,
-}: IntersectionObserverProps) => {
-    if (__PROJECT__ === 'storybook') {
-        return (
-            // eslint-disable-next-line react/jsx-no-useless-fragment
-            <>
-                {children}
-            </>
-        );
-    }
-    return (
-        <div className={classNames('wrapper', {}, [className])} ref={wrapperRef}>
-            {children}
-        </div>
-    );
-};
+}: IntersectionObserverProps) => (
+    <div className={classNames('wrapper', {}, [className])} ref={wrapperRef}>
+        {children}
+    </div>
+);
 
 export default PageWrapper;

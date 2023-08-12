@@ -4,6 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { articlesArrayTemplate, ArticleViewTypes } from 'entities/Article';
+import PageWrapper from 'shared/ui/PageWrapper';
 import ArticleList from './index';
 
 export default {
@@ -14,7 +15,11 @@ export default {
     },
 } as ComponentMeta<typeof ArticleList>;
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <PageWrapper>
+        <ArticleList {...args} />
+    </PageWrapper>
+);
 
 export const BigTileView = Template.bind({});
 BigTileView.args = {

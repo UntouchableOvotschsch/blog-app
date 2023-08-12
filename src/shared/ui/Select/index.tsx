@@ -17,7 +17,11 @@ interface SelectProps {
     editable: boolean
 }
 const Select = memo(({
-    label, options, selectValue, onChange, editable,
+    label,
+    options,
+    selectValue,
+    onChange,
+    editable = true,
 }: SelectProps) => {
     const { t } = useTranslation();
     const mods: Mods = {

@@ -6,9 +6,7 @@ export const ThemeDecorator = (theme: Themes) => (StoryCom: Story) => (
     <ThemeProvider initialTheme={theme}>
         <div className="app">
             <div className="content">
-                <div className="wrapper">
-                    <StoryCom />
-                </div>
+                <StoryCom />
             </div>
         </div>
     </ThemeProvider>

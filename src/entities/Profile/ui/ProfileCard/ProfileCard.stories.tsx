@@ -5,6 +5,7 @@ import { Themes } from 'app/providers/ThemeProvider';
 import ProfileCard from 'entities/Profile/ui/ProfileCard/index';
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
+import PageWrapper from 'shared/ui/PageWrapper';
 
 export default {
     title: 'entities/Profile/ProfileCard',
@@ -17,7 +18,11 @@ export default {
     },
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCard> = (args) => (
+    <PageWrapper>
+        <ProfileCard {...args} />
+    </PageWrapper>
+);
 
 export const EditableCardLight = Template.bind({});
 EditableCardLight.args = {
