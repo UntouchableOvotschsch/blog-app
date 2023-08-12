@@ -17,6 +17,7 @@ const articlesPageSlice = createSlice({
         entities: {},
         isLoading: false,
         page: 1,
+        limit: 3,
         hasMore: false,
     }),
     reducers: {
@@ -41,7 +42,7 @@ const articlesPageSlice = createSlice({
         builder.addCase(fetchArticles.fulfilled, (state, action: PayloadAction<Article[]>) => {
             articlesAdapter.addMany(state, action.payload);
             state.isLoading = false;
-            state.hasMore = action.payload.length > 0;
+            state.hasMore = action.payload.length > 0 && action.payload.length >= state.limit;
             state.page = action.payload.length > 0 ? state.page : 1;
         });
         builder.addCase(fetchArticles.rejected, (state, action) => {

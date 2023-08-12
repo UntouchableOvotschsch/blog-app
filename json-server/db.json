@@ -36,6 +36,12 @@
       "articleId": 1,
       "userId": "1",
       "id": 5
+    },
+    {
+      "text": "Круть!",
+      "articleId": 1,
+      "userId": 1,
+      "id": 6
     }
   ],
   "users": [

@@ -3,26 +3,25 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 export interface UseInfiniteScrollProps {
     callback?: () => void;
     triggerRef: MutableRefObject<HTMLElement>;
-    // wrapperRef: MutableRefObject<HTMLElement>;
+    wrapperRef: MutableRefObject<HTMLElement>;
 }
 
 export function useInfinityScroll({
     callback,
-    // wrapperRef,
+    wrapperRef,
     triggerRef,
 }: UseInfiniteScrollProps) {
     const observer = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
-        // const wrapperElement = wrapperRef.current;
-        const triggerElement = triggerRef.current;
+        const wrapperElement = wrapperRef?.current;
+        const triggerElement = triggerRef?.current;
 
-        if (callback) {
+        if (callback && wrapperElement && triggerElement) {
             const options = {
-                // Временное решение, пока не разберусь, почему не работает с собственным враппером
-                root: document.querySelector('wrapper'),
-                rootMargin: '20px',
-                threshold: 1.0,
+                root: wrapperElement,
+                rootMargin: '0px',
+                threshold: 0.1,
             };
 
             observer.current = new IntersectionObserver(([entry]) => {
@@ -40,5 +39,5 @@ export function useInfinityScroll({
                 observer.current.unobserve(triggerElement);
             }
         };
-    }, [callback, triggerRef]);
+    }, [callback, triggerRef, wrapperRef]);
 }

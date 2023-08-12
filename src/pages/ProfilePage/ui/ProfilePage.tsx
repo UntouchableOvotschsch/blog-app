@@ -20,6 +20,7 @@ import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { updateProfileData } from 'entities/Profile/model/services/updateProfileData';
 import { useParams } from 'react-router-dom';
+import PageWrapper from 'shared/ui/PageWrapper';
 import styles from './ProfilePage.module.scss';
 import ProfilePageHeader from './ProfilePageHeader';
 
@@ -72,24 +73,25 @@ const ProfilePage = () => {
 
     return (
         <DynamicModuleLoader reducerList={reducers}>
-            <div className={styles.container}>
-                <ProfilePageHeader
-                    editable={editable}
-                    setEditMode={setEditMode}
-                    cancelEditMode={cancelEditMode}
-                    isError={isError}
-                />
+            <PageWrapper>
+                <div className={styles.container}>
+                    <ProfilePageHeader
+                        editable={editable}
+                        setEditMode={setEditMode}
+                        cancelEditMode={cancelEditMode}
+                        isError={isError}
+                    />
 
-                <ProfileCard
-                    editable={editable}
-                    data={formData}
-                    changeProfileData={changeProfileData}
-                    isLoading={isLoading}
-                    isError={isError}
-                />
+                    <ProfileCard
+                        editable={editable}
+                        data={formData}
+                        changeProfileData={changeProfileData}
+                        isLoading={isLoading}
+                        isError={isError}
+                    />
 
-                {
-                    editable
+                    {
+                        editable
                         && (
 
                             <Button
@@ -101,17 +103,18 @@ const ProfilePage = () => {
                                 {t('Сохранить')}
                             </Button>
                         )
-                }
+                    }
 
-                {!!validationErrors?.length && validationErrors?.map((error) => (
-                    <Text
-                        text={validationErrorsTranslation[error]}
-                        theme={ThemeText.ERROR}
-                        key={error}
-                    />
-                ))}
+                    {!!validationErrors?.length && validationErrors?.map((error) => (
+                        <Text
+                            text={validationErrorsTranslation[error]}
+                            theme={ThemeText.ERROR}
+                            key={error}
+                        />
+                    ))}
 
-            </div>
+                </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 };

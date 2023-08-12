@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useEffect } from 'react';
+import {
+    memo, MutableRefObject, useCallback, useEffect, useRef,
+} from 'react';
 import ArticleList from 'widgets/Article/ArticleList';
 import { ArticleViewTypes } from 'entities/Article';
 import { ARTICLE_VIEW_KEY } from 'shared/const/localStorage';
@@ -8,10 +10,11 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { ChangeViewType } from 'features/ChangeViewType';
 import { getArticleError } from 'pages/ArticlesPage/model/selectors/getArticlesError';
-import IntersectionObserver from 'shared/lib/components/IntersectionObserver';
 import { getArticlesHasMore } from 'pages/ArticlesPage/model/selectors/getArticlesHasMore';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll';
+import PageWrapper from 'shared/ui/PageWrapper';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import {
     articlesPageActions,
@@ -23,17 +26,17 @@ import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 import { getArticlesPage } from '../../model/selectors/getArticlesPage';
 import styles from './ArticlesPage.module.scss';
 
-interface ArticlesPageProps {
-    className?: string;
-}
 const reducers: ReducerList = {
     articlesPage: articlesPageReducer,
 };
 
-const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
+const ArticlesPage = memo(() => {
     const { t } = useTranslation();
     const localStorageView = localStorage
         .getItem(ARTICLE_VIEW_KEY) as ArticleViewTypes;
+
+    const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
+    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     const dispatch = useAppDispatch();
     const view = useSelector(getArticleView);
@@ -48,11 +51,17 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
     };
 
     const fetchNextArticlesPage = useCallback(() => {
-        if (!isLoading && hasMore) {
+        if (!isLoading && hasMore && __PROJECT__ !== 'storybook') {
             dispatch(articlesPageActions.setArticlesPage(page + 1));
             dispatch(fetchArticles());
         }
     }, [dispatch, hasMore, isLoading, page]);
+
+    useInfinityScroll({
+        wrapperRef,
+        triggerRef,
+        callback: fetchNextArticlesPage,
+    });
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook' && localStorageView) {
@@ -73,7 +82,10 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducerList={reducers}>
-            <div className={classNames(styles.ArticlePage, mods, [className])}>
+            <PageWrapper
+                wrapperRef={wrapperRef}
+                className={classNames(styles.ArticlePage, mods, [])}
+            >
                 {
                     error
                         ? (
@@ -83,20 +95,18 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
                             />
                         )
                         : (
-                            <IntersectionObserver
-                                onTriggerCallback={fetchNextArticlesPage}
-                            >
+                            <>
                                 <ChangeViewType currentView={view} changeView={changeView} />
-
                                 <ArticleList
                                     articles={articles}
                                     view={view}
                                     isLoading={isLoading}
+                                    triggerRef={triggerRef}
                                 />
-                            </IntersectionObserver>
+                            </>
                         )
                 }
-            </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 });

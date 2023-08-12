@@ -18,10 +18,9 @@ import styles from './BigTileItem.module.scss';
 
 interface BigTileItemProps {
     article: Article
-    isLoading?: boolean
 }
 
-const BigTileItem = ({ article, isLoading }: BigTileItemProps) => {
+const BigTileItem = ({ article }: BigTileItemProps) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const navigateToArticle = useCallback(() => {

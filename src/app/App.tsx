@@ -23,9 +23,7 @@ const App: FC = () => {
                 <Navbar />
                 <div className="content">
                     <Sidebar />
-                    <div className="wrapper">
-                        <AppRouter />
-                    </div>
+                    <AppRouter />
                 </div>
             </Suspense>
         </div>

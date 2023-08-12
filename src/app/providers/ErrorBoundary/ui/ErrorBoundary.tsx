@@ -1,5 +1,7 @@
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
 import { PageError } from 'widgets/PageError';
+import { ThemeProvider, Themes } from 'app/providers/ThemeProvider';
+import { LOCAL_STORAGE_THEME_KEY } from 'shared/const/localStorage';
 
 interface ErrorBoundaryProps {
     children: ReactNode
@@ -28,11 +30,14 @@ class ErrorBoundary
     render() {
         const { hasError } = this.state;
         const { children } = this.props;
+        const currentTheme = localStorage
+            .getItem(LOCAL_STORAGE_THEME_KEY) as Themes || Themes.LIGHT;
         if (hasError) {
-            // You can render any custom fallback UI
             return (
                 <Suspense fallback="">
-                    <PageError />
+                    <ThemeProvider initialTheme={currentTheme}>
+                        <PageError />
+                    </ThemeProvider>
                 </Suspense>
             );
         }

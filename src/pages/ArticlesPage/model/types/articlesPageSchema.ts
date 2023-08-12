@@ -6,6 +6,6 @@ export interface ArticlesPageSchema extends EntityState<Article> {
     error?: string;
     view?: ArticleViewTypes;
     page?: number;
-    limit?: number;
+    limit: number;
     hasMore?: boolean;
 }

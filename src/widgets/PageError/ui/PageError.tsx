@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
+import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
 import styles from './PageError.module.scss';
 
 interface PageErrorProps {
@@ -18,9 +19,9 @@ export const PageError = memo(({ className }: PageErrorProps) => {
     const { t } = useTranslation();
     return (
         <div className={classNames(styles.PageError, {}, [className])}>
-            <p>{t('Произошла непредвиденная ошибка')}</p>
+            <Text title={t('Произошла непредвиденная ошибка')} theme={ThemeText.ERROR} />
             <Button onClick={reloadPage}>
-                {t('Обновить страницу')}
+                <Text text={t('Обновить страницу')} size={TextSize.L} />
             </Button>
         </div>
     );

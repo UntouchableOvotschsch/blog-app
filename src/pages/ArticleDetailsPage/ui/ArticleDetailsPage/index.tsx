@@ -15,6 +15,7 @@ import {
     addNewCommentToArticleService,
 } from 'pages/ArticleDetailsPage/model/service/addNewCommentToArticle';
 import { AddNewCommentForm } from 'features/AddNewComment';
+import PageWrapper from 'shared/ui/PageWrapper';
 import styles from './ArticleDetailsPage.module.scss';
 import {
     articleDetailsPageReducer,
@@ -59,24 +60,26 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducerList={reducerList}>
-            <div className={classNames(styles.container, {}, [className])}>
-                <ArticleDetails
-                    article={article}
-                    isLoading={isArticleLoading}
-                    isError={isArticleError}
-                />
-                <div className={styles.comments}>
-                    <Text title={`${t('Комментарии')}:`} size={TextSize.L} />
-                    <Suspense fallback="">
-                        <AddNewCommentForm addNewCommentTo={addNewComment} />
-                    </Suspense>
-                    <CommentsList
-                        isLoading={isCommentsLoading}
-                        comments={commentsDataArray}
+            <PageWrapper>
+                <div className={classNames(styles.container, {}, [className])}>
+                    <ArticleDetails
+                        article={article}
+                        isLoading={isArticleLoading}
+                        isError={isArticleError}
                     />
-                </div>
+                    <div className={styles.comments}>
+                        <Text title={`${t('Комментарии')}:`} size={TextSize.L} />
+                        <Suspense fallback="">
+                            <AddNewCommentForm addNewCommentTo={addNewComment} />
+                        </Suspense>
+                        <CommentsList
+                            isLoading={isCommentsLoading}
+                            comments={commentsDataArray}
+                        />
+                    </div>
 
-            </div>
+                </div>
+            </PageWrapper>
         </DynamicModuleLoader>
     );
 };

@@ -26,7 +26,7 @@ BigTileView.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const BigTileViewLoading = Template.bind({});
 BigTileViewLoading.args = {
-    articles: articlesArrayTemplate,
+    articles: [],
     view: ArticleViewTypes.BIG_TILE,
     isLoading: true,
 };
@@ -42,7 +42,7 @@ SmallTileView.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const SmallTileViewLoading = Template.bind({});
 SmallTileViewLoading.args = {
-    articles: articlesArrayTemplate,
+    articles: [],
     view: ArticleViewTypes.SMALL_TILE,
     isLoading: true,
 };

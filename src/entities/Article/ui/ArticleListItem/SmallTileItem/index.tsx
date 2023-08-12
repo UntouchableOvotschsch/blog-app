@@ -10,10 +10,9 @@ import styles from './SmallTileItem.module.scss';
 
 interface BigTileItemProps {
     article: Article
-    isLoading?: boolean
 }
 
-const SmallTileItem = ({ article, isLoading }: BigTileItemProps) => {
+const SmallTileItem = ({ article }: BigTileItemProps) => {
     const navigate = useNavigate();
 
     const navigateToArticle = useCallback(() => {
