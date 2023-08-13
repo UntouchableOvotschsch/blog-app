@@ -18,11 +18,13 @@ const DynamicModuleLoader = ({
 }: DynamicModuleLoaderProps) => {
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
-
+    const reducers = store.reducerManager.getReducerMap();
     useEffect(() => {
         Object.entries(reducerList).forEach(([reducerKey, reducer]) => {
-            store.reducerManager.add(reducerKey as keyof StateSchema, reducer);
-            dispatch({ type: `@INIT ${reducerKey} reducer` });
+            if (!reducers[reducerKey as keyof StateSchema]) {
+                store.reducerManager.add(reducerKey as keyof StateSchema, reducer);
+                dispatch({ type: `@INIT ${reducerKey} reducer` });
+            }
         });
 
         return () => {

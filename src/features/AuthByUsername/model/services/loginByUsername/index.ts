@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { User, userActions } from 'entities/User';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { ThunkConfigType } from 'app/providers/StoreProvider';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
 interface LoginByUsername {
     username: string,
@@ -10,7 +9,8 @@ interface LoginByUsername {
 }
 
 enum LoginErrorsKeys {
-    INCORRECT_DATA = 'Неверное имя пользователя или пароль'
+    INCORRECT_DATA = 'Неверное имя пользователя или пароль',
+    FETCHING_ERROR = 'Произошла ошибка при авторизации'
 }
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsername, ThunkConfigType<string>>(
@@ -31,11 +31,10 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsername, ThunkConf
                 password,
             });
             if (!data) {
-                throw new Error();
+                throw new Error(LoginErrorsKeys.INCORRECT_DATA);
             }
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data));
             dispatch(userActions.setAuthData(data));
-            if (extra.navigator) extra.navigator(`${RoutePath.profile}/${data.id}`);
             return data;
         } catch (e) {
             return rejectWithValue(LoginErrorsKeys.INCORRECT_DATA);

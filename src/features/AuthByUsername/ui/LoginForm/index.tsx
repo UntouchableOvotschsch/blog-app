@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
-import Text, { ThemeText } from 'shared/ui/Text/Text';
+import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import {
@@ -25,7 +27,7 @@ interface LoginFormProps {
 const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
-
+    const navigate = useNavigate();
     const {
         username,
         password,
@@ -40,16 +42,17 @@ const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
     }, [dispatch]);
 
     const submitLoginForm = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const result = await dispatch(loginByUsername({
-            username,
-            password,
-        }));
-
-        if (result.meta.requestStatus === 'fulfilled') {
+        try {
+            e.preventDefault();
+            const result = await dispatch(loginByUsername({
+                username,
+                password,
+            })).unwrap();
             changeVisibility();
-        }
-    }, [dispatch, password, changeVisibility, username]);
+            navigate(`${RoutePath.profile}/${result.id}`);
+            // eslint-disable-next-line no-empty
+        } catch (e) {}
+    }, [dispatch, username, password, changeVisibility, navigate]);
 
     return (
         <DynamicModuleLoader reducerList={initialReducer}>
@@ -71,6 +74,7 @@ const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
                                     <Text
                                         theme={ThemeText.ERROR}
                                         text={t(error)}
+                                        size={TextSize.L}
                                     />
                                 </div>
                             )

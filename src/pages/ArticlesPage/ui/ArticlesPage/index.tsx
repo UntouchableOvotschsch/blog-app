@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import {
-    memo, MutableRefObject, useCallback, useEffect, useRef,
+    MutableRefObject, useCallback, useEffect, useRef,
 } from 'react';
 import ArticleList from 'widgets/Article/ArticleList';
 import { ArticleViewTypes } from 'entities/Article';
@@ -30,7 +30,7 @@ const reducers: ReducerList = {
     articlesPage: articlesPageReducer,
 };
 
-const ArticlesPage = memo(() => {
+const ArticlesPage = () => {
     const { t } = useTranslation();
     const localStorageView = localStorage
         .getItem(ARTICLE_VIEW_KEY) as ArticleViewTypes;
@@ -81,7 +81,9 @@ const ArticlesPage = memo(() => {
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader reducerList={reducers}>
+        <DynamicModuleLoader
+            reducerList={reducers}
+        >
             <PageWrapper
                 wrapperRef={wrapperRef}
                 className={classNames(styles.ArticlePage, mods, [])}
@@ -109,6 +111,6 @@ const ArticlesPage = memo(() => {
             </PageWrapper>
         </DynamicModuleLoader>
     );
-});
+};
 
 export default ArticlesPage;
