@@ -5,7 +5,7 @@ import { Themes } from 'app/providers/ThemeProvider';
 import ProfileCard from 'entities/Profile/ui/ProfileCard/index';
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
-import PageWrapper from 'shared/ui/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper';
 
 export default {
     title: 'entities/Profile/ProfileCard',

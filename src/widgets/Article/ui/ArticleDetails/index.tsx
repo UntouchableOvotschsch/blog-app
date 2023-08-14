@@ -6,12 +6,16 @@ import Avatar from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import Calendar from 'shared/assets/icons/calendar.svg';
 import Icon from 'shared/ui/Icon';
+import {
+    Article,
+    ArticleBlock,
+    ArticleBlockTypes,
+    ArticleCodeBlockCom,
+    ArticleImageBlockCom,
+    ArticleTextBlockCom,
+} from 'entities/Article';
 import ArticleDetailsSkeleton from './ArticleDetailsSkeleton';
 import styles from './ArticleDetails.module.scss';
-import { Article, ArticleBlock, ArticleBlockTypes } from '../../model/types/article';
-import ArticleTextBlockCom from '../ArticleTextBlockCom';
-import ArticleCodeBlockCom from '../ArticleCodeBlockCom';
-import ArticleImageBlockCom from '../ArticleImageBlockCom';
 
 interface ArticleDetailsProps {
     className?: string;

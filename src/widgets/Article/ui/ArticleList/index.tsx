@@ -5,7 +5,7 @@ import BigTileItem from 'entities/Article/ui/ArticleListItem/BigTileItem';
 import SmallTileItem from 'entities/Article/ui/ArticleListItem/SmallTileItem';
 import { BigTileItemSkeleton, SmallTileItemSkeleton } from 'entities/Article';
 import styles from './ArticleList.module.scss';
-import { Article, ArticleViewTypes } from '../../../entities/Article/model/types/article';
+import { Article, ArticleViewTypes } from '../../../../entities/Article/model/types/article';
 
 interface ArticleListProps {
     className?: string;
@@ -46,10 +46,9 @@ const ArticleList = ({
             return articles.map((article, index) => {
                 if (index === articles.length - 1) {
                     return (
-                        <div ref={triggerRef}>
+                        <div ref={triggerRef} key={article.id}>
                             <BigTileItem
                                 article={article}
-                                key={article.id}
                             />
                         </div>
                     );
@@ -66,10 +65,9 @@ const ArticleList = ({
             return articles.map((article, index) => {
                 if (index === articles.length - 1) {
                     return (
-                        <div ref={triggerRef}>
+                        <div ref={triggerRef} key={article.id}>
                             <SmallTileItem
                                 article={article}
-                                key={article.id}
                             />
                         </div>
                     );

@@ -4,11 +4,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { UserRoles } from 'entities/User';
-import PageWrapper from 'shared/ui/PageWrapper';
-import CommentsList from '.';
+import { PageWrapper } from 'widgets/PageWrapper';
+import CommentsList from './index';
 
 export default {
-    title: 'entities/Comment/CommentsList',
+    title: 'widgets/Comment/CommentsList',
     component: CommentsList,
     argTypes: {
         backgroundColor: { control: 'color' },

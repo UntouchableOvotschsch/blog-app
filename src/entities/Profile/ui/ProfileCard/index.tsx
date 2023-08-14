@@ -72,7 +72,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     value={data?.username}
                     onChange={(value) => changeProfileData({ username: value })}
                     readOnly={!editable}
-                    placeholder={t('Ваша никнейм')}
+                    placeholder={t('Ваш никнейм')}
                 />
                 <Input
                     value={data?.age}

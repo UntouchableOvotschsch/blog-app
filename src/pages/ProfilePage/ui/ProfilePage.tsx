@@ -20,7 +20,7 @@ import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { updateProfileData } from 'entities/Profile/model/services/updateProfileData';
 import { useParams } from 'react-router-dom';
-import PageWrapper from 'shared/ui/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper';
 import styles from './ProfilePage.module.scss';
 import ProfilePageHeader from './ProfilePageHeader';
 

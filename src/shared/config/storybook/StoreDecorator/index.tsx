@@ -7,6 +7,7 @@ import { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
 import { addNewCommentReducer } from 'features/AddNewComment';
 import { articlesPageReducer } from 'pages/ArticlesPage';
+import { uiReducer } from 'features/UI';
 
 const defaultReducers: ReducerList = {
     authByUsername: authByUsernameReducer,
@@ -14,6 +15,7 @@ const defaultReducers: ReducerList = {
     articlesDetailsPage: articleDetailsPageReducer,
     addNewComment: addNewCommentReducer,
     articlesPage: articlesPageReducer,
+    ui: uiReducer,
 };
 
 export const StoreDecorator = (

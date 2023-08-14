@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import {
     MutableRefObject, useCallback, useEffect, useRef,
 } from 'react';
-import ArticleList from 'widgets/Article/ArticleList';
+import ArticleList from 'widgets/Article/ui/ArticleList';
 import { ArticleViewTypes } from 'entities/Article';
 import { ARTICLE_VIEW_KEY } from 'shared/const/localStorage';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
@@ -14,7 +14,8 @@ import { getArticlesHasMore } from 'pages/ArticlesPage/model/selectors/getArticl
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll';
-import PageWrapper from 'shared/ui/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper';
+import { getArticlesInited } from 'pages/ArticlesPage/model/selectors/getArticlesInited';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import {
     articlesPageActions,
@@ -45,6 +46,7 @@ const ArticlesPage = () => {
     const error = useSelector(getArticleError);
     const hasMore = useSelector(getArticlesHasMore);
     const page = useSelector(getArticlesPage);
+    const _inited = useSelector(getArticlesInited);
 
     const mods: Mods = {
         [styles.errorPage]: !!error,
@@ -64,9 +66,10 @@ const ArticlesPage = () => {
     });
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && localStorageView) {
+        if (__PROJECT__ !== 'storybook' && localStorageView && !_inited) {
             dispatch(articlesPageActions.setArticlesView(localStorageView));
             dispatch(articlesPageActions.initLimit());
+            dispatch(articlesPageActions.setArticlesInited(true));
             dispatch(fetchArticles());
         }
         // eslint-disable-next-line
@@ -83,10 +86,12 @@ const ArticlesPage = () => {
     return (
         <DynamicModuleLoader
             reducerList={reducers}
+            dontRemoveAfterUnmount
         >
             <PageWrapper
                 wrapperRef={wrapperRef}
                 className={classNames(styles.ArticlePage, mods, [])}
+                trackScroll
             >
                 {
                     error

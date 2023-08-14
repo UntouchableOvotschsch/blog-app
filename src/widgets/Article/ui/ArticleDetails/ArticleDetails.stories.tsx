@@ -4,11 +4,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { articleTemplate } from 'entities/Article';
-import PageWrapper from 'shared/ui/PageWrapper';
-import ArticleDetails from '.';
+import { PageWrapper } from 'widgets/PageWrapper';
+import ArticleDetails from './index';
 
 export default {
-    title: 'entities/Article/ArticleDetails',
+    title: 'widgets/Article/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },

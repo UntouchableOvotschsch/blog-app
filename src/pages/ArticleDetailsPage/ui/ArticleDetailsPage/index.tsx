@@ -1,21 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Suspense, useCallback, useEffect } from 'react';
-import { ArticleDetails } from 'entities/Article';
+import { ArticleDetails } from 'widgets/Article';
 import { useParams } from 'react-router-dom';
-import CommentsList from 'entities/Comment/ui/CommentsList';
+import { CommentsList } from 'widgets/Comment';
 import Text, { TextSize } from 'shared/ui/Text/Text';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import {
-    fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/service/fetchCommentsByArticleId';
-import {
-    addNewCommentToArticleService,
-} from 'pages/ArticleDetailsPage/model/service/addNewCommentToArticle';
 import { AddNewCommentForm } from 'features/AddNewComment';
-import PageWrapper from 'shared/ui/PageWrapper';
+import { PageWrapper } from 'widgets/PageWrapper';
+import { fetchCommentsByArticleId } from '../../model/service/fetchCommentsByArticleId';
+import { addNewCommentToArticleService } from '../../model/service/addNewCommentToArticle';
 import styles from './ArticleDetailsPage.module.scss';
 import {
     articleDetailsPageReducer,
