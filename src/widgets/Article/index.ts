@@ -1,7 +1,9 @@
-import ArticleDetails from 'widgets/Article/ui/ArticleDetails';
-import ArticleList from 'widgets/Article/ui/ArticleList';
+import ArticleDetails from './ui/ArticleDetails';
+import ArticleFilters from './ui/ArticleFilters';
+import ArticleList from './ui/ArticleList';
 
 export {
     ArticleDetails,
     ArticleList,
+    ArticleFilters,
 };

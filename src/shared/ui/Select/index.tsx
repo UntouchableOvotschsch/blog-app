@@ -1,32 +1,36 @@
-import React, {
-    ChangeEvent, memo, useCallback, useMemo,
-} from 'react';
+import React, { ChangeEvent, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from './Select.module.scss';
 
-export interface SelectOptions {
-    value: string
+export enum SelectContainerTheme {
+    ROW = 'row',
+    COLUMN = 'column',
+}
+
+export interface SelectOptions<T extends string> {
+    value: T
     content: string
 }
-interface SelectProps {
+interface SelectProps<T extends string> {
     label?: string
-    options?: SelectOptions[]
-    selectValue?: string
-    onChange?: (value: string) => void
-    editable: boolean
+    options?: SelectOptions<T>[]
+    selectValue?: T
+    onChange?: (value: T) => void
+    editable?: boolean
+    containerTheme?: SelectContainerTheme
 }
-const Select = memo(({
-    label,
-    options,
-    selectValue,
-    onChange,
-    editable = true,
-}: SelectProps) => {
+const Select = <T extends string>(props: SelectProps<T>) => {
     const { t } = useTranslation();
-    const mods: Mods = {
 
-    };
+    const {
+        label,
+        options,
+        selectValue,
+        onChange,
+        editable = true,
+        containerTheme = SelectContainerTheme.COLUMN,
+    } = props;
 
     const optionList = useMemo(() => options?.map((el) => (
         <option
@@ -39,11 +43,11 @@ const Select = memo(({
     )), [options, t]);
 
     const onChangeHandler = useCallback((e: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(e.target.value);
+        onChange?.(e.target.value as T);
     }, [onChange]);
 
     return (
-        <div className={classNames(styles.container, mods, [])}>
+        <div className={classNames(styles.container, {}, [styles[containerTheme]])}>
             {
                 label && <span className={styles.label}>{t(label)}</span>
             }
@@ -59,6 +63,6 @@ const Select = memo(({
 
         </div>
     );
-});
+};
 
 export default Select;

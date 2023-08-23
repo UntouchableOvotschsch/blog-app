@@ -49,8 +49,10 @@ const BigTileItem = ({ article }: BigTileItemProps) => {
             </div>
             <Text title={article.title} />
             <Text title={article.type.join(', ')} />
+            <div className={styles.imageWrapper}>
+                <img src={article.img} alt={article.title} className={styles.articleImg} />
+            </div>
 
-            <img src={article.img} alt={article.title} className={styles.articleImg} />
             {
                 articleText && (
                     <ArticleTextBlockCom

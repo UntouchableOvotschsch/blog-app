@@ -1,7 +1,8 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleViewTypes } from 'entities/Article';
-import { fetchArticles } from 'pages/ArticlesPage/model/service/fetchArticles';
+import { Article, ArticleTypes, ArticleViewTypes } from 'entities/Article';
+import { SortField, SortOrder } from 'features/SortSelector';
+import { fetchArticles } from '../service/fetchArticles';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 
 export const articlesAdapter = createEntityAdapter<Article>(
@@ -18,8 +19,12 @@ const articlesPageSlice = createSlice({
         isLoading: false,
         page: 1,
         limit: 3,
+        search: '',
+        sortField: SortField.CREATED,
+        sortOrder: 'asc',
         hasMore: false,
         _inited: false,
+        types: [ArticleTypes.ALL],
     }),
     reducers: {
         setArticlesView: (state, action: PayloadAction<ArticleViewTypes>) => {
@@ -37,17 +42,36 @@ const articlesPageSlice = createSlice({
         setArticlesInited: (state, action: PayloadAction<boolean>) => {
             state._inited = action.payload;
         },
+        setArticlesSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
+        },
+        setArticlesSortField: (state, action: PayloadAction<SortField>) => {
+            state.sortField = action.payload;
+        },
+        setArticlesSortOrder: (state, action: PayloadAction<SortOrder>) => {
+            state.sortOrder = action.payload;
+        },
+        setArticlesTypes: (state, action: PayloadAction<ArticleTypes[]>) => {
+            state.types = action.payload;
+        },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchArticles.pending, (state) => {
+        builder.addCase(fetchArticles.pending, (state, action) => {
             state.error = undefined;
             state.isLoading = true;
+            if (action.meta.arg.replace) {
+                articlesAdapter.removeAll(state);
+            }
         });
-        builder.addCase(fetchArticles.fulfilled, (state, action: PayloadAction<Article[]>) => {
-            articlesAdapter.addMany(state, action.payload);
+        builder.addCase(fetchArticles.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.hasMore = action.payload.length > 0 && action.payload.length >= state.limit;
+            state.hasMore = action.payload.length >= state.limit;
             state.page = action.payload.length > 0 ? state.page : 1;
+            if (action.meta.arg.replace) {
+                articlesAdapter.setAll(state, action.payload);
+            } else {
+                articlesAdapter.addMany(state, action.payload);
+            }
         });
         builder.addCase(fetchArticles.rejected, (state, action) => {
             state.error = action.payload;

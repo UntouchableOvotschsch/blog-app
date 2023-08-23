@@ -3,19 +3,18 @@ import {
     MutableRefObject, useCallback, useEffect, useRef,
 } from 'react';
 import ArticleList from 'widgets/Article/ui/ArticleList';
-import { ArticleViewTypes } from 'entities/Article';
-import { ARTICLE_VIEW_KEY } from 'shared/const/localStorage';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { ChangeViewType } from 'features/ChangeViewType';
 import { getArticleError } from 'pages/ArticlesPage/model/selectors/getArticlesError';
 import { getArticlesHasMore } from 'pages/ArticlesPage/model/selectors/getArticlesHasMore';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll';
 import { PageWrapper } from 'widgets/PageWrapper';
-import { getArticlesInited } from 'pages/ArticlesPage/model/selectors/getArticlesInited';
+import { ArticleFilters } from 'widgets/Article';
+import { useSearchParams } from 'react-router-dom';
+import { getArticlesActiveTypes } from 'pages/ArticlesPage';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import {
     articlesPageActions,
@@ -26,6 +25,10 @@ import { getArticleView } from '../../model/selectors/getArticleView';
 import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 import { getArticlesPage } from '../../model/selectors/getArticlesPage';
 import styles from './ArticlesPage.module.scss';
+import { initArticlesPage } from '../../model/service/initArticlesPage';
+import { getArticlesSortField } from '../../model/selectors/getArticlesSortField';
+import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder';
+import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
 
 const reducers: ReducerList = {
     articlesPage: articlesPageReducer,
@@ -33,20 +36,23 @@ const reducers: ReducerList = {
 
 const ArticlesPage = () => {
     const { t } = useTranslation();
-    const localStorageView = localStorage
-        .getItem(ARTICLE_VIEW_KEY) as ArticleViewTypes;
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     const dispatch = useAppDispatch();
+
     const view = useSelector(getArticleView);
     const articles = useSelector(articlesSelectors.selectAll);
     const isLoading = useSelector(getArticleLoading);
     const error = useSelector(getArticleError);
     const hasMore = useSelector(getArticlesHasMore);
     const page = useSelector(getArticlesPage);
-    const _inited = useSelector(getArticlesInited);
+    const sortField = useSelector(getArticlesSortField);
+    const sortOrder = useSelector(getArticlesSortOrder);
+    const search = useSelector(getArticlesSearch);
+    const types = useSelector(getArticlesActiveTypes);
 
     const mods: Mods = {
         [styles.errorPage]: !!error,
@@ -55,7 +61,7 @@ const ArticlesPage = () => {
     const fetchNextArticlesPage = useCallback(() => {
         if (!isLoading && hasMore && __PROJECT__ !== 'storybook') {
             dispatch(articlesPageActions.setArticlesPage(page + 1));
-            dispatch(fetchArticles());
+            dispatch(fetchArticles({}));
         }
     }, [dispatch, hasMore, isLoading, page]);
 
@@ -66,22 +72,16 @@ const ArticlesPage = () => {
     });
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && localStorageView && !_inited) {
-            dispatch(articlesPageActions.setArticlesView(localStorageView));
-            dispatch(articlesPageActions.initLimit());
-            dispatch(articlesPageActions.setArticlesInited(true));
-            dispatch(fetchArticles());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(initArticlesPage(searchParams));
+            setSearchParams({
+                sortField,
+                sortOrder,
+                search,
+                types,
+            });
         }
-        // eslint-disable-next-line
-    }, []);
-
-    const changeView = useCallback((view: ArticleViewTypes) => {
-        dispatch(articlesPageActions.setArticlesView(view));
-        dispatch(articlesPageActions.setArticlesPage(1));
-        dispatch(articlesPageActions.initLimit());
-        localStorage.setItem(ARTICLE_VIEW_KEY, view);
-        dispatch(fetchArticles());
-    }, [dispatch]);
+    }, [dispatch, search, searchParams, setSearchParams, sortField, sortOrder, types]);
 
     return (
         <DynamicModuleLoader
@@ -103,7 +103,7 @@ const ArticlesPage = () => {
                         )
                         : (
                             <>
-                                <ChangeViewType currentView={view} changeView={changeView} />
+                                <ArticleFilters />
                                 <ArticleList
                                     articles={articles}
                                     view={view}

@@ -1,6 +1,11 @@
 import ArticleTextBlockCom from 'entities/Article/ui/ArticleTextBlockCom';
-import type { Article } from './model/types/article';
-import { ArticleBlock, ArticleBlockTypes, ArticleViewTypes } from './model/types/article';
+import {
+    Article,
+    ArticleBlock,
+    ArticleBlockTypes,
+    ArticleTypes,
+    ArticleViewTypes,
+} from './model/types/article';
 import { articlesArrayTemplate, articleTemplate } from './model/templates/article';
 import BigTileItemSkeleton from './ui/ArticleListItem/BigTileItem/Skeleton/BigTileItem.skeleton';
 import SmallTileItemSkeleton
@@ -20,4 +25,5 @@ export {
     BigTileItemSkeleton,
     SmallTileItemSkeleton,
     articlesArrayTemplate,
+    ArticleTypes,
 };

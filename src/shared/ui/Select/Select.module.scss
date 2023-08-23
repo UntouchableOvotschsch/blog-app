@@ -1,8 +1,16 @@
 .container {
-    display: flex;
-    flex-direction: column;
     height: 34px;
     max-width: 1000px;
+
+    &.column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &.row {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .select {
@@ -13,6 +21,9 @@
     height: 100%;
     text-align: center;
     appearance: none;
+    padding: 0 5px;
+    display: flex;
+    flex: 1 1 auto;
 }
 
 .option {

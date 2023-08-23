@@ -31,6 +31,7 @@ const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewT
 
     const renderViews = useMemo(() => views.map((view) => (
         <Button
+            className={styles.btn}
             theme={ThemeButton.CLEAR}
             onClick={changeViewType(view.type)}
             key={view.type}
@@ -46,7 +47,7 @@ const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewT
     )), [changeViewType, currentView]);
 
     return (
-        <div className={className}>
+        <div className={classNames(styles.container, {}, [className])}>
             {renderViews}
         </div>
     );
