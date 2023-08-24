@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import { authByUsernameReducer } from 'features/AuthByUsername';
 import { profileReducer } from 'entities/Profile';
 import { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
+import { articleDetailsPageReducers } from 'pages/ArticleDetailsPage';
 import { addNewCommentReducer } from 'features/AddNewComment';
 import { articlesPageReducer } from 'pages/ArticlesPage';
 import { uiReducer } from 'features/UI';
@@ -12,7 +12,7 @@ import { uiReducer } from 'features/UI';
 const defaultReducers: ReducerList = {
     authByUsername: authByUsernameReducer,
     profile: profileReducer,
-    articlesDetailsPage: articleDetailsPageReducer,
+    articlesDetailsPage: articleDetailsPageReducers,
     addNewComment: addNewCommentReducer,
     articlesPage: articlesPageReducer,
     ui: uiReducer,

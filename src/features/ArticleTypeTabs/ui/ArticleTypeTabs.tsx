@@ -43,7 +43,7 @@ const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
                 const newForm = [...activeTypes, newType.value].filter((type) => (
                     type !== ArticleTypes.ALL
                 ));
-                typeHandler(newForm);
+                typeHandler(newForm.length === 0 ? [ArticleTypes.ALL] : newForm);
             }
         } else {
             typeHandler([ArticleTypes.ALL]);

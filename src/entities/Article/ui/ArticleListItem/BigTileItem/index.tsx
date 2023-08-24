@@ -1,8 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { HTMLAttributeAnchorTarget } from 'react';
 import { Article, ArticleTextBlockCom } from 'entities/Article';
 import Card from 'shared/ui/Card/Card';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { useNavigate } from 'react-router-dom';
 import Avatar from 'shared/ui/Avatar';
 import Text from 'shared/ui/Text/Text';
 import {
@@ -14,27 +13,26 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import Icon from 'shared/ui/Icon';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import styles from './BigTileItem.module.scss';
 
 interface BigTileItemProps {
     article: Article
+    target?: HTMLAttributeAnchorTarget;
 }
 
-const BigTileItem = ({ article }: BigTileItemProps) => {
-    const navigate = useNavigate();
+const BigTileItem = ({ article, target }: BigTileItemProps) => {
     const { t } = useTranslation();
-    const navigateToArticle = useCallback(() => {
-        if (__PROJECT__ !== 'storybook') {
-            navigate(`${RoutePath.article_details}/${article.id}`);
-        }
-    }, [article.id, navigate]);
+
+    const navigateToArticle = __PROJECT__ !== 'storybook'
+        ? `${RoutePath.article_details}/${article.id}` : '#';
 
     const articleText = article
         ?.blocks
         ?.find((block: ArticleBlock) => block.type === ArticleBlockTypes.TEXT) as ArticleTextBlock;
 
     return (
-        <Card className={styles.container} onClick={navigateToArticle}>
+        <Card className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.userInfo}>
                     <Avatar
@@ -62,9 +60,11 @@ const BigTileItem = ({ article }: BigTileItemProps) => {
                 )
             }
             <div className={styles.footer}>
-                <Button theme={ThemeButton.OUTLINE} onClick={navigateToArticle}>
-                    {t('Читать далее')}
-                </Button>
+                <AppLink to={navigateToArticle} className={styles.appLink} target={target}>
+                    <Button theme={ThemeButton.OUTLINE}>
+                        {t('Читать далее')}
+                    </Button>
+                </AppLink>
                 <div className={styles.views}>
                     <Text title={String(article.views)} />
                     <Icon Icon={EyeIcon} />

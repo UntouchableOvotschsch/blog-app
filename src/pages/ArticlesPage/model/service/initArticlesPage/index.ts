@@ -48,7 +48,7 @@ export const initArticlesPage = createAsyncThunk<
                 if (newSortField) {
                     dispatch(articlesPageActions.setArticlesSortField(newSortField));
                 }
-                if (newTypes) {
+                if (newTypes.length) {
                     dispatch(articlesPageActions.setArticlesTypes(newTypes));
                 }
 

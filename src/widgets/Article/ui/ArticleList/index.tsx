@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { MutableRefObject, useMemo } from 'react';
+import { HTMLAttributeAnchorTarget, MutableRefObject, useMemo } from 'react';
 import BigTileItem from 'entities/Article/ui/ArticleListItem/BigTileItem';
 import SmallTileItem from 'entities/Article/ui/ArticleListItem/SmallTileItem';
 import { BigTileItemSkeleton, SmallTileItemSkeleton } from 'entities/Article';
@@ -13,6 +13,7 @@ interface ArticleListProps {
     isLoading?: boolean
     view?: ArticleViewTypes
     triggerRef?: MutableRefObject<HTMLDivElement>
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const ArticleList = ({
@@ -21,6 +22,7 @@ const ArticleList = ({
     isLoading,
     view = ArticleViewTypes.SMALL_TILE,
     triggerRef,
+    target,
 }: ArticleListProps) => {
     const { t } = useTranslation();
 
@@ -49,6 +51,7 @@ const ArticleList = ({
                         <div ref={triggerRef} key={article.id}>
                             <BigTileItem
                                 article={article}
+                                target={target}
                             />
                         </div>
                     );
@@ -57,6 +60,7 @@ const ArticleList = ({
                     <BigTileItem
                         article={article}
                         key={article.id}
+                        target={target}
                     />
                 );
             }, []);
@@ -68,6 +72,7 @@ const ArticleList = ({
                         <div ref={triggerRef} key={article.id}>
                             <SmallTileItem
                                 article={article}
+                                target={target}
                             />
                         </div>
                     );
@@ -76,6 +81,7 @@ const ArticleList = ({
                     <SmallTileItem
                         article={article}
                         key={article.id}
+                        target={target}
                     />
                 );
             }, []);
@@ -83,14 +89,12 @@ const ArticleList = ({
         default:
             return null;
         }
-    }, [articles, triggerRef, view]);
+    }, [articles, target, triggerRef, view]);
 
     return (
-        <div className={classNames(styles.ArticleList, {}, [className])}>
-            <div className={classNames('', {}, [styles[view]])}>
-                {articles.length > 0 && renderArticleList}
-                {isLoading && renderArticleLoadingList}
-            </div>
+        <div className={classNames('', {}, [className, styles[view]])}>
+            {articles.length > 0 && renderArticleList}
+            {isLoading && renderArticleLoadingList}
         </div>
     );
 };

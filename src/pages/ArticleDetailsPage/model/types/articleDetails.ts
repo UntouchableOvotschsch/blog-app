@@ -2,9 +2,24 @@ import { CommentType } from 'entities/Comment';
 import { Article } from 'entities/Article';
 import { EntityState } from '@reduxjs/toolkit';
 
-export interface ArticleDetailsPageSchema extends EntityState<CommentType> {
+export interface ArticleDetailsSchema {
     error?: string;
-    isArticleLoading: boolean;
-    isCommentsLoading: boolean;
+    isLoading: boolean;
     article?: Article;
+}
+
+export interface ArticleDetailsCommentsSchema extends EntityState<CommentType> {
+    error?: string;
+    isLoading: boolean;
+}
+
+export interface ArticleDetailsRecommendationsSchema extends EntityState<Article> {
+    error?: string;
+    isLoading: boolean;
+}
+
+export interface ArticleDetailsPageSchema {
+    articleDetails: ArticleDetailsSchema,
+    articleDetailsComments: ArticleDetailsCommentsSchema
+    articleDetailsRecommendations: ArticleDetailsRecommendationsSchema
 }

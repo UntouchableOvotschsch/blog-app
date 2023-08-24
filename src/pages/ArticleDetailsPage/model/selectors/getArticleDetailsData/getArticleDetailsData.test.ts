@@ -5,7 +5,9 @@ import { getArticleDetailsData } from '.';
 describe('getArticleDetailsData.test', () => {
     const state: DeepPartial<StateSchema> = {
         articlesDetailsPage: {
-            article: articleTemplate,
+            articleDetails: {
+                article: articleTemplate,
+            },
         },
     };
     test('should return state', () => {

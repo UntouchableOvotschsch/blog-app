@@ -1,22 +1,19 @@
-import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage';
 import { articleTemplate } from 'entities/Article';
-import { ArticleDetailsPageSchema } from '../types/articleDetails';
+import { articleDetailsPageReducer } from '../slice/articleDetailsPageSlice';
+import { ArticleDetailsSchema } from '../types/articleDetails';
 import { fetchArticleById } from '../service/fetchArticleById';
 
 describe('articleDetailsSlice.test', () => {
-    const state: ArticleDetailsPageSchema = {
+    const state: ArticleDetailsSchema = {
         article: undefined,
-        isArticleLoading: false,
-        isCommentsLoading: false,
+        isLoading: false,
         error: undefined,
-        ids: [],
-        entities: {},
     };
     test('fetchArticleById.pending', () => {
         expect(articleDetailsPageReducer(state, fetchArticleById.pending))
             .toEqual({
                 ...state,
-                isArticleLoading: true,
+                isLoading: true,
             });
     });
     test('fetchArticleById.rejected', () => {
@@ -26,7 +23,7 @@ describe('articleDetailsSlice.test', () => {
         }))
             .toEqual({
                 ...state,
-                isArticleLoading: false,
+                isLoading: false,
                 error: 'Some Error',
             });
     });
@@ -37,7 +34,7 @@ describe('articleDetailsSlice.test', () => {
         }))
             .toEqual({
                 ...state,
-                isArticleLoading: false,
+                isLoading: false,
                 error: undefined,
                 article: articleTemplate,
             });

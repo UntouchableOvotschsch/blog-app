@@ -4,7 +4,9 @@ import { getArticleDetailsError } from '.';
 describe('getArticleDetailsError.test', () => {
     const state: DeepPartial<StateSchema> = {
         articlesDetailsPage: {
-            error: 'Some Error',
+            articleDetails: {
+                error: 'Some Error',
+            },
         },
     };
     test('should return state', () => {

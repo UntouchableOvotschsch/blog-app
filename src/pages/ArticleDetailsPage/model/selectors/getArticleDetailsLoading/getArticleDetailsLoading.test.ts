@@ -4,7 +4,9 @@ import { getArticleDetailsLoading } from '.';
 describe('getArticleDetailsLoading.test', () => {
     const state: DeepPartial<StateSchema> = {
         articlesDetailsPage: {
-            isArticleLoading: true,
+            articleDetails: {
+                isLoading: true,
+            },
         },
     };
     test('should return state', () => {

@@ -19,7 +19,7 @@ import Card from 'shared/ui/Card/Card';
 import Input, { InputAlign } from 'shared/ui/Input/Input';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from 'shared/lib/hooks/useDebounce';
-import ArticleTypeTabs from 'features/ArticleTypeTabs/ui/ArticleTypeTabs';
+import { ArticleTypeTabs } from 'features/ArticleTypeTabs';
 import styles from './ArticleFilters.module.scss';
 
 interface ArticleFiltersProps {

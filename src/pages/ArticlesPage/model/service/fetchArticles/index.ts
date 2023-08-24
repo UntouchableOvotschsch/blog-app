@@ -41,7 +41,7 @@ export const fetchArticles = createAsyncThunk<
                         _limit: limit,
                         _sort: sortField,
                         _order: sortOrder,
-                        type: types.filter((type) => type !== ArticleTypes.ALL),
+                        type_like: types.filter((type) => type !== ArticleTypes.ALL),
                         q: search,
                     },
                 });

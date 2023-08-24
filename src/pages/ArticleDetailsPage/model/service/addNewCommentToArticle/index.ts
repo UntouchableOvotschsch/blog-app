@@ -24,7 +24,7 @@ export const addNewCommentToArticleService = createAsyncThunk<
 
                 const userId = state.user.authData?.id;
                 const commentText = state.addNewComment?.commentText;
-                const articleId = state.articlesDetailsPage?.article?.id;
+                const articleId = state.articlesDetailsPage?.articleDetails.article?.id;
 
                 if (!userId || !articleId) {
                     dispatch(addNewCommentActions.setError('Отсутствуют данные'));
