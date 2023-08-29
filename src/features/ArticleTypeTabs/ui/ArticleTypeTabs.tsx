@@ -11,7 +11,7 @@ interface ArticleTypeTabsProps {
 
 const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
     const { activeTypes, typeHandler, className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const types: TabItem<ArticleTypes>[] = [
         {

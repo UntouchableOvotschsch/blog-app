@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { HTMLAttributeAnchorTarget, MutableRefObject, useMemo } from 'react';
 import BigTileItem from 'entities/Article/ui/ArticleListItem/BigTileItem';
@@ -24,8 +23,6 @@ const ArticleList = ({
     triggerRef,
     target,
 }: ArticleListProps) => {
-    const { t } = useTranslation();
-
     const renderArticleLoadingList = useMemo(() => {
         switch (view) {
         case ArticleViewTypes.BIG_TILE: {

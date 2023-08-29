@@ -28,7 +28,7 @@ interface ArticleFiltersProps {
 
 const ArticleFilters = (props: ArticleFiltersProps) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
 

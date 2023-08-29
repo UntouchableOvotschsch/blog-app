@@ -12,7 +12,7 @@ interface CommentsListProps {
 }
 
 const CommentsList = ({ className, comments, isLoading }: CommentsListProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('commentsList');
 
     if (isLoading) {
         return (

@@ -6,6 +6,7 @@ import { ProfilePage } from 'pages/ProfilePage';
 import AuthWrapper from 'app/providers/RouterProvider/ui/wrappers/AuthWrapper';
 import { ArticlesPage } from 'pages/ArticlesPage';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
+import { ArticleEditPage } from 'pages/ArticleEditPage';
 
 type AppRoutesProps = RouteProps & {
     authOnly?: boolean
@@ -14,10 +15,11 @@ type AppRoutesProps = RouteProps & {
 export enum AppRoutes {
     MAIN = 'main',
     ABOUT = 'about',
-
     PROFILE = 'profile',
     ARTICLES = 'articles',
     ARTICLE_DETAILS = 'article_details',
+    ARTICLE_CREATE = 'article_create',
+    ARTICLE_EDIT = 'article_edit',
     // last
     NOTFOUND = 'notfound'
 }
@@ -32,6 +34,10 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLES]: '/articles',
 
     [AppRoutes.ARTICLE_DETAILS]: '/articles', // + id
+
+    [AppRoutes.ARTICLE_CREATE]: '/articles/new',
+
+    [AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit', // + id
 
     [AppRoutes.NOTFOUND]: '*',
 
@@ -71,6 +77,24 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: (
             <AuthWrapper>
                 <ArticleDetailsPage />
+            </AuthWrapper>
+        ),
+    },
+
+    [AppRoutes.ARTICLE_CREATE]: {
+        path: `${RoutePath.article_create}`,
+        element: (
+            <AuthWrapper>
+                <ArticleEditPage />
+            </AuthWrapper>
+        ),
+    },
+
+    [AppRoutes.ARTICLE_EDIT]: {
+        path: `${RoutePath.article_edit}`,
+        element: (
+            <AuthWrapper>
+                <ArticleEditPage />
             </AuthWrapper>
         ),
     },

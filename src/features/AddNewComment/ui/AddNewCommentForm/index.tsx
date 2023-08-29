@@ -29,7 +29,7 @@ interface AddNewCommentFormProps {
 const AddNewCommentForm = memo(({
     addNewCommentTo,
 }: AddNewCommentFormProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('addNewCommentForm');
     const dispatch = useAppDispatch();
 
     const commentText = useSelector(getAddNewCommentText);

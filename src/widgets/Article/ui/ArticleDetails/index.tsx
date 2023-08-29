@@ -30,7 +30,7 @@ const ArticleDetails = memo(({
     isLoading,
     isError,
 }: ArticleDetailsProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('articleDetails');
 
     const renderBlocks = useCallback((blocks: ArticleBlock[]) => blocks.map((block, index) => {
         switch (block.type) {

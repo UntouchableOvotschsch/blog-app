@@ -24,7 +24,7 @@ const SortSelector = (props: SortSelectorProps) => {
         changeSortOrder,
         className,
     } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const sortFields = useMemo<SelectOptions<SortField>[]>(() => [
         {

@@ -50,7 +50,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     && (
                         <Avatar
                             avatar={data?.avatar}
-                            alt={t('your avatar')}
+                            alt={t('Ваш аватар')}
                         />
                     )
                 }

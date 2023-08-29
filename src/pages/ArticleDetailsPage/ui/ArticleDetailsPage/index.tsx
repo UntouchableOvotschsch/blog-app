@@ -11,9 +11,8 @@ import { useSelector } from 'react-redux';
 import { AddNewCommentForm } from 'features/AddNewComment';
 import { PageWrapper } from 'widgets/PageWrapper';
 import { ArticleViewTypes } from 'entities/Article';
-import {
-    fetchArticleRecommendations,
-} from 'pages/ArticleDetailsPage/model/service/fetchArticleRecommendations';
+import { fetchArticleRecommendations } from '../../model/service/fetchArticleRecommendations';
+import ArticleDetailsPageHeader from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducers } from '../../model/slice';
 import { fetchCommentsByArticleId } from '../../model/service/fetchCommentsByArticleId';
 import { addNewCommentToArticleService } from '../../model/service/addNewCommentToArticle';
@@ -66,6 +65,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducerList={reducerList}>
             <PageWrapper>
+                <ArticleDetailsPageHeader />
                 <div className={classNames(styles.container, {}, [className])}>
                     <ArticleDetails
                         article={article}

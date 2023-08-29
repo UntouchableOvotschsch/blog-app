@@ -35,7 +35,7 @@ const reducers: ReducerList = {
 };
 
 const ArticlesPage = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
     const [searchParams, setSearchParams] = useSearchParams();
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;

@@ -6,9 +6,13 @@
   "Обновить страницу": "Reload page",
   "Главная": "Main",
   "О нас": "About",
+  "Мой профиль": "My Profile",
+  "Статьи": "Articles",
   "Свернуть": "Toggle",
   "Войти": "Sign in",
   "Имя пользователя": "Username",
   "Пароль": "Password",
-  "Неверное имя пользователя или пароль": "Incorrect username or password"
+  "Неверное имя пользователя или пароль": "Incorrect username or password",
+  "Выйти": "Logout",
+  "Создать статью": "Create article"
 }

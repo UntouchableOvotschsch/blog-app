@@ -1,0 +1,21 @@
+{
+  "Профиль": "Profile",
+  "Некорректные пользовательские данные": "Incorrect user data",
+  "Некорректный возраст": "Incorrect age",
+  "Некорректная страна": "Incorrect country",
+  "Ошибка сервера": "Server error",
+  "Отсутствуют данные о профиле": "Profile data is missing",
+  "Нет прав для редактирования": "No editing rights",
+  "Сохранить": "Save",
+  "Отменить": "Cancel",
+  "Редактировать": "Edit",
+  "Произошла ошибка при получении профиля": "An error occurred while getting the profile",
+  "Попробуйте обновить страницу": "Try refreshing the page",
+  "Ваш аватар": "Your avatar",
+  "Ваше имя": "Your name",
+  "Ваша фамилия": "Your surname",
+  "Ваш никнейм": "Your nickname",
+  "Ваш возраст": "Your age",
+  "Ваш город": "Your country",
+  "Введите ссылку на аватар": "Enter the link to the avatar"
+}

@@ -22,7 +22,7 @@ interface BigTileItemProps {
 }
 
 const BigTileItem = ({ article, target }: BigTileItemProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('article');
 
     const navigateToArticle = __PROJECT__ !== 'storybook'
         ? `${RoutePath.article_details}/${article.id}` : '#';

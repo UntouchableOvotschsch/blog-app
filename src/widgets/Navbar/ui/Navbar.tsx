@@ -7,6 +7,8 @@ import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -31,28 +33,38 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <div className={classNames(styles.Navbar, {}, [className])}>
-                <div className={styles.links}>
-                    <Button
-                        theme={ThemeButton.CLEAR_INVERTED}
-                        onClick={logoutBtn}
+                <Button
+                    theme={ThemeButton.CLEAR_INVERTED}
+                    className={styles.createArticleBtn}
+                >
+                    <AppLink
+                        to={RoutePath.article_create}
+                        theme={AppLinkTheme.SECONDARY}
                     >
-                        {t('Выйти')}
-                    </Button>
-                </div>
+                        {t('Создать статью')}
+                    </AppLink>
+                </Button>
+
+                <Button
+                    theme={ThemeButton.CLEAR_INVERTED}
+                    onClick={logoutBtn}
+                    className={styles.logoutBtn}
+                >
+                    {t('Выйти')}
+                </Button>
             </div>
         );
     }
 
     return (
         <div className={classNames(styles.Navbar, {}, [className])}>
-            <div className={styles.links}>
-                <Button
-                    theme={ThemeButton.CLEAR_INVERTED}
-                    onClick={loginModalVisibility}
-                >
-                    {t('Войти')}
-                </Button>
-            </div>
+            <Button
+                theme={ThemeButton.CLEAR_INVERTED}
+                onClick={loginModalVisibility}
+                className={styles.logoutBtn}
+            >
+                {t('Войти')}
+            </Button>
 
             <LoginModal visible={loginModal} changeVisibility={loginModalVisibility} />
         </div>
