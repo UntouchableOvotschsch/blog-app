@@ -1,4 +1,4 @@
-import ArticleTextBlockCom from 'entities/Article/ui/ArticleTextBlockCom';
+import ArticleTextBlockCom from './ui/ArticleTextBlockCom';
 import {
     Article,
     ArticleBlock,

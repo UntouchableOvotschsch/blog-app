@@ -3,10 +3,15 @@ import Icon from 'shared/ui/Icon';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import Card from 'shared/ui/Card/Card';
 import Skeleton from 'shared/ui/Skeleton';
+import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from '../SmallTileItem.module.scss';
 
-const SmallTileItemSkeleton = () => (
-    <Card className={styles.container}>
+interface SmallTileItemSkeletonProps {
+    className?: string
+}
+
+const SmallTileItemSkeleton = ({ className }: SmallTileItemSkeletonProps) => (
+    <Card className={classNames(styles.container, {}, [className])}>
         <div className={styles.imageWrapper} style={{ marginBottom: '5px' }}>
             <Skeleton className={styles.image} />
         </div>

@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { Portal } from 'shared/ui/Portal/Portal';
+import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
 interface ModalProps {

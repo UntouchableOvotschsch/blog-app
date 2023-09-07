@@ -1,4 +1,4 @@
-import { articleDetailsPageReducers } from 'pages/ArticleDetailsPage/model/slice';
+import { articleDetailsPageReducers } from './model/slice';
 import {
     ArticleDetailsPageAsync as ArticleDetailsPage,
 } from './ui/ArticleDetailsPage/ArticleDetailsPage.async';

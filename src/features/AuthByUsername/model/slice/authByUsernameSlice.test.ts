@@ -1,4 +1,4 @@
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername';
+import { loginByUsername } from '../services/loginByUsername';
 import { authByUsernameActions, authByUsernameReducer } from './authByUsernameSlice';
 import type { AuthByUsernameSchema } from '../types/authByUsernameSchema';
 

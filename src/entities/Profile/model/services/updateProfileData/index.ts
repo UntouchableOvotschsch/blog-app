@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfigType } from 'app/providers/StoreProvider';
-import { UserRoles } from 'entities/User';
+import { getProfileCanEdit } from '../../selectors/getProfileCanEdit';
 import { profileDataValidator } from '../profileDataValidator';
 import { ProfileType, ProfileValidationErrors } from '../../types/profile';
 
@@ -17,11 +17,9 @@ export const updateProfileData = createAsyncThunk<
             } = thunkAPI;
 
             const state = getState();
-            const userId = state.user.authData?.id;
-            const roles = state.user.authData?.roles;
-            const canEdit = roles?.includes(UserRoles.ADMIN);
+            const canEdit = getProfileCanEdit(getState());
 
-            if (!userId || (profileId !== userId && !canEdit)) {
+            if (!canEdit) {
                 return rejectWithValue([ProfileValidationErrors.NO_RIGHTS_TO_EDIT]);
             }
             const formData = state.profile?.form;

@@ -77,8 +77,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                         <ArticleList
                             articles={recommendationsDataArray}
                             isLoading={recommendationsLoading}
-                            view={ArticleViewTypes.SMALL_TILE}
-                            className={styles.recommendationsList}
+                            view={ArticleViewTypes.SMALL_TILE_ROW}
                             /* eslint-disable-next-line i18next/no-literal-string */
                             target="_blank"
                         />

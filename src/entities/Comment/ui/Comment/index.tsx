@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { CommentType } from 'entities/Comment';
 import Avatar from 'shared/ui/Avatar';
 import Text, { TextAlign, TextSize } from 'shared/ui/Text/Text';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { CommentType } from '../../model/types/comment';
 import styles from './Comment.module.scss';
 
 interface CommentProps {

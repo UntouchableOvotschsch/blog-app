@@ -1,4 +1,4 @@
-import CommentsList from 'widgets/Comment/ui/CommentsList';
+import CommentsList from './ui/CommentsList';
 
 export {
     CommentsList,

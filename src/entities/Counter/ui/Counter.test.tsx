@@ -1,8 +1,9 @@
 import { screen } from '@testing-library/react';
 
 import { renderForTests } from 'shared/config/jest/renderForTests';
-import { Counter, CounterSchema } from 'entities/Counter';
 import userEvent from '@testing-library/user-event';
+import { CounterSchema } from '../model/types/counterSchema';
+import { Counter } from './Counter';
 
 describe('Counter', () => {
     const state: CounterSchema = { value: 0 };

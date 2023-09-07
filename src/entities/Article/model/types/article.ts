@@ -51,6 +51,7 @@ export interface Article {
 
 export enum ArticleViewTypes {
     BIG_TILE = 'BIG_TILE',
-    SMALL_TILE = 'SMALL_TILE'
+    SMALL_TILE = 'SMALL_TILE',
+    SMALL_TILE_ROW = 'SMALL_TILE_ROW'
 
 }

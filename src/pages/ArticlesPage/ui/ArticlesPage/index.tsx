@@ -6,15 +6,15 @@ import ArticleList from 'widgets/Article/ui/ArticleList';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { getArticleError } from 'pages/ArticlesPage/model/selectors/getArticlesError';
-import { getArticlesHasMore } from 'pages/ArticlesPage/model/selectors/getArticlesHasMore';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll';
 import { PageWrapper } from 'widgets/PageWrapper';
 import { ArticleFilters } from 'widgets/Article';
 import { useSearchParams } from 'react-router-dom';
-import { getArticlesActiveTypes } from 'pages/ArticlesPage';
+import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
+import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';
+import { getArticleError } from '../../model/selectors/getArticlesError';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import {
     articlesPageActions,
@@ -37,9 +37,6 @@ const reducers: ReducerList = {
 const ArticlesPage = () => {
     const { t } = useTranslation('article');
     const [searchParams, setSearchParams] = useSearchParams();
-
-    const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
-    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
     const dispatch = useAppDispatch();
 
@@ -65,12 +62,6 @@ const ArticlesPage = () => {
         }
     }, [dispatch, hasMore, isLoading, page]);
 
-    useInfinityScroll({
-        wrapperRef,
-        triggerRef,
-        callback: fetchNextArticlesPage,
-    });
-
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(initArticlesPage(searchParams));
@@ -89,7 +80,6 @@ const ArticlesPage = () => {
             dontRemoveAfterUnmount
         >
             <PageWrapper
-                wrapperRef={wrapperRef}
                 className={classNames(styles.ArticlePage, mods, [])}
                 trackScroll
             >
@@ -102,15 +92,13 @@ const ArticlesPage = () => {
                             />
                         )
                         : (
-                            <>
-                                <ArticleFilters />
-                                <ArticleList
-                                    articles={articles}
-                                    view={view}
-                                    isLoading={isLoading}
-                                    triggerRef={triggerRef}
-                                />
-                            </>
+                            <ArticleList
+                                articles={articles}
+                                view={view}
+                                isLoading={isLoading}
+                                onLoadNextPart={fetchNextArticlesPage}
+                            />
+
                         )
                 }
             </PageWrapper>

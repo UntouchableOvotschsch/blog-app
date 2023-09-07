@@ -1,4 +1,4 @@
-import { infinityToggle } from 'shared/lib/helpers/infinityToggle/infinityToggle';
+import { infinityToggle } from './infinityToggle';
 
 describe('infinityToggle', () => {
     test('with numbers', () => {

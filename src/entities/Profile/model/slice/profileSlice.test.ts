@@ -1,13 +1,9 @@
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
-import {
-    fetchProfileData,
-    profileActions,
-    profileReducer,
-    ProfileValidationErrors,
-    updateProfileData,
-} from 'entities/Profile';
-import type { ProfileSchema } from '../types/profile';
+import { ProfileSchema, ProfileValidationErrors } from '../types/profile';
+import { profileActions, profileReducer } from './profileSlice';
+import { fetchProfileData } from '../services/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData';
 
 describe('profileSlice', () => {
     const profileState: ProfileSchema = {

@@ -1,5 +1,5 @@
-import { ProfileType } from 'entities/Profile';
 import { Countries } from 'entities/Country';
+import { ProfileType } from '../../types/profile';
 import { profileDataValidator } from '.';
 
 describe('profileDataValidator.test', () => {

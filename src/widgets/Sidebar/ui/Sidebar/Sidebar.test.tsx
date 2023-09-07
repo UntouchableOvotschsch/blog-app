@@ -1,7 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { Sidebar } from 'widgets/Sidebar';
-
 import { renderForTests } from 'shared/config/jest/renderForTests';
+import { Sidebar } from '.';
 
 describe('Sidebar', () => {
     test('render', () => {

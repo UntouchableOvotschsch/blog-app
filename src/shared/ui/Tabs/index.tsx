@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import Card from 'shared/ui/Card/Card';
+import { Button, ThemeButton } from '../Button/Button';
+import Card from '../Card/Card';
 import styles from './Tabs.module.scss';
 
 export interface TabItem <T extends string>{

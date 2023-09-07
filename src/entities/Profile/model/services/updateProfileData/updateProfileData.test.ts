@@ -1,8 +1,8 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { ProfileType } from 'entities/Profile';
 import { Countries } from 'entities/Country';
 import { Currencies } from 'entities/Currency';
 import { UserRoles } from 'entities/User';
+import { ProfileType } from '../../types/profile';
 import { updateProfileData } from '.';
 
 describe('updateProfileData', () => {

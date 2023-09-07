@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import CopyIcon from 'shared/assets/icons/copy.svg';
 import OkIcon from 'shared/assets/icons/ok.svg';
-import Icon from 'shared/ui/Icon';
+import { Button, ThemeButton } from '../Button/Button';
+import Icon from '../Icon';
 import styles from './Code.module.scss';
 
 interface CodeProps {

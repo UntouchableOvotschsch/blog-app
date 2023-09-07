@@ -4,8 +4,8 @@ import Select, { SelectContainerTheme, SelectOptions } from 'shared/ui/Select';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Icon from 'shared/ui/Icon';
 import SortArrow from 'shared/assets/icons/sort-arrow.svg';
-import { SortField, SortOrder } from 'features/SortSelector';
 import { useTranslation } from 'react-i18next';
+import { SortField, SortOrder } from '../model/types/sortTypes';
 import styles from './SortSelector.module.scss';
 
 interface SortSelectorProps {

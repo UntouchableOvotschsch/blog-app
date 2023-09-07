@@ -1,4 +1,4 @@
-import ArticleTypeTabs from 'features/ArticleTypeTabs/ui/ArticleTypeTabs';
+import ArticleTypeTabs from './ui/ArticleTypeTabs';
 
 export {
     ArticleTypeTabs,

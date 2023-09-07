@@ -1,11 +1,10 @@
 import React, { memo, useMemo, useState } from 'react';
-
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
-import LinkItem from 'widgets/Sidebar/ui/LinkItem';
 import { useSelector } from 'react-redux';
+import LinkItem from '../LinkItem';
 import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
 import styles from './Sidebar.module.scss';
 

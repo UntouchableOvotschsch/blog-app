@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getUserAuthData, UserRoles } from 'entities/User';
 import { useSelector } from 'react-redux';
 import { getProfileData } from 'entities/Profile';
+import { getProfileCanEdit } from 'entities/Profile/model/selectors/getProfileCanEdit';
 import styles from './ProfilePageHeader.module.scss';
 
 interface ProfilePageProps {
@@ -21,10 +22,7 @@ const ProfileCardHeader = ({
 }: ProfilePageProps) => {
     const { t } = useTranslation('profile');
 
-    const user = useSelector(getUserAuthData);
-    const profile = useSelector(getProfileData);
-
-    const canEdit = user?.id === profile?.id || user?.roles.includes(UserRoles.ADMIN);
+    const canEdit = useSelector(getProfileCanEdit);
 
     return (
         <div className={styles.header}>

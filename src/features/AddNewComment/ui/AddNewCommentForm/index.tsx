@@ -5,15 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import { getAddNewCommentText } from 'features/AddNewComment/model/selectors/getAddNewCommentText';
 import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
 import CheckIcon from 'shared/assets/icons/ok.svg';
+import { getAddNewCommentText } from '../../model/selectors/getAddNewCommentText';
 import {
     getAddNewCommentLoading,
-} from 'features/AddNewComment/model/selectors/getAddNewCommentLoading';
+} from '../../model/selectors/getAddNewCommentLoading';
 import {
     getAddNewCommentError,
-} from 'features/AddNewComment/model/selectors/getAddNewCommentError';
+} from '../../model/selectors/getAddNewCommentError';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slice/addNewCommentSlice';
 import styles from './AddNewCommentForm.module.scss';
 import { getAddNewCommentWasSent } from '../../model/selectors/getAddNewCommentWasSent';

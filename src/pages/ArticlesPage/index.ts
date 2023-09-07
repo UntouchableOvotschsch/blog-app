@@ -1,4 +1,4 @@
-import { getArticlesActiveTypes } from 'pages/ArticlesPage/model/selectors/getArticlesActiveTypes';
+import { getArticlesActiveTypes } from './model/selectors/getArticlesActiveTypes';
 import { ArticlesPageAsync as ArticlesPage } from './ui/ArticlesPage/ArticlesPage.async';
 import { ArticlesPageSchema } from './model/types/articlesPageSchema';
 import { articlesPageActions, articlesPageReducer } from './model/slice/articlesPageSlice';
