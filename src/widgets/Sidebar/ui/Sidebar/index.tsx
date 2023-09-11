@@ -4,6 +4,7 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
+import { HStack, VStack } from 'shared/ui/Stack';
 import LinkItem from '../LinkItem';
 import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
 import styles from './Sidebar.module.scss';
@@ -35,12 +36,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             )}
         >
             <div className={styles.menu}>
-                <div className={styles.container}>
-
+                <VStack gap="16" align="start">
                     {
                         itemsList
                     }
-                </div>
+                </VStack>
             </div>
 
             <Button
@@ -56,10 +56,20 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <div className={classNames(styles.switchers, { [styles.collapsed]: collapsed }, [])}>
-                <ThemeSwitcher />
-                <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
-            </div>
+            {
+                collapsed
+                    ? (
+                        <VStack className={styles.switchers}>
+                            <ThemeSwitcher />
+                            <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
+                        </VStack>
+                    ) : (
+                        <HStack className={styles.switchers} gap="8" justify="evenly">
+                            <ThemeSwitcher />
+                            <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
+                        </HStack>
+                    )
+            }
         </div>
     );
 });

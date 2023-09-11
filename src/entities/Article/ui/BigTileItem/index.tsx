@@ -12,8 +12,8 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import styles from './BigTileItem.module.scss';
 import {
     Article, ArticleBlock, ArticleBlockTypes, ArticleTextBlock,
-} from '../../../model/types/article';
-import ArticleTextBlockCom from '../../ArticleTextBlockCom';
+} from '../../model/types/article';
+import ArticleTextBlockCom from '../ArticleTextBlockCom';
 
 interface BigTileItemProps {
     article: Article

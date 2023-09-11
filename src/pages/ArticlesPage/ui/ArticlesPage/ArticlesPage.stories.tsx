@@ -4,8 +4,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-import { articleTemplate, ArticleViewTypes } from 'entities/Article';
-import ArticlesPage from './index';
+import { articleTemplate, ArticleTypes, ArticleViewTypes } from 'entities/Article';
+import { SortField } from 'features/SortSelector';
+import ArticlesPage from './ArticlesPage';
 
 export default {
     title: 'pages/ArticlesPage',
@@ -22,8 +23,16 @@ BigTile.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         articlesPage: {
-            view: ArticleViewTypes.BIG_TILE,
             isLoading: false,
+            page: 1,
+            limit: 3,
+            search: '',
+            sortField: SortField.CREATED,
+            sortOrder: 'asc',
+            hasMore: false,
+            _inited: false,
+            types: [ArticleTypes.ALL],
+            view: ArticleViewTypes.BIG_TILE,
             ids: [1, 2, 3, 4, 5],
             entities: {
                 1: {
@@ -51,6 +60,14 @@ BigTileLoading.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         articlesPage: {
+            page: 1,
+            limit: 3,
+            search: '',
+            sortField: SortField.CREATED,
+            sortOrder: 'asc',
+            hasMore: false,
+            _inited: false,
+            types: [ArticleTypes.ALL],
             view: ArticleViewTypes.BIG_TILE,
             isLoading: true,
             ids: [],
@@ -64,8 +81,16 @@ SmallTile.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         articlesPage: {
-            view: ArticleViewTypes.SMALL_TILE,
             isLoading: false,
+            page: 1,
+            limit: 3,
+            search: '',
+            sortField: SortField.CREATED,
+            sortOrder: 'asc',
+            hasMore: false,
+            _inited: false,
+            types: [ArticleTypes.ALL],
+            view: ArticleViewTypes.SMALL_TILE,
             ids: [1, 2, 3, 4, 5],
             entities: {
                 1: {
@@ -93,6 +118,14 @@ SmallTileLoading.decorators = [
     ThemeDecorator(Themes.LIGHT),
     StoreDecorator({
         articlesPage: {
+            page: 1,
+            limit: 3,
+            search: '',
+            sortField: SortField.CREATED,
+            sortOrder: 'asc',
+            hasMore: false,
+            _inited: false,
+            types: [ArticleTypes.ALL],
             view: ArticleViewTypes.SMALL_TILE,
             isLoading: true,
             ids: [],

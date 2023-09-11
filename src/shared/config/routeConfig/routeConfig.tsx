@@ -4,7 +4,7 @@ import { AboutPage } from 'pages/AboutPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import AuthWrapper from 'app/providers/RouterProvider/ui/wrappers/AuthWrapper';
-import { ArticlesPage } from 'pages/ArticlesPage';
+import { ArticlesPageAsync } from 'pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 
@@ -66,8 +66,9 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLES]: {
         path: RoutePath.articles,
         element: (
+            // TODO Почему-то с импортом из паблик апи стреляет ошибка в сторибуке
             <AuthWrapper>
-                <ArticlesPage />
+                <ArticlesPageAsync />
             </AuthWrapper>
         ),
     },

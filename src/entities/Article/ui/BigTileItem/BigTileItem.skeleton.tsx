@@ -4,7 +4,7 @@ import Card from 'shared/ui/Card/Card';
 import Skeleton from 'shared/ui/Skeleton';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import styles from '../BigTileItem.module.scss';
+import styles from './BigTileItem.module.scss';
 
 interface BigTileItemSkeletonProps {
     className?: string

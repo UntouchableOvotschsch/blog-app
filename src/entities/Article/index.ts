@@ -7,11 +7,12 @@ import {
     ArticleViewTypes,
 } from './model/types/article';
 import { articlesArrayTemplate, articleTemplate } from './model/templates/article';
-import BigTileItemSkeleton from './ui/ArticleListItem/BigTileItem/Skeleton/BigTileItem.skeleton';
-import SmallTileItemSkeleton
-    from './ui/ArticleListItem/SmallTileItem/Skeleton/SmallTileItem.skeleton';
+import BigTileItemSkeleton from './ui/BigTileItem/BigTileItem.skeleton';
+import SmallTileItemSkeleton from './ui/SmallTileItem/SmallTileItem.skeleton';
 import ArticleImageBlockCom from './ui/ArticleImageBlockCom';
 import ArticleCodeBlockCom from './ui/ArticleCodeBlockCom';
+import BigTileItem from './ui/BigTileItem';
+import SmallTileItem from './ui/SmallTileItem';
 
 export {
     Article,
@@ -26,4 +27,6 @@ export {
     SmallTileItemSkeleton,
     articlesArrayTemplate,
     ArticleTypes,
+    BigTileItem,
+    SmallTileItem,
 };

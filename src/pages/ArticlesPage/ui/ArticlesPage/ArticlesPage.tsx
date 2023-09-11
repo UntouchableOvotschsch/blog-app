@@ -1,26 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import {
-    MutableRefObject, useCallback, useEffect, useRef,
-} from 'react';
+import { useCallback, useEffect } from 'react';
 import ArticleList from 'widgets/Article/ui/ArticleList';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll';
 import { PageWrapper } from 'widgets/PageWrapper';
-import { ArticleFilters } from 'widgets/Article';
 import { useSearchParams } from 'react-router-dom';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
 import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';
 import { getArticleError } from '../../model/selectors/getArticlesError';
 import { fetchArticles } from '../../model/service/fetchArticles';
-import {
-    articlesPageActions,
-    articlesPageReducer,
-    articlesSelectors,
-} from '../../model/slice/articlesPageSlice';
+import { articlesPageActions, articlesPageReducer, articlesSelectors } from '../../model/slice/articlesPageSlice';
 import { getArticleView } from '../../model/selectors/getArticleView';
 import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 import { getArticlesPage } from '../../model/selectors/getArticlesPage';

@@ -6,7 +6,7 @@ import Icon from 'shared/ui/Icon';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Article } from '../../../model/types/article';
+import { Article } from '../../model/types/article';
 import styles from './SmallTileItem.module.scss';
 
 interface BigTileItemProps {

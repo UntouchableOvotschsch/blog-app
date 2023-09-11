@@ -8,27 +8,13 @@
 }
 
 .menu {
-    display: flex;
     margin: 20px 0 0 30px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .switchers {
     position: absolute;
-    display: flex;
     bottom: 20px;
     width: 100%;
-    justify-content: space-evenly;
-
-    &.collapsed {
-        flex-direction: column;
-        gap: 10px;
-    }
 }
 
 .lngSwitcher {

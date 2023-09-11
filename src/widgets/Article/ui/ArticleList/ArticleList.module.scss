@@ -1,34 +1,3 @@
 .container {
     height: 100%;
 }
-
-.header {
-    padding: 20px;
-}
-
-.footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.SMALL_TILE {
-    .gridRow {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-.BIG_TILE {
-    .card {
-        margin: 20px auto;
-    }
-}
-
-.SMALL_TILE_ROW {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-y: hidden;
-    overflow-x: auto;
-}

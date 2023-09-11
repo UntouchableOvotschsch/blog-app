@@ -23,7 +23,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
-        'fsd',
+        'fsd-rules-checker',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -47,12 +47,12 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to'],
+                ignoreAttribute: ['data-testid', 'to', 'align', 'justify', 'direction', 'gap'],
             },
         ],
         'max-len': ['error', {
             ignoreComments: true,
-            code: 100,
+            code: 115,
         }],
         'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
         'jsx-a11y/no-static-element-interactions': 'off',
@@ -68,7 +68,7 @@ module.exports = {
             { argsIgnorePattern: '^_' },
         ],
         'react/no-array-index-key': 'off',
-        'fsd/fsd-path-checker': 'error',
+        'fsd-rules-checker/fsd-path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

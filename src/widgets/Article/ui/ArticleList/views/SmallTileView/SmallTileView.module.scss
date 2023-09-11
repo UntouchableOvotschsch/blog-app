@@ -1,0 +1,19 @@
+.gridRow {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 5%;
+}
+
+.SMALL_TILE_ROW {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
