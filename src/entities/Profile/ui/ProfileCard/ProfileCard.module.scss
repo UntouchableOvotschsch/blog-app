@@ -1,13 +1,4 @@
-.data {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.formContainer {
     width: 40%;
 }
 

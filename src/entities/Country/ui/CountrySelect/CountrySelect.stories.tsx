@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { PageWrapper } from 'widgets/PageWrapper';
+import { Countries } from '../../model/types/countries';
 import CountrySelect from '.';
 
 export default {
@@ -22,30 +23,20 @@ const Template: ComponentStory<typeof CountrySelect> = (args) => (
     </PageWrapper>
 );
 
-export const EditableTrueLight = Template.bind({});
-EditableTrueLight.args = {};
-EditableTrueLight.decorators = [
+export const EditableTrue = Template.bind({});
+EditableTrue.args = {
+    editable: true,
+    selectValue: Countries.Russia,
+};
+EditableTrue.decorators = [
     ThemeDecorator(Themes.LIGHT),
 ];
 
-export const EditableTrueDark = Template.bind({});
-EditableTrueDark.args = {};
-EditableTrueDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
-
-export const EditableFalseLight = Template.bind({});
-EditableFalseLight.args = {
+export const EditableFalse = Template.bind({});
+EditableFalse.args = {
     editable: false,
+    selectValue: Countries.Russia,
 };
-EditableFalseLight.decorators = [
+EditableFalse.decorators = [
     ThemeDecorator(Themes.LIGHT),
-];
-
-export const EditableFalseDark = Template.bind({});
-EditableFalseDark.args = {
-    editable: false,
-};
-EditableFalseDark.decorators = [
-    ThemeDecorator(Themes.DARK),
 ];

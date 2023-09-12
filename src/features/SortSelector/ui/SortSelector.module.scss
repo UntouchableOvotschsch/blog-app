@@ -1,9 +1,3 @@
-.sortSelector {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 .asc {
     transform: rotate(-180deg);
 }
@@ -11,4 +5,8 @@
 .btn {
     display: flex;
     align-items: center;
+}
+
+.select {
+    width: 100px;
 }

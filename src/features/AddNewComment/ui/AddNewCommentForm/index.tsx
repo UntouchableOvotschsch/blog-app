@@ -7,13 +7,10 @@ import { Button } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
 import CheckIcon from 'shared/assets/icons/ok.svg';
+import { HStack } from 'shared/ui/Stack';
 import { getAddNewCommentText } from '../../model/selectors/getAddNewCommentText';
-import {
-    getAddNewCommentLoading,
-} from '../../model/selectors/getAddNewCommentLoading';
-import {
-    getAddNewCommentError,
-} from '../../model/selectors/getAddNewCommentError';
+import { getAddNewCommentLoading } from '../../model/selectors/getAddNewCommentLoading';
+import { getAddNewCommentError } from '../../model/selectors/getAddNewCommentError';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slice/addNewCommentSlice';
 import styles from './AddNewCommentForm.module.scss';
 import { getAddNewCommentWasSent } from '../../model/selectors/getAddNewCommentWasSent';
@@ -59,7 +56,7 @@ const AddNewCommentForm = memo(({
     return (
         <DynamicModuleLoader reducerList={reducerList}>
             <div className={styles.container}>
-                <div className={styles.commentForm}>
+                <HStack>
                     <Input
                         className={styles.input}
                         placeholder={t('Комментировать')}
@@ -83,7 +80,7 @@ const AddNewCommentForm = memo(({
                         }
 
                     </div>
-                </div>
+                </HStack>
                 {
                     isError && (
                         <Text

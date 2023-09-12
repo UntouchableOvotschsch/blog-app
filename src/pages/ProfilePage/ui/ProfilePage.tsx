@@ -21,7 +21,7 @@ import Text, { ThemeText } from 'shared/ui/Text/Text';
 import { updateProfileData } from 'entities/Profile/model/services/updateProfileData';
 import { useParams } from 'react-router-dom';
 import { PageWrapper } from 'widgets/PageWrapper';
-import styles from './ProfilePage.module.scss';
+import { HStack, VStack } from 'shared/ui/Stack';
 import ProfilePageHeader from './ProfilePageHeader';
 
 const reducers: ReducerList = {
@@ -74,7 +74,7 @@ const ProfilePage = () => {
     return (
         <DynamicModuleLoader reducerList={reducers}>
             <PageWrapper>
-                <div className={styles.container}>
+                <VStack gap="16">
                     <ProfilePageHeader
                         editable={editable}
                         setEditMode={setEditMode}
@@ -90,30 +90,31 @@ const ProfilePage = () => {
                         isError={isError}
                     />
 
-                    {
-                        editable
-                        && (
+                    <HStack justify="between">
+                        <VStack maxWidth={false} gap="4" align="start">
+                            {!!validationErrors?.length && validationErrors?.map((error) => (
+                                <Text
+                                    text={validationErrorsTranslation[error]}
+                                    theme={ThemeText.ERROR}
+                                    key={error}
+                                />
+                            ))}
+                        </VStack>
+                        {
+                            editable
+                            && (
 
-                            <Button
-                                theme={ThemeButton.OUTLINE}
-                                onClick={updateProfile}
-                                size={SizeButton.M}
-                                className={styles.saveBtn}
-                            >
-                                {t('Сохранить')}
-                            </Button>
-                        )
-                    }
-
-                    {!!validationErrors?.length && validationErrors?.map((error) => (
-                        <Text
-                            text={validationErrorsTranslation[error]}
-                            theme={ThemeText.ERROR}
-                            key={error}
-                        />
-                    ))}
-
-                </div>
+                                <Button
+                                    theme={ThemeButton.OUTLINE}
+                                    onClick={updateProfile}
+                                    size={SizeButton.M}
+                                >
+                                    {t('Сохранить')}
+                                </Button>
+                            )
+                        }
+                    </HStack>
+                </VStack>
             </PageWrapper>
         </DynamicModuleLoader>
     );

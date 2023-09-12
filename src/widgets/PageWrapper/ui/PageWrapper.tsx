@@ -43,13 +43,13 @@ const PageWrapper = ({
     }, 200);
 
     return (
-        <section
+        <main
             className={classNames('wrapper', {}, [className])}
             ref={wrapperRef}
             onScroll={onScrollHandler}
         >
             {children}
-        </section>
+        </main>
     );
 };
 

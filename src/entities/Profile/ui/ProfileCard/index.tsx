@@ -6,6 +6,7 @@ import { CurrencySelect } from 'entities/Currency';
 import { CountrySelect } from 'entities/Country';
 import Text, { TextAlign, ThemeText } from 'shared/ui/Text/Text';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { VStack } from 'shared/ui/Stack';
 import { ProfileType } from '../../model/types/profile';
 import styles from './ProfileCard.module.scss';
 
@@ -43,7 +44,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
         );
     }
     return (
-        <div className={styles.data}>
+        <VStack>
             <div className={styles.avatar}>
                 {
                     data?.avatar
@@ -55,67 +56,69 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     )
                 }
             </div>
-            <div className={styles.inputs}>
-                <Input
-                    value={data?.firstname}
-                    onChange={(value) => changeProfileData({ firstname: value })}
-                    readOnly={!editable}
-                    placeholder={t('Ваше имя')}
-                />
-                <Input
-                    value={data?.lastname}
-                    onChange={(value) => changeProfileData({ lastname: value })}
-                    readOnly={!editable}
-                    placeholder={t('Ваша фамилия')}
-                />
-                <Input
-                    value={data?.username}
-                    onChange={(value) => changeProfileData({ username: value })}
-                    readOnly={!editable}
-                    placeholder={t('Ваш никнейм')}
-                />
-                <Input
-                    value={data?.age}
-                    onChange={(value) => changeProfileData({ age: Number(value) })}
-                    readOnly={!editable}
-                    type="number"
-                    min="0"
-                    placeholder={t('Ваш возраст')}
-                />
-                <CountrySelect
-                    selectValue={data?.country}
-                    editable={editable}
-                    onChange={(country) => changeProfileData({
-                        country,
-                    })}
-                />
-                <Input
-                    value={data?.city}
-                    onChange={(value) => changeProfileData({ city: value })}
-                    readOnly={!editable}
-                    placeholder={t('Ваш город')}
-                />
-                <CurrencySelect
-                    selectValue={data?.currency}
-                    editable={editable}
-                    onChange={(currency) => changeProfileData({
-                        currency,
-                    })}
-                />
+            <div className={styles.formContainer}>
+                <VStack gap="8">
+                    <Input
+                        value={data?.firstname}
+                        onChange={(value) => changeProfileData({ firstname: value })}
+                        readOnly={!editable}
+                        placeholder={t('Ваше имя')}
+                        className={styles.inpu}
+                    />
+                    <Input
+                        value={data?.lastname}
+                        onChange={(value) => changeProfileData({ lastname: value })}
+                        readOnly={!editable}
+                        placeholder={t('Ваша фамилия')}
+                    />
+                    <Input
+                        value={data?.username}
+                        onChange={(value) => changeProfileData({ username: value })}
+                        readOnly={!editable}
+                        placeholder={t('Ваш никнейм')}
+                    />
+                    <Input
+                        value={data?.age}
+                        onChange={(value) => changeProfileData({ age: Number(value) })}
+                        readOnly={!editable}
+                        type="number"
+                        min="0"
+                        placeholder={t('Ваш возраст')}
+                    />
+                    <CountrySelect
+                        selectValue={data?.country}
+                        editable={editable}
+                        onChange={(country) => changeProfileData({
+                            country,
+                        })}
+                    />
+                    <Input
+                        value={data?.city}
+                        onChange={(value) => changeProfileData({ city: value })}
+                        readOnly={!editable}
+                        placeholder={t('Ваш город')}
+                    />
+                    <CurrencySelect
+                        selectValue={data?.currency}
+                        editable={editable}
+                        onChange={(currency) => changeProfileData({
+                            currency,
+                        })}
+                    />
 
-                {
-                    editable
-                    && (
-                        <Input
-                            value={data?.avatar}
-                            onChange={(value) => changeProfileData({ avatar: value })}
-                            placeholder={t('Введите ссылку на аватар')}
-                        />
-                    )
-                }
+                    {
+                        editable
+                        && (
+                            <Input
+                                value={data?.avatar}
+                                onChange={(value) => changeProfileData({ avatar: value })}
+                                placeholder={t('Введите ссылку на аватар')}
+                            />
+                        )
+                    }
+                </VStack>
             </div>
-        </div>
-
+        </VStack>
     );
 };
 

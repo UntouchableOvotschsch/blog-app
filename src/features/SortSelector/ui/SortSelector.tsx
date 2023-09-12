@@ -5,11 +5,11 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Icon from 'shared/ui/Icon';
 import SortArrow from 'shared/assets/icons/sort-arrow.svg';
 import { useTranslation } from 'react-i18next';
+import { HStack } from 'shared/ui/Stack';
 import { SortField, SortOrder } from '../model/types/sortTypes';
 import styles from './SortSelector.module.scss';
 
 interface SortSelectorProps {
-    className?: string
     sortField: SortField
     sortOrder: SortOrder
     changeSortField: (sortField: SortField) => void
@@ -22,7 +22,6 @@ const SortSelector = (props: SortSelectorProps) => {
         sortOrder,
         changeSortField,
         changeSortOrder,
-        className,
     } = props;
     const { t } = useTranslation('article');
 
@@ -42,13 +41,14 @@ const SortSelector = (props: SortSelectorProps) => {
     ], [t]);
 
     return (
-        <div className={classNames(styles.sortSelector, {}, [className])}>
+        <HStack gap="4" maxWidth={false}>
             <Select
                 label={t('Сортировать по:')}
                 selectValue={sortField}
                 options={sortFields}
                 onChange={changeSortField}
                 containerTheme={SelectContainerTheme.ROW}
+                className={styles.select}
             />
             <Button
                 onClick={changeSortOrder}
@@ -60,7 +60,7 @@ const SortSelector = (props: SortSelectorProps) => {
                     Icon={SortArrow}
                 />
             </Button>
-        </div>
+        </HStack>
     );
 };
 

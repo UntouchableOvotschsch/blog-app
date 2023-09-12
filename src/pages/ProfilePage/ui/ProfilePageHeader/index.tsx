@@ -2,11 +2,9 @@ import React from 'react';
 import Text from 'shared/ui/Text/Text';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import { getUserAuthData, UserRoles } from 'entities/User';
 import { useSelector } from 'react-redux';
-import { getProfileData } from 'entities/Profile';
 import { getProfileCanEdit } from 'entities/Profile/model/selectors/getProfileCanEdit';
-import styles from './ProfilePageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfilePageProps {
     setEditMode: (value: boolean) => void
@@ -25,7 +23,7 @@ const ProfileCardHeader = ({
     const canEdit = useSelector(getProfileCanEdit);
 
     return (
-        <div className={styles.header}>
+        <HStack justify="between">
             <Text title={t('Профиль')} />
 
             {
@@ -56,7 +54,7 @@ const ProfileCardHeader = ({
                 )
             }
 
-        </div>
+        </HStack>
     );
 };
 

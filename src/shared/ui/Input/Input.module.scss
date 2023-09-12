@@ -5,6 +5,7 @@
     border: none;
     background-color: var(--inverted-bg-color);
     color: var(--bg-color);
+    width: 100%;
 
     &[type="number"]::-webkit-outer-spin-button,
     &[type="number"]::-webkit-inner-spin-button {

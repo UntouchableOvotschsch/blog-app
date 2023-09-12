@@ -27,7 +27,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     )), [ItemsLinksList, collapsed]);
 
     return (
-        <div
+        <aside
             data-testid="sidebar"
             className={classNames(
                 styles.Sidebar,
@@ -36,7 +36,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             )}
         >
             <div className={styles.menu}>
-                <VStack gap="16" align="start">
+                <VStack gap="16" align="start" role="navigation">
                     {
                         itemsList
                     }
@@ -70,6 +70,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         </HStack>
                     )
             }
-        </div>
+        </aside>
     );
 });

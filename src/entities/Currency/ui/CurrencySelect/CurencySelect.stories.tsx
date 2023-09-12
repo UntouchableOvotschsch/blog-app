@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { PageWrapper } from 'widgets/PageWrapper';
+import { Currencies } from '../../model/types/currencies';
 import CurrencySelect from '.';
 
 export default {
@@ -22,34 +23,20 @@ const Template: ComponentStory<typeof CurrencySelect> = (args) => (
     </PageWrapper>
 );
 
-export const EditableTrueLight = Template.bind({});
-EditableTrueLight.args = {
+export const EditableTrue = Template.bind({});
+EditableTrue.args = {
     editable: true,
+    selectValue: Currencies.RUB,
 };
-EditableTrueLight.decorators = [
+EditableTrue.decorators = [
     ThemeDecorator(Themes.LIGHT),
 ];
 
-export const EditableTrueDark = Template.bind({});
-EditableTrueDark.args = {
-    editable: true,
-};
-EditableTrueDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
-
-export const EditableFalseLight = Template.bind({});
-EditableFalseLight.args = {
+export const EditableFalse = Template.bind({});
+EditableFalse.args = {
     editable: false,
+    selectValue: Currencies.RUB,
 };
-EditableFalseLight.decorators = [
+EditableFalse.decorators = [
     ThemeDecorator(Themes.LIGHT),
-];
-
-export const EditableFalseDark = Template.bind({});
-EditableFalseDark.args = {
-    editable: false,
-};
-EditableFalseDark.decorators = [
-    ThemeDecorator(Themes.DARK),
 ];

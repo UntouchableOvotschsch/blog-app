@@ -20,6 +20,7 @@ const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 export const SelectLight = Template.bind({});
 SelectLight.args = {
     label: 'Sergey',
+    selectValue: 'Sergey',
     options: [
         {
             value: 'Sergey',
@@ -43,6 +44,7 @@ SelectLight.decorators = [
 export const SelectDark = Template.bind({});
 SelectDark.args = {
     label: 'Sergey',
+    selectValue: 'Sergey',
     options: [
         {
             value: 'Sergey',
