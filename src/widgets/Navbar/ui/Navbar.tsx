@@ -9,6 +9,8 @@ import { getUserAuthData, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import Dropdown from 'shared/ui/Dropdown/Dropdown';
+import Avatar from 'shared/ui/Avatar';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -45,13 +47,29 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </AppLink>
                 </Button>
 
-                <Button
-                    theme={ThemeButton.CLEAR_INVERTED}
-                    onClick={logoutBtn}
+                <Dropdown
                     className={styles.logoutBtn}
-                >
-                    {t('Выйти')}
-                </Button>
+                    position="bottom left"
+                    trigger={(
+                        <Avatar
+                            avatar={authData.avatar}
+                            alt={t('Аватар')}
+                            width={50}
+                            height={50}
+                            className={styles.avatar}
+                        />
+                    )}
+                    options={[
+                        {
+                            label: t('Профиль'),
+                            href: `${RoutePath.profile}/${authData.id}`,
+                        },
+                        {
+                            label: t('Выйти'),
+                            onClick: logoutBtn,
+                        },
+                    ]}
+                />
             </header>
         );
     }

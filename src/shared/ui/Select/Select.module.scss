@@ -3,21 +3,12 @@
     width: 100%;
 }
 
-.listBoxContainer {
-    background: none;
-    border: none;
-    outline: none;
-    padding: 0;
-    margin: 0;
+.listBoxBtn {
     min-width: 100%;
-
-    .listBoxBtn {
-        width: 100%;
-        border-radius: 10px;
-        background-color: var(--inverted-bg-color);
-        color: var(--bg-color);
-        height: 34px;
-    }
+    border-radius: 10px;
+    background-color: var(--inverted-bg-color);
+    color: var(--bg-color);
+    height: 34px;
 }
 
 .select {

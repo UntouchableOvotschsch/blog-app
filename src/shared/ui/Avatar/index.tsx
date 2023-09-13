@@ -17,7 +17,7 @@ const Avatar = ({
     height = 150,
     ...args
 }: AvatarProps) => (
-    <div className={classNames('', {}, [className])}>
+    <div className={classNames(styles.container, {}, [className])}>
         <img
             className={styles.image}
             src={(__PROJECT__ === 'storybook' ? avatarImg : avatar) || ''}

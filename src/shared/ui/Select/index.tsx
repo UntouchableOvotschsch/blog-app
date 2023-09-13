@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react';
-import React, { useMemo } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { HStack, VStack } from '../Stack';
 import Text, { TextSize } from '../Text/Text';
@@ -38,14 +38,14 @@ const Select = <T extends string>(props: SelectProps<T>) => {
 
     const optionList = useMemo(() => options?.map((el) => (
         <Listbox.Option
-            className={styles.option}
-            value={el.value}
+            as={Fragment}
             key={el.value}
+            value={el.value}
             disabled={el.disabled}
         >
             {({ active, selected }) => (
                 <li
-                    className={classNames('', { [styles.active]: active || selected }, [])}
+                    className={classNames(styles.option, { [styles.active]: active || selected }, [])}
                 >
                     {el.content}
                 </li>
@@ -69,7 +69,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                         className={classNames(styles.container, {}, [className])}
                         disabled={!editable}
                     >
-                        <Listbox.Button className={styles.listBoxContainer}>
+                        <Listbox.Button as={Fragment}>
                             <Button className={styles.listBoxBtn} disabled={!editable} theme={ThemeButton.CLEAR}>
                                 {contentSelectValue}
                             </Button>
@@ -95,7 +95,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                     className={classNames(styles.container, {}, [className])}
                     disabled={!editable}
                 >
-                    <Listbox.Button className={styles.listBoxContainer}>
+                    <Listbox.Button as={Fragment}>
                         <Button className={styles.listBoxBtn} disabled={!editable} theme={ThemeButton.CLEAR}>
                             {contentSelectValue}
                         </Button>
