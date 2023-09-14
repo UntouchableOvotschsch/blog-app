@@ -5,7 +5,7 @@ import { Themes } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Currencies } from 'entities/Currency';
 import { Countries } from 'entities/Country';
-import { ProfileValidationErrors } from 'entities/Profile';
+import { ProfileValidationErrors } from 'features/EditableProfileCard';
 import ProfilePage from './ProfilePage';
 
 export default {

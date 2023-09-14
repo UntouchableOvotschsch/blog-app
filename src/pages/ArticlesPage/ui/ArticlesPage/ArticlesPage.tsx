@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useCallback, useEffect } from 'react';
-import ArticleList from 'widgets/Article/ui/ArticleList';
+import { useEffect } from 'react';
 import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -9,18 +8,14 @@ import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
 import { PageWrapper } from 'widgets/PageWrapper';
 import { useSearchParams } from 'react-router-dom';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
-import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';
 import { getArticleError } from '../../model/selectors/getArticlesError';
-import { fetchArticles } from '../../model/service/fetchArticles';
-import { articlesPageActions, articlesPageReducer, articlesSelectors } from '../../model/slice/articlesPageSlice';
-import { getArticleView } from '../../model/selectors/getArticleView';
-import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
-import { getArticlesPage } from '../../model/selectors/getArticlesPage';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import styles from './ArticlesPage.module.scss';
 import { initArticlesPage } from '../../model/service/initArticlesPage';
 import { getArticlesSortField } from '../../model/selectors/getArticlesSortField';
 import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder';
 import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
+import ArticleInfiniteList from '../ArticleInfiniteList/ArticleInfiniteList';
 
 const reducers: ReducerList = {
     articlesPage: articlesPageReducer,
@@ -29,15 +24,8 @@ const reducers: ReducerList = {
 const ArticlesPage = () => {
     const { t } = useTranslation('article');
     const [searchParams, setSearchParams] = useSearchParams();
-
     const dispatch = useAppDispatch();
-
-    const view = useSelector(getArticleView);
-    const articles = useSelector(articlesSelectors.selectAll);
-    const isLoading = useSelector(getArticleLoading);
     const error = useSelector(getArticleError);
-    const hasMore = useSelector(getArticlesHasMore);
-    const page = useSelector(getArticlesPage);
     const sortField = useSelector(getArticlesSortField);
     const sortOrder = useSelector(getArticlesSortOrder);
     const search = useSelector(getArticlesSearch);
@@ -46,13 +34,6 @@ const ArticlesPage = () => {
     const mods: Mods = {
         [styles.errorPage]: !!error,
     };
-
-    const fetchNextArticlesPage = useCallback(() => {
-        if (!isLoading && hasMore && __PROJECT__ !== 'storybook') {
-            dispatch(articlesPageActions.setArticlesPage(page + 1));
-            dispatch(fetchArticles({}));
-        }
-    }, [dispatch, hasMore, isLoading, page]);
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -84,13 +65,7 @@ const ArticlesPage = () => {
                             />
                         )
                         : (
-                            <ArticleList
-                                articles={articles}
-                                view={view}
-                                isLoading={isLoading}
-                                onLoadNextPart={fetchNextArticlesPage}
-                            />
-
+                            <ArticleInfiniteList />
                         )
                 }
             </PageWrapper>

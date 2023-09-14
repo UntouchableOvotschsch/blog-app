@@ -1,7 +1,16 @@
+import { commentFormActions, commentFormReducer } from './model/slice/commentFormSlice';
 import type { CommentType } from './model/types/comment';
+import { CommentFormSchema } from './model/types/commentFormSchema';
 import Comment from './ui/Comment';
+import CommentForm from './ui/CommentForm';
+import CommentsList from './ui/CommentsList';
 
 export {
     Comment,
     CommentType,
+    CommentsList,
+    commentFormReducer,
+    commentFormActions,
+    CommentFormSchema,
+    CommentForm,
 };

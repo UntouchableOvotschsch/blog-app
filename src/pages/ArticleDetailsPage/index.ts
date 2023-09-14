@@ -1,11 +1,5 @@
-import { articleDetailsPageReducers } from './model/slice';
-import {
-    ArticleDetailsPageAsync as ArticleDetailsPage,
-} from './ui/ArticleDetailsPage/ArticleDetailsPage.async';
-import { ArticleDetailsPageSchema } from './model/types/articleDetails';
+import { ArticleDetailsPageAsync as ArticleDetailsPage } from './ui/ArticleDetailsPage/ArticleDetailsPage.async';
 
 export {
     ArticleDetailsPage,
-    ArticleDetailsPageSchema,
-    articleDetailsPageReducers,
 };

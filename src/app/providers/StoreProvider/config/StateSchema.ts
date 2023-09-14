@@ -2,30 +2,28 @@ import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
 import { AuthByUsernameSchema } from 'features/AuthByUsername';
 import {
-    AnyAction,
-    CombinedState,
-    EnhancedStore,
-    Reducer,
-    ReducersMapObject,
+    AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { ProfileSchema } from 'entities/Profile';
+import { ProfileSchema } from 'features/EditableProfileCard';
 import { AxiosInstance } from 'axios';
-import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
-import { AddNewCommentSchema } from 'features/AddNewComment';
+import { CommentFormSchema } from 'entities/Comment';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { UISchema } from 'features/UI';
+import { rtkApi } from 'shared/api/rtkApi';
+import { ArticleCommentsSliceSchema } from 'features/ArticleComments';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema,
     ui: UISchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // Async
     authByUsername?: AuthByUsernameSchema,
     profile?: ProfileSchema
-    articlesDetailsPage?: ArticleDetailsPageSchema
-    addNewComment?: AddNewCommentSchema
+    commentForm?: CommentFormSchema
     articlesPage?: ArticlesPageSchema
+    articleComments?: ArticleCommentsSliceSchema
 }
 
 export interface ReducerManager {

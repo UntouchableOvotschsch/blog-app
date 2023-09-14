@@ -57,6 +57,7 @@ module.exports = {
                     'role',
                     'as',
                     'position',
+                    'target',
                 ],
             },
         ],
