@@ -7,9 +7,14 @@ import AuthWrapper from 'app/providers/RouterProvider/ui/wrappers/AuthWrapper';
 import { ArticlesPageAsync } from 'pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async';
 import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
+import { AdminPage } from 'pages/AdminPage';
+import { UserRoles } from 'entities/User';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
+import RoleWrapper from 'app/providers/RouterProvider/ui/wrappers/RoleWrapper';
 
 type AppRoutesProps = RouteProps & {
     authOnly?: boolean
+    roles?: UserRoles[]
 }
 
 export enum AppRoutes {
@@ -20,6 +25,8 @@ export enum AppRoutes {
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
+    ADMIN = 'admin',
+    FORBIDDEN = 'forbidden',
     // last
     NOTFOUND = 'notfound'
 }
@@ -38,6 +45,10 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.ARTICLE_CREATE]: '/articles/new',
 
     [AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit', // + id
+
+    [AppRoutes.ADMIN]: '/admin',
+
+    [AppRoutes.FORBIDDEN]: '/forbidden',
 
     [AppRoutes.NOTFOUND]: '*',
 
@@ -98,6 +109,22 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
                 <ArticleEditPage />
             </AuthWrapper>
         ),
+    },
+
+    [AppRoutes.ADMIN]: {
+        path: RoutePath.admin,
+        element: (
+            <AuthWrapper>
+                <RoleWrapper roles={[UserRoles.ADMIN]}>
+                    <AdminPage />
+                </RoleWrapper>
+            </AuthWrapper>
+        ),
+        roles: [UserRoles.ADMIN],
+    },
+    [AppRoutes.FORBIDDEN]: {
+        path: RoutePath.forbidden,
+        element: <ForbiddenPage />,
     },
 
     // last

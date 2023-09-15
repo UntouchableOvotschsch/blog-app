@@ -8,7 +8,7 @@ import { useGetArticlesRecommendationsQuery } from '../../model/api';
 const ArticleRecommendationsList = () => {
     const { t } = useTranslation('articleRecommendationsList');
     const { data: articles, isLoading, isError } = useGetArticlesRecommendationsQuery(7);
-    if (!isLoading || !articles?.length || isError) {
+    if ((!articles?.length || isError) && !isLoading) {
         return (
             <Text
                 theme={ThemeText.ERROR}

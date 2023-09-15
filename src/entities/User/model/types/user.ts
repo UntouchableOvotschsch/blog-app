@@ -8,9 +8,10 @@ export interface User {
     username: string
     avatar?: string
     roles: UserRoles[]
+
 }
 
 export interface UserSchema {
     authData?: User,
-
+    _inited: boolean
 }

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, userActions } from 'entities/User';
+import { getUserAuthData, getUserIsAdmin, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -20,6 +20,7 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
+    const isAdmin = useSelector(getUserIsAdmin);
     const [loginModal, setLoginModal] = useState(false);
     const dispatch = useDispatch();
 
@@ -62,8 +63,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     options={[
                         {
                             label: t('Профиль'),
-                            href: `${RoutePath.profile}/${authData.id}`,
+                            href: `${RoutePath.profile}/${authData?.id}`,
                         },
+                        ...(isAdmin ? [
+                            {
+                                label: t('Админка'),
+                                href: RoutePath.admin,
+                            },
+                        ] : []),
                         {
                             label: t('Выйти'),
                             onClick: logoutBtn,

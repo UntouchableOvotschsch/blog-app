@@ -5,21 +5,21 @@ import Text from 'shared/ui/Text/Text';
 import { useSelector } from 'react-redux';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useGetArticleDetailsQuery } from 'entities/Article';
-import { getUserAuthData, UserRoles } from 'entities/User';
+import { getUserAuthData, getUserIsAdmin } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
 import styles from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
-    className?: string;
     id: string
 }
 
-const ArticleDetailsPageHeader = ({ className, id }: ArticleDetailsPageHeaderProps) => {
+const ArticleDetailsPageHeader = ({ id }: ArticleDetailsPageHeaderProps) => {
     const { t } = useTranslation('articleDetails');
     const userData = useSelector(getUserAuthData);
     const { data: article } = useGetArticleDetailsQuery(id);
+    const isAdmin = useSelector(getUserIsAdmin);
 
-    const canEdit = userData?.id === article?.user?.id || userData?.roles.includes(UserRoles.ADMIN);
+    const canEdit = userData?.id === article?.user?.id || isAdmin;
 
     return (
         <HStack justify="between">
