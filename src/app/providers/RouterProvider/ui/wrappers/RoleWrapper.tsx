@@ -14,10 +14,10 @@ const RoleWrapper = ({ children, roles }: RoleWrapperProps) => {
     const location = useLocation();
     const checkRoles = useMemo(() => roles?.some((role) => userRoles?.includes(role)), [roles, userRoles]);
 
-    if (!checkRoles) {
-        return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
+    if (checkRoles) {
+        return children;
     }
-    return children;
+    return <Navigate to={RoutePath.forbidden} state={{ from: location }} replace />;
 };
 
 export default RoleWrapper;

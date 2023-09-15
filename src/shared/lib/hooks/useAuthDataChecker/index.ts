@@ -1,19 +1,11 @@
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 import { emptyObjChecker } from '../../helpers/emptyObjChecker';
 
 export const useAuthDataChecker = (): boolean => {
     const isSliceAuthData = useSelector(getUserAuthData);
-    if (__PROJECT__ === 'storybook' && !emptyObjChecker(isSliceAuthData)) {
+    if (__PROJECT__ === 'storybook') {
         return true;
     }
-    const localStorageAuthData = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-    if (localStorageAuthData) {
-        return !(
-            emptyObjChecker(isSliceAuthData)
-            && emptyObjChecker(JSON.parse(localStorageAuthData))
-        );
-    }
-    return false;
+    return !emptyObjChecker(isSliceAuthData);
 };

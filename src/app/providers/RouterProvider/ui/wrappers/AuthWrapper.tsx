@@ -7,10 +7,10 @@ const AuthWrapper = ({ children }: {children: JSX.Element}) => {
     const isAuth = useAuthDataChecker();
     const location = useLocation();
 
-    if (!isAuth) {
-        return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+    if (isAuth) {
+        return children;
     }
-    return children;
+    return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
 };
 
 export default AuthWrapper;

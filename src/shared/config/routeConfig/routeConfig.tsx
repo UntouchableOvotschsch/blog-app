@@ -124,7 +124,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.FORBIDDEN]: {
         path: RoutePath.forbidden,
-        element: <ForbiddenPage />,
+        element: (
+            <AuthWrapper>
+                <ForbiddenPage />
+            </AuthWrapper>
+        ),
     },
 
     // last
