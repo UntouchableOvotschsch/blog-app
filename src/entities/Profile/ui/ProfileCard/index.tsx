@@ -63,13 +63,14 @@ const ProfileCard: FC<ProfileCardProps> = ({
                         onChange={(value) => changeProfileData({ firstname: value })}
                         readOnly={!editable}
                         placeholder={t('Ваше имя')}
-                        className={styles.inpu}
+                        data-testid="ProfileCard.FirstnameInput"
                     />
                     <Input
                         value={data?.lastname}
                         onChange={(value) => changeProfileData({ lastname: value })}
                         readOnly={!editable}
                         placeholder={t('Ваша фамилия')}
+                        data-testid="ProfileCard.LastnameInput"
                     />
                     <Input
                         value={data?.username}

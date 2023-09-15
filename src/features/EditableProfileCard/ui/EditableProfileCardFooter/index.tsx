@@ -35,6 +35,7 @@ const EditableProfileCardFooter = ({
                         text={validationErrorsTranslation[error]}
                         theme={ThemeText.ERROR}
                         key={error}
+                        data-testid="EditableProfileCardFooter.Error"
                     />
                 ))}
             </VStack>
@@ -46,6 +47,7 @@ const EditableProfileCardFooter = ({
                         theme={ThemeButton.OUTLINE}
                         onClick={updateProfile}
                         size={SizeButton.M}
+                        data-testid="EditableProfileCardFooter.SaveBtn"
                     >
                         {t('Сохранить')}
                     </Button>

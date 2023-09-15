@@ -18,7 +18,7 @@ describe('Counter', () => {
         expect(screen.getByTestId('counter'))
             .toHaveTextContent('0');
     });
-    test('increment', () => {
+    test('increment', async () => {
         renderForTests(<Counter />, {
             initialState: {
                 counter: state,
@@ -27,11 +27,11 @@ describe('Counter', () => {
         const incrementButton = screen.getByTestId('increment-button');
         expect(screen.getByTestId('counter'))
             .toBeInTheDocument();
-        userEvent.click(incrementButton);
+        await userEvent.click(incrementButton);
         expect(screen.getByTestId('value-title'))
             .toHaveTextContent('1');
     });
-    test('decrement', () => {
+    test('decrement', async () => {
         renderForTests(<Counter />, {
             initialState: {
                 counter: state,
@@ -40,7 +40,7 @@ describe('Counter', () => {
         const decrementButton = screen.getByTestId('decrement-button');
         expect(screen.getByTestId('counter'))
             .toBeInTheDocument();
-        userEvent.click(decrementButton);
+        await userEvent.click(decrementButton);
         expect(screen.getByTestId('value-title'))
             .toHaveTextContent('-1');
     });

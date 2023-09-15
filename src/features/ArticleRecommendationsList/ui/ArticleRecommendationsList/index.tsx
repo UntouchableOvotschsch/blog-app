@@ -8,7 +8,7 @@ import { useGetArticlesRecommendationsQuery } from '../../model/api';
 const ArticleRecommendationsList = () => {
     const { t } = useTranslation('articleRecommendationsList');
     const { data: articles, isLoading, isError } = useGetArticlesRecommendationsQuery(7);
-    if (!isLoading && (!articles || isError)) {
+    if (!isLoading || !articles?.length || isError) {
         return (
             <Text
                 theme={ThemeText.ERROR}
@@ -17,7 +17,7 @@ const ArticleRecommendationsList = () => {
         );
     }
     return (
-        <VStack maxWidth={false} align="start">
+        <VStack align="start">
             <Text title={`${t('Рекомендации')}:`} size={TextSize.L} />
             <ArticleList
                 articles={articles}

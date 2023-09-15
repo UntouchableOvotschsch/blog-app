@@ -35,6 +35,7 @@ const EditableProfileCardHeader = ({
                                     <Button
                                         theme={ThemeButton.OUTLINE_RED}
                                         onClick={cancelEditMode}
+                                        data-testid="EditableProfileCardHeader.CancelBtn"
                                     >
                                         {t('Отменить')}
                                     </Button>
@@ -44,6 +45,7 @@ const EditableProfileCardHeader = ({
                                         disabled={!!isError}
                                         theme={ThemeButton.OUTLINE}
                                         onClick={() => setEditMode(true)}
+                                        data-testid="EditableProfileCardHeader.EditBtn"
                                     >
                                         {t('Редактировать')}
                                     </Button>

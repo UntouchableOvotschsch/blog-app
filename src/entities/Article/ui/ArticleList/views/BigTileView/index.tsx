@@ -9,7 +9,7 @@ import BigTileItem from '../../../BigTileItem';
 import BigTileItemSkeleton from '../../../BigTileItem/BigTileItem.skeleton';
 
 interface BigTileViewProps {
-    articles?: Article[]
+    articles: Article[]
     isLoading?: boolean
     onLoadNextPart?: () => void
     target?: HTMLAttributeAnchorTarget;

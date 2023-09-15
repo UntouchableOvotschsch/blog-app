@@ -8,7 +8,7 @@ import SmallTileView, { SmallTileViewTypes } from './views/SmallTileView';
 
 interface ArticleListProps {
     className?: string;
-    articles?: Article[]
+    articles: Article[]
     isLoading?: boolean
     view?: ArticleViewTypes
     onLoadNextPart?: () => void

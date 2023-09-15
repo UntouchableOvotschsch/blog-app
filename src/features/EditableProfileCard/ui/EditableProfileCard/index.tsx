@@ -50,7 +50,7 @@ const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
     }, [dispatch, id]);
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && id) {
+        if (__PROJECT__ !== 'storybook' && __PROJECT__ !== 'jest' && id) {
             dispatch(fetchProfileData(id));
         }
         // eslint-disable-next-line

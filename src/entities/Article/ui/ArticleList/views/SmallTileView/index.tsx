@@ -14,7 +14,7 @@ export enum SmallTileViewTypes {
 }
 
 interface SmallTileViewProps {
-    articles?: Article[]
+    articles: Article[]
     isLoading?: boolean
     onLoadNextPart?: () => void
     target?: HTMLAttributeAnchorTarget;
