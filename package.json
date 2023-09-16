@@ -110,6 +110,7 @@
   },
   "loki": {
     "fetchFailIgnore": "^http(.*)$",
+    "chromeLoadTimeout": 5000,
     "looks-same": {
       "ignoreCaret": true
     },
