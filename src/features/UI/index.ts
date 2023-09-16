@@ -4,9 +4,12 @@ import { getScrollPositions } from './model/selectors/getScrollPositions';
 import { getScrollPositionByPage } from './model/selectors/getScrollPositionByPage';
 
 export {
-    UISchema,
     uiReducer,
     uiActions,
     getScrollPositions,
     getScrollPositionByPage,
+};
+
+export type {
+    UISchema,
 };

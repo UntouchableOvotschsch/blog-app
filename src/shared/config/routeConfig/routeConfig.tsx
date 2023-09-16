@@ -54,6 +54,9 @@ export const RoutePath: Record<AppRoutes, string> = {
 
 };
 
+const unauthorizedNavigateTo = RoutePath.main;
+const forbiddenNavigateTo = RoutePath.forbidden;
+
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
@@ -67,7 +70,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PROFILE]: {
         path: `${RoutePath.profile}/:id`,
         element: (
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ProfilePage />
             </AuthWrapper>
         ),
@@ -78,7 +81,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: RoutePath.articles,
         element: (
             // TODO Почему-то с импортом из паблик апи стреляет ошибка в сторибуке
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ArticlesPageAsync />
             </AuthWrapper>
         ),
@@ -87,7 +90,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_DETAILS]: {
         path: `${RoutePath.article_details}/:id`,
         element: (
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ArticleDetailsPage />
             </AuthWrapper>
         ),
@@ -96,7 +99,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_CREATE]: {
         path: `${RoutePath.article_create}`,
         element: (
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ArticleEditPage />
             </AuthWrapper>
         ),
@@ -105,7 +108,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_EDIT]: {
         path: `${RoutePath.article_edit}`,
         element: (
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ArticleEditPage />
             </AuthWrapper>
         ),
@@ -114,8 +117,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ADMIN]: {
         path: RoutePath.admin,
         element: (
-            <AuthWrapper>
-                <RoleWrapper roles={[UserRoles.ADMIN]}>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+                <RoleWrapper roles={[UserRoles.ADMIN]} navigateTo={forbiddenNavigateTo}>
                     <AdminPage />
                 </RoleWrapper>
             </AuthWrapper>
@@ -125,7 +128,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.FORBIDDEN]: {
         path: RoutePath.forbidden,
         element: (
-            <AuthWrapper>
+            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
                 <ForbiddenPage />
             </AuthWrapper>
         ),

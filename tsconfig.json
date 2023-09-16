@@ -13,9 +13,8 @@
       "*": ["./src/*"]
     },
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-
-
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
@@ -27,5 +26,5 @@
     "./config/jest/setupTests.ts",
     "./src/**/*.ts",
     "./src/**/*.tsx"
-  ],
+  ]
 }

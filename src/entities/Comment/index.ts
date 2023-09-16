@@ -12,8 +12,11 @@ export {
     CommentsList,
     commentFormReducer,
     commentFormActions,
-    CommentFormSchema,
     CommentForm,
     commentTemplate,
     commentArrayTemplate,
+};
+
+export type {
+    CommentFormSchema,
 };

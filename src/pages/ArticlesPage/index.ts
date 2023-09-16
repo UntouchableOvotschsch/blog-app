@@ -10,7 +10,6 @@ import { getArticlesSortField } from './model/selectors/getArticlesSortField';
 
 export {
     ArticlesPage,
-    ArticlesPageSchema,
     articlesPageReducer,
     getArticleView,
     articlesPageActions,
@@ -19,4 +18,8 @@ export {
     getArticlesSortOrder,
     getArticlesSortField,
     getArticlesActiveTypes,
+};
+
+export type {
+    ArticlesPageSchema,
 };

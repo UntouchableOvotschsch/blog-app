@@ -4,6 +4,9 @@ import ArticleComments from './ui/ArticleComments';
 
 export {
     articleCommentsSliceReducer,
-    ArticleCommentsSliceSchema,
     ArticleComments,
+};
+
+export type {
+    ArticleCommentsSliceSchema,
 };

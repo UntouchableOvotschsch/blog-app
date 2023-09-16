@@ -1,7 +1,8 @@
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ComponentType, HTMLAttributeAnchorTarget, useMemo } from 'react';
 import { useResizeObserverHelper } from 'shared/lib/helpers/useResizeObserverHelper';
-import { Article, ArticleViewTypes } from '../../model/types/article';
+import { ArticleViewTypes } from '../../model/consts';
+import { Article } from '../../model/types/article';
 import styles from './ArticleList.module.scss';
 import BigTileView from './views/BigTileView';
 import SmallTileView, { SmallTileViewTypes } from './views/SmallTileView';

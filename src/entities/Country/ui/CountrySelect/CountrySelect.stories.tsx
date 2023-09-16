@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { PageWrapper } from 'widgets/PageWrapper';
-import { Countries } from '../../model/types/countries';
+import { Countries } from '../../model/consts';
 import CountrySelect from '.';
 
 export default {

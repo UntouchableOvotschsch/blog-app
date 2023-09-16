@@ -9,10 +9,9 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 import Icon from 'shared/ui/Icon';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { ArticleBlockTypes } from '../../model/consts';
 import styles from './BigTileItem.module.scss';
-import {
-    Article, ArticleBlock, ArticleBlockTypes, ArticleTextBlock,
-} from '../../model/types/article';
+import { Article, ArticleBlock, ArticleTextBlock } from '../../model/types/article';
 import ArticleTextBlockCom from '../ArticleTextBlockCom';
 
 interface BigTileItemProps {

@@ -1,6 +1,5 @@
-import {
-    Article, ArticleBlock, ArticleBlockTypes, ArticleTypes, ArticleViewTypes,
-} from './model/types/article';
+import { ArticleBlockTypes, ArticleTypes, ArticleViewTypes } from './model/consts';
+import { Article, ArticleBlock } from './model/types/article';
 import { articlesArrayTemplate, articleTemplate } from './model/templates/article';
 import BigTileItemSkeleton from './ui/BigTileItem/BigTileItem.skeleton';
 import SmallTileItemSkeleton from './ui/SmallTileItem/SmallTileItem.skeleton';
@@ -14,11 +13,9 @@ import ArticleList from './ui/ArticleList';
 import { useGetArticleDetailsQuery } from './model/api';
 
 export {
-    Article,
     articleTemplate,
     ArticleViewTypes,
     ArticleBlockTypes,
-    ArticleBlock,
     ArticleTextBlockCom,
     ArticleImageBlockCom,
     ArticleCodeBlockCom,
@@ -31,4 +28,9 @@ export {
     SmallTileItem,
     ArticleList,
     useGetArticleDetailsQuery,
+};
+
+export type {
+    Article,
+    ArticleBlock,
 };

@@ -6,7 +6,8 @@ import Icon from 'shared/ui/Icon';
 import SortArrow from 'shared/assets/icons/sort-arrow.svg';
 import { useTranslation } from 'react-i18next';
 import { HStack } from 'shared/ui/Stack';
-import { SortField, SortOrder } from '../model/types/sortTypes';
+import { SortField } from '../model/consts';
+import { SortOrder } from '../model/types/sortTypes';
 import styles from './SortSelector.module.scss';
 
 interface SortSelectorProps {

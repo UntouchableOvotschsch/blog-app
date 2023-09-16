@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import Select from 'shared/ui/Select';
-import { Countries } from '../../model/types/countries';
+import { Countries } from '../../model/consts';
 
 interface CountrySelectProps {
     selectValue: Countries | undefined

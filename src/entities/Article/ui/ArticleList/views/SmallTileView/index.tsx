@@ -3,9 +3,10 @@ import { VirtuosoGrid } from 'react-virtuoso';
 import Text, { TextSize } from 'shared/ui/Text/Text';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { ArticleViewTypes } from '../../../../model/consts';
 import styles from './SmallTileView.module.scss';
 import SmallTileItem from '../../../SmallTileItem';
-import { Article, ArticleViewTypes } from '../../../../model/types/article';
+import { Article } from '../../../../model/types/article';
 import SmallTileItemSkeleton from '../../../SmallTileItem/SmallTileItem.skeleton';
 
 export enum SmallTileViewTypes {

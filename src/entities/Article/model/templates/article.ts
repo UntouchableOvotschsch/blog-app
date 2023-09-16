@@ -1,5 +1,6 @@
 import { UserRoles } from 'entities/User';
-import { Article, ArticleBlockTypes, ArticleTypes } from '../types/article';
+import { ArticleBlockTypes, ArticleTypes } from '../consts/index';
+import { Article } from '../types/article';
 
 export const articleTemplate: Article = {
     id: '1',
