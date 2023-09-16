@@ -14,7 +14,7 @@ import { fetchCommentsByArticleId } from '../model/service/fetchCommentsByArticl
 
 interface ArticleCommentsProps {
     className?: string;
-    id?: string
+    id: string
 }
 
 const reducers: ReducerList = {
@@ -27,13 +27,13 @@ const ArticleComments = ({ className, id }: ArticleCommentsProps) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (id && __PROJECT__ !== 'storybook') {
+        if (__PROJECT__ !== 'storybook') {
             dispatch(fetchCommentsByArticleId(id));
         }
     }, [dispatch, id]);
 
     const addNewComment = useCallback(() => {
-        if (__PROJECT__ !== 'storybook' && id) {
+        if (__PROJECT__ !== 'storybook') {
             dispatch(addNewCommentToArticleService(id));
         }
     }, [dispatch, id]);
@@ -45,6 +45,7 @@ const ArticleComments = ({ className, id }: ArticleCommentsProps) => {
         <DynamicModuleLoader reducerList={reducers}>
             <VStack gap="4" className={classNames('', {}, [className])} align="start">
                 <Text title={`${t('Комментарии')}:`} size={TextSize.L} />
+                {/* TODO сделать скелетон на подгрузку формы */}
                 <Suspense fallback="">
                     <CommentForm addNewCommentTo={addNewComment} />
                 </Suspense>

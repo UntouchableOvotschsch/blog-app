@@ -9,7 +9,7 @@ const lokiDir = joinPath(__dirname, '..', '.loki');
 const actualDir = joinPath(lokiDir, 'current');
 const expectedDir = joinPath(lokiDir, 'reference');
 const diffDir = joinPath(lokiDir, 'difference');
-
+const reportPath = joinPath(__dirname, '..', 'reports');
 (async function main() {
     const diffs = await asyncReaddir(diffDir);
 
@@ -21,8 +21,8 @@ const diffDir = joinPath(lokiDir, 'difference');
         expectedItems: diffs,
         actualItems: diffs,
         diffItems: diffs,
-        actualDir: relative(lokiDir, actualDir),
-        expectedDir: relative(lokiDir, expectedDir),
-        diffDir: relative(lokiDir, diffDir),
+        actualDir: relative(reportPath, actualDir),
+        expectedDir: relative(reportPath, expectedDir),
+        diffDir: relative(reportPath, diffDir),
     }));
 }());

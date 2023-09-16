@@ -2,6 +2,7 @@ import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
 import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator';
+import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -20,3 +21,4 @@ addDecorator(StoreDecorator({
         scroll: 0,
     },
 }));
+addDecorator(SuspenseDecorator);
