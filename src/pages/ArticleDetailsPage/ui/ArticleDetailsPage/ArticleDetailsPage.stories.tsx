@@ -5,6 +5,8 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { UserRoles } from 'entities/User';
+import withMock from 'storybook-addon-mock';
+import { articlesArrayTemplate, articleTemplate } from 'entities/Article';
 import ArticleDetailsPage from './index';
 
 export default {
@@ -13,6 +15,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
+    decorators: [withMock],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
 const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
@@ -60,6 +63,22 @@ Light.decorators = [
         },
     }),
 ];
+Light.parameters = {
+    mockData: [
+        {
+            url: `${__API_URL__}/articles/1`,
+            method: 'GET',
+            status: 200,
+            response: articleTemplate,
+        },
+        {
+            url: `${__API_URL__}/articles?_expand=user&_limit=7`,
+            method: 'GET',
+            status: 200,
+            response: articlesArrayTemplate,
+        },
+    ],
+};
 
 export const Dark = Template.bind({});
 Dark.args = {};
@@ -102,3 +121,19 @@ Dark.decorators = [
         },
     }),
 ];
+Dark.parameters = {
+    mockData: [
+        {
+            url: `${__API_URL__}/articles/1`,
+            method: 'GET',
+            status: 200,
+            response: articleTemplate,
+        },
+        {
+            url: `${__API_URL__}/articles?_expand=user&_limit=7`,
+            method: 'GET',
+            status: 200,
+            response: articlesArrayTemplate,
+        },
+    ],
+};

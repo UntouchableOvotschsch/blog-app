@@ -18,7 +18,7 @@ const Comment = ({ className, comment }: CommentProps) => {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <AppLink className={styles.userInfo} to={`${RoutePath.profile}/${user.id}`}>
+            <AppLink className={styles.userInfo} to={`${RoutePath.profile}/${user?.id}`}>
                 {
                     user?.avatar && (
                         <Avatar

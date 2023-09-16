@@ -4,6 +4,7 @@ import { CommentFormSchema } from './model/types/commentFormSchema';
 import Comment from './ui/Comment';
 import CommentForm from './ui/CommentForm';
 import CommentsList from './ui/CommentsList';
+import { commentArrayTemplate, commentTemplate } from './model/templates/comment';
 
 export {
     Comment,
@@ -13,4 +14,6 @@ export {
     commentFormActions,
     CommentFormSchema,
     CommentForm,
+    commentTemplate,
+    commentArrayTemplate,
 };

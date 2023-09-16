@@ -20,7 +20,7 @@ const reducers: ReducerList = {
 };
 
 interface EditableProfileCardProps {
-    id?: string
+    id: string
 }
 
 const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
@@ -44,17 +44,16 @@ const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
     }, [dispatch]);
 
     const updateProfile = useCallback(() => {
-        if (__PROJECT__ !== 'storybook' && id) {
+        if (__PROJECT__ !== 'storybook') {
             dispatch(updateProfileData(id));
         }
     }, [dispatch, id]);
 
     useEffect(() => {
-        if (__PROJECT__ !== 'storybook' && __PROJECT__ !== 'jest' && id) {
+        if (__PROJECT__ !== 'storybook' && __PROJECT__ !== 'jest') {
             dispatch(fetchProfileData(id));
         }
-        // eslint-disable-next-line
-    }, [])
+    }, [dispatch, id]);
     return (
         <DynamicModuleLoader reducerList={reducers}>
             <VStack gap="16">

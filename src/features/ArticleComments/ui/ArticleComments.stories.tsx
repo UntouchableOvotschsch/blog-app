@@ -3,6 +3,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Themes } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { commentTemplate } from 'entities/Comment';
 import ArticleComments from './ArticleComments';
 
 export default {
@@ -17,4 +19,17 @@ const Template: ComponentStory<typeof ArticleComments> = (args) => <ArticleComme
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [ThemeDecorator(Themes.LIGHT)];
+Light.decorators = [
+    ThemeDecorator(Themes.LIGHT),
+    StoreDecorator({
+        articleComments: {
+            isLoading: false,
+            ids: [1, 2, 3],
+            entities: {
+                1: { ...commentTemplate, id: '1' },
+                2: { ...commentTemplate, id: '2' },
+                3: { ...commentTemplate, id: '3' },
+            },
+        },
+    }),
+];

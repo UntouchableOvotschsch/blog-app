@@ -9,7 +9,7 @@ import { ArticleTypes, ArticleViewTypes } from 'entities/Article';
 import ArticleFilters from './index';
 
 export default {
-    title: 'widgets/Article/ArticleFilters',
+    title: 'pages/ArticlesPage/ArticleFilters',
     component: ArticleFilters,
     argTypes: {
         backgroundColor: { control: 'color' },

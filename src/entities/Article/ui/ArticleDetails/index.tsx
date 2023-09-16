@@ -22,9 +22,7 @@ interface ArticleDetailsProps {
 
 const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     const { t } = useTranslation('articleDetails');
-
     const { data: article, isLoading, isError } = useGetArticleDetailsQuery(id);
-
     const renderBlocks = useCallback((blocks: ArticleBlock[]) => blocks.map((block, index) => {
         switch (block.type) {
         case ArticleBlockTypes.TEXT:
@@ -89,7 +87,7 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
                 />
                 <div className={styles.articleInfo}>
                     <Icon Icon={EyeIcon} size="20" />
-                    <Text text={article?.views.toString()} size={TextSize.L} />
+                    <Text text={article?.views?.toString()} size={TextSize.L} />
                 </div>
                 <div className={styles.articleInfo}>
                     <Icon Icon={Calendar} size="20" />

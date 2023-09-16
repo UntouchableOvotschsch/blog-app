@@ -8,7 +8,7 @@ const ProfilePage = () => {
 
     return (
         <PageWrapper>
-            <EditableProfileCard id={id} />
+            <EditableProfileCard id={id!} />
         </PageWrapper>
     );
 };
