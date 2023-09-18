@@ -2,14 +2,22 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { HTMLAttributes, ReactNode } from 'react';
 import styles from './Card.module.scss';
 
+type CardTheme = 'primary' | 'inverted'
+
 interface CardProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;
     children: ReactNode
+    cardTheme?: CardTheme
 }
 
-const Card = ({ className, children, ...otherProps }: CardProps) => (
+const Card = ({
+    className,
+    children,
+    cardTheme = 'primary',
+    ...otherProps
+}: CardProps) => (
     <div
-        className={classNames(styles.Card, {}, [className])}
+        className={classNames(styles.Card, {}, [className, styles[cardTheme]])}
         {...otherProps}
     >
         {children}

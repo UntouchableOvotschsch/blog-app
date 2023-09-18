@@ -4,13 +4,13 @@ import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserAuthData, getUserIsAdmin, userActions } from 'entities/User';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import Dropdown from 'shared/ui/Dropdown/Dropdown';
-import Avatar from 'shared/ui/Avatar';
+import { AvatarDropdown } from 'features/AvatarDropdown';
+import { HStack } from 'shared/ui/Stack';
+import { NotificationButton } from 'features/NotificationButton';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -20,18 +20,11 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
-    const isAdmin = useSelector(getUserIsAdmin);
     const [loginModal, setLoginModal] = useState(false);
-    const dispatch = useDispatch();
 
     const loginModalVisibility = useCallback(() => {
         setLoginModal((prevState) => !prevState);
     }, []);
-
-    const logoutBtn = useCallback(() => {
-        localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-        dispatch(userActions.removeAuthData());
-    }, [dispatch]);
 
     if (authData) {
         return (
@@ -47,36 +40,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         {t('Создать статью')}
                     </AppLink>
                 </Button>
-
-                <Dropdown
-                    className={styles.logoutBtn}
-                    position="bottom left"
-                    trigger={(
-                        <Avatar
-                            avatar={authData.avatar}
-                            alt={t('Аватар')}
-                            width={50}
-                            height={50}
-                            className={styles.avatar}
-                        />
-                    )}
-                    options={[
-                        {
-                            label: t('Профиль'),
-                            href: `${RoutePath.profile}/${authData?.id}`,
-                        },
-                        ...(isAdmin ? [
-                            {
-                                label: t('Админка'),
-                                href: RoutePath.admin,
-                            },
-                        ] : []),
-                        {
-                            label: t('Выйти'),
-                            onClick: logoutBtn,
-                        },
-                    ]}
-                />
+                <HStack maxWidth={false} className={styles.logoutBtn}>
+                    <NotificationButton />
+                    <AvatarDropdown />
+                </HStack>
             </header>
         );
     }

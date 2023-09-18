@@ -1,0 +1,28 @@
+.NotificationList {
+    min-height: 150px;
+    max-height: 300px;
+    width: 400px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.NotificationList::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: var(--inverted-bg-color);
+}
+
+.NotificationList::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+}
+
+.NotificationList::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--bg-color);
+}
+
+.popover {
+    height: 20px;
+}

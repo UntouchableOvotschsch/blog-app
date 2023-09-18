@@ -1,10 +1,11 @@
 import { Listbox } from '@headlessui/react';
 import React, { Fragment, useMemo } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { HStack, VStack } from '../Stack';
-import Text, { TextSize } from '../Text/Text';
-import { Button, ThemeButton } from '../Button/Button';
+import { HStack, VStack } from '../../../Stack';
+import Text, { TextSize } from '../../../Text/Text';
+import { Button, ThemeButton } from '../../../Button/Button';
 import styles from './Select.module.scss';
+import popupStyles from '../../styles/Popups.module.scss';
 
 export enum SelectContainerTheme {
     ROW = 'row',
@@ -45,7 +46,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
         >
             {({ active, selected }) => (
                 <li
-                    className={classNames(styles.option, { [styles.active]: active || selected }, [])}
+                    className={classNames(popupStyles.option, { [popupStyles.active]: active || selected }, [])}
                 >
                     {el.content}
                 </li>
@@ -66,7 +67,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                         as="div"
                         value={selectValue}
                         onChange={onChange}
-                        className={classNames(styles.container, {}, [className])}
+                        className={classNames(popupStyles.container, {}, [className, styles.container])}
                         disabled={!editable}
                     >
                         <Listbox.Button as={Fragment}>
@@ -75,7 +76,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                             </Button>
                         </Listbox.Button>
                         <Listbox.Options
-                            className={styles.select}
+                            className={popupStyles.itemsContainer}
                         >
                             {optionList}
                         </Listbox.Options>
@@ -92,7 +93,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                     as="div"
                     value={selectValue}
                     onChange={onChange}
-                    className={classNames(styles.container, {}, [className])}
+                    className={classNames(popupStyles.container, {}, [className, styles.container])}
                     disabled={!editable}
                 >
                     <Listbox.Button as={Fragment}>
@@ -101,7 +102,7 @@ const Select = <T extends string>(props: SelectProps<T>) => {
                         </Button>
                     </Listbox.Button>
                     <Listbox.Options
-                        className={styles.select}
+                        className={popupStyles.itemsContainer}
                     >
                         {optionList}
                     </Listbox.Options>

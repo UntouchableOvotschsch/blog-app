@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import Select, { SelectContainerTheme, SelectOptions } from 'shared/ui/Select';
+import { Select, SelectContainerTheme, SelectOptions } from 'shared/ui/Popups';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import Icon from 'shared/ui/Icon';
 import SortArrow from 'shared/assets/icons/sort-arrow.svg';

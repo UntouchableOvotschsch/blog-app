@@ -1,6 +1,13 @@
 .Card {
     padding: 15px;
-    background-color: var(--bg-card);
     cursor: pointer;
     border-radius: 12px;
+}
+
+.primary {
+    background-color: var(--bg-card);
+}
+
+.inverted {
+    background-color: var(--inverted-bg-color);
 }
