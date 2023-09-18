@@ -12,21 +12,16 @@ export default function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRu
 
     const svgLoader = buildSvgLoader();
 
-    const babelLoader = buildBabelLoader(isDev);
-
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-    };
+    const tsBabelLoader = buildBabelLoader({ isDev, isTsx: false });
+    const tsxbabelLoader = buildBabelLoader({ isDev, isTsx: true });
 
     const cssLoader = buildCssLoader(isDev);
 
     return [
         fileLoader,
         svgLoader,
-        babelLoader,
-        typescriptLoader,
+        tsBabelLoader,
+        tsxbabelLoader,
         cssLoader,
     ];
 }
