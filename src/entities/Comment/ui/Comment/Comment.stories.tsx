@@ -8,7 +8,7 @@ import { PageWrapper } from 'widgets/PageWrapper';
 import Comment from '.';
 
 export default {
-    title: 'entities/Comment',
+    title: 'entities/Comment/CommentItem',
     component: Comment,
     argTypes: {
         backgroundColor: { control: 'color' },

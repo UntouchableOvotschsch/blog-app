@@ -1,47 +1,42 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Themes } from 'app/providers/ThemeProvider';
-import withMock from 'storybook-addon-mock';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { notificationTemplateArray } from 'entities/Notification';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import NotificationButton from './NotificationButton';
 
-export default {
+const meta: Meta<typeof NotificationButton> = {
     title: 'features/NotificationButton',
     component: NotificationButton,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-    decorators: [withMock],
-} as ComponentMeta<typeof NotificationButton>;
-
-const Template: ComponentStory<typeof NotificationButton> = (args) => (
-    <div style={{ paddingLeft: '500px' }}>
-        <NotificationButton {...args} />
-    </div>
-
-);
-
-export const Light = Template.bind({});
-Light.args = {};
-Light.parameters = {
-    mockData: [
-        {
-            url: `${__API_URL__}/notifications?userId=1`,
-            method: 'GET',
-            status: 200,
-            response: notificationTemplateArray,
-        },
-    ],
-};
-Light.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-    StoreDecorator({
-        user: {
-            authData: {
-                id: '1',
+    decorators: [
+        ThemeDecorator(Themes.LIGHT),
+        StoreDecorator({
+            user: {
+                authData: {
+                    id: '1',
+                },
             },
-        },
-    }),
-];
+        }),
+    ],
+    parameters: {
+        mockData: [
+            {
+                url: `${__API_URL__}/notifications?userId=1`,
+                method: 'GET',
+                status: 200,
+                response: notificationTemplateArray,
+            },
+        ],
+    },
+};
+
+export default meta;
+type Story = StoryObj<typeof NotificationButton>;
+
+export const Normal: Story = {
+    render: () => (
+        <div style={{ paddingLeft: '500px' }}>
+            <NotificationButton />
+        </div>
+    ),
+};
