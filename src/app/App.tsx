@@ -1,11 +1,11 @@
 import { FC, Suspense, useEffect } from 'react';
-import { AppRouter } from 'app/providers/RouterProvider';
-import { Navbar } from 'widgets/Navbar';
-import { Sidebar } from 'widgets/Sidebar';
-import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
-import { getUserInited, userActions } from 'entities/User';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { AppRouter } from '@/app/providers/RouterProvider';
+import { Navbar } from '@/widgets/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { getUserInited, userActions } from '@/entities/User';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 
 const App: FC = () => {
     const dispatch = useAppDispatch();

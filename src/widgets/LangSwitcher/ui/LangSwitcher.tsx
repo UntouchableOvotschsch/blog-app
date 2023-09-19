@@ -1,9 +1,9 @@
 import { memo } from 'react';
 
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { infinityToggle } from 'shared/lib/helpers/infinityToggle/infinityToggle';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { infinityToggle } from '@/shared/lib/helpers/infinityToggle/infinityToggle';
 
 interface LangSwitcherProps {
     className?: string

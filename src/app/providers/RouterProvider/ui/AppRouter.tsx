@@ -2,8 +2,8 @@ import {
     memo, ReactNode, Suspense, useCallback, useMemo,
 } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { PageLoader } from 'widgets/PageLoader/PageLoader';
+import { routeConfig } from '@/shared/config/routeConfig/routeConfig';
+import { PageLoader } from '@/widgets/PageLoader/PageLoader';
 
 const AppRouter = memo(() => {
     const suspenseComponent = useCallback((element: ReactNode) => (

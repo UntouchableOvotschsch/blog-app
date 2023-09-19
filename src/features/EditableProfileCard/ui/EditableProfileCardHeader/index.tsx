@@ -1,9 +1,9 @@
 import React from 'react';
-import Text from 'shared/ui/Text/Text';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { HStack } from 'shared/ui/Stack';
+import Text from '@/shared/ui/Text/Text';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { HStack } from '@/shared/ui/Stack';
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit';
 
 interface EditableProfileCardHeaderProps {

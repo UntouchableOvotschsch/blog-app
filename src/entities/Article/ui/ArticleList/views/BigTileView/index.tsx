@@ -1,8 +1,8 @@
 import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 'react';
 import { Virtuoso } from 'react-virtuoso';
-import Text, { TextSize } from 'shared/ui/Text/Text';
-import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import Text, { TextSize } from '@/shared/ui/Text/Text';
+import { Button } from '@/shared/ui/Button/Button';
 import styles from './BigTileView.module.scss';
 import { Article } from '../../../../model/types/article';
 import BigTileItem from '../../../BigTileItem';

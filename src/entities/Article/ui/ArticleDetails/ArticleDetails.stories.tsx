@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Themes } from 'app/providers/ThemeProvider';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { PageWrapper } from 'widgets/PageWrapper';
+import { Themes } from '@/app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import { articleTemplate } from '../../model/templates/article';
 import ArticleDetails from '../ArticleDetails';
 

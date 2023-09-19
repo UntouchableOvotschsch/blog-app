@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Themes } from 'app/providers/ThemeProvider';
 import { action } from '@storybook/addon-actions';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Themes } from '@/app/providers/ThemeProvider';
 import { SortField } from '../model/consts';
 import SortSelector from './SortSelector';
 

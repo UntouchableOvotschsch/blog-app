@@ -1,7 +1,7 @@
 import { createContext, ReactNode } from 'react';
-import DarkLogo from 'shared/assets/icons/theme-dark.svg';
-import LightLogo from 'shared/assets/icons/theme-light.svg';
-import OrangeLogo from 'shared/assets/icons/theme-orange.svg';
+import DarkLogo from '@/shared/assets/icons/theme-dark.svg';
+import LightLogo from '@/shared/assets/icons/theme-light.svg';
+import OrangeLogo from '@/shared/assets/icons/theme-orange.svg';
 
 export enum Themes {
     LIGHT = 'app_light_theme',

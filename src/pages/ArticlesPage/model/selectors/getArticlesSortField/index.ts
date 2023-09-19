@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { SortField } from 'features/SortSelector';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { SortField } from '@/features/SortSelector';
 
 export const getArticlesSortField = (state: StateSchema) => state
     .articlesPage

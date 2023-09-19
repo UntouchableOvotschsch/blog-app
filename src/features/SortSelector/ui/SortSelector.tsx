@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
-import { Select, SelectContainerTheme, SelectOptions } from 'shared/ui/Popups';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import Icon from 'shared/ui/Icon';
-import SortArrow from 'shared/assets/icons/sort-arrow.svg';
 import { useTranslation } from 'react-i18next';
-import { HStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Select, SelectContainerTheme, SelectOptions } from '@/shared/ui/Popups';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import Icon from '@/shared/ui/Icon';
+import SortArrow from '@/shared/assets/icons/sort-arrow.svg';
+import { HStack } from '@/shared/ui/Stack';
 import { SortField } from '../model/consts';
 import { SortOrder } from '../model/types/sortTypes';
 import styles from './SortSelector.module.scss';

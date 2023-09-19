@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ComponentType, HTMLAttributeAnchorTarget, useMemo } from 'react';
-import { useResizeObserverHelper } from 'shared/lib/helpers/useResizeObserverHelper';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { useResizeObserverHelper } from '@/shared/lib/helpers/useResizeObserverHelper';
 import { ArticleViewTypes } from '../../model/consts';
 import { Article } from '../../model/types/article';
 import styles from './ArticleList.module.scss';

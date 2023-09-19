@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Themes } from 'app/providers/ThemeProvider';
-import { ArticleViewTypes } from 'entities/Article';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Themes } from '@/app/providers/ThemeProvider';
+import { ArticleViewTypes } from '@/entities/Article';
 import ChangeViewType from './ChangeViewType';
 
 export default {

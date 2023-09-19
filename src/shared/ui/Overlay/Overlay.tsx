@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import styles from './Overlay.module.scss';
 
 interface OverlayProps {

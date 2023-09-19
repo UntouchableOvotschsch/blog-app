@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import Input from 'shared/ui/Input/Input';
-import Avatar from 'shared/ui/Avatar';
-import { CurrencySelect } from 'entities/Currency';
-import { CountrySelect } from 'entities/Country';
-import Text, { TextAlign, ThemeText } from 'shared/ui/Text/Text';
-import { Loader } from 'shared/ui/Loader/Loader';
-import { VStack } from 'shared/ui/Stack';
+import Input from '@/shared/ui/Input/Input';
+import Avatar from '@/shared/ui/Avatar';
+import { CurrencySelect } from '@/entities/Currency';
+import { CountrySelect } from '@/entities/Country';
+import Text, { TextAlign, ThemeText } from '@/shared/ui/Text/Text';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { VStack } from '@/shared/ui/Stack';
 import { ProfileType } from '../../model/types/profile';
 import styles from './ProfileCard.module.scss';
 

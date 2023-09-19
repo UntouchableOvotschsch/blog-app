@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { ArticleList } from 'entities/Article';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { ArticleList } from '@/entities/Article';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { articlesPageActions, articlesSelectors } from '../../model/slice/articlesPageSlice';
 import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';

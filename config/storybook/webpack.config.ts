@@ -27,6 +27,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config!.resolve!.modules!.push(paths.src);
     config!.resolve!.extensions!.push('.ts, .tsx');
     config!.module!.rules!.push(buildCssLoader(true), buildSvgLoader());
+    config!.resolve!.alias = {
+        '@': paths.src,
+    };
 
     config!.plugins!.push(new webpack.DefinePlugin({
         __IS_DEV__: JSON.stringify(true),

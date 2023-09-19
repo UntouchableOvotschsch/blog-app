@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleTypes, ArticleViewTypes } from 'entities/Article';
-import { SortField, SortOrder } from 'features/SortSelector';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Article, ArticleTypes, ArticleViewTypes } from '@/entities/Article';
+import { SortField, SortOrder } from '@/features/SortSelector';
 import { fetchArticles } from '../service/fetchArticles';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 

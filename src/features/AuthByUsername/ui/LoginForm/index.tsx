@@ -1,13 +1,13 @@
 import React, { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import Input from 'shared/ui/Input/Input';
 import { useSelector } from 'react-redux';
-import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
-import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import Input from '@/shared/ui/Input/Input';
+import Text, { TextSize, ThemeText } from '@/shared/ui/Text/Text';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import {

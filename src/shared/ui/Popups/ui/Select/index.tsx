@@ -1,6 +1,6 @@
 import { Listbox } from '@headlessui/react';
 import React, { Fragment, useMemo } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { HStack, VStack } from '../../../Stack';
 import Text, { TextSize } from '../../../Text/Text';
 import { Button, ThemeButton } from '../../../Button/Button';

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { PageWrapper } from 'widgets/PageWrapper';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import styles from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {

@@ -1,4 +1,4 @@
-import { UserRoles } from 'entities/User';
+import { UserRoles } from '@/entities/User';
 import { ArticleBlockTypes, ArticleTypes } from '../consts/index';
 import { Article } from '../types/article';
 

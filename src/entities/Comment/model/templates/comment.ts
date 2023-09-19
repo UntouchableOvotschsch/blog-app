@@ -1,4 +1,4 @@
-import { UserRoles } from 'entities/User';
+import { UserRoles } from '@/entities/User';
 
 export const commentTemplate = {
     id: '1',

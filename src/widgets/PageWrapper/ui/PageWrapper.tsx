@@ -1,13 +1,13 @@
 import React, {
     MutableRefObject, ReactNode, UIEvent, useEffect,
 } from 'react';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useThrottle } from 'shared/lib/hooks/useThrottle';
-import { getScrollPositionByPage, uiActions } from 'features/UI';
 import { useSelector } from 'react-redux';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle';
+import { getScrollPositionByPage, uiActions } from '@/features/UI';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 interface PageWrapperProps {
     children: ReactNode

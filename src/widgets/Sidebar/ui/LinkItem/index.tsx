@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { useAuthDataChecker } from 'shared/lib/hooks/useAuthDataChecker';
 import { useLocation } from 'react-router-dom';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { useAuthDataChecker } from '@/shared/lib/hooks/useAuthDataChecker';
 import { ItemType } from '../../model/types/item';
 import styles from './LinkItem.module.scss';
 

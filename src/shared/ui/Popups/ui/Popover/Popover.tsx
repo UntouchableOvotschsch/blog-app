@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { Fragment, ReactNode } from 'react';
 import { Popover as HPopover } from '@headlessui/react';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { DropdownPosition, dropDownPositionClasses } from '../../styles/consts';
 import popupStyles from '../../styles/Popups.module.scss';
 

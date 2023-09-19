@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { ReactNode, useCallback, useEffect } from 'react';
-import { AnimationProvider, useAnimationLibs } from 'shared/lib/components/AnimationProvider';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import { Portal } from '../Portal/Portal';
 import Overlay from '../Overlay/Overlay';
 import styles from './Drawer.module.scss';

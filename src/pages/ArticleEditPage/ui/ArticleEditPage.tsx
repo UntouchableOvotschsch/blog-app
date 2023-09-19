@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useParams } from 'react-router-dom';
-import Text from 'shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import Text from '@/shared/ui/Text/Text';
 
 interface ArticleEditPageProps {
     className?: string;

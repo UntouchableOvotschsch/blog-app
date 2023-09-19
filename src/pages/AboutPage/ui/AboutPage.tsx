@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PageWrapper } from 'widgets/PageWrapper';
+import { PageWrapper } from '@/widgets/PageWrapper';
 
 const AboutPage: FC = () => {
     const { t } = useTranslation('about');

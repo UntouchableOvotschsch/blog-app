@@ -1,7 +1,7 @@
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
-import { PageError } from 'widgets/PageError';
-import { ThemeProvider, Themes } from 'app/providers/ThemeProvider';
-import { LOCAL_STORAGE_THEME_KEY } from 'shared/const/localStorage';
+import { PageError } from '@/widgets/PageError';
+import { ThemeProvider, Themes } from '@/app/providers/ThemeProvider';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 
 interface ErrorBoundaryProps {
     children: ReactNode

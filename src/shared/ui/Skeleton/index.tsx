@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { CSSProperties } from 'react';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import styles from './Skeleton.module.scss';
 
 interface SkeletonProps {

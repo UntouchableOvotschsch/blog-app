@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import Text from 'shared/ui/Text/Text';
 import { useSelector } from 'react-redux';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { useGetArticleDetailsQuery } from 'entities/Article';
-import { getUserAuthData, getUserIsAdmin } from 'entities/User';
-import { HStack } from 'shared/ui/Stack';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import Text from '@/shared/ui/Text/Text';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { useGetArticleDetailsQuery } from '@/entities/Article';
+import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
+import { HStack } from '@/shared/ui/Stack';
 import styles from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {

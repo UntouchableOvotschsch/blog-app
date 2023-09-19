@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
-import { VStack } from 'shared/ui/Stack';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { ProfileCard, ProfileType } from 'entities/Profile';
+import { VStack } from '@/shared/ui/Stack';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+import { ProfileCard, ProfileType } from '@/entities/Profile';
 import EditableProfileCardHeader from '../EditableProfileCardHeader';
 import { updateProfileData } from '../../model/services/updateProfileData';
 import EditableProfileCardFooter from '../EditableProfileCardFooter';

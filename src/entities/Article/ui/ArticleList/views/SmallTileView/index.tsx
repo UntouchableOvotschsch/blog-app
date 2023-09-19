@@ -1,8 +1,8 @@
 import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 'react';
 import { VirtuosoGrid } from 'react-virtuoso';
-import Text, { TextSize } from 'shared/ui/Text/Text';
-import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import Text, { TextSize } from '@/shared/ui/Text/Text';
+import { Button } from '@/shared/ui/Button/Button';
 import { ArticleViewTypes } from '../../../../model/consts';
 import styles from './SmallTileView.module.scss';
 import SmallTileItem from '../../../SmallTileItem';

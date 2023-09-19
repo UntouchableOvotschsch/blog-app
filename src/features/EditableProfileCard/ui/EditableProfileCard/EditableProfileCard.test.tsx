@@ -1,12 +1,12 @@
-import { renderForTests, RenderForTestsOptions } from 'shared/config/jest/renderForTests';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Countries } from 'entities/Country';
-import { Currencies } from 'entities/Currency';
-import { ProfileType } from 'entities/Profile';
 import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-import { UserRoles } from 'entities/User';
-import { $api } from 'shared/api';
+import { renderForTests, RenderForTestsOptions } from '@/shared/config/jest/renderForTests';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Countries } from '@/entities/Country';
+import { Currencies } from '@/entities/Currency';
+import { ProfileType } from '@/entities/Profile';
+import { UserRoles } from '@/entities/User';
+import { $api } from '@/shared/api';
 import EditableProfileCard from './index';
 import { profileReducer } from '../../model/slice/profileSlice';
 

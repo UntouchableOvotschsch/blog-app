@@ -1,10 +1,10 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Themes } from 'app/providers/ThemeProvider';
-import { Countries } from 'entities/Country';
-import { Currencies } from 'entities/Currency';
-import { PageWrapper } from 'widgets/PageWrapper';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Themes } from '@/app/providers/ThemeProvider';
+import { Countries } from '@/entities/Country';
+import { Currencies } from '@/entities/Currency';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import ProfileCard from './index';
 
 export default {

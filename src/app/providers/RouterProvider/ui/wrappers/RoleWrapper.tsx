@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { getUserRoles, UserRoles } from 'entities/User';
 import { useSelector } from 'react-redux';
+import { getUserRoles, UserRoles } from '@/entities/User';
 
 interface RoleWrapperProps {
     children: React.ReactElement,

@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 
-import { renderForTests } from 'shared/config/jest/renderForTests';
 import userEvent from '@testing-library/user-event';
+import { renderForTests } from '@/shared/config/jest/renderForTests';
 import { CounterSchema } from '../model/types/counterSchema';
 import { Counter } from './Counter';
 

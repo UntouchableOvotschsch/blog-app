@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { ProfileValidationErrors } from '../../consts';
 import { getProfileValidationErrors } from './index';
 

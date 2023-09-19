@@ -1,16 +1,16 @@
 import { RouteProps } from 'react-router-dom';
-import { MainPage } from 'pages/MainPage';
-import { AboutPage } from 'pages/AboutPage';
-import { NotFoundPage } from 'pages/NotFoundPage';
-import { ProfilePage } from 'pages/ProfilePage';
-import AuthWrapper from 'app/providers/RouterProvider/ui/wrappers/AuthWrapper';
-import { ArticlesPageAsync } from 'pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async';
-import { ArticleDetailsPage } from 'pages/ArticleDetailsPage';
-import { ArticleEditPage } from 'pages/ArticleEditPage';
-import { AdminPage } from 'pages/AdminPage';
-import { UserRoles } from 'entities/User';
-import { ForbiddenPage } from 'pages/ForbiddenPage';
-import RoleWrapper from 'app/providers/RouterProvider/ui/wrappers/RoleWrapper';
+import { MainPage } from '@/pages/MainPage';
+import { AboutPage } from '@/pages/AboutPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProfilePage } from '@/pages/ProfilePage';
+import AuthWrapper from '@/app/providers/RouterProvider/ui/wrappers/AuthWrapper';
+import { ArticlesPageAsync } from '@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async';
+import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
+import { ArticleEditPage } from '@/pages/ArticleEditPage';
+import { AdminPage } from '@/pages/AdminPage';
+import { UserRoles } from '@/entities/User';
+import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import RoleWrapper from '@/app/providers/RouterProvider/ui/wrappers/RoleWrapper';
 
 type AppRoutesProps = RouteProps & {
     authOnly?: boolean

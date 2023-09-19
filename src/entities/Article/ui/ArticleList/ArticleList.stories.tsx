@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Themes } from 'app/providers/ThemeProvider';
-import { PageWrapper } from 'widgets/PageWrapper';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Themes } from '@/app/providers/ThemeProvider';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import { ArticleViewTypes } from '../../model/consts';
 import ArticleList from './index';
 import { articlesArrayTemplate } from '../../model/templates/article';

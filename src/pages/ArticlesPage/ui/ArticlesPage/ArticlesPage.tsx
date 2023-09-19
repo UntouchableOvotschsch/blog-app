@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
-import DynamicModuleLoader, { ReducerList } from 'shared/lib/components/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import Text, { ThemeText } from 'shared/ui/Text/Text';
-import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
-import { PageWrapper } from 'widgets/PageWrapper';
 import { useSearchParams } from 'react-router-dom';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import Text, { ThemeText } from '@/shared/ui/Text/Text';
+import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { PageWrapper } from '@/widgets/PageWrapper';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
 import { getArticleError } from '../../model/selectors/getArticlesError';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';

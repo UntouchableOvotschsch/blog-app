@@ -1,7 +1,7 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk';
-import { Countries } from 'entities/Country';
-import { Currencies } from 'entities/Currency';
-import { ProfileType } from 'entities/Profile';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+import { Countries } from '@/entities/Country';
+import { Currencies } from '@/entities/Currency';
+import { ProfileType } from '@/entities/Profile';
 import { fetchProfileData } from './index';
 
 describe('fetchProfileData', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Skeleton from 'shared/ui/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 import styles from './CommentsListSkeleton.module.scss';
 
 const CommentsListSkeleton = () => (

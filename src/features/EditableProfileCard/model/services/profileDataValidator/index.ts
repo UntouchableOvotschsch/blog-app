@@ -1,5 +1,5 @@
-import { ProfileType } from 'entities/Profile';
-import { emptyObjChecker } from 'shared/lib/helpers/emptyObjChecker';
+import { ProfileType } from '@/entities/Profile';
+import { emptyObjChecker } from '@/shared/lib/helpers/emptyObjChecker';
 import { ProfileValidationErrors } from '../../consts';
 
 export const profileDataValidator = (profile?: ProfileType): ProfileValidationErrors[] => {

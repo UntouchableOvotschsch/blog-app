@@ -1,8 +1,8 @@
 import React from 'react';
-import { HStack, VStack } from 'shared/ui/Stack';
-import Text, { ThemeText } from 'shared/ui/Text/Text';
-import { Button, SizeButton, ThemeButton } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import Text, { ThemeText } from '@/shared/ui/Text/Text';
+import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button/Button';
 import { ProfileValidationErrors } from '../../model/consts';
 
 interface EditableProfileCardFooterProps {

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
+import { getUserAuthData } from '@/entities/User';
 import { emptyObjChecker } from '../../helpers/emptyObjChecker';
 
 export const useAuthDataChecker = (): boolean => {

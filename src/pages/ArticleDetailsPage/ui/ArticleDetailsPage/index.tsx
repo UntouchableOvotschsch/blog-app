@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import { PageWrapper } from 'widgets/PageWrapper';
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
-import { ArticleDetails } from 'entities/Article';
-import { ArticleComments } from 'features/ArticleComments';
-import { VStack } from 'shared/ui/Stack';
+import { PageWrapper } from '@/widgets/PageWrapper';
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
+import { ArticleDetails } from '@/entities/Article';
+import { ArticleComments } from '@/features/ArticleComments';
+import { VStack } from '@/shared/ui/Stack';
 import ArticleDetailsPageHeader from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import styles from './ArticleDetailsPage.module.scss';
 

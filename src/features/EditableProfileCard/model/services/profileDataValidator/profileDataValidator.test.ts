@@ -1,5 +1,5 @@
-import { Countries } from 'entities/Country';
-import { ProfileType } from 'entities/Profile';
+import { Countries } from '@/entities/Country';
+import { ProfileType } from '@/entities/Profile';
 import { profileDataValidator } from './index';
 
 describe('profileDataValidator.test', () => {

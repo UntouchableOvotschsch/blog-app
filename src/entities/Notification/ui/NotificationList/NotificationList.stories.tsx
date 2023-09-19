@@ -43,11 +43,11 @@
 // ];
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { Themes } from 'app/providers/ThemeProvider';
-import { articlesArrayTemplate } from 'entities/Article';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { PageWrapper } from 'widgets/PageWrapper';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
+import { Themes } from '@/app/providers/ThemeProvider';
+import { articlesArrayTemplate } from '@/entities/Article';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { PageWrapper } from '@/widgets/PageWrapper';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import NotificationList from './NotificationList';
 import { notificationTemplateArray } from '../../model/consts/notificationTemplate';
 

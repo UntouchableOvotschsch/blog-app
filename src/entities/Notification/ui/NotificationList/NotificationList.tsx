@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useMemo } from 'react';
-import { VStack } from 'shared/ui/Stack';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { VStack } from '@/shared/ui/Stack';
+import { getUserAuthData } from '@/entities/User';
 import NotificationItemSkeleton from '../Notification/NotificationItem.skeleton';
 import NotificationItem from '../Notification/NotificationItem';
 import { useGetNotificationsQuery } from '../../api/notificationApi';

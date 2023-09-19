@@ -1,9 +1,9 @@
 import { memo } from 'react';
 
-import { classNames } from 'shared/lib/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button/Button';
-import Text, { TextSize, ThemeText } from 'shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
+import Text, { TextSize, ThemeText } from '@/shared/ui/Text/Text';
 import styles from './PageError.module.scss';
 
 interface PageErrorProps {
