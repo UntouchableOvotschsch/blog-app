@@ -1,8 +1,6 @@
-import {
-    FC, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState,
-} from 'react';
-
+import { FC, ReactNode } from 'react';
 import { classNames, Mods } from 'shared/lib/helpers/classNames/classNames';
+import { useModal } from 'shared/lib/hooks/useModal';
 import Overlay from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
@@ -23,43 +21,12 @@ export const Modal: FC<ModalProps> = (
         changeVisibility,
     },
 ) => {
-    const [closing, setClosing] = useState(false);
-    const [opening, setOpening] = useState(false);
-    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
+    const { closing, opening, setVisibleHandler } = useModal({ visible, changeVisibility });
 
     const mods: Mods = {
         [styles.visible]: opening,
         [styles.closing]: closing,
     };
-
-    const setVisibleHandler = useCallback(() => {
-        setClosing(true);
-        timerRef.current = setTimeout(() => {
-            setOpening(false);
-            changeVisibility();
-            setClosing(false);
-        }, 300);
-    }, [changeVisibility]);
-
-    useEffect(() => {
-        const onEscCloseListener = (event: KeyboardEvent) => {
-            if (event.code === 'Escape') {
-                setVisibleHandler();
-            }
-        };
-
-        if (visible) {
-            timerRef.current = setTimeout(() => {
-                setOpening(true);
-            }, 0);
-        }
-
-        document.addEventListener('keydown', onEscCloseListener);
-        return () => {
-            document.removeEventListener('keydown', onEscCloseListener);
-            if (timerRef.current) clearTimeout(timerRef.current);
-        };
-    }, [visible, setVisibleHandler]);
 
     if (!visible) {
         return null;
