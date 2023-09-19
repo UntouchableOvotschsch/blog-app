@@ -7,7 +7,7 @@ import { action } from '@storybook/addon-actions';
 import AddNewCommentForm from './index';
 
 export default {
-    title: 'features/AddNewCommentForm',
+    title: 'entities/Comment/CommentForm',
     component: AddNewCommentForm,
     argTypes: {
         backgroundColor: { control: 'color' },

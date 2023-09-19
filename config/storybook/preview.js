@@ -1,4 +1,3 @@
-import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator';
 import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator';
@@ -14,11 +13,13 @@ export const parameters = {
     },
 };
 
-addDecorator(StyleDecorator);
-addDecorator(RouterDecorator);
-addDecorator(StoreDecorator({
-    ui: {
-        scroll: 0,
-    },
-}));
-addDecorator(SuspenseDecorator);
+export const decorators = [
+    StyleDecorator,
+    RouterDecorator,
+    StoreDecorator({
+        ui: {
+            scroll: 0,
+        },
+    }),
+    SuspenseDecorator,
+];
