@@ -10,13 +10,13 @@
 
 .selectedTab {
     opacity: 0.5;
-    fill-opacity: 0.5;
-    stroke-opacity: 0.5;
+    fill-opacity: 50%;
+    stroke-opacity: 50%;
     cursor: auto;
 
     &:hover {
         opacity: 0.5;
-        fill-opacity: 0.5;
-        stroke-opacity: 0.5;
+        fill-opacity: 50%;
+        stroke-opacity: 50%;
     }
 }

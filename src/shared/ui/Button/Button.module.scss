@@ -6,8 +6,8 @@
 
     &:hover {
         opacity: 0.8;
-        fill-opacity: 0.8;
-        stroke-opacity: 0.8;
+        fill-opacity: 80%;
+        stroke-opacity: 80%;
     }
 }
 
@@ -81,13 +81,13 @@
 
 .disabled {
     opacity: 0.7;
-    fill-opacity: 0.7;
-    stroke-opacity: 0.7;
+    fill-opacity: 70%;
+    stroke-opacity: 70%;
     cursor: auto;
 
     &:hover {
         opacity: 0.7;
-        fill-opacity: 0.7;
-        stroke-opacity: 0.7;
+        fill-opacity: 70%;
+        stroke-opacity: 70%;
     }
 }
