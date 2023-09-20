@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./build",
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "strict": true,
     "baseUrl": ".",
     "paths": {

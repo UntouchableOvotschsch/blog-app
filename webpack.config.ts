@@ -7,11 +7,11 @@ import { BuildEnv, BuildPath } from './config/build/types/config';
 export default (env: BuildEnv): webpack.Configuration => {
     const paths: BuildPath = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
-        build: path.resolve(__dirname, 'build'),
-        html: path.resolve(__dirname, 'public', 'index.html'),
+        build: path.resolve(__dirname, 'buildWebpack'),
+        html: path.resolve(__dirname, 'index.html'),
         src: path.resolve(__dirname, 'src'),
         locales: path.resolve(__dirname, 'public', 'locales'),
-        buildLocales: path.resolve(__dirname, 'build', 'locales'),
+        buildLocales: path.resolve(__dirname, 'buildWebpack', 'locales'),
     };
 
     const mode = env.mode || 'development';
