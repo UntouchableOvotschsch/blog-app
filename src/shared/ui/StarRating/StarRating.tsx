@@ -8,38 +8,39 @@ interface StarRatingProps {
     className?: string;
     selectedStars?: number
     onSelect?: (selectedStarts: number) => void
+    selected?: boolean
     starsLength?: number
 }
 
 const StarRating = (props: StarRatingProps) => {
     const {
         selectedStars = 0,
+        selected = false,
+        starsLength = 5,
         onSelect,
         className,
-        starsLength = 5,
     } = props;
 
-    const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
-    const [selectedCount, setSelectedCount] = useState(selectedStars);
+    const [hoveredCount, setHoveredCount] = useState(0);
 
     const onMouseEnter = useCallback((starNumber: number) => () => {
-        if (!isSelected) {
-            setSelectedCount(starNumber);
+        if (!selected) {
+            setHoveredCount(starNumber);
         }
-    }, [isSelected]);
+    }, [selected]);
 
     const onMouseLeave = useCallback(() => {
-        if (!isSelected) {
-            setSelectedCount(0);
+        if (!selected) {
+            setHoveredCount(0);
         }
-    }, [isSelected]);
+    }, [selected]);
 
     const onClickHandler = useCallback((starNumber: number) => () => {
-        if (!isSelected) {
+        if (!selected) {
             onSelect?.(starNumber);
-            setIsSelected(true);
+            setHoveredCount(0);
         }
-    }, [isSelected, onSelect]);
+    }, [onSelect, selected]);
 
     const starsArray = useMemo(() => (
         new Array(starsLength).fill(0).map((star, index) => (
@@ -52,8 +53,9 @@ const StarRating = (props: StarRatingProps) => {
                     classNames(
                         styles.starIcon,
                         {
-                            [styles.hovered]: selectedCount >= index + 1,
-                            [styles.selected]: isSelected,
+                            [styles.hovered]: hoveredCount >= index + 1,
+                            [styles.selected]: selectedStars >= index + 1,
+                            [styles.disabled]: selected,
                         },
                         [],
                     )
@@ -61,7 +63,7 @@ const StarRating = (props: StarRatingProps) => {
                 onClick={onClickHandler(index + 1)}
             />
         ))
-    ), [isSelected, onClickHandler, onMouseEnter, onMouseLeave, selectedCount, starsLength]);
+    ), [hoveredCount, onClickHandler, onMouseEnter, onMouseLeave, selected, selectedStars, starsLength]);
 
     return (
         <div className={classNames('', {}, [className])}>

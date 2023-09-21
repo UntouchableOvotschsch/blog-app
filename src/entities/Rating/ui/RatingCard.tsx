@@ -39,7 +39,13 @@ const RatingCard = (props: RatingCardProps) => {
     const [selectedStarsCount, setSelectedStarsCount] = useState(selectedStars);
 
     const changeFeedbackVisibility = useCallback(() => {
-        setFeedbackVisibility((prevState) => !prevState);
+        setFeedbackVisibility((prevState) => {
+            if (prevState) {
+                setFeedbackValue('');
+                setSelectedStarsCount(0);
+            }
+            return !prevState;
+        });
     }, []);
 
     const selectStarsHandler = useCallback((starsCount: number) => {
@@ -47,16 +53,21 @@ const RatingCard = (props: RatingCardProps) => {
         changeFeedbackVisibility();
     }, [changeFeedbackVisibility]);
 
-    const acceptHandle = useCallback(() => {
+    const acceptWithFeedbackHandle = useCallback(() => {
         onAcceptWithFeedback?.(selectedStarsCount, feedbackValue);
         changeFeedbackVisibility();
     }, [changeFeedbackVisibility, feedbackValue, onAcceptWithFeedback, selectedStarsCount]);
 
-    const cancelHandler = useCallback(() => {
-        setSelectedStarsCount(0);
+    const acceptWithoutFeedbackHandle = useCallback(() => {
         onAcceptWithoutFeedback?.(selectedStarsCount);
         changeFeedbackVisibility();
     }, [changeFeedbackVisibility, onAcceptWithoutFeedback, selectedStarsCount]);
+
+    const cancelHandle = useCallback(() => {
+        setFeedbackValue('');
+        setSelectedStarsCount(0);
+        changeFeedbackVisibility();
+    }, [changeFeedbackVisibility]);
 
     const feedbackContent = useMemo(() => {
         if (isMobile) {
@@ -76,15 +87,27 @@ const RatingCard = (props: RatingCardProps) => {
                             <HStack justify="between">
                                 <Button
                                     theme={ThemeButton.OUTLINE_RED}
-                                    onClick={cancelHandler}
+                                    onClick={cancelHandle}
                                 >
                                     {t('Отменить')}
                                 </Button>
-                                <Button
-                                    onClick={acceptHandle}
-                                >
-                                    {t('Сохранить')}
-                                </Button>
+                                {
+                                    feedbackValue
+                                        ? (
+                                            <Button
+                                                onClick={acceptWithFeedbackHandle}
+                                            >
+                                                {t('Сохранить')}
+                                            </Button>
+                                        )
+                                        : (
+                                            <Button
+                                                onClick={acceptWithoutFeedbackHandle}
+                                            >
+                                                {t('Сохранить без отзыва')}
+                                            </Button>
+                                        )
+                                }
                             </HStack>
                         </VStack>
                     </Card>
@@ -111,31 +134,47 @@ const RatingCard = (props: RatingCardProps) => {
                         <HStack justify="between">
                             <Button
                                 theme={ThemeButton.OUTLINE_RED}
-                                onClick={cancelHandler}
+                                onClick={cancelHandle}
                             >
                                 {t('Отменить')}
                             </Button>
-                            <Button
-                                onClick={acceptHandle}
-                            >
-                                {t('Сохранить')}
-                            </Button>
+                            {
+                                feedbackValue
+                                    ? (
+                                        <Button
+                                            onClick={acceptWithFeedbackHandle}
+                                        >
+                                            {t('Сохранить')}
+                                        </Button>
+                                    )
+                                    : (
+                                        <Button
+                                            onClick={acceptWithoutFeedbackHandle}
+                                        >
+                                            {t('Сохранить без отзыва')}
+                                        </Button>
+                                    )
+                            }
                         </HStack>
                     </VStack>
                 </Card>
             </Modal>
         );
-    }, [acceptHandle, cancelHandler,
-        changeFeedbackVisibility, feedbackTitle,
-        feedbackValue, feedbackVisibility,
-        isMobile, t,
+    }, [
+        acceptWithFeedbackHandle, acceptWithoutFeedbackHandle, cancelHandle,
+        changeFeedbackVisibility, feedbackTitle, feedbackValue,
+        feedbackVisibility, isMobile, t,
     ]);
 
     return (
         <Card className={classNames('', {}, [className])}>
             <VStack gap="8">
                 { title && <Text title={title} /> }
-                <StarRating selectedStars={selectedStarsCount} onSelect={selectStarsHandler} />
+                <StarRating
+                    selectedStars={selectedStarsCount}
+                    onSelect={selectStarsHandler}
+                    selected={Boolean(selectedStarsCount)}
+                />
                 { feedbackText && <Text title={t('Ваш отзыв')} text={feedbackText} />}
             </VStack>
             {feedbackContent}

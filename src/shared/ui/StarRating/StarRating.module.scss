@@ -8,5 +8,9 @@
 }
 
 .selected {
+    fill: var(--primary-color);
+}
+
+.disabled {
     cursor: auto;
 }
