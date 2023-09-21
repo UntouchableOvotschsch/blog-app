@@ -4,10 +4,10 @@ import styles from './Icon.module.scss';
 
 type IconFillTypes = 'primary' | 'inverted'
 
-interface IconProps {
+interface IconProps extends React.SVGProps<SVGSVGElement>{
     className?: string
     size?: string
-    Icon: React.VFC<React.SVGProps<SVGSVGElement>>
+    Icon: React.FC<React.SVGProps<SVGSVGElement>>
     fill?: IconFillTypes
 
 }
@@ -17,11 +17,13 @@ const Icon = ({
     className,
     Icon,
     fill = 'primary',
+    ...otherProps
 }: IconProps) => (
     <Icon
         className={classNames('', {}, [className, styles[fill]])}
         width={size}
         height={size}
+        {...otherProps}
     />
 );
 

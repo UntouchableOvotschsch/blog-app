@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import styles from './Card.module.scss';
 
-type CardTheme = 'primary' | 'inverted'
+type CardTheme = 'primary' | 'inverted' | 'transparent'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement>{
     className?: string;
