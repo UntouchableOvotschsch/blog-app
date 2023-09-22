@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
 export const Light = Template.bind({});
 Light.args = {
     visible: true,
-    changeVisibility: action('changeVisibility'),
+    changeVisibility: action('onClose'),
     children: (
         <>
             {/* eslint-disable-next-line i18next/no-literal-string */}

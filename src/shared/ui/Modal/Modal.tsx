@@ -21,7 +21,10 @@ export const Modal: FC<ModalProps> = (
         changeVisibility,
     },
 ) => {
-    const { closing, opening, setVisibleHandler } = useModal({ visible, changeVisibility });
+    const { closing, opening, setVisibleHandler } = useModal({
+        visible,
+        onClose: changeVisibility,
+    });
 
     const mods: Mods = {
         [styles.visible]: opening,

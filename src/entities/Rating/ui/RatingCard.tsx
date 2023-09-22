@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useCallback, useMemo, useState } from 'react';
+import {
+    useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import Card from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
@@ -40,14 +42,20 @@ const RatingCard = (props: RatingCardProps) => {
     const [feedbackValue, setFeedbackValue] = useState('');
     const [selectedStarsCount, setSelectedStarsCount] = useState(0);
 
+    useEffect(() => {
+        if (selectedStars) {
+            setSelectedStarsCount(selectedStars);
+        }
+    }, [selectedStars]);
+
     const changeFeedbackVisibility = useCallback(() => {
-        setFeedbackVisibility((prevState) => {
-            if (prevState) {
-                setFeedbackValue('');
-                setSelectedStarsCount(0);
-            }
-            return !prevState;
-        });
+        setFeedbackVisibility((prevState) => !prevState);
+    }, []);
+
+    const onModalClose = useCallback(() => {
+        setFeedbackVisibility(false);
+        setFeedbackValue('');
+        setSelectedStarsCount(0);
     }, []);
 
     const selectStarsHandler = useCallback((starsCount: number) => {
@@ -66,15 +74,13 @@ const RatingCard = (props: RatingCardProps) => {
     }, [changeFeedbackVisibility, onAcceptWithoutFeedback, selectedStarsCount]);
 
     const cancelHandle = useCallback(() => {
-        setFeedbackValue('');
-        setSelectedStarsCount(0);
-        changeFeedbackVisibility();
-    }, [changeFeedbackVisibility]);
+        onModalClose();
+    }, [onModalClose]);
 
     const feedbackContent = useMemo(() => {
         if (isMobile) {
             return (
-                <Drawer visible={feedbackVisibility} changeVisibility={changeFeedbackVisibility}>
+                <Drawer visible={feedbackVisibility} changeVisibility={onModalClose}>
                     <Card cardTheme="transparent" className={styles.feedbackContainer}>
                         <VStack
                             align="start"
@@ -120,7 +126,7 @@ const RatingCard = (props: RatingCardProps) => {
         return (
             <Modal
                 visible={feedbackVisibility}
-                changeVisibility={changeFeedbackVisibility}
+                changeVisibility={onModalClose}
             >
                 <Card cardTheme="transparent" className={styles.feedbackContainer}>
                     <VStack
@@ -164,7 +170,7 @@ const RatingCard = (props: RatingCardProps) => {
         );
     }, [
         acceptWithFeedbackHandle, acceptWithoutFeedbackHandle, cancelHandle,
-        changeFeedbackVisibility, feedbackTitle, feedbackValue,
+        onModalClose, feedbackTitle, feedbackValue,
         feedbackVisibility, isMobile, t,
     ]);
 
@@ -174,7 +180,7 @@ const RatingCard = (props: RatingCardProps) => {
                 { (!selectedStars && initialTitle) && <Text title={initialTitle} /> }
                 { (!!selectedStars && successTitle) && <Text title={successTitle} /> }
                 <StarRating
-                    selectedStars={selectedStars || selectedStarsCount}
+                    selectedStars={selectedStarsCount}
                     onSelect={selectStarsHandler}
                     selected={Boolean(selectedStars)}
                 />

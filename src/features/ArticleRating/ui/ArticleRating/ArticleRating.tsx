@@ -13,8 +13,8 @@ interface ArticleRatingProps {
 const ArticleRating = ({ articleId }: ArticleRatingProps) => {
     const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
-    const { data, isLoading } = getArticleRating({ userId: userData?.id!, articleId });
-    const [rateArticleMutation] = rateArticle();
+    const { data, isLoading: isRatingLoading } = getArticleRating({ userId: userData?.id!, articleId });
+    const [rateArticleMutation, { isLoading: isMutationLoading }] = rateArticle();
 
     const articleRating = data?.[0];
 
@@ -27,7 +27,7 @@ const ArticleRating = ({ articleId }: ArticleRatingProps) => {
         });
     }, [articleId, rateArticleMutation, userData?.id]);
 
-    if (isLoading) {
+    if (isRatingLoading || isMutationLoading) {
         return (
             <Skeleton width="100%" height="200px" />
         );

@@ -4,11 +4,11 @@ import {
 
 interface UseModalProps {
     visible: boolean
-    changeVisibility: () => void
+    onClose: () => void
     delay?: number
 }
 
-export const useModal = ({ delay = 300, changeVisibility, visible }: UseModalProps) => {
+export const useModal = ({ delay = 300, onClose, visible }: UseModalProps) => {
     const [closing, setClosing] = useState(false);
     const [opening, setOpening] = useState(false);
     const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
@@ -17,10 +17,10 @@ export const useModal = ({ delay = 300, changeVisibility, visible }: UseModalPro
         setClosing(true);
         timerRef.current = setTimeout(() => {
             setOpening(false);
-            changeVisibility();
+            onClose();
             setClosing(false);
         }, delay);
-    }, [changeVisibility, delay]);
+    }, [onClose, delay]);
 
     useEffect(() => {
         const onEscCloseListener = (event: KeyboardEvent) => {
