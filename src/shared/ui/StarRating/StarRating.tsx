@@ -38,7 +38,6 @@ const StarRating = (props: StarRatingProps) => {
     const onClickHandler = useCallback((starNumber: number) => () => {
         if (!selected) {
             onSelect?.(starNumber);
-            setHoveredCount(0);
         }
     }, [onSelect, selected]);
 
@@ -47,6 +46,7 @@ const StarRating = (props: StarRatingProps) => {
             <Icon
                 Icon={Star}
                 key={`star-key${index}`}
+                onTouchStart={onMouseEnter(index + 1)}
                 onMouseEnter={onMouseEnter(index + 1)}
                 onMouseLeave={onMouseLeave}
                 className={
