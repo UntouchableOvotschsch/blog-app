@@ -54,7 +54,6 @@ const ArticlesPage = () => {
         >
             <PageWrapper
                 className={classNames(styles.ArticlePage, mods, [])}
-                trackScroll
             >
                 {
                     error

@@ -83,7 +83,12 @@ module.exports = {
             { argsIgnorePattern: '^_' },
         ],
         'react/no-array-index-key': 'off',
-        'fsd-rules-checker/fsd-path-checker': 'error',
+        'fsd-rules-checker/fsd-path-checker': [
+            'error',
+            {
+                alias: '@',
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

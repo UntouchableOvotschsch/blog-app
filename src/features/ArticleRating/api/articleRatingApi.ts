@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ArticleRatingType } from '@/features/ArticleRating/model/types/articleRating';
+import { ArticleRatingType } from '../model/types/articleRating';
 
 const articleRatingApi = rtkApi.enhanceEndpoints({ addTagTypes: ['ArticleRating'] }).injectEndpoints({
     endpoints: (build) => ({

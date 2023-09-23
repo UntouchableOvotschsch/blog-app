@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { memo, RefObject, useCallback } from 'react';
 import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text/Text';
 import { VStack } from '@/shared/ui/Stack';
 import Avatar from '@/shared/ui/Avatar';
@@ -19,11 +19,15 @@ import { useGetArticleDetailsQuery } from '../../model/api';
 interface ArticleDetailsProps {
     className?: string;
     id: string
+    wrapperRef?: RefObject<HTMLDivElement>
 }
 
-const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
+const ArticleDetails = memo(({
+    className, id, wrapperRef,
+}: ArticleDetailsProps) => {
     const { t } = useTranslation('articleDetails');
     const { data: article, isLoading, isError } = useGetArticleDetailsQuery(id);
+
     const renderBlocks = useCallback((blocks: ArticleBlock[]) => blocks.map((block, index) => {
         switch (block.type) {
         case ArticleBlockTypes.TEXT:
@@ -72,7 +76,10 @@ const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
         );
     }
     return (
-        <div className={classNames(styles.ArticleDetails, {}, [className])}>
+        <div
+            className={classNames(styles.ArticleDetails, {}, [className])}
+            ref={wrapperRef}
+        >
             <div className={styles.header}>
                 <Avatar
                     avatar={article?.img}
