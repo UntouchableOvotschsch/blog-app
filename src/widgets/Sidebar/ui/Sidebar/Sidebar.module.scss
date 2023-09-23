@@ -2,9 +2,16 @@
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
     background: var(--inverted-bg-color);
-    position: relative;
     transition: width 0.2s;
     flex-shrink: 0;
+
+    &.mobile {
+        position: absolute;
+    }
+
+    &.desktop {
+        position: relative;
+    }
 }
 
 .menu {
@@ -33,5 +40,11 @@
 }
 
 .collapsed {
-    width: var(--sidebar-width-collapsed);
+    &.mobile {
+        width: 0;
+    }
+
+    &.desktop {
+        width: var(--sidebar-width-collapsed);
+    }
 }

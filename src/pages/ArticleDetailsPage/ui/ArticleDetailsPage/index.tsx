@@ -18,13 +18,17 @@ const ArticleDetailsPage = () => {
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     const [width, setWidth] = useState(0);
+    const [needBar, setNeedBar] = useState(false);
     const scrollHandler = (e: UIEvent<HTMLDivElement>) => {
         if (wrapperRef.current) {
             const viewPortHeight = window.innerHeight;
             const Offset = wrapperRef.current.offsetTop;
-            const ScrollTop = e.currentTarget.scrollTop - Offset;
+            const ScrollTop = e.currentTarget.scrollTop;
             const ScrollHeight = wrapperRef.current.scrollHeight;
-            const percent = (ScrollTop / (ScrollHeight - viewPortHeight)) * 100;
+            if (Math.round(ScrollHeight / viewPortHeight) > 1) {
+                setNeedBar(true);
+            }
+            const percent = (ScrollTop / (ScrollHeight - viewPortHeight + Offset)) * 100;
             setWidth(percent > 100 ? 100 : percent);
         }
     };
@@ -34,7 +38,7 @@ const ArticleDetailsPage = () => {
             className={styles.pageWrapper}
             onScroll={scrollHandler}
         >
-            <ProgressBar width={width} />
+            {needBar && <ProgressBar width={width} />}
             <VStack gap="8" align="start" className={styles.stackContainer}>
                 <ArticleDetailsPageHeader id={checkID!} />
                 <ArticleDetails
