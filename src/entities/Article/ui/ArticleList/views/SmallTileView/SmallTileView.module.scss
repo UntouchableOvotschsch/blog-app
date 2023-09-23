@@ -1,8 +1,23 @@
 .gridRow {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
-    left: 5%;
+    margin: 0 auto;
+
+    @media (min-width: 1600px) {
+        width: 1190px;
+    }
+
+    @media (max-width: 1600px) {
+        width: 715px;
+    }
+
+    @media (max-width: 1100px) {
+        width: 476px;
+    }
+
+    @media (max-width: 850px) {
+        width: 240px;
+    }
 }
 
 .SMALL_TILE_ROW {

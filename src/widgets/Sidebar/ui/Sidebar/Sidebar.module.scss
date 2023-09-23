@@ -6,6 +6,7 @@
     flex-shrink: 0;
 
     &.mobile {
+        z-index: 10;
         position: absolute;
     }
 

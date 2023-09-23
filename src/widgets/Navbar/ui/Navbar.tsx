@@ -31,7 +31,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <header className={classNames(styles.Navbar, {}, [className])}>
                 <Button
                     theme={ThemeButton.CLEAR_INVERTED}
-                    className={styles.createArticleBtn}
                 >
                     <AppLink
                         to={RoutePath.article_create}
