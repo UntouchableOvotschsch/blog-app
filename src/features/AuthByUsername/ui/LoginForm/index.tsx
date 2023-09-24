@@ -7,7 +7,6 @@ import Input from '@/shared/ui/Input/Input';
 import Text, { TextSize, ThemeText } from '@/shared/ui/Text/Text';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import {
@@ -15,6 +14,7 @@ import {
     authByUsernameReducer,
 } from '../../model/slice/authByUsernameSlice';
 import styles from './LoginForm.module.scss';
+import { RoutePath } from '@/shared/config/routeConfig/routePath';
 
 const initialReducer: ReducerList = {
     authByUsername: authByUsernameReducer,

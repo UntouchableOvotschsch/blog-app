@@ -1,7 +1,6 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import Card from '@/shared/ui/Card/Card';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import Avatar from '@/shared/ui/Avatar';
 import Text from '@/shared/ui/Text/Text';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
@@ -13,6 +12,7 @@ import { ArticleBlockTypes } from '../../model/consts';
 import styles from './BigTileItem.module.scss';
 import { Article, ArticleBlock, ArticleTextBlock } from '../../model/types/article';
 import ArticleTextBlockCom from '../ArticleTextBlockCom';
+import { RoutePath } from '@/shared/config/routeConfig/routePath';
 
 interface BigTileItemProps {
     article: Article

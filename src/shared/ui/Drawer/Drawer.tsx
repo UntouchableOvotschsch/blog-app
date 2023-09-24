@@ -74,7 +74,7 @@ const DrawerContent = ({
     return (
         <Portal>
             <div className={classNames(styles.Drawer, {}, [className])}>
-                <Overlay onClick={() => close()} />
+                <Overlay visible={visible} onClick={() => close()} />
                 <Spring.a.div
                     className={styles.content}
                     onClick={(event) => event.stopPropagation()}

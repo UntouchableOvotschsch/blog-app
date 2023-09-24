@@ -37,7 +37,7 @@ export const Modal: FC<ModalProps> = (
     return (
         <Portal>
             <div className={classNames(styles.Modal, mods, [className])}>
-                <Overlay onClick={setVisibleHandler} />
+                <Overlay visible={visible} onClick={setVisibleHandler} />
                 <div
                     className={styles.content}
                     onClick={(event) => event.stopPropagation()}

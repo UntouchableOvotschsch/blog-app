@@ -6,7 +6,7 @@
     left: 0;
     opacity: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: var(--z-index-modal);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,12 +20,12 @@
     transform: scale(0.5);
     min-width: 400px;
     min-height: 240px;
+    z-index: var(--z-index-modal);
 }
 
 .visible {
     pointer-events: auto;
     opacity: 1;
-    z-index: var(--z-index-modal);
 
     .content {
         transform: scale(1);

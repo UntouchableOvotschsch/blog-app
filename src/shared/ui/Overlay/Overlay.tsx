@@ -4,7 +4,7 @@ import styles from './Overlay.module.scss';
 interface OverlayProps {
     className?: string;
     onClick: () => void
-    visible?: boolean
+    visible: boolean
 }
 
 const Overlay = ({ className, onClick, visible }: OverlayProps) => {

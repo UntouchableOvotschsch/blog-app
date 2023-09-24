@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import Text from '@/shared/ui/Text/Text';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { useGetArticleDetailsQuery } from '@/entities/Article';
 import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import styles from './ArticleDetailsPageHeader.module.scss';
+import { RoutePath } from '@/shared/config/routeConfig/routePath';
 
 interface ArticleDetailsPageHeaderProps {
     id: string

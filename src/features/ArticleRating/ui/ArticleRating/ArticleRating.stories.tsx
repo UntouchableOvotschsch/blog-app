@@ -15,5 +15,5 @@ export default meta;
 type Story = StoryObj<typeof ArticleRating>;
 
 export const Normal: Story = {
-    render: () => <ArticleRating />,
+    render: () => <ArticleRating articleId="1" />,
 };
