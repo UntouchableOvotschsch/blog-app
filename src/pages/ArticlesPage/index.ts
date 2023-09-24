@@ -1,23 +1,10 @@
-import { getArticlesActiveTypes } from './model/selectors/getArticlesActiveTypes';
 import { ArticlesPageAsync as ArticlesPage } from './ui/ArticlesPage/ArticlesPage.async';
 import { ArticlesPageSchema } from './model/types/articlesPageSchema';
-import { articlesPageActions, articlesPageReducer } from './model/slice/articlesPageSlice';
-import { getArticleView } from './model/selectors/getArticleView';
-import { fetchArticles } from './model/service/fetchArticles';
-import { getArticlesSearch } from './model/selectors/getArticlesSearch';
-import { getArticlesSortOrder } from './model/selectors/getArticlesSortOrder';
-import { getArticlesSortField } from './model/selectors/getArticlesSortField';
+import { articlesPageReducer } from './model/slice/articlesPageSlice';
 
 export {
     ArticlesPage,
     articlesPageReducer,
-    getArticleView,
-    articlesPageActions,
-    fetchArticles,
-    getArticlesSearch,
-    getArticlesSortOrder,
-    getArticlesSortField,
-    getArticlesActiveTypes,
 };
 
 export type {

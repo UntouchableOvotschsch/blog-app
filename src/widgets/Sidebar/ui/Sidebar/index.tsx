@@ -1,4 +1,6 @@
-import React, { memo, useMemo, useState } from 'react';
+import React, {
+    memo, useEffect, useMemo, useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
@@ -16,10 +18,14 @@ interface SidebarProps {
 }
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
-    const [collapsed, setCollapsed] = useState(false);
-
     const ItemsLinksList = useSelector(getItemsLinksList);
     const isMobile = useDeviceDetect();
+    const [collapsed, setCollapsed] = useState(false);
+    useEffect(() => {
+        if (isMobile) {
+            setCollapsed(true);
+        }
+    }, [isMobile]);
 
     const itemsList = useMemo(() => ItemsLinksList.map((item) => (
         <LinkItem
@@ -59,7 +65,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     if (isMobile) {
         return (
             <>
-                { !collapsed && <Overlay onClick={() => setCollapsed(true)} /> }
+                <Overlay visible={!collapsed} onClick={() => setCollapsed(true)} />
                 <aside
                     data-testid="sidebar"
                     className={classNames(

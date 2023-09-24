@@ -1,5 +1,9 @@
 .stackContainer {
     padding: 40px;
+
+    @media (max-width: 400px) {
+        padding: 10px;
+    }
 }
 
 .pageWrapper {

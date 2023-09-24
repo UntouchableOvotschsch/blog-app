@@ -4,7 +4,7 @@ import { AboutPage } from '@/pages/AboutPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import AuthWrapper from '@/app/providers/RouterProvider/ui/wrappers/AuthWrapper';
-import { ArticlesPageAsync } from '@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async';
+import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPage } from '@/pages/AdminPage';
@@ -80,9 +80,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLES]: {
         path: RoutePath.articles,
         element: (
-            // TODO Почему-то с импортом из паблик апи стреляет ошибка в сторибуке
             <AuthWrapper navigateTo={unauthorizedNavigateTo}>
-                <ArticlesPageAsync />
+                <ArticlesPage />
             </AuthWrapper>
         ),
     },

@@ -9,5 +9,5 @@
     align-items: center;
     justify-content: center;
     background: var(--overlay-color);
-    z-index: 0;
+    z-index: var(--z-index-overlay);
 }

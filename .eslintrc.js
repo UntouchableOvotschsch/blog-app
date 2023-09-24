@@ -89,6 +89,12 @@ module.exports = {
                 alias: '@',
             },
         ],
+        'fsd-rules-checker/public-api-imports': [
+            'error',
+            {
+                alias: '@',
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

@@ -35,20 +35,18 @@ const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
     const tabHandler = useCallback((newType: TabItem<ArticleTypes>) => {
         if (newType.value !== ArticleTypes.ALL) {
             if (activeTypes.includes(newType.value)) {
-                const newForm = activeTypes.filter((type) => (
-                    type !== newType.value && type !== ArticleTypes.ALL
-                ));
+                const newForm = activeTypes.filter((type) => type !== newType.value);
                 typeHandler(newForm.length === 0 ? [ArticleTypes.ALL] : newForm);
             } else {
                 const newForm = [...activeTypes, newType.value].filter((type) => (
                     type !== ArticleTypes.ALL
                 ));
-                typeHandler(newForm.length === 0 ? [ArticleTypes.ALL] : newForm);
+                typeHandler(newForm.length === types.length - 1 ? [ArticleTypes.ALL] : newForm);
             }
         } else {
             typeHandler([ArticleTypes.ALL]);
         }
-    }, [activeTypes, typeHandler]);
+    }, [activeTypes, typeHandler, types.length]);
 
     return (
         <Tabs
