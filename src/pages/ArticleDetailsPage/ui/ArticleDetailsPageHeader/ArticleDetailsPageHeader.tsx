@@ -7,7 +7,7 @@ import { useGetArticleDetailsQuery } from '@/entities/Article';
 import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import styles from './ArticleDetailsPageHeader.module.scss';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 interface ArticleDetailsPageHeaderProps {
     id: string

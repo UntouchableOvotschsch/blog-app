@@ -7,7 +7,7 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Article } from '../../model/types/article';
 import styles from './SmallTileItem.module.scss';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 interface BigTileItemProps {
     article: Article

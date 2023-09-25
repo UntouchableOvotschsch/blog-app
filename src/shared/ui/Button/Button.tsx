@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import styles from './Button.module.scss';
+import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
 
 export enum ThemeButton {
     CLEAR = 'clear',
@@ -29,6 +30,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
 }
 
 export const Button = memo((props: ButtonProps) => {
+    const isMobile = useDeviceDetect();
     const {
         className,
         children,
@@ -50,7 +52,12 @@ export const Button = memo((props: ButtonProps) => {
             className={classNames(
                 styles.Button,
                 mods,
-                [className, styles[theme], styles[size]],
+                [
+                    !isMobile && styles.desktop,
+                    styles[theme],
+                    styles[size],
+                    className,
+                ],
             )}
             disabled={disabled}
             {...otherProps}

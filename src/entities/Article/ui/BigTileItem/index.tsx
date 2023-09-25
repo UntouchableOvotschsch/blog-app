@@ -12,7 +12,7 @@ import { ArticleBlockTypes } from '../../model/consts';
 import styles from './BigTileItem.module.scss';
 import { Article, ArticleBlock, ArticleTextBlock } from '../../model/types/article';
 import ArticleTextBlockCom from '../ArticleTextBlockCom';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 interface BigTileItemProps {
     article: Article

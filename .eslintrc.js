@@ -93,6 +93,10 @@ module.exports = {
             'error',
             {
                 alias: '@',
+                testFiles: {
+                    testPublicApiName: 'testing',
+                    testFilesPatterns: ['**/*.test.ts', '**/*.stories.tsx', '**/StoreDecorator/*.tsx'],
+                },
             },
         ],
     },

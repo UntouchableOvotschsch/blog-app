@@ -5,7 +5,7 @@ import ListIcon from '@/shared/assets/icons/list.svg';
 import Profile from '@/shared/assets/icons/profile.svg';
 import ArticlesIcon from '@/shared/assets/icons/articles.svg';
 import { ItemType } from '../../types/item';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 export const getItemsLinksList = createSelector(
     getUserAuthData,

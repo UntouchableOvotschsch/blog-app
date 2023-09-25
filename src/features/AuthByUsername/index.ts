@@ -1,9 +1,7 @@
-import { authByUsernameReducer } from './model/slice/authByUsernameSlice';
-import { type AuthByUsernameSchema } from './model/types/authByUsernameSchema';
 import LoginModal from './ui/LoginModal';
+import { type AuthByUsernameSchema } from './model/types/authByUsernameSchema';
 
 export {
     LoginModal,
     AuthByUsernameSchema,
-    authByUsernameReducer,
 };

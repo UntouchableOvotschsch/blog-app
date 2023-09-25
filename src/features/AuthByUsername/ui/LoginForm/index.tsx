@@ -14,7 +14,7 @@ import {
     authByUsernameReducer,
 } from '../../model/slice/authByUsernameSlice';
 import styles from './LoginForm.module.scss';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 const initialReducer: ReducerList = {
     authByUsername: authByUsernameReducer,

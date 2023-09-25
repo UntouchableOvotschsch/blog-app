@@ -1,4 +1,3 @@
-import { RouteProps } from 'react-router-dom';
 import { MainPage } from '@/pages/MainPage';
 import { AboutPage } from '@/pages/AboutPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -11,15 +10,8 @@ import { AdminPage } from '@/pages/AdminPage';
 import { UserRoles } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import RoleWrapper from '@/app/providers/RouterProvider/ui/wrappers/RoleWrapper';
-import { AppRoutes, RoutePath } from './routePath';
-
-type AppRoutesProps = RouteProps & {
-    authOnly?: boolean
-    roles?: UserRoles[]
-}
-
-const unauthorizedNavigateTo = RoutePath.main;
-const forbiddenNavigateTo = RoutePath.forbidden;
+import { AppRoutesProps } from '@/shared/types/routes';
+import { AppRoutes, RoutePath } from '@/shared/const/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
@@ -34,7 +26,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PROFILE]: {
         path: `${RoutePath.profile}/:id`,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ProfilePage />
             </AuthWrapper>
         ),
@@ -44,7 +36,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLES]: {
         path: RoutePath.articles,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ArticlesPage />
             </AuthWrapper>
         ),
@@ -53,7 +45,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_DETAILS]: {
         path: `${RoutePath.article_details}/:id`,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ArticleDetailsPage />
             </AuthWrapper>
         ),
@@ -62,7 +54,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_CREATE]: {
         path: `${RoutePath.article_create}`,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ArticleEditPage />
             </AuthWrapper>
         ),
@@ -71,7 +63,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_EDIT]: {
         path: `${RoutePath.article_edit}`,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ArticleEditPage />
             </AuthWrapper>
         ),
@@ -80,8 +72,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ADMIN]: {
         path: RoutePath.admin,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
-                <RoleWrapper roles={[UserRoles.ADMIN]} navigateTo={forbiddenNavigateTo}>
+            <AuthWrapper>
+                <RoleWrapper roles={[UserRoles.ADMIN]}>
                     <AdminPage />
                 </RoleWrapper>
             </AuthWrapper>
@@ -91,7 +83,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.FORBIDDEN]: {
         path: RoutePath.forbidden,
         element: (
-            <AuthWrapper navigateTo={unauthorizedNavigateTo}>
+            <AuthWrapper>
                 <ForbiddenPage />
             </AuthWrapper>
         ),

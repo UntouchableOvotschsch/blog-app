@@ -1,12 +1,13 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthDataChecker } from '@/shared/lib/hooks/useAuthDataChecker';
+import { RoutePath } from '@/shared/const/router';
 
 interface AuthWrapperProps {
     children: React.ReactElement
-    navigateTo: string
+    navigateTo?: string
 }
-const AuthWrapper = ({ children, navigateTo }: AuthWrapperProps) => {
+const AuthWrapper = ({ children, navigateTo = RoutePath.main }: AuthWrapperProps) => {
     const isAuth = useAuthDataChecker();
     const location = useLocation();
 

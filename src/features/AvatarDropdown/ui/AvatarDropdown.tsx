@@ -8,7 +8,7 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import styles from './AvatarDropdown.module.scss';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
     className?: string;

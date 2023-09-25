@@ -5,7 +5,7 @@ import Text, { TextAlign, TextSize } from '@/shared/ui/Text/Text';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { CommentType } from '../../model/types/comment';
 import styles from './Comment.module.scss';
-import { RoutePath } from '@/shared/config/routeConfig/routePath';
+import { RoutePath } from '@/shared/const/router';
 
 interface CommentProps {
     className?: string;
