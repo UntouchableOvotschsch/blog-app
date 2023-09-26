@@ -3,8 +3,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
-import AddNewCommentForm from './index';
+import AddNewCommentForm from '.';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'entities/Comment/CommentForm',

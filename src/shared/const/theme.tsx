@@ -1,6 +1,6 @@
-import { createContext, ReactNode } from 'react';
-import DarkLogo from '@/shared/assets/icons/theme-dark.svg';
+import { ReactNode } from 'react';
 import LightLogo from '@/shared/assets/icons/theme-light.svg';
+import DarkLogo from '@/shared/assets/icons/theme-dark.svg';
 import OrangeLogo from '@/shared/assets/icons/theme-orange.svg';
 
 export enum Themes {
@@ -14,10 +14,3 @@ export const ThemesConfig: Record<Themes, ReactNode> = {
     [Themes.DARK]: <DarkLogo />,
     [Themes.ORANGE]: <OrangeLogo />,
 };
-
-export interface IThemeContext {
-    theme?: Themes;
-    setTheme?: (theme: Themes) => void;
-}
-
-export const ThemeContext = createContext<IThemeContext>({});

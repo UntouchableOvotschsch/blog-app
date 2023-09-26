@@ -1,8 +1,8 @@
 import { Menu } from '@headlessui/react';
 import { Fragment, ReactNode, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink, AppLinkTheme } from '../../../AppLink/AppLink';
-import { Button, ThemeButton } from '../../../Button/Button';
+import { AppLink, AppLinkTheme } from '../../../AppLink';
+import { Button, ThemeButton } from '../../../Button';
 import styles from './Dropdown.module.scss';
 import { DropdownPosition, dropDownPositionClasses } from '../../styles/consts';
 import popupStyles from '../../styles/Popups.module.scss';

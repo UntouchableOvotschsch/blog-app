@@ -1,9 +1,9 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
-import Card from '@/shared/ui/Card/Card';
-import Text from '@/shared/ui/Text/Text';
+import Card from '@/shared/ui/Card';
+import Text from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import Icon from '@/shared/ui/Icon';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Article } from '../../model/types/article';
 import styles from './SmallTileItem.module.scss';

@@ -4,6 +4,7 @@ import type { User, UserSchema } from './model/types/user';
 import { getUserAuthData } from './model/selectors/getUserAuthData';
 import { getUserIsAdmin, getUserRoles } from './model/selectors/getUserRoles';
 import { getUserInited } from './model/selectors/getUserInited';
+import { useAuthDataChecker } from './lib/useAuthDataChecker';
 
 export {
     userReducer,
@@ -15,4 +16,5 @@ export {
     getUserRoles,
     getUserIsAdmin,
     getUserInited,
+    useAuthDataChecker,
 };

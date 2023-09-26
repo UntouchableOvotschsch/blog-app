@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import PageWrapper from '@/shared/ui/PageWrapper';
 import { EditableProfileCard } from '@/features/EditableProfileCard';
 
 const ProfilePage = () => {

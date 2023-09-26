@@ -2,11 +2,11 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import PageWrapper from '@/shared/ui/PageWrapper';
 import { ArticleViewTypes } from '../../model/consts';
-import ArticleList from './index';
+import ArticleList from '.';
 import { articlesArrayTemplate } from '../../model/templates/article';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'entities/Article/ArticleList',

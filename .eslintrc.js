@@ -99,6 +99,13 @@ module.exports = {
                 },
             },
         ],
+        'fsd-rules-checker/layer-import-checker': [
+            'error',
+            {
+                alias: '@',
+                ignorePatterns: ['**/StoreProvider', '**/testing'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

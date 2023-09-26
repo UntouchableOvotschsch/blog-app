@@ -1,5 +1,5 @@
 import { UserRoles } from '@/entities/User';
-import { ArticleBlockTypes, ArticleTypes } from '../consts/index';
+import { ArticleBlockTypes, ArticleTypes } from '../consts';
 import { Article } from '../types/article';
 
 export const articleTemplate: Article = {

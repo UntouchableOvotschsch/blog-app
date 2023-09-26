@@ -1,7 +1,7 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
-import { getFormData } from './index';
+import { getFormData } from '.';
 
 describe('getFromData.test', () => {
     const state: DeepPartial<StateSchema> = {

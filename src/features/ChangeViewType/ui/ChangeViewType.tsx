@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useMemo } from 'react';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import Icon from '@/shared/ui/Icon';
 import ListViewIcon from '@/shared/assets/icons/list-view-icon.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';

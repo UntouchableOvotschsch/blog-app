@@ -3,15 +3,15 @@ import {
     useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Card from '@/shared/ui/Card/Card';
+import Card from '@/shared/ui/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import Text, { TextAlign } from '@/shared/ui/Text/Text';
-import StarRating from '@/shared/ui/StarRating/StarRating';
-import { Modal } from '@/shared/ui/Modal/Modal';
+import Text, { TextAlign } from '@/shared/ui/Text';
+import StarRating from '@/shared/ui/StarRating';
+import { Modal } from '@/shared/ui/Modal';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import Drawer from '@/shared/ui/Drawer/Drawer';
-import Input from '@/shared/ui/Input/Input';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import Drawer from '@/shared/ui/Drawer';
+import Input from '@/shared/ui/Input';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import styles from './RatingCard.module.scss';
 
 interface RatingCardProps {

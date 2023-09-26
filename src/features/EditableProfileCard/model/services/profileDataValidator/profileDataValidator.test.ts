@@ -1,6 +1,6 @@
 import { Countries } from '@/entities/Country';
 import { ProfileType } from '@/entities/Profile';
-import { profileDataValidator } from './index';
+import { profileDataValidator } from '.';
 
 describe('profileDataValidator.test', () => {
     test('with no data', () => {

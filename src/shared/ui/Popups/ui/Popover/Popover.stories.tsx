@@ -2,10 +2,10 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
-import { Button } from '../../../Button/Button';
-import Text from '../../../Text/Text';
+import { Button } from '../../../Button';
+import Text from '../../../Text';
 import Popover from './Popover';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'shared/Popover',

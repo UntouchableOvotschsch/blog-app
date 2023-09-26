@@ -3,9 +3,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
-import Text from '../Text/Text';
-import Drawer from './Drawer';
+import Text from '../Text';
+import Drawer from '../Drawer';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'shared/Drawer',

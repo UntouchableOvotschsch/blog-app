@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { getProfileError } from './index';
+import { getProfileError } from '.';
 
 describe('getProfileError.test', () => {
     const state: DeepPartial<StateSchema> = {

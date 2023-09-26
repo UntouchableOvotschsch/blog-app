@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import Text from '@/shared/ui/Text/Text';
+import { Button, ThemeButton } from '@/shared/ui/Button';
+import { AppLink } from '@/shared/ui/AppLink';
+import Text from '@/shared/ui/Text';
 import { useGetArticleDetailsQuery } from '@/entities/Article';
 import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';

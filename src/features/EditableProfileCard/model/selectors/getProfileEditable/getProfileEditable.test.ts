@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
-import { getProfileEditable } from './index';
+import { getProfileEditable } from '.';
 
 describe('getProfileEditable.test', () => {
     const state: DeepPartial<StateSchema> = {

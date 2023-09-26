@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import { Modal } from '@/shared/ui/Modal/Modal';
-import { Loader } from '@/shared/ui/Loader/Loader';
+import { Modal } from '@/shared/ui/Modal';
+import { Loader } from '@/shared/ui/Loader';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import Drawer from '@/shared/ui/Drawer/Drawer';
+import Drawer from '@/shared/ui/Drawer';
 
 interface LoginModalProps {
     visible: boolean

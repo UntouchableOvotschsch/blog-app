@@ -3,15 +3,15 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
-import { LangSwitcher } from '@/widgets/LangSwitcher';
-import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import LinkItem from '../LinkItem';
 import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
 import styles from './Sidebar.module.scss';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import Overlay from '@/shared/ui/Overlay/Overlay';
+import Overlay from '@/shared/ui/Overlay';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 
 interface SidebarProps {
     className?: string

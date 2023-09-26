@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import Text from '@/shared/ui/Text/Text';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import Text from '@/shared/ui/Text';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit';
 

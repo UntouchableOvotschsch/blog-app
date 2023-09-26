@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, RefObject, useCallback } from 'react';
-import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text/Text';
+import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 import Avatar from '@/shared/ui/Avatar';
 import Icon from '@/shared/ui/Icon';

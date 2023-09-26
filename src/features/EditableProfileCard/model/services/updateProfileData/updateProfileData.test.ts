@@ -3,7 +3,7 @@ import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
 import { UserRoles } from '@/entities/User';
 import { ProfileType } from '@/entities/Profile';
-import { updateProfileData } from './index';
+import { updateProfileData } from '.';
 
 describe('updateProfileData', () => {
     const updatedProfile: ProfileType = {

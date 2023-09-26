@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Select, SelectContainerTheme, SelectOptions } from '@/shared/ui/Popups';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import Icon from '@/shared/ui/Icon';
 import SortArrow from '@/shared/assets/icons/sort-arrow.svg';
 import { HStack } from '@/shared/ui/Stack';

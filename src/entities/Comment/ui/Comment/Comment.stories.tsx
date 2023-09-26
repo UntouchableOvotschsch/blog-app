@@ -2,10 +2,10 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
 import { UserRoles } from '@/entities/User';
-import { PageWrapper } from '@/widgets/PageWrapper';
+import PageWrapper from '@/shared/ui/PageWrapper';
 import Comment from '.';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'entities/Comment/CommentItem',

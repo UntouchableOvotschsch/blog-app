@@ -1,12 +1,12 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
-import Card from '@/shared/ui/Card/Card';
+import Card from '@/shared/ui/Card';
 import Avatar from '@/shared/ui/Avatar';
-import Text from '@/shared/ui/Text/Text';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import Text from '@/shared/ui/Text';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import Icon from '@/shared/ui/Icon';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { ArticleBlockTypes } from '../../model/consts';
 import styles from './BigTileItem.module.scss';

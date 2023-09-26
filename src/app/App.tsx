@@ -1,6 +1,6 @@
 import { FC, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AppRouter } from '@/app/providers/RouterProvider';
+import { AppRouter } from './providers/RouterProvider';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';

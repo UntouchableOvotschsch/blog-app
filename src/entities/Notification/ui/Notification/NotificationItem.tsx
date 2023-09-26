@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Card from '@/shared/ui/Card/Card';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import Text from '@/shared/ui/Text/Text';
+import Card from '@/shared/ui/Card';
+import { AppLink } from '@/shared/ui/AppLink';
+import Text from '@/shared/ui/Text';
 import { Notification } from '../../model/types/notification';
 import styles from './Notification.module.scss';
 

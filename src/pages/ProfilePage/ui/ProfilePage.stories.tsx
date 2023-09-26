@@ -1,12 +1,12 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { Currencies } from '@/entities/Currency';
 import { Countries } from '@/entities/Country';
 import { ProfileValidationErrors } from '@/features/EditableProfileCard/testing';
 import ProfilePage from './ProfilePage';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'pages/ProfilePage',

@@ -2,8 +2,8 @@ import { Listbox } from '@headlessui/react';
 import React, { Fragment, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { HStack, VStack } from '../../../Stack';
-import Text, { TextSize } from '../../../Text/Text';
-import { Button, ThemeButton } from '../../../Button/Button';
+import Text, { TextSize } from '../../../Text';
+import { Button, ThemeButton } from '../../../Button';
 import styles from './Select.module.scss';
 import popupStyles from '../../styles/Popups.module.scss';
 

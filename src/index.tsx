@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
-import App from './app/App';
+import App from '@/app/App';
 import '@/shared/config/i18n/i18n';
 import '@/app/styles/index.scss';
 
@@ -12,11 +12,12 @@ const root = createRoot(domNode!);
 root.render(
     <BrowserRouter>
         <StoreProvider>
-            <ErrorBoundary>
-                <ThemeProvider>
+            <ThemeProvider>
+                <ErrorBoundary>
                     <App />
-                </ThemeProvider>
-            </ErrorBoundary>
+                </ErrorBoundary>
+            </ThemeProvider>
         </StoreProvider>
     </BrowserRouter>,
 );
+export { Themes } from '@/shared/const/theme';

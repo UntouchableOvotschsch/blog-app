@@ -11,6 +11,7 @@ import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { UISchema } from '@/features/UI';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { ArticleCommentsSliceSchema } from '@/features/ArticleComments';
+import { createReduxStore } from '@/app/providers/StoreProvider';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -47,3 +48,4 @@ export type ThunkConfigType<T> = {
     extra: ThunkExtraArg
     state: StateSchema
 }
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

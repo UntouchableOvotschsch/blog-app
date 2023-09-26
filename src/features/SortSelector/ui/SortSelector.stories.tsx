@@ -3,9 +3,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { Themes } from '@/app/providers/ThemeProvider';
 import { SortField } from '../model/consts';
 import SortSelector from './SortSelector';
+import { Themes } from '@/shared/const/theme';
 
 export default {
     title: 'features/SortSelector',

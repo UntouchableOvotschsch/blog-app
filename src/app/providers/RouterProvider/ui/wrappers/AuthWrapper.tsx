@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuthDataChecker } from '@/shared/lib/hooks/useAuthDataChecker';
+import { useAuthDataChecker } from '@/entities/User';
 import { RoutePath } from '@/shared/const/router';
 
 interface AuthWrapperProps {

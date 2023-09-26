@@ -1,6 +1,6 @@
 import { User, userActions, UserRoles } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
-import { loginByUsername } from './index';
+import { loginByUsername } from '.';
 
 describe('loginByUsername', () => {
     const loginData = {

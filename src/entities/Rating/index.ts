@@ -1,4 +1,4 @@
-import RatingCard from '../Rating/ui/RatingCard';
+import RatingCard from './ui/RatingCard';
 import type { RatingType } from './model/types/rating';
 
 export {

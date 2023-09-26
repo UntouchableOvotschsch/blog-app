@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Loader } from '@/shared/ui/Loader/Loader';
+import { Loader } from '@/shared/ui/Loader';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import styles from './PageLoader.module.scss';
 

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Text, { TextAlign, TextSize } from '@/shared/ui/Text/Text';
+import Text, { TextAlign, TextSize } from '@/shared/ui/Text';
 import styles from './ArticleImageBlockCom.module.scss';
 import { ArticleImageBlock } from '../../model/types/article';
 

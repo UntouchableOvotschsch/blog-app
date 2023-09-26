@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Themes } from '@/app/providers/ThemeProvider';
 import { articlesArrayTemplate } from '@/entities/Article';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { PageWrapper } from '@/widgets/PageWrapper';
-import ArticleRecommendationsList from '../ArticleRecommendationsList/index';
+import PageWrapper from '@/shared/ui/PageWrapper';
+import ArticleRecommendationsList from '.';
+import { Themes } from '@/shared/const/theme';
 
 const meta: Meta<typeof ArticleRecommendationsList> = {
     title: 'features/ArticleRecommendations',
