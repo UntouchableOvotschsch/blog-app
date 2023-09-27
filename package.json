@@ -25,7 +25,8 @@
     "test:ui:report": "npm run visual:report:json && npm run visual:report:html",
     "visual:report:json": "node scripts/generate-visual-json-report.js",
     "visual:report:html": "reg-cli --from .loki/report.json --report reports/ui-report.html",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "node ./scripts/clear-node-modules-cache.js"
   },
   "keywords": [],
   "author": "",

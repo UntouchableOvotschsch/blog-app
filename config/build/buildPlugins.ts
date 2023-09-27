@@ -19,32 +19,17 @@ export default function buildPlugins(
         project,
     } = options;
 
-    const plugins = [
+    return [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
         new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:8].css',
-            chunkFilename: 'css/[name].[contenthash:8].css',
-        }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API_URL__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: paths.locales,
-                    to: paths.buildLocales,
-                },
-            ],
-        }),
-    ];
-
-    if (isDev) {
-        plugins.push(
+        ...(isDev ? [
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
             }),
@@ -61,8 +46,20 @@ export default function buildPlugins(
                     },
                 },
             }),
-        );
-    }
-
-    return plugins;
+        ] : []),
+        ...(!isDev ? [
+            new MiniCssExtractPlugin({
+                filename: 'css/[name].[contenthash:8].css',
+                chunkFilename: 'css/[name].[contenthash:8].css',
+            }),
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: paths.locales,
+                        to: paths.buildLocales,
+                    },
+                ],
+            }),
+        ] : []),
+    ].filter(Boolean);
 }

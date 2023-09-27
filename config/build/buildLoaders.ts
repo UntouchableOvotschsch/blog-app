@@ -8,6 +8,7 @@ import { BuildOptions } from './types/config';
 export default function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
+        exclude: /node_modules/,
         type: 'asset/resource',
     };
 
