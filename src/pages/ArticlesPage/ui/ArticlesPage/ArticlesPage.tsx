@@ -1,20 +1,23 @@
-import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import Text, { ThemeText } from '@/shared/ui/Text';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import PageWrapper from '@/shared/ui/PageWrapper';
+import Text, { ThemeText } from '@/shared/ui/Text';
+
+import styles from './ArticlesPage.module.scss';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
 import { getArticleError } from '../../model/selectors/getArticlesError';
-import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
-import styles from './ArticlesPage.module.scss';
-import { initArticlesPage } from '../../model/service/initArticlesPage';
+import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
 import { getArticlesSortField } from '../../model/selectors/getArticlesSortField';
 import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder';
-import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
+import { initArticlesPage } from '../../model/service/initArticlesPage';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticleInfiniteList from '../ArticleInfiniteList/ArticleInfiniteList';
 
 const reducers: ReducerList = {

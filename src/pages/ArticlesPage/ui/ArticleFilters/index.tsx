@@ -1,22 +1,25 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+
 import { useTranslation } from 'react-i18next';
-import { ChangeViewType } from '@/features/ChangeViewType';
+import { useSelector } from 'react-redux';
+
 import { ArticleTypes, ArticleViewTypes } from '@/entities/Article';
-import { ARTICLE_VIEW_KEY } from '@/shared/const/localStorage';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { ChangeViewType } from '@/features/ChangeViewType';
 import { SortField, SortSelector } from '@/features/SortSelector';
+import { ARTICLE_VIEW_KEY } from '@/shared/const/localStorage';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import Card from '@/shared/ui/Card';
 import Input, { InputAlign } from '@/shared/ui/Input';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+
 import styles from './ArticleFilters.module.scss';
-import { getArticleView } from '../../model/selectors/getArticleView';
-import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
-import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
+import { getArticlesSearch } from '../../model/selectors/getArticlesSearch';
 import { getArticlesSortField } from '../../model/selectors/getArticlesSortField';
+import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder';
+import { getArticleView } from '../../model/selectors/getArticleView';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 

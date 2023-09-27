@@ -1,10 +1,11 @@
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
-import { ProfileValidationErrors } from '../consts';
-import { ProfileSchema } from '../types/profile';
+
 import { profileActions, profileReducer } from './profileSlice';
+import { ProfileValidationErrors } from '../consts';
 import { fetchProfileData } from '../services/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData';
+import { ProfileSchema } from '../types/profile';
 
 describe('profileSlice', () => {
     const profileState: ProfileSchema = {

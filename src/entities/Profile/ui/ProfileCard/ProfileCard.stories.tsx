@@ -1,11 +1,14 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import ProfileCard from '.';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
+import PageWrapper from '@/shared/ui/PageWrapper';
+
+import ProfileCard from '.';
 
 export default {
     title: 'entities/Profile/ProfileCard',

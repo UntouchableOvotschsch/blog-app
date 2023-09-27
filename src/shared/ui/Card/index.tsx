@@ -1,5 +1,7 @@
 import { HTMLAttributes, ReactNode } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './Card.module.scss';
 
 type CardTheme = 'primary' | 'inverted' | 'transparent'

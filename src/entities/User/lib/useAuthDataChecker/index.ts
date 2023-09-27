@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from '../../model/selectors/getUserAuthData';
+
 import { emptyObjChecker } from '@/shared/lib/helpers/emptyObjChecker';
+
+import { getUserAuthData } from '../../model/selectors/getUserAuthData';
 
 export const useAuthDataChecker = (): boolean => {
     const isSliceAuthData = useSelector(getUserAuthData);

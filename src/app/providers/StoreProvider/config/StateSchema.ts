@@ -2,16 +2,17 @@ import {
     AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+
+import { createReduxStore } from '@/app/providers/StoreProvider';
+import { CommentFormSchema } from '@/entities/Comment';
 import { CounterSchema } from '@/entities/Counter';
 import { UserSchema } from '@/entities/User';
+import { ArticleCommentsSliceSchema } from '@/features/ArticleComments';
 import { AuthByUsernameSchema } from '@/features/AuthByUsername';
 import { ProfileSchema } from '@/features/EditableProfileCard';
-import { CommentFormSchema } from '@/entities/Comment';
-import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { UISchema } from '@/features/UI';
+import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
-import { ArticleCommentsSliceSchema } from '@/features/ArticleComments';
-import { createReduxStore } from '@/app/providers/StoreProvider';
 
 export interface StateSchema {
     counter: CounterSchema;

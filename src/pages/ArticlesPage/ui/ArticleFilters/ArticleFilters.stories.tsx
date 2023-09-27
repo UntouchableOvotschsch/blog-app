@@ -1,12 +1,14 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { ArticleTypes, ArticleViewTypes } from '@/entities/Article';
 import { SortField } from '@/features/SortSelector';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
-import { ArticleTypes, ArticleViewTypes } from '@/entities/Article';
-import ArticleFilters from '.';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
+
+import ArticleFilters from '.';
 
 export default {
     title: 'pages/ArticlesPage/ArticleFilters',

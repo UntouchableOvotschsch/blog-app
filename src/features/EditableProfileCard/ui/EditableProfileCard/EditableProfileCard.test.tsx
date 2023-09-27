@@ -1,12 +1,14 @@
-import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
-import { renderForTests, RenderForTestsOptions } from '@/shared/config/jest/renderForTests';
+import userEvent from '@testing-library/user-event';
+
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
 import { ProfileType } from '@/entities/Profile';
 import { UserRoles } from '@/entities/User';
 import { $api } from '@/shared/api';
+import { renderForTests, RenderForTestsOptions } from '@/shared/config/jest/renderForTests';
+
 import EditableProfileCard from '.';
 import { profileReducer } from '../../model/slice/profileSlice';
 

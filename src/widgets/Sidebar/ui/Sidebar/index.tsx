@@ -1,17 +1,20 @@
 import React, {
     memo, useEffect, useMemo, useState,
 } from 'react';
+
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import LinkItem from '../LinkItem';
-import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
-import styles from './Sidebar.module.scss';
-import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import Overlay from '@/shared/ui/Overlay';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+
 import { LangSwitcher } from '@/features/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
+import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button';
+import Overlay from '@/shared/ui/Overlay';
+import { HStack, VStack } from '@/shared/ui/Stack';
+
+import styles from './Sidebar.module.scss';
+import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
+import LinkItem from '../LinkItem';
 
 interface SidebarProps {
     className?: string

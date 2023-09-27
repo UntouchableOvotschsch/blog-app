@@ -1,15 +1,18 @@
 import React, { useCallback } from 'react';
+
 import { useSelector } from 'react-redux';
+
 import { ArticleList } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { articlesPageActions, articlesSelectors } from '../../model/slice/articlesPageSlice';
-import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
+
+import styles from './ArticleInfiniteList.module.scss';
 import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';
+import { getArticleLoading } from '../../model/selectors/getArticlesLoading';
 import { getArticlesPage } from '../../model/selectors/getArticlesPage';
-import ArticleFilters from '../ArticleFilters';
 import { getArticleView } from '../../model/selectors/getArticleView';
 import { fetchArticles } from '../../model/service/fetchArticles';
-import styles from './ArticleInfiniteList.module.scss';
+import { articlesPageActions, articlesSelectors } from '../../model/slice/articlesPageSlice';
+import ArticleFilters from '../ArticleFilters';
 
 const ArticleListHeader = () => <ArticleFilters className={styles.header} />;
 const ArticleInfiniteList = () => {

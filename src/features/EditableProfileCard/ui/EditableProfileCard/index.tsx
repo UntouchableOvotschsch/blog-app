@@ -1,19 +1,22 @@
 import React, { useCallback, useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
-import { VStack } from '@/shared/ui/Stack';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+
 import { ProfileCard, ProfileType } from '@/entities/Profile';
-import EditableProfileCardHeader from '../EditableProfileCardHeader';
-import { updateProfileData } from '../../model/services/updateProfileData';
-import EditableProfileCardFooter from '../EditableProfileCardFooter';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { VStack } from '@/shared/ui/Stack';
+
+import { getFormData } from '../../model/selectors/getFormData';
+import { getProfileEditable } from '../../model/selectors/getProfileEditable';
 import { getProfileError } from '../../model/selectors/getProfileError';
 import { getProfileLoading } from '../../model/selectors/getProfileLoading';
-import { getProfileEditable } from '../../model/selectors/getProfileEditable';
 import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors';
-import { getFormData } from '../../model/selectors/getFormData';
-import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { fetchProfileData } from '../../model/services/fetchProfileData';
+import { updateProfileData } from '../../model/services/updateProfileData';
+import { profileActions, profileReducer } from '../../model/slice/profileSlice';
+import EditableProfileCardFooter from '../EditableProfileCardFooter';
+import EditableProfileCardHeader from '../EditableProfileCardHeader';
 
 const reducers: ReducerList = {
     profile: profileReducer,

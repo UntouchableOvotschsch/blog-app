@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import ArticleDetailsPageHeader from './ArticleDetailsPageHeader';
 import { Themes } from '@/shared/const/theme';
+
+import ArticleDetailsPageHeader from './ArticleDetailsPageHeader';
 
 export default {
     title: 'pages/ArticleDetailsPage/ArticleDetailsPageHeader',

@@ -1,6 +1,6 @@
-import Select, { SelectContainerTheme, SelectOptions } from './ui/Select';
 import Dropdown from './ui/Dropdown/Dropdown';
 import Popover from './ui/Popover/Popover';
+import Select, { SelectContainerTheme, SelectOptions } from './ui/Select';
 
 export {
     Select,

@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import { Countries } from '../../model/consts/index';
-import CountrySelect from '.';
 import { Themes } from '@/shared/const/theme';
+import PageWrapper from '@/shared/ui/PageWrapper';
+
+import CountrySelect from '.';
+import { Countries } from '../../model/consts/index';
 
 export default {
     title: 'entities/Country/CountrySelect',

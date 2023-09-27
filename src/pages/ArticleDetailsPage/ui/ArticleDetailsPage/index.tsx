@@ -1,14 +1,17 @@
-import { useParams } from 'react-router-dom';
 import { UIEvent, useRef, useState } from 'react';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
+
+import { useParams } from 'react-router-dom';
+
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleComments } from '@/features/ArticleComments';
-import { VStack } from '@/shared/ui/Stack';
-import ArticleDetailsPageHeader from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
-import styles from './ArticleDetailsPage.module.scss';
 import { ArticleRating } from '@/features/ArticleRating';
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
+import PageWrapper from '@/shared/ui/PageWrapper';
 import ProgressBar from '@/shared/ui/ProgressBar';
+import { VStack } from '@/shared/ui/Stack';
+
+import styles from './ArticleDetailsPage.module.scss';
+import ArticleDetailsPageHeader from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 const ArticleDetailsPage = () => {
     const { id } = useParams<{id: string}>();

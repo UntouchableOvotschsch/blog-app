@@ -1,4 +1,5 @@
 import { User } from '@/entities/User';
+
 import { ArticleBlockTypes, ArticleTypes } from '../consts';
 
 export interface ArticleBlockBase {

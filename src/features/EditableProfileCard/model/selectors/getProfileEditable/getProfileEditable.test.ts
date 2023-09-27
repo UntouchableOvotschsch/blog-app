@@ -1,4 +1,5 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
+
 import { getProfileEditable } from '.';
 
 describe('getProfileEditable.test', () => {

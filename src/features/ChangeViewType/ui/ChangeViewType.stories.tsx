@@ -1,9 +1,12 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+
 import { ArticleViewTypes } from '@/entities/Article';
-import ChangeViewType from './ChangeViewType';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
+
+import ChangeViewType from './ChangeViewType';
 
 export default {
     title: 'features/ChangeViewType',

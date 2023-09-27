@@ -1,6 +1,8 @@
 import React from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import avatarImg from '@/shared/assets/tests/profileImage.jpg';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './Avatar.module.scss';
 
 type ImageAttributes = Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'alt' >

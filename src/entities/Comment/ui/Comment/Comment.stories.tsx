@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { UserRoles } from '@/entities/User';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import Comment from '.';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
+import PageWrapper from '@/shared/ui/PageWrapper';
+
+import Comment from '.';
 
 export default {
     title: 'entities/Comment/CommentItem',

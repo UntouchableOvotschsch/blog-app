@@ -1,4 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
+
 import { Article } from '../types/article';
 
 export const articleDetailsApi = rtkApi.injectEndpoints({

@@ -1,10 +1,13 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import { Currencies } from '../../model/types/currencies';
-import CurrencySelect from '.';
 import { Themes } from '@/shared/const/theme';
+import PageWrapper from '@/shared/ui/PageWrapper';
+
+import CurrencySelect from '.';
+import { Currencies } from '../../model/types/currencies';
 
 export default {
     title: 'entities/Currency/CurrencySelect',

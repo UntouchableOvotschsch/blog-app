@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Skeleton from '@/shared/ui/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
+
 import styles from './ArticleDetailsSkeleton.module.scss';
 
 const ArticleDetailsSkeleton = () => (

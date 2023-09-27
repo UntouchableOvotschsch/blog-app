@@ -1,8 +1,10 @@
 import React, { ReactNode, useCallback } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
+import styles from './Tabs.module.scss';
 import { Button, ThemeButton } from '../Button';
 import Card from '../Card';
-import styles from './Tabs.module.scss';
 
 export interface TabItem <T extends string>{
     value: T

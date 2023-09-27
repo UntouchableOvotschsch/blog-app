@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { commentTemplate } from '@/entities/Comment';
-import ArticleComments from './ArticleComments';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
+
+import ArticleComments from './ArticleComments';
 
 export default {
     title: 'features/ArticleComments',

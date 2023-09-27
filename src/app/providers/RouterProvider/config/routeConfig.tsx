@@ -1,17 +1,19 @@
 import { RouteProps } from 'react-router-dom';
-import { MainPage } from '@/pages/MainPage';
+
+import { UserRoles } from '@/entities/User';
 import { AboutPage } from '@/pages/AboutPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import { ProfilePage } from '@/pages/ProfilePage';
-import AuthWrapper from '../ui/wrappers/AuthWrapper';
-import { ArticlesPage } from '@/pages/ArticlesPage';
+import { AdminPage } from '@/pages/AdminPage';
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
-import { AdminPage } from '@/pages/AdminPage';
-import { UserRoles } from '@/entities/User';
+import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import RoleWrapper from '../ui/wrappers/RoleWrapper';
+import { MainPage } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProfilePage } from '@/pages/ProfilePage';
 import { AppRoutes, RoutePath } from '@/shared/const/router';
+
+import AuthWrapper from '../ui/wrappers/AuthWrapper';
+import RoleWrapper from '../ui/wrappers/RoleWrapper';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean

@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { Themes } from '@/shared/const/theme';
+
 import NotificationList from './NotificationList';
 import { notificationTemplateArray } from '../../model/consts/notificationTemplate';
-import { Themes } from '@/shared/const/theme';
 
 const meta: Meta<typeof NotificationList> = {
     title: 'entities/Notification/NotificationList',

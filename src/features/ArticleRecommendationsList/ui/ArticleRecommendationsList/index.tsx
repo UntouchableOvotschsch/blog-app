@@ -1,8 +1,11 @@
 import React from 'react';
+
 import { useTranslation } from 'react-i18next';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+
 import { ArticleList, ArticleViewTypes } from '@/entities/Article';
 import { VStack } from '@/shared/ui/Stack';
+import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+
 import { useGetArticlesRecommendationsQuery } from '../../model/api';
 
 const ArticleRecommendationsList = () => {

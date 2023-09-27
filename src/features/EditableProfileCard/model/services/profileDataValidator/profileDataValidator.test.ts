@@ -1,5 +1,6 @@
 import { Countries } from '@/entities/Country';
 import { ProfileType } from '@/entities/Profile';
+
 import { profileDataValidator } from '.';
 
 describe('profileDataValidator.test', () => {

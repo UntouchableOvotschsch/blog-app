@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import ArticleRating from './ArticleRating';
 import { Themes } from '@/shared/const/theme';
+
+import ArticleRating from './ArticleRating';
 
 const meta: Meta<typeof ArticleRating> = {
     title: 'features/ArticleRating',

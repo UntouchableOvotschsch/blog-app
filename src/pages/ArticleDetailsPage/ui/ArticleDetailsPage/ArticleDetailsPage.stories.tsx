@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { articlesArrayTemplate, articleTemplate } from '@/entities/Article';
 import { UserRoles } from '@/entities/User';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import ArticleDetailsPage from '.';
 import { Themes } from '@/shared/const/theme';
+import PageWrapper from '@/shared/ui/PageWrapper';
+
+import ArticleDetailsPage from '.';
 
 const meta: Meta<typeof ArticleDetailsPage> = {
     title: 'pages/ArticleDetailsPage',

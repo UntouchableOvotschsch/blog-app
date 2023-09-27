@@ -24,6 +24,8 @@ module.exports = {
         'i18next',
         'react-hooks',
         'fsd-rules-checker',
+        'unused-imports',
+        'import',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -83,6 +85,31 @@ module.exports = {
             { argsIgnorePattern: '^_' },
         ],
         'react/no-array-index-key': 'off',
+        'unused-imports/no-unused-imports': 'error',
+        'import/order': [
+            'error',
+            {
+                groups: ['builtin', 'external', 'internal'],
+                pathGroups: [
+                    {
+                        pattern: 'react',
+                        group: 'external',
+                        position: 'before',
+                    },
+                    {
+                        pattern: '@/**',
+                        group: 'external',
+                        position: 'after',
+                    },
+                ],
+                pathGroupsExcludedImportTypes: ['react'],
+                'newlines-between': 'always',
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: true,
+                },
+            },
+        ],
         'fsd-rules-checker/fsd-path-checker': [
             'error',
             {

@@ -1,20 +1,23 @@
 import React, { FormEvent, memo, useCallback } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import { RoutePath } from '@/shared/const/router';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import Input from '@/shared/ui/Input';
 import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
-import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+
+import styles from './LoginForm.module.scss';
 import { getLoginState } from '../../model/selectors/getLoginState';
 import { loginByUsername } from '../../model/services/loginByUsername';
 import {
     authByUsernameActions,
     authByUsernameReducer,
 } from '../../model/slice/authByUsernameSlice';
-import styles from './LoginForm.module.scss';
-import { RoutePath } from '@/shared/const/router';
 
 const initialReducer: ReducerList = {
     authByUsername: authByUsernameReducer,

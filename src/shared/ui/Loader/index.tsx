@@ -1,5 +1,7 @@
 import { memo } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './Loader.module.scss';
 
 interface LoaderProps {

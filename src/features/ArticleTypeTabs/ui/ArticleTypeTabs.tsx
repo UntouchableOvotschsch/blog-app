@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
+
 import { useTranslation } from 'react-i18next';
+
 import { ArticleTypes } from '@/entities/Article';
 import Tabs, { TabItem } from '@/shared/ui/Tabs';
 

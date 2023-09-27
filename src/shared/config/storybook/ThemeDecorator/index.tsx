@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react';
+
 import { ThemeProvider } from '@/app/providers/ThemeProvider/testing';
 import { Themes } from '@/shared/const/theme';
 

@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import Text from '@/shared/ui/Text';
-import { CommentType } from '../../model/types/comment';
-import CommentsListSkeleton from './CommentsListSkeleton';
+
 import styles from './CommentsList.module.scss';
+import CommentsListSkeleton from './CommentsListSkeleton';
+import { CommentType } from '../../model/types/comment';
 import Comment from '../Comment';
 
 interface CommentsListProps {

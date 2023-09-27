@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import Text from '@/shared/ui/Text';
 

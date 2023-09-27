@@ -1,7 +1,9 @@
 import React, {
     InputHTMLAttributes, memo, MutableRefObject, useEffect, useRef,
 } from 'react';
+
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './Input.module.scss';
 
 export enum InputAlign {

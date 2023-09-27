@@ -1,12 +1,14 @@
 import React from 'react';
+
 import { StoryFn } from '@storybook/react';
+
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
-import { authByUsernameReducer } from '@/features/AuthByUsername/testing';
-import { profileReducer } from '@/features/EditableProfileCard/testing';
-import { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
-import { articlesPageReducer } from '@/pages/ArticlesPage/testing';
 import { commentFormReducer } from '@/entities/Comment/testing';
 import { articleCommentsSliceReducer } from '@/features/ArticleComments/testing';
+import { authByUsernameReducer } from '@/features/AuthByUsername/testing';
+import { profileReducer } from '@/features/EditableProfileCard/testing';
+import { articlesPageReducer } from '@/pages/ArticlesPage/testing';
+import { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 
 const defaultReducers: ReducerList = {
     authByUsername: authByUsernameReducer,

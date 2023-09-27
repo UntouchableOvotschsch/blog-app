@@ -1,11 +1,13 @@
 import { ComponentType, HTMLAttributeAnchorTarget, useMemo } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useResizeObserverHelper } from '@/shared/lib/helpers/useResizeObserverHelper';
-import { ArticleViewTypes } from '../../model/consts';
-import { Article } from '../../model/types/article';
+
 import styles from './ArticleList.module.scss';
 import BigTileView from './views/BigTileView';
 import SmallTileView, { SmallTileViewTypes } from './views/SmallTileView';
+import { ArticleViewTypes } from '../../model/consts';
+import { Article } from '../../model/types/article';
 
 interface ArticleListProps {
     className?: string;

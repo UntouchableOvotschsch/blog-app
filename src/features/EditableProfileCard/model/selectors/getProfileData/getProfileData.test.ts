@@ -1,6 +1,7 @@
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
+
 import { getProfileData } from '../getProfileData';
 
 describe('getProfileData.test', () => {

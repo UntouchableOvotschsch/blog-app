@@ -1,9 +1,11 @@
 import { ReactNode, useCallback, useEffect } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
-import { Portal } from '../Portal';
-import Overlay from '../Overlay';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './Drawer.module.scss';
+import Overlay from '../Overlay';
+import { Portal } from '../Portal';
 
 interface DrawerProps {
     className?: string;

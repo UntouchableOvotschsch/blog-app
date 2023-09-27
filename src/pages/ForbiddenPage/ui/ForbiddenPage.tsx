@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+
 import PageWrapper from '@/shared/ui/PageWrapper';
 import Text from '@/shared/ui/Text';
 

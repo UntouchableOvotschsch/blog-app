@@ -1,5 +1,5 @@
-import EditableProfileCard from './ui/EditableProfileCard';
 import { ProfileSchema } from './model/types/profile';
+import EditableProfileCard from './ui/EditableProfileCard';
 
 export {
     EditableProfileCard,

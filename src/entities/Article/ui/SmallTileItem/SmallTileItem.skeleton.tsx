@@ -1,9 +1,11 @@
 import React from 'react';
-import Icon from '@/shared/ui/Icon';
+
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import Card from '@/shared/ui/Card';
-import Skeleton from '@/shared/ui/Skeleton';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import Card from '@/shared/ui/Card';
+import Icon from '@/shared/ui/Icon';
+import Skeleton from '@/shared/ui/Skeleton';
+
 import styles from './SmallTileItem.module.scss';
 
 interface SmallTileItemSkeletonProps {

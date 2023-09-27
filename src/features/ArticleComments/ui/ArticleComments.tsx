@@ -1,16 +1,19 @@
-import { useTranslation } from 'react-i18next';
 import { Suspense, useCallback, useEffect } from 'react';
+
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { VStack } from '@/shared/ui/Stack';
-import Text, { TextSize } from '@/shared/ui/Text';
+
 import { CommentForm, CommentsList } from '@/entities/Comment';
+import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
-import { addNewCommentToArticleService } from '../model/service/addNewCommentToArticle';
+import { VStack } from '@/shared/ui/Stack';
+import Text, { TextSize } from '@/shared/ui/Text';
+
 import { getArticleCommentsLoading } from '../model/selectors/getArticleCommentsLoading';
-import { articleCommentsSelectors, articleCommentsSliceReducer } from '../model/slice/articleCommentsSlice';
+import { addNewCommentToArticleService } from '../model/service/addNewCommentToArticle';
 import { fetchCommentsByArticleId } from '../model/service/fetchCommentsByArticleId';
+import { articleCommentsSelectors, articleCommentsSliceReducer } from '../model/slice/articleCommentsSlice';
 
 interface ArticleCommentsProps {
     className?: string;

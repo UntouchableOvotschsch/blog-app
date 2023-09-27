@@ -1,5 +1,5 @@
-import { loginByUsername } from '../services/loginByUsername';
 import { authByUsernameActions, authByUsernameReducer } from './authByUsernameSlice';
+import { loginByUsername } from '../services/loginByUsername';
 import type { AuthByUsernameSchema } from '../types/authByUsernameSchema';
 
 describe('loginSlice', () => {

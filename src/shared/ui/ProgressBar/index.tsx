@@ -1,4 +1,5 @@
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+
 import styles from './ProgressBar.module.scss';
 
 interface ProgressBarProps {

@@ -1,19 +1,22 @@
 import React, { memo, useCallback, useEffect } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
+import CheckIcon from '@/shared/assets/icons/ok.svg';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
-import Input, { InputAlign } from '@/shared/ui/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
-import CheckIcon from '@/shared/assets/icons/ok.svg';
+import Input, { InputAlign } from '@/shared/ui/Input';
 import { HStack } from '@/shared/ui/Stack';
-import { getAddNewCommentText } from '../../model/selectors/getAddNewCommentText';
-import { getAddNewCommentLoading } from '../../model/selectors/getAddNewCommentLoading';
-import { getAddNewCommentError } from '../../model/selectors/getAddNewCommentError';
-import { commentFormActions, commentFormReducer } from '../../model/slice/commentFormSlice';
+import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+
 import styles from './AddNewCommentForm.module.scss';
+import { getAddNewCommentError } from '../../model/selectors/getAddNewCommentError';
+import { getAddNewCommentLoading } from '../../model/selectors/getAddNewCommentLoading';
+import { getAddNewCommentText } from '../../model/selectors/getAddNewCommentText';
 import { getAddNewCommentWasSent } from '../../model/selectors/getAddNewCommentWasSent';
+import { commentFormActions, commentFormReducer } from '../../model/slice/commentFormSlice';
 
 const reducerList: ReducerList = {
     commentForm: commentFormReducer,

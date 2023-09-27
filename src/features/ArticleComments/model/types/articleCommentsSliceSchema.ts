@@ -1,4 +1,5 @@
 import { EntityState } from '@reduxjs/toolkit';
+
 import { CommentType } from '@/entities/Comment';
 
 export interface ArticleCommentsSliceSchema extends EntityState<CommentType> {

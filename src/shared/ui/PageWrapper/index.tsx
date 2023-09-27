@@ -1,4 +1,5 @@
 import React, { ReactNode, RefObject } from 'react';
+
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 interface PageWrapperProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>{

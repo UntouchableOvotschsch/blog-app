@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
-import styles from './Button.module.scss';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
+
+import styles from './Button.module.scss';
 
 export enum ThemeButton {
     CLEAR = 'clear',

@@ -1,11 +1,13 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import { SortField } from '../model/consts';
-import SortSelector from './SortSelector';
 import { Themes } from '@/shared/const/theme';
+
+import SortSelector from './SortSelector';
+import { SortField } from '../model/consts';
 
 export default {
     title: 'features/SortSelector',

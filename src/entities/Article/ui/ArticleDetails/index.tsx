@@ -1,20 +1,23 @@
-import { useTranslation } from 'react-i18next';
 import { memo, RefObject, useCallback } from 'react';
-import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text';
-import { VStack } from '@/shared/ui/Stack';
+
+import { useTranslation } from 'react-i18next';
+
+import Calendar from '@/shared/assets/icons/calendar.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import Avatar from '@/shared/ui/Avatar';
 import Icon from '@/shared/ui/Icon';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import Calendar from '@/shared/assets/icons/calendar.svg';
-import { ArticleBlockTypes } from '../../model/consts';
-import ArticleDetailsSkeleton from './ArticleDetailsSkeleton';
+import { VStack } from '@/shared/ui/Stack';
+import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text';
+
 import styles from './ArticleDetails.module.scss';
+import ArticleDetailsSkeleton from './ArticleDetailsSkeleton';
+import { useGetArticleDetailsQuery } from '../../model/api';
+import { ArticleBlockTypes } from '../../model/consts';
 import { ArticleBlock } from '../../model/types/article';
-import ArticleTextBlockCom from '../ArticleTextBlockCom';
 import ArticleCodeBlockCom from '../ArticleCodeBlockCom';
 import ArticleImageBlockCom from '../ArticleImageBlockCom';
-import { useGetArticleDetailsQuery } from '../../model/api';
+import ArticleTextBlockCom from '../ArticleTextBlockCom';
 
 interface ArticleDetailsProps {
     className?: string;

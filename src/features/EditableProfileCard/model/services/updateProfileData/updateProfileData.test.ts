@@ -1,8 +1,9 @@
-import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
 import { Countries } from '@/entities/Country';
 import { Currencies } from '@/entities/Currency';
-import { UserRoles } from '@/entities/User';
 import { ProfileType } from '@/entities/Profile';
+import { UserRoles } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk';
+
 import { updateProfileData } from '.';
 
 describe('updateProfileData', () => {

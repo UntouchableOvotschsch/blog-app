@@ -1,10 +1,12 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
-import Tabs from '.';
 import { Themes } from '@/shared/const/theme';
+
+import Tabs from '.';
 
 export default {
     title: 'shared/Tabs',
