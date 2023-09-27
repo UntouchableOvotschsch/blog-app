@@ -3,6 +3,7 @@ import React, { Fragment, useMemo } from 'react';
 import { Listbox } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './Select.module.scss';
 import { Button, ThemeButton } from '../../../Button';
@@ -29,7 +30,7 @@ interface SelectProps<T extends string> {
     containerTheme?: SelectContainerTheme
     className?: string
 }
-const Select = <T extends string>(props: SelectProps<T>) => {
+const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
     const {
         label,
         options,
@@ -113,6 +114,6 @@ const Select = <T extends string>(props: SelectProps<T>) => {
             </HStack>
         );
     }, [className, containerTheme, contentSelectValue, editable, label, onChange, optionList, selectValue]);
-};
+});
 
 export default Select;

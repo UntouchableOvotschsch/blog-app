@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
 import { getUserRoles, UserRoles } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteForbiddenPage } from '@/shared/const/router';
 
 interface RoleWrapperProps {
     children: React.ReactElement,
@@ -12,7 +12,7 @@ interface RoleWrapperProps {
     navigateTo?: string
 }
 
-const RoleWrapper = ({ children, roles, navigateTo = RoutePath.forbidden }: RoleWrapperProps) => {
+const RoleWrapper = ({ children, roles, navigateTo = getRouteForbiddenPage() }: RoleWrapperProps) => {
     const userRoles = useSelector(getUserRoles);
     const location = useLocation();
     const checkRoles = useMemo(() => roles

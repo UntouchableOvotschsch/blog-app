@@ -7,7 +7,7 @@ import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleCreatePage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ThemeButton } from '@/shared/ui/Button';
@@ -35,7 +35,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     theme={ThemeButton.CLEAR_INVERTED}
                 >
                     <AppLink
-                        to={RoutePath.article_create}
+                        to={getRouteArticleCreatePage()}
                         theme={AppLinkTheme.SECONDARY}
                     >
                         {t('Создать статью')}

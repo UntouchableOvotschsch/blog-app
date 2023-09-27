@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useGetArticleDetailsQuery } from '@/entities/Article';
 import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleEditPage, getRouteArticlesPage } from '@/shared/const/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
@@ -28,7 +28,7 @@ const ArticleDetailsPageHeader = ({ id }: ArticleDetailsPageHeaderProps) => {
             <Button
                 theme={ThemeButton.OUTLINE}
             >
-                <AppLink to={RoutePath.articles} className={styles.appLink}>
+                <AppLink to={getRouteArticlesPage()} className={styles.appLink}>
                     <Text title={t('Назад к списку')} />
                 </AppLink>
             </Button>
@@ -38,7 +38,7 @@ const ArticleDetailsPageHeader = ({ id }: ArticleDetailsPageHeaderProps) => {
                         theme={ThemeButton.OUTLINE}
                     >
                         <AppLink
-                            to={`${RoutePath.article_details}/${article?.id}/edit`}
+                            to={getRouteArticleEditPage(id)}
                             className={styles.appLink}
                         >
                             <Text title={t('Редактировать')} />

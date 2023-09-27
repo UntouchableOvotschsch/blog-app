@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { RoutePath } from '@/shared/const/router';
+import { getRouteProfilePage } from '@/shared/const/router';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Button, ThemeButton } from '@/shared/ui/Button';
@@ -52,7 +52,7 @@ const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
                 password,
             })).unwrap();
             changeVisibility();
-            navigate(`${RoutePath.profile}/${result.id}`);
+            navigate(getRouteProfilePage(result.id));
             // eslint-disable-next-line no-empty
         } catch (e) {}
     }, [dispatch, username, password, changeVisibility, navigate]);

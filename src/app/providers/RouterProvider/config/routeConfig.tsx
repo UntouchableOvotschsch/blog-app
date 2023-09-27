@@ -10,7 +10,19 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { AppRoutes, RoutePath } from '@/shared/const/router';
+import {
+    AppRoutes,
+    getRouteAboutPage,
+    getRouteAdminPage,
+    getRouteArticleCreatePage,
+    getRouteArticleDetailsPage,
+    getRouteArticleEditPage,
+    getRouteArticlesPage,
+    getRouteForbiddenPage,
+    getRouteMainPage,
+    getRouteNotFoundPage,
+    getRouteProfilePage,
+} from '@/shared/const/router';
 
 import AuthWrapper from '../ui/wrappers/AuthWrapper';
 import RoleWrapper from '../ui/wrappers/RoleWrapper';
@@ -21,16 +33,16 @@ export type AppRoutesProps = RouteProps & {
 }
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
-        path: RoutePath.main,
+        path: getRouteMainPage(),
         element: <MainPage />,
     },
     [AppRoutes.ABOUT]: {
-        path: RoutePath.about,
+        path: getRouteAboutPage(),
         element: <AboutPage />,
     },
 
     [AppRoutes.PROFILE]: {
-        path: `${RoutePath.profile}/:id`,
+        path: getRouteProfilePage(':id'),
         element: (
             <AuthWrapper>
                 <ProfilePage />
@@ -40,7 +52,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 
     [AppRoutes.ARTICLES]: {
-        path: RoutePath.articles,
+        path: getRouteArticlesPage(),
         element: (
             <AuthWrapper>
                 <ArticlesPage />
@@ -49,7 +61,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 
     [AppRoutes.ARTICLE_DETAILS]: {
-        path: `${RoutePath.article_details}/:id`,
+        path: getRouteArticleDetailsPage(':id'),
         element: (
             <AuthWrapper>
                 <ArticleDetailsPage />
@@ -58,7 +70,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 
     [AppRoutes.ARTICLE_CREATE]: {
-        path: `${RoutePath.article_create}`,
+        path: getRouteArticleCreatePage(),
         element: (
             <AuthWrapper>
                 <ArticleEditPage />
@@ -67,7 +79,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 
     [AppRoutes.ARTICLE_EDIT]: {
-        path: `${RoutePath.article_edit}`,
+        path: getRouteArticleEditPage(':id'),
         element: (
             <AuthWrapper>
                 <ArticleEditPage />
@@ -76,7 +88,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
 
     [AppRoutes.ADMIN]: {
-        path: RoutePath.admin,
+        path: getRouteAdminPage(),
         element: (
             <AuthWrapper>
                 <RoleWrapper roles={[UserRoles.ADMIN]}>
@@ -87,7 +99,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         roles: [UserRoles.ADMIN],
     },
     [AppRoutes.FORBIDDEN]: {
-        path: RoutePath.forbidden,
+        path: getRouteForbiddenPage(),
         element: (
             <AuthWrapper>
                 <ForbiddenPage />
@@ -97,7 +109,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 
     // last
     [AppRoutes.NOTFOUND]: {
-        path: RoutePath.notfound,
+        path: getRouteNotFoundPage(),
         element: <NotFoundPage />,
     },
 };

@@ -1,7 +1,7 @@
 import React, { HTMLAttributeAnchorTarget } from 'react';
 
 import EyeIcon from '@/shared/assets/icons/eye.svg';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteArticleDetailsPage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import Card from '@/shared/ui/Card';
@@ -19,7 +19,7 @@ interface BigTileItemProps {
 
 const SmallTileItem = ({ article, target, className }: BigTileItemProps) => {
     const navigateToArticle = __PROJECT__ !== 'storybook'
-        ? `${RoutePath.article_details}/${article.id}` : '#';
+        ? getRouteArticleDetailsPage(article.id) : '#';
 
     return (
         <AppLink

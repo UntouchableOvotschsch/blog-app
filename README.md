@@ -30,7 +30,7 @@ npm run start:dev:vite - запуск frontend проекта в режиме р
 - `npm run test:ui:report` генерация отчета для скриншотных тестов
 - `npm run visual:report:json` - генерация json отчета для скриншотных тестов
 - `npm run visual:report:html` - генерация HTML отчета для скриншотных тестов
-- `npm run prepare` - запуск precommit хуков
+- `npm run prepare` - запуск pre-commit хуков
 
 ----
 

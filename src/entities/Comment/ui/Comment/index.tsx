@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { RoutePath } from '@/shared/const/router';
+import { getRouteProfilePage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import Avatar from '@/shared/ui/Avatar';
@@ -20,7 +20,7 @@ const Comment = ({ className, comment }: CommentProps) => {
 
     return (
         <div className={classNames(styles.container, {}, [className])}>
-            <AppLink className={styles.userInfo} to={`${RoutePath.profile}/${user?.id}`}>
+            <AppLink className={styles.userInfo} to={getRouteProfilePage(user.id)}>
                 {
                     user?.avatar && (
                         <Avatar
