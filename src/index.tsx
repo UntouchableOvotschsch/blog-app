@@ -21,4 +21,3 @@ root.render(
         </StoreProvider>
     </BrowserRouter>,
 );
-export { Themes } from '@/shared/const/theme';

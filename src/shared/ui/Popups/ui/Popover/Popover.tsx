@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import { Popover as HPopover } from '@headlessui/react';
 
@@ -27,7 +27,7 @@ const Popover = (props: PopoverProps) => {
             as="div"
             className={classNames(popupStyles.container, {}, [className])}
         >
-            <HPopover.Button as={Fragment}>
+            <HPopover.Button as="div">
                 {trigger}
             </HPopover.Button>
             <HPopover.Panel className={classNames(popupStyles.itemsContainer, {}, classes)}>

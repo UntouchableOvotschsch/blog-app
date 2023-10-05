@@ -1,15 +1,15 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { Listbox } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
-import styles from './Select.module.scss';
 import { Button, ThemeButton } from '../../../Button';
 import { HStack, VStack } from '../../../Stack';
 import Text, { TextSize } from '../../../Text';
 import popupStyles from '../../styles/Popups.module.scss';
+import styles from './Select.module.scss';
 
 export enum SelectContainerTheme {
     ROW = 'row',
@@ -43,14 +43,17 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
 
     const optionList = useMemo(() => options?.map((el) => (
         <Listbox.Option
-            as={Fragment}
+            as="div"
             key={el.value}
             value={el.value}
             disabled={el.disabled}
+            className={popupStyles.option}
         >
             {({ active, selected }) => (
                 <li
-                    className={classNames(popupStyles.option, { [popupStyles.active]: active || selected }, [])}
+                    className={
+                        classNames(popupStyles.optionItem, { [popupStyles.active]: active || selected })
+                    }
                 >
                     {el.content}
                 </li>
@@ -74,7 +77,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                         className={classNames(popupStyles.container, {}, [className, styles.container])}
                         disabled={!editable}
                     >
-                        <Listbox.Button as={Fragment}>
+                        <Listbox.Button as="div">
                             <Button className={styles.listBoxBtn} disabled={!editable} theme={ThemeButton.CLEAR}>
                                 {contentSelectValue}
                             </Button>
@@ -100,7 +103,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                     className={classNames(popupStyles.container, {}, [className, styles.container])}
                     disabled={!editable}
                 >
-                    <Listbox.Button as={Fragment}>
+                    <Listbox.Button as="div">
                         <Button className={styles.listBoxBtn} disabled={!editable} theme={ThemeButton.CLEAR}>
                             {contentSelectValue}
                         </Button>

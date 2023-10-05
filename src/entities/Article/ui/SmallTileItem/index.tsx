@@ -7,6 +7,8 @@ import { AppLink } from '@/shared/ui/AppLink';
 import Card from '@/shared/ui/Card';
 import Icon from '@/shared/ui/Icon';
 import Text from '@/shared/ui/Text';
+import AppImage from '@/shared/ui/AppImage';
+import Skeleton from '@/shared/ui/Skeleton';
 
 import styles from './SmallTileItem.module.scss';
 import { Article } from '../../model/types/article';
@@ -29,7 +31,12 @@ const SmallTileItem = ({ article, target, className }: BigTileItemProps) => {
         >
             <Card className={styles.container}>
                 <div className={styles.imageWrapper}>
-                    <img src={article.img} alt={article.title} className={styles.image} />
+                    <AppImage
+                        fallback={<Skeleton className={styles.image} />}
+                        src={article.img}
+                        alt={article.title}
+                        className={styles.image}
+                    />
                     <Text title={article.createdAt} classname={styles.createdAt} />
                 </div>
                 <div className={styles.footer}>

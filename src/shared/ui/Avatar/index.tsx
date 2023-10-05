@@ -1,8 +1,11 @@
 import React from 'react';
 
-import avatarImg from '@/shared/assets/tests/profileImage.jpg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import AvatarIcon from '@/shared/assets/icons/avatar.svg';
 
+import Icon from '../Icon';
+import Skeleton from '../Skeleton';
+import AppImage from '../AppImage';
 import styles from './Avatar.module.scss';
 
 type ImageAttributes = Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'alt' >
@@ -20,9 +23,11 @@ const Avatar = ({
     ...args
 }: AvatarProps) => (
     <div className={classNames(styles.container, {}, [className])}>
-        <img
+        <AppImage
+            fallback={<Skeleton width={width} height={height} border="50%" />}
+            errorFallback={<Icon Icon={AvatarIcon} width={width} height={height} />}
             className={styles.image}
-            src={(__PROJECT__ === 'storybook' ? avatarImg : avatar) || ''}
+            src={avatar}
             alt={alt}
             width={width}
             height={height}

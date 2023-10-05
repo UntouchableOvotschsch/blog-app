@@ -6,11 +6,13 @@ import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getRouteArticleDetailsPage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
-import Avatar from '@/shared/ui/Avatar';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import Card from '@/shared/ui/Card';
 import Icon from '@/shared/ui/Icon';
 import Text from '@/shared/ui/Text';
+import AppImage from '@/shared/ui/AppImage';
+import Skeleton from '@/shared/ui/Skeleton';
+import Avatar from '@/shared/ui/Avatar';
 
 import styles from './BigTileItem.module.scss';
 import { ArticleBlockTypes } from '../../model/consts';
@@ -50,7 +52,12 @@ const BigTileItem = ({ article, target, className }: BigTileItemProps) => {
             <Text title={article.title} />
             <Text title={article.type.join(', ')} />
             <div className={styles.imageWrapper}>
-                <img src={article.img} alt={article.title} className={styles.articleImg} />
+                <AppImage
+                    fallback={<Skeleton className={styles.articleImg} />}
+                    src={article.img}
+                    alt={article.title}
+                    className={styles.articleImg}
+                />
             </div>
 
             {

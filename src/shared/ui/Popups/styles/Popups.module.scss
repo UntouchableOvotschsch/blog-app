@@ -13,11 +13,14 @@
 }
 
 .option {
+    margin-bottom: 10px;
+}
+
+.optionItem {
     color: var(--inverted-primary-color);
     background: var(--inverted-bg-color);
-    margin: 5px;
-    padding: 5px;
     text-decoration: none;
+    padding: 0 5px;
 }
 
 .active {

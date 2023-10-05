@@ -1,14 +1,14 @@
-import { Fragment, ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 
 import { Menu } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
-import styles from './Dropdown.module.scss';
 import { AppLink, AppLinkTheme } from '../../../AppLink';
 import { Button, ThemeButton } from '../../../Button';
 import { DropdownPosition, dropDownPositionClasses } from '../../styles/consts';
 import popupStyles from '../../styles/Popups.module.scss';
+import styles from './Dropdown.module.scss';
 
 export interface DropdownOptions {
     label: string
@@ -37,11 +37,22 @@ const Dropdown = (props: DropdownProps) => {
     const renderOptionsList = useMemo(() => options.map((el) => {
         if (el.href) {
             return (
-                <Menu.Item key={el.label} as={Fragment} disabled={el.disabled}>
+                <Menu.Item
+                    key={el.label}
+                    as="div"
+                    disabled={el.disabled}
+                    className={popupStyles.option}
+                >
                     {({ active }) => (
                         <AppLink
                             theme={AppLinkTheme.SECONDARY}
-                            className={classNames(popupStyles.option, { [popupStyles.active]: active })}
+                            className={
+                                classNames(
+                                    popupStyles.optionItem,
+                                    { [popupStyles.active]: active },
+                                    [styles.link],
+                                )
+                            }
                             to={el.href!}
                         >
                             {el.label}
@@ -51,10 +62,19 @@ const Dropdown = (props: DropdownProps) => {
             );
         }
         return (
-            <Menu.Item key={el.label} as={Fragment}>
+            <Menu.Item
+                key={el.label}
+                as="div"
+            >
                 {({ active }) => (
                     <Button
-                        className={classNames(popupStyles.option, { [popupStyles.active]: active })}
+                        className={
+                            classNames(
+                                popupStyles.optionItem,
+                                { [popupStyles.active]: active },
+                                [styles.btn],
+                            )
+                        }
                         onClick={el.onClick}
                         disabled={el.disabled}
                         theme={ThemeButton.CLEAR}
@@ -71,7 +91,7 @@ const Dropdown = (props: DropdownProps) => {
             as="div"
             className={classNames(popupStyles.container, {}, [className])}
         >
-            <Menu.Button as={Fragment}>
+            <Menu.Button as="div">
                 {trigger}
             </Menu.Button>
             <Menu.Items className={classNames(popupStyles.itemsContainer, {}, classes)}>
