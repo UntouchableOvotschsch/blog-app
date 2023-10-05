@@ -118,7 +118,12 @@ module.exports = {
                 alias: '@',
                 testFiles: {
                     testPublicApiName: 'testing',
-                    testFilesPatterns: ['**/*.test.ts', '**/*.stories.tsx', '**/StoreDecorator/*.tsx'],
+                    testFilesPatterns: [
+                        '**/*.test.ts',
+                        '**/*.test.tsx',
+                        '**/*.stories.tsx',
+                        '**/StoreDecorator/*.tsx',
+                    ],
                 },
             },
         ],

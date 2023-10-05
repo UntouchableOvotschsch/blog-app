@@ -9,7 +9,7 @@ const ProfilePage = () => {
     const { id } = useParams<{id: string}>();
 
     return (
-        <PageWrapper>
+        <PageWrapper data-testid="ProfilePage">
             <EditableProfileCard id={id!} />
         </PageWrapper>
     );

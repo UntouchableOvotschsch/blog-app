@@ -6,7 +6,7 @@ import Text from '@/shared/ui/Text';
 const AdminPage = () => {
     const { t } = useTranslation('adminPage');
     return (
-        <PageWrapper>
+        <PageWrapper data-testid="AdminPage">
             <Text title={t('Админка')} />
         </PageWrapper>
     );

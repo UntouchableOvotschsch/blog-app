@@ -7,5 +7,5 @@ import { getProfileData } from '../getProfileData';
 export const getProfileCanEdit = createSelector(
     getProfileData,
     getUserAuthData,
-    (profile, user) => profile?.id === user?.id || user?.roles.includes(UserRoles.ADMIN),
+    (profile, user) => profile?.id === user?.id || user?.roles?.includes(UserRoles.ADMIN) || false,
 );
