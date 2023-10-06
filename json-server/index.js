@@ -1,6 +1,7 @@
 const fs = require('fs');
-const jsonServer = require('json-server');
 const path = require('path');
+
+const jsonServer = require('json-server');
 
 const server = jsonServer.create();
 
@@ -14,17 +15,6 @@ server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800);
     });
-    next();
-});
-
-// проверяем, авторизован ли пользователь
-// eslint-disable-next-line
-server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403)
-            .json({ message: 'AUTH ERROR' });
-    }
-
     next();
 });
 
@@ -53,6 +43,17 @@ server.post('/login', (req, res) => {
         return res.status(500)
             .json({ message: e.message });
     }
+});
+
+// проверяем, авторизован ли пользователь
+// eslint-disable-next-line
+server.use((req, res, next) => {
+    if (!req.headers.authorization) {
+        return res.status(403)
+            .json({ message: 'AUTH ERROR' });
+    }
+
+    next();
 });
 
 server.use(router);
