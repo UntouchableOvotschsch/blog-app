@@ -82,8 +82,9 @@ const ArticleDetails = memo(({
         <div
             className={classNames(styles.ArticleDetails, {}, [className])}
             ref={wrapperRef}
+            data-testid="ArticleDetails.Content"
         >
-            <div className={styles.header}>
+            <div className={styles.header} data-testid="ArticleDetails.ArticleInfo">
                 <Avatar
                     avatar={article?.img}
                     alt={t('Аватар статьи')}

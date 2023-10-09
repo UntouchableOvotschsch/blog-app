@@ -26,7 +26,10 @@ const CommentsList = ({ className, comments, isLoading }: CommentsListProps) => 
     }
 
     return (
-        <div className={classNames(styles.CommentsList, {}, [className])}>
+        <div
+            className={classNames(styles.CommentsList, {}, [className])}
+            data-testid="CommentList.Content"
+        >
             {
                 comments?.length
                     ? comments?.map((comment) => (

@@ -47,11 +47,12 @@ const CommentForm = memo(({
         return () => clearTimeout(timer);
     }, [dispatch, wasSent]);
 
-    const sendComment = useCallback(async () => {
+    const sendComment = useCallback(() => {
         if (__PROJECT__ !== 'storybook') {
-            await addNewCommentTo();
+            addNewCommentTo();
+            dispatch(commentFormActions.clearForm());
         }
-    }, [addNewCommentTo]);
+    }, [addNewCommentTo, dispatch]);
 
     const changeNewCommentText = useCallback((value: string) => {
         dispatch(commentFormActions.setNewCommentText(value));
@@ -59,13 +60,14 @@ const CommentForm = memo(({
     return (
         <DynamicModuleLoader reducerList={reducerList}>
             <div className={styles.container}>
-                <HStack>
+                <HStack data-testid="CommentForm.Content">
                     <Input
                         className={styles.input}
                         placeholder={t('Комментировать')}
                         onChange={changeNewCommentText}
                         align={InputAlign.LEFT}
                         value={commentText}
+                        data-testid="CommentForm.Input"
                     />
                     <div className={styles.btnContainer}>
 
@@ -76,6 +78,7 @@ const CommentForm = memo(({
                                     <Button
                                         onClick={sendComment}
                                         disabled={isLoading || !commentText}
+                                        data-testid="CommentForm.Button.Send"
                                     >
                                         {t('Отправить')}
                                     </Button>

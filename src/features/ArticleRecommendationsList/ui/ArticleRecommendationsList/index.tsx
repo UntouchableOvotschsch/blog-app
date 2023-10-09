@@ -20,7 +20,7 @@ const ArticleRecommendationsList = () => {
         );
     }
     return (
-        <VStack align="start">
+        <VStack align="start" data-testid="ArticleRecommendationsList">
             <Text title={`${t('Рекомендации')}:`} size={TextSize.L} />
             <ArticleList
                 articles={articles}

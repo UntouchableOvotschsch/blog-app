@@ -1,36 +1,37 @@
-import { dataTestIdTemplate } from '../helpers/dataTestIdTemplate';
+import { routes } from 'cypress/helpers/routes';
 
 describe('Routing', () => {
+    let profileId: string;
     describe('Auth user', () => {
         beforeEach(() => {
-            cy.login('admin', '123');
+            cy.login('admin', '123').then((data) => { profileId = data.id; });
         });
         it('Auth user routing to protected pages', () => {
-            cy.visit('/articles');
-            cy.get(dataTestIdTemplate('ArticlesPage')).should('exist');
+            cy.visit(routes.getRouteArticlesPage());
+            cy.getByDataTestId('ArticlesPage').should('exist');
         });
         it('Routing to admin routes with admin role', () => {
-            cy.visit('/admin');
-            cy.get(dataTestIdTemplate('AdminPage')).should('exist');
+            cy.visit(routes.getRouteAdminPage());
+            cy.getByDataTestId('AdminPage').should('exist');
         });
         it('Routing to admin routes without admin role', () => {
             cy.login('testUser', '123');
-            cy.visit('/admin');
-            cy.get(dataTestIdTemplate('ForbiddenPage')).should('exist');
+            cy.visit(routes.getRouteAdminPage());
+            cy.getByDataTestId('ForbiddenPage').should('exist');
         });
     });
     describe('Unauth user', () => {
         it('Main page routing', () => {
-            cy.visit('/');
-            cy.get(dataTestIdTemplate('MainPage')).should('exist');
+            cy.visit(routes.getRouteMainPage());
+            cy.getByDataTestId('MainPage').should('exist');
         });
         it('Unauthorized redirect to MainPage', () => {
-            cy.visit('/profile/1');
-            cy.get(dataTestIdTemplate('MainPage')).should('exist');
+            cy.visit(routes.getRouteProfilePage(profileId));
+            cy.getByDataTestId('MainPage').should('exist');
         });
         it('Redirect to NotFoundPage', () => {
             cy.visit('/asfasfdasfasf');
-            cy.get(dataTestIdTemplate('NotFoundPage')).should('exist');
+            cy.getByDataTestId('NotFoundPage').should('exist');
         });
     });
 });

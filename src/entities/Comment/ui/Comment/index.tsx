@@ -19,7 +19,10 @@ const Comment = ({ className, comment }: CommentProps) => {
     const { text, user } = comment;
 
     return (
-        <div className={classNames(styles.container, {}, [className])}>
+        <div
+            className={classNames(styles.container, {}, [className])}
+            data-testid="CommentItem"
+        >
             <AppLink className={styles.userInfo} to={getRouteProfilePage(user.id)}>
                 {
                     user?.avatar && (

@@ -131,7 +131,11 @@ const RatingCard = (props: RatingCardProps) => {
                 visible={feedbackVisibility}
                 changeVisibility={onModalClose}
             >
-                <Card cardTheme="transparent" className={styles.feedbackContainer}>
+                <Card
+                    cardTheme="transparent"
+                    className={styles.feedbackContainer}
+                    data-testid="RatingCard.Feedback.Content"
+                >
                     <VStack
                         align="start"
                         gap="32"
@@ -141,11 +145,13 @@ const RatingCard = (props: RatingCardProps) => {
                             value={feedbackValue}
                             onChange={setFeedbackValue}
                             placeholder={t('Введите отзыв')}
+                            data-testid="RatingCard.Feedback.Input"
                         />
                         <HStack justify="between">
                             <Button
                                 theme={ThemeButton.OUTLINE_RED}
                                 onClick={cancelHandle}
+                                data-testid="RatingCard.Feedback.Button.Cancel"
                             >
                                 {t('Отменить')}
                             </Button>
@@ -154,6 +160,7 @@ const RatingCard = (props: RatingCardProps) => {
                                     ? (
                                         <Button
                                             onClick={acceptWithFeedbackHandle}
+                                            data-testid="RatingCard.Feedback.Button.SaveWithFeedback"
                                         >
                                             {t('Сохранить')}
                                         </Button>
@@ -161,6 +168,7 @@ const RatingCard = (props: RatingCardProps) => {
                                     : (
                                         <Button
                                             onClick={acceptWithoutFeedbackHandle}
+                                            data-testid="RatingCard.Feedback.Button.SaveWithoutFeedback"
                                         >
                                             {t('Сохранить без отзыва')}
                                         </Button>
@@ -178,7 +186,10 @@ const RatingCard = (props: RatingCardProps) => {
     ]);
 
     return (
-        <Card className={classNames(styles.RatingCard, {}, [className])}>
+        <Card
+            className={classNames(styles.RatingCard, {}, [className])}
+            data-testid="RatingCard"
+        >
             <VStack gap="8">
                 { (!selectedStars && initialTitle) && <Text title={initialTitle} /> }
                 { (!!selectedStars && successTitle) && <Text title={successTitle} /> }
@@ -187,7 +198,14 @@ const RatingCard = (props: RatingCardProps) => {
                     onSelect={selectStarsHandler}
                     selected={Boolean(selectedStars)}
                 />
-                { feedbackText && <Text title={t('Ваш отзыв:')} text={feedbackText} align={TextAlign.CENTER} />}
+                { feedbackText && (
+                    <Text
+                        data-testid="RatingCard.FeedbackText"
+                        title={t('Ваш отзыв:')}
+                        text={feedbackText}
+                        align={TextAlign.CENTER}
+                    />
+                )}
             </VStack>
             {feedbackContent}
         </Card>

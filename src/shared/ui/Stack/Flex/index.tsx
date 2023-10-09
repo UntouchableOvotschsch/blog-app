@@ -59,6 +59,7 @@ const Flex = (props: FlexProps) => {
         direction = 'row',
         maxWidth = true,
         gap,
+        ...otherProps
     } = props;
 
     const classes = [
@@ -74,7 +75,7 @@ const Flex = (props: FlexProps) => {
     };
 
     return (
-        <div className={classNames(styles.Flex, mods, classes)}>
+        <div className={classNames(styles.Flex, mods, classes)} {...otherProps}>
             {children}
         </div>
     );

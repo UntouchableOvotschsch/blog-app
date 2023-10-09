@@ -51,6 +51,8 @@ const StarRating = (props: StarRatingProps) => {
                 onTouchStart={onMouseEnter(index + 1)}
                 onMouseEnter={onMouseEnter(index + 1)}
                 onMouseLeave={onMouseLeave}
+                data-testid={`StarRating.Star.${index + 1}`}
+                data-selected={selectedStars >= index + 1}
                 className={
                     classNames(
                         styles.starIcon,
@@ -68,7 +70,10 @@ const StarRating = (props: StarRatingProps) => {
     ), [hoveredCount, onClickHandler, onMouseEnter, onMouseLeave, selected, selectedStars, starsLength]);
 
     return (
-        <div className={classNames('', {}, [className])}>
+        <div
+            className={classNames('', {}, [className])}
+            data-testid="StarRating"
+        >
             {starsArray}
         </div>
     );

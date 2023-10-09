@@ -13,6 +13,9 @@ const commentFormSlice = createSlice({
         setNewCommentText: (state, action: PayloadAction<string>) => {
             state.commentText = action.payload;
         },
+        clearForm: (state) => {
+            state.commentText = '';
+        },
         setWasSent: (state, action: PayloadAction<boolean>) => {
             state.wasSent = action.payload;
         },

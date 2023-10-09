@@ -1,12 +1,13 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { ComponentTestProps } from '@/shared/types/test';
 
 import styles from './Card.module.scss';
 
 type CardTheme = 'primary' | 'inverted' | 'transparent'
 
-interface CardProps extends HTMLAttributes<HTMLDivElement>{
+interface CardProps extends HTMLAttributes<HTMLDivElement>, ComponentTestProps{
     className?: string;
     children: ReactNode
     cardTheme?: CardTheme
