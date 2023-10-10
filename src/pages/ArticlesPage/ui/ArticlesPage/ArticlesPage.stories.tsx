@@ -41,16 +41,20 @@ BigTile.decorators = [
                     ...articleTemplate,
                 },
                 2: {
-                    ...articleTemplate, id: '2',
+                    ...articleTemplate,
+                    id: '2',
                 },
                 3: {
-                    ...articleTemplate, id: '3',
+                    ...articleTemplate,
+                    id: '3',
                 },
                 4: {
-                    ...articleTemplate, id: '4',
+                    ...articleTemplate,
+                    id: '4',
                 },
                 5: {
-                    ...articleTemplate, id: '5',
+                    ...articleTemplate,
+                    id: '5',
                 },
             },
         },
@@ -99,16 +103,20 @@ SmallTile.decorators = [
                     ...articleTemplate,
                 },
                 2: {
-                    ...articleTemplate, id: '2',
+                    ...articleTemplate,
+                    id: '2',
                 },
                 3: {
-                    ...articleTemplate, id: '3',
+                    ...articleTemplate,
+                    id: '3',
                 },
                 4: {
-                    ...articleTemplate, id: '4',
+                    ...articleTemplate,
+                    id: '4',
                 },
                 5: {
-                    ...articleTemplate, id: '5',
+                    ...articleTemplate,
+                    id: '5',
                 },
             },
         },

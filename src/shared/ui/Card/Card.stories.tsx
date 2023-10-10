@@ -23,9 +23,9 @@ Light.args = {
     children: (
         <>
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text title="Hey hey hey" />
+            <Text title='Hey hey hey' />
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text text="Hey hey hey" />
+            <Text text='Hey hey hey' />
         </>
     ),
 };
@@ -36,9 +36,9 @@ Dark.args = {
     children: (
         <>
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text title="Hey hey hey" />
+            <Text title='Hey hey hey' />
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text text="Hey hey hey" />
+            <Text text='Hey hey hey' />
         </>
     ),
 };

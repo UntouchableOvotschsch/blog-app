@@ -8,8 +8,8 @@ import { Modal } from '@/shared/ui/Modal';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface LoginModalProps {
-    visible: boolean
-    changeVisibility: () => void
+    visible: boolean;
+    changeVisibility: () => void;
 }
 const LoginModal = ({ visible, changeVisibility }: LoginModalProps) => {
     const isMobile = useDeviceDetect();

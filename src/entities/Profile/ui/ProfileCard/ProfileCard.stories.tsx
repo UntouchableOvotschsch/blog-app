@@ -41,9 +41,7 @@ EditableCardLight.args = {
         avatar: 'asd-asd',
     },
 };
-EditableCardLight.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+EditableCardLight.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const EditableCardDark = Template.bind({});
 EditableCardDark.args = {
@@ -59,9 +57,7 @@ EditableCardDark.args = {
         avatar: 'asd-asd',
     },
 };
-EditableCardDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
+EditableCardDark.decorators = [ThemeDecorator(Themes.DARK)];
 
 export const NonEditableCardLight = Template.bind({});
 NonEditableCardLight.args = {
@@ -77,9 +73,7 @@ NonEditableCardLight.args = {
         avatar: 'asd-asd',
     },
 };
-NonEditableCardLight.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+NonEditableCardLight.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const NonEditableCardDark = Template.bind({});
 NonEditableCardDark.args = {
@@ -95,6 +89,4 @@ NonEditableCardDark.args = {
         avatar: 'asd-asd',
     },
 };
-NonEditableCardDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
+NonEditableCardDark.decorators = [ThemeDecorator(Themes.DARK)];

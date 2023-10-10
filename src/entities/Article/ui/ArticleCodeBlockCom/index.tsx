@@ -10,7 +10,7 @@ import { ArticleCodeBlock } from '../../model/types/article';
 
 interface ArticleCodeBlockComProps {
     className?: string;
-    block: ArticleCodeBlock
+    block: ArticleCodeBlock;
 }
 
 const ArticleCodeBlockCom = memo(({ className, block }: ArticleCodeBlockComProps) => {

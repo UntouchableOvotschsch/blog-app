@@ -10,13 +10,7 @@ export const profileDataValidator = (profile?: ProfileType): ProfileValidationEr
     }
     const errors: ProfileValidationErrors[] = [];
 
-    const {
-        age,
-        lastname,
-        username,
-        country,
-        firstname,
-    } = profile;
+    const { age, lastname, username, country, firstname } = profile;
 
     if (!username || !firstname || !lastname) {
         errors.push(ProfileValidationErrors.INCORRECT_USER_DATA);

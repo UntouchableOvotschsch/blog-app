@@ -19,11 +19,7 @@ const userSlice = createSlice({
         removeAuthData: (state) => {
             state.authData = undefined;
         },
-
     },
 });
 
-export const {
-    actions: userActions,
-    reducer: userReducer,
-} = userSlice;
+export const { actions: userActions, reducer: userReducer } = userSlice;

@@ -9,11 +9,9 @@ describe('getProfileEditable.test', () => {
         },
     };
     test('should return state', () => {
-        expect(getProfileEditable(state as StateSchema))
-            .toBe(true);
+        expect(getProfileEditable(state as StateSchema)).toBe(true);
     });
     test('with empty state', () => {
-        expect(getProfileEditable({} as StateSchema))
-            .toEqual(false);
+        expect(getProfileEditable({} as StateSchema)).toEqual(false);
     });
 });

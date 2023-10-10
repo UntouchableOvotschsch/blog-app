@@ -14,38 +14,36 @@ import { SortField } from '../model/consts';
 import { SortOrder } from '../model/types/sortTypes';
 
 interface SortSelectorProps {
-    sortField: SortField
-    sortOrder: SortOrder
-    changeSortField: (sortField: SortField) => void
-    changeSortOrder: () => void
+    sortField: SortField;
+    sortOrder: SortOrder;
+    changeSortField: (sortField: SortField) => void;
+    changeSortOrder: () => void;
 }
 
 const SortSelector = (props: SortSelectorProps) => {
-    const {
-        sortField,
-        sortOrder,
-        changeSortField,
-        changeSortOrder,
-    } = props;
+    const { sortField, sortOrder, changeSortField, changeSortOrder } = props;
     const { t } = useTranslation('article');
 
-    const sortFields = useMemo<SelectOptions<SortField>[]>(() => [
-        {
-            value: SortField.TITLE,
-            content: t('названию'),
-        },
-        {
-            value: SortField.CREATED,
-            content: t('дате'),
-        },
-        {
-            value: SortField.VIEWS,
-            content: t('просмотрам'),
-        },
-    ], [t]);
+    const sortFields = useMemo<SelectOptions<SortField>[]>(
+        () => [
+            {
+                value: SortField.TITLE,
+                content: t('названию'),
+            },
+            {
+                value: SortField.CREATED,
+                content: t('дате'),
+            },
+            {
+                value: SortField.VIEWS,
+                content: t('просмотрам'),
+            },
+        ],
+        [t],
+    );
 
     return (
-        <HStack gap="4" maxWidth={false}>
+        <HStack gap='4' maxWidth={false}>
             <Select
                 label={t('Сортировать по:')}
                 selectValue={sortField}
@@ -54,15 +52,8 @@ const SortSelector = (props: SortSelectorProps) => {
                 containerTheme={SelectContainerTheme.ROW}
                 className={styles.select}
             />
-            <Button
-                onClick={changeSortOrder}
-                theme={ThemeButton.CLEAR}
-                className={styles.btn}
-            >
-                <Icon
-                    className={classNames('', {}, [styles[sortOrder]])}
-                    Icon={SortArrow}
-                />
+            <Button onClick={changeSortOrder} theme={ThemeButton.CLEAR} className={styles.btn}>
+                <Icon className={classNames('', {}, [styles[sortOrder]])} Icon={SortArrow} />
             </Button>
         </HStack>
     );

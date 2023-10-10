@@ -4,13 +4,13 @@ import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 
 import styles from './Flex.module.scss';
 
-type JustifyTypes = 'start' | 'end' | 'between' | 'center' | 'around' | 'evenly'
+type JustifyTypes = 'start' | 'end' | 'between' | 'center' | 'around' | 'evenly';
 
-type AlignTypes = 'start' | 'center' | 'end'
+type AlignTypes = 'start' | 'center' | 'end';
 
-type DirectionTypes = 'column' | 'row'
+type DirectionTypes = 'column' | 'row';
 
-type GapTypes = '2' | '4' | '8' | '16' | '32'
+type GapTypes = '2' | '4' | '8' | '16' | '32';
 
 const justifyClasses: Record<JustifyTypes, string> = {
     start: styles.justifyStart,
@@ -40,14 +40,14 @@ const gapClasses: Record<GapTypes, string> = {
     32: styles.gap32,
 };
 
-export interface FlexProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
+export interface FlexProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     className?: string;
     justify?: JustifyTypes;
     align?: AlignTypes;
     direction?: DirectionTypes;
     children: ReactNode;
-    maxWidth?: boolean
-    gap?: GapTypes
+    maxWidth?: boolean;
+    gap?: GapTypes;
 }
 
 const Flex = (props: FlexProps) => {

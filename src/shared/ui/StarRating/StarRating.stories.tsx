@@ -8,9 +8,7 @@ import StarRating from '.';
 const meta: Meta<typeof StarRating> = {
     title: 'shared/StarRating',
     component: StarRating,
-    decorators: [
-        ThemeDecorator(Themes.LIGHT),
-    ],
+    decorators: [ThemeDecorator(Themes.LIGHT)],
 };
 
 export default meta;

@@ -10,9 +10,7 @@ const uiSlice = createSlice({
     name: 'widgets/UI',
     initialState,
     reducers: {
-        setScrollPosition: (state, {
-            payload,
-        }: PayloadAction<{ pathname: string, scroll: number }>) => {
+        setScrollPosition: (state, { payload }: PayloadAction<{ pathname: string; scroll: number }>) => {
             state.scroll[payload.pathname] = payload.scroll;
         },
         removeScrollPosition: (state, action: PayloadAction<string>) => {
@@ -25,7 +23,4 @@ const uiSlice = createSlice({
     },
 });
 
-export const {
-    reducer: uiReducer,
-    actions: uiActions,
-} = uiSlice;
+export const { reducer: uiReducer, actions: uiActions } = uiSlice;

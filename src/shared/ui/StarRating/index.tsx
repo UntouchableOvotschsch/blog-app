@@ -8,28 +8,25 @@ import Icon from '../Icon';
 
 interface StarRatingProps {
     className?: string;
-    selectedStars?: number
-    onSelect?: (selectedStarts: number) => void
-    selected?: boolean
-    starsLength?: number
+    selectedStars?: number;
+    onSelect?: (selectedStarts: number) => void;
+    selected?: boolean;
+    starsLength?: number;
 }
 
 const StarRating = (props: StarRatingProps) => {
-    const {
-        selectedStars = 0,
-        selected = false,
-        starsLength = 5,
-        onSelect,
-        className,
-    } = props;
+    const { selectedStars = 0, selected = false, starsLength = 5, onSelect, className } = props;
 
     const [hoveredCount, setHoveredCount] = useState(0);
 
-    const onMouseEnter = useCallback((starNumber: number) => () => {
-        if (!selected) {
-            setHoveredCount(starNumber);
-        }
-    }, [selected]);
+    const onMouseEnter = useCallback(
+        (starNumber: number) => () => {
+            if (!selected) {
+                setHoveredCount(starNumber);
+            }
+        },
+        [selected],
+    );
 
     const onMouseLeave = useCallback(() => {
         if (!selected) {
@@ -37,24 +34,27 @@ const StarRating = (props: StarRatingProps) => {
         }
     }, [selected]);
 
-    const onClickHandler = useCallback((starNumber: number) => () => {
-        if (!selected) {
-            onSelect?.(starNumber);
-        }
-    }, [onSelect, selected]);
+    const onClickHandler = useCallback(
+        (starNumber: number) => () => {
+            if (!selected) {
+                onSelect?.(starNumber);
+            }
+        },
+        [onSelect, selected],
+    );
 
-    const starsArray = useMemo(() => (
-        new Array(starsLength).fill(0).map((star, index) => (
-            <Icon
-                Icon={Star}
-                key={`star-key${index}`}
-                onTouchStart={onMouseEnter(index + 1)}
-                onMouseEnter={onMouseEnter(index + 1)}
-                onMouseLeave={onMouseLeave}
-                data-testid={`StarRating.Star.${index + 1}`}
-                data-selected={selectedStars >= index + 1}
-                className={
-                    classNames(
+    const starsArray = useMemo(
+        () =>
+            new Array(starsLength).fill(0).map((star, index) => (
+                <Icon
+                    Icon={Star}
+                    key={`star-key${index}`}
+                    onTouchStart={onMouseEnter(index + 1)}
+                    onMouseEnter={onMouseEnter(index + 1)}
+                    onMouseLeave={onMouseLeave}
+                    data-testid={`StarRating.Star.${index + 1}`}
+                    data-selected={selectedStars >= index + 1}
+                    className={classNames(
                         styles.starIcon,
                         {
                             [styles.hovered]: hoveredCount >= index + 1,
@@ -62,18 +62,15 @@ const StarRating = (props: StarRatingProps) => {
                             [styles.disabled]: selected,
                         },
                         [],
-                    )
-                }
-                onClick={onClickHandler(index + 1)}
-            />
-        ))
-    ), [hoveredCount, onClickHandler, onMouseEnter, onMouseLeave, selected, selectedStars, starsLength]);
+                    )}
+                    onClick={onClickHandler(index + 1)}
+                />
+            )),
+        [hoveredCount, onClickHandler, onMouseEnter, onMouseLeave, selected, selectedStars, starsLength],
+    );
 
     return (
-        <div
-            className={classNames('', {}, [className])}
-            data-testid="StarRating"
-        >
+        <div className={classNames('', {}, [className])} data-testid='StarRating'>
             {starsArray}
         </div>
     );

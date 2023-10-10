@@ -8,9 +8,7 @@ import RatingCard from './RatingCard';
 const meta: Meta<typeof RatingCard> = {
     title: 'entities/Rating/RatingCard',
     component: RatingCard,
-    decorators: [
-        ThemeDecorator(Themes.LIGHT),
-    ],
+    decorators: [ThemeDecorator(Themes.LIGHT)],
 };
 
 export default meta;
@@ -29,7 +27,10 @@ export const WithFeedback: Story = {
     args: {
         successTitle: 'Вы уже оценили эту статью',
         // eslint-disable-next-line max-len
-        feedbackText: 'Какой-то отзыв, бла Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid commodi error fuga hic incidunt odio provident quas quidem voluptatibus?',
+        feedbackText:
+            'Какой-то отзыв, бла Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
+            'Accusantium aliquid commodi error fuga hic incidunt odio provident ' +
+            'quas quidem voluptatibus?',
         selectedStars: 4,
     },
 };

@@ -34,27 +34,23 @@ const AvatarDropdown = ({ className }: AvatarDropdownProps) => {
     return (
         <Dropdown
             className={classNames('', {}, [className])}
-            position="bottom left"
-            trigger={(
-                <Avatar
-                    avatar={authData.avatar}
-                    alt={t('Аватар')}
-                    width={50}
-                    height={50}
-                    className={styles.avatar}
-                />
-            )}
+            position='bottom left'
+            trigger={
+                <Avatar avatar={authData.avatar} alt={t('Аватар')} width={50} height={50} className={styles.avatar} />
+            }
             options={[
                 {
                     label: t('Профиль'),
                     href: getRouteProfilePage(authData.id),
                 },
-                ...(isAdmin ? [
-                    {
-                        label: t('Админка'),
-                        href: getRouteAdminPage(),
-                    },
-                ] : []),
+                ...(isAdmin
+                    ? [
+                          {
+                              label: t('Админка'),
+                              href: getRouteAdminPage(),
+                          },
+                      ]
+                    : []),
                 {
                     label: t('Выйти'),
                     onClick: logoutBtn,

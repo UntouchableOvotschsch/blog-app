@@ -40,9 +40,7 @@ SelectLight.args = {
     ],
     editable: true,
 };
-SelectLight.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+SelectLight.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const SelectDark = Template.bind({});
 SelectDark.args = {
@@ -64,6 +62,4 @@ SelectDark.args = {
     ],
     editable: true,
 };
-SelectDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
+SelectDark.decorators = [ThemeDecorator(Themes.DARK)];

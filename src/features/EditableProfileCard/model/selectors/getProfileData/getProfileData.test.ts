@@ -20,20 +20,18 @@ describe('getProfileData.test', () => {
         },
     };
     test('should return state', () => {
-        expect(getProfileData(state as StateSchema))
-            .toEqual({
-                country: Countries.Russia,
-                currency: Currencies.RUB,
-                avatar: '',
-                city: 'Moscow',
-                age: 22,
-                username: 'admin',
-                lastname: 'Solomatin',
-                firstname: 'Sergey',
-            });
+        expect(getProfileData(state as StateSchema)).toEqual({
+            country: Countries.Russia,
+            currency: Currencies.RUB,
+            avatar: '',
+            city: 'Moscow',
+            age: 22,
+            username: 'admin',
+            lastname: 'Solomatin',
+            firstname: 'Sergey',
+        });
     });
     test('with empty state', () => {
-        expect(getProfileData({} as StateSchema))
-            .toEqual(undefined);
+        expect(getProfileData({} as StateSchema)).toEqual(undefined);
     });
 });

@@ -7,16 +7,15 @@ import { getUserRoles, UserRoles } from '@/entities/User';
 import { getRouteForbiddenPage } from '@/shared/const/router';
 
 interface RoleWrapperProps {
-    children: React.ReactElement,
-    roles: UserRoles[]
-    navigateTo?: string
+    children: React.ReactElement;
+    roles: UserRoles[];
+    navigateTo?: string;
 }
 
 const RoleWrapper = ({ children, roles, navigateTo = getRouteForbiddenPage() }: RoleWrapperProps) => {
     const userRoles = useSelector(getUserRoles);
     const location = useLocation();
-    const checkRoles = useMemo(() => roles
-        .some((role) => userRoles?.includes(role)), [roles, userRoles]);
+    const checkRoles = useMemo(() => roles.some((role) => userRoles?.includes(role)), [roles, userRoles]);
 
     if (checkRoles) {
         return children;

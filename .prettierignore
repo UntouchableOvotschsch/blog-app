@@ -1,0 +1,10 @@
+# Ignore artifacts:
+buildWebpack
+buildVite
+node_modules
+storybook-static
+reports
+extractedTranslations
+*.html
+*.css
+*.scss

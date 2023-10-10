@@ -20,16 +20,11 @@ describe('loginByUsername', () => {
         thunk.api.post.mockResolvedValue(Promise.resolve({ data: authData }));
         const result = await thunk.callThunk(loginData);
 
-        expect(thunk.api.post)
-            .toHaveBeenCalled();
-        expect(result.payload)
-            .toEqual(authData);
-        expect(result.meta.requestStatus)
-            .toBe('fulfilled');
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(3);
-        expect(thunk.dispatch)
-            .toHaveBeenCalledWith(userActions.setAuthData(authData));
+        expect(thunk.api.post).toHaveBeenCalled();
+        expect(result.payload).toEqual(authData);
+        expect(result.meta.requestStatus).toBe('fulfilled');
+        expect(thunk.dispatch).toHaveBeenCalledTimes(3);
+        expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(authData));
     });
 
     test('Rejected login', async () => {
@@ -37,13 +32,9 @@ describe('loginByUsername', () => {
         thunk.api.post.mockRejectedValue({ status: 403 });
         const result = await thunk.callThunk(loginData);
 
-        expect(thunk.api.post)
-            .toHaveBeenCalled();
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
-        expect(result.meta.requestStatus)
-            .toBe('rejected');
-        expect(result.payload)
-            .toBe('Неверное имя пользователя или пароль');
+        expect(thunk.api.post).toHaveBeenCalled();
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toBe('Неверное имя пользователя или пароль');
     });
 });

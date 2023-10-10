@@ -24,10 +24,10 @@ const App: FC = () => {
     }, [dispatch]);
 
     return (
-        <div className="app">
-            <Suspense fallback="">
+        <div className='app'>
+            <Suspense fallback=''>
                 <Navbar />
-                <div className="content">
+                <div className='content'>
                     <Sidebar />
                     {inited && <AppRouter />}
                 </div>

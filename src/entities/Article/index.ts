@@ -30,7 +30,4 @@ export {
     useGetArticleDetailsQuery,
 };
 
-export type {
-    Article,
-    ArticleBlock,
-};
+export type { Article, ArticleBlock };

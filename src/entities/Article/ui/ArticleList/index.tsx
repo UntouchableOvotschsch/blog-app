@@ -11,12 +11,12 @@ import { Article } from '../../model/types/article';
 
 interface ArticleListProps {
     className?: string;
-    articles?: Article[]
-    isLoading?: boolean
-    view?: ArticleViewTypes
-    onLoadNextPart?: () => void
+    articles?: Article[];
+    isLoading?: boolean;
+    view?: ArticleViewTypes;
+    onLoadNextPart?: () => void;
     target?: HTMLAttributeAnchorTarget;
-    Header?: ComponentType
+    Header?: ComponentType;
 }
 
 const ArticleList = ({
@@ -41,15 +41,14 @@ const ArticleList = ({
                     Header={Header}
                 />
             );
-        } if (view === ArticleViewTypes.SMALL_TILE || view === ArticleViewTypes.SMALL_TILE_ROW) {
+        }
+        if (view === ArticleViewTypes.SMALL_TILE || view === ArticleViewTypes.SMALL_TILE_ROW) {
             return (
                 <SmallTileView
                     articles={articles}
                     isLoading={isLoading}
                     onLoadNextPart={onLoadNextPart}
-                    view={view === ArticleViewTypes.SMALL_TILE
-                        ? SmallTileViewTypes.LIST
-                        : SmallTileViewTypes.ROW}
+                    view={view === ArticleViewTypes.SMALL_TILE ? SmallTileViewTypes.LIST : SmallTileViewTypes.ROW}
                     target={target}
                     Header={Header}
                 />
@@ -58,13 +57,7 @@ const ArticleList = ({
         return null;
     }, [Header, articles, isLoading, onLoadNextPart, target, view]);
 
-    return (
-        <div className={classNames(styles.container, {}, [className, styles[view]])}>
-            {
-                renderList
-            }
-        </div>
-    );
+    return <div className={classNames(styles.container, {}, [className, styles[view]])}>{renderList}</div>;
 };
 
 export default ArticleList;

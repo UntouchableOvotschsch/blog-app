@@ -1,11 +1,9 @@
-import {
-    MutableRefObject, useCallback, useEffect, useRef, useState,
-} from 'react';
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 interface UseModalProps {
-    visible: boolean
-    onClose: () => void
-    delay?: number
+    visible: boolean;
+    onClose: () => void;
+    delay?: number;
 }
 
 export const useModal = ({ delay = 300, onClose, visible }: UseModalProps) => {

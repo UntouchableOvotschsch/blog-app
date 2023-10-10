@@ -25,14 +25,10 @@ export const Light = Template.bind({});
 Light.args = {
     currentView: ArticleViewTypes.BIG_TILE,
 };
-Light.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+Light.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const Dark = Template.bind({});
 Dark.args = {
     currentView: ArticleViewTypes.BIG_TILE,
 };
-Dark.decorators = [
-    ThemeDecorator(Themes.DARK),
-];
+Dark.decorators = [ThemeDecorator(Themes.DARK)];

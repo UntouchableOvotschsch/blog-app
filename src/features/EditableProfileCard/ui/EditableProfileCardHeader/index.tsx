@@ -10,10 +10,10 @@ import Text from '@/shared/ui/Text';
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit';
 
 interface EditableProfileCardHeaderProps {
-    setEditMode: (value: boolean) => void
-    cancelEditMode: () => void
-    editable?: boolean
-    isError?: string
+    setEditMode: (value: boolean) => void;
+    cancelEditMode: () => void;
+    editable?: boolean;
+    isError?: string;
 }
 const EditableProfileCardHeader = ({
     setEditMode,
@@ -26,38 +26,30 @@ const EditableProfileCardHeader = ({
     const canEdit = useSelector(getProfileCanEdit);
 
     return (
-        <HStack justify="between">
+        <HStack justify='between'>
             <Text title={t('Профиль')} />
-            {
-                canEdit
-                && (
-                    <div>
-                        {
-                            editable
-                                ? (
-                                    <Button
-                                        theme={ThemeButton.OUTLINE_RED}
-                                        onClick={cancelEditMode}
-                                        data-testid="EditableProfileCardHeader.CancelBtn"
-                                    >
-                                        {t('Отменить')}
-                                    </Button>
-                                )
-                                : (
-                                    <Button
-                                        disabled={!!isError}
-                                        theme={ThemeButton.OUTLINE}
-                                        onClick={() => setEditMode(true)}
-                                        data-testid="EditableProfileCardHeader.EditBtn"
-                                    >
-                                        {t('Редактировать')}
-                                    </Button>
-                                )
-                        }
-                    </div>
-                )
-            }
-
+            {canEdit && (
+                <div>
+                    {editable ? (
+                        <Button
+                            theme={ThemeButton.OUTLINE_RED}
+                            onClick={cancelEditMode}
+                            data-testid='EditableProfileCardHeader.CancelBtn'
+                        >
+                            {t('Отменить')}
+                        </Button>
+                    ) : (
+                        <Button
+                            disabled={!!isError}
+                            theme={ThemeButton.OUTLINE}
+                            onClick={() => setEditMode(true)}
+                            data-testid='EditableProfileCardHeader.EditBtn'
+                        >
+                            {t('Редактировать')}
+                        </Button>
+                    )}
+                </div>
+            )}
         </HStack>
     );
 };

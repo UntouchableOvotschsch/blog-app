@@ -16,7 +16,7 @@ import { HStack } from '@/shared/ui/Stack';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
-    className?: string
+    className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
@@ -31,13 +31,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(styles.Navbar, {}, [className])}>
-                <Button
-                    theme={ThemeButton.CLEAR_INVERTED}
-                >
-                    <AppLink
-                        to={getRouteArticleCreatePage()}
-                        theme={AppLinkTheme.SECONDARY}
-                    >
+                <Button theme={ThemeButton.CLEAR_INVERTED}>
+                    <AppLink to={getRouteArticleCreatePage()} theme={AppLinkTheme.SECONDARY}>
                         {t('Создать статью')}
                     </AppLink>
                 </Button>
@@ -51,11 +46,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     return (
         <header className={classNames(styles.Navbar, {}, [className])}>
-            <Button
-                theme={ThemeButton.CLEAR_INVERTED}
-                onClick={loginModalVisibility}
-                className={styles.logoutBtn}
-            >
+            <Button theme={ThemeButton.CLEAR_INVERTED} onClick={loginModalVisibility} className={styles.logoutBtn}>
                 {t('Войти')}
             </Button>
 

@@ -14,21 +14,16 @@ import styles from './SmallTileItem.module.scss';
 import { Article } from '../../model/types/article';
 
 interface BigTileItemProps {
-    article: Article
+    article: Article;
     target?: HTMLAttributeAnchorTarget;
-    className?: string
+    className?: string;
 }
 
 const SmallTileItem = ({ article, target, className }: BigTileItemProps) => {
-    const navigateToArticle = __PROJECT__ !== 'storybook'
-        ? getRouteArticleDetailsPage(article.id) : '#';
+    const navigateToArticle = __PROJECT__ !== 'storybook' ? getRouteArticleDetailsPage(article.id) : '#';
 
     return (
-        <AppLink
-            to={navigateToArticle}
-            className={classNames(styles.appLink, {}, [className])}
-            target={target}
-        >
+        <AppLink to={navigateToArticle} className={classNames(styles.appLink, {}, [className])} target={target}>
             <Card className={styles.container}>
                 <div className={styles.imageWrapper}>
                     <AppImage
@@ -51,7 +46,6 @@ const SmallTileItem = ({ article, target, className }: BigTileItemProps) => {
                 </div>
             </Card>
         </AppLink>
-
     );
 };
 

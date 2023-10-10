@@ -16,9 +16,7 @@ export default {
     },
 } as ComponentMeta<typeof AddNewCommentForm>;
 
-const Template: ComponentStory<
-    typeof AddNewCommentForm
-> = (args) => <AddNewCommentForm {...args} />;
+const Template: ComponentStory<typeof AddNewCommentForm> = (args) => <AddNewCommentForm {...args} />;
 
 export const LightForm = Template.bind({});
 LightForm.args = {

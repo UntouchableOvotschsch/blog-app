@@ -1,13 +1,13 @@
 {
-  "Произошла ошибка при загрузке статей": "An error occurred while uploading articles",
-  "названию": "title",
-  "дате": "date",
-  "просмотрам": "views",
-  "Сортировать по:": "Sort by:",
-  "Поиск": "Search",
-  "Все статьи": "All articles",
-  "Айти": "IT",
-  "Экономика": "Economy",
-  "Наука": "Science",
-  "Читать далее": "Read more"
+    "Произошла ошибка при загрузке статей": "An error occurred while uploading articles",
+    "названию": "title",
+    "дате": "date",
+    "просмотрам": "views",
+    "Сортировать по:": "Sort by:",
+    "Поиск": "Search",
+    "Все статьи": "All articles",
+    "Айти": "IT",
+    "Экономика": "Economy",
+    "Наука": "Science",
+    "Читать далее": "Read more"
 }

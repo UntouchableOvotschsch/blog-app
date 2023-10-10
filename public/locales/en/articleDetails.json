@@ -1,9 +1,9 @@
 {
-  "Статья не найдена": "Article don't found",
-  "Комментарии": "Comments",
-  "Произошла ошибка при получении статьи": "An error occurred while receiving the article",
-  "Произошла ошибка при переходе на страницу": "An error occurred when navigating to the page",
-  "Аватар статьи": "Article avatar",
-  "Назад к списку": "Back to list",
-  "Редактировать": "Edit"
+    "Статья не найдена": "Article don't found",
+    "Комментарии": "Comments",
+    "Произошла ошибка при получении статьи": "An error occurred while receiving the article",
+    "Произошла ошибка при переходе на страницу": "An error occurred when navigating to the page",
+    "Аватар статьи": "Article avatar",
+    "Назад к списку": "Back to list",
+    "Редактировать": "Edit"
 }

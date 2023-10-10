@@ -23,14 +23,10 @@ describe('fetchProfileData', () => {
         thunk.api.get.mockResolvedValue({ data: fetchedProfile });
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.get)
-            .toHaveBeenCalled();
-        expect(result.payload)
-            .toEqual(fetchedProfile);
-        expect(result.meta.requestStatus)
-            .toBe('fulfilled');
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
+        expect(thunk.api.get).toHaveBeenCalled();
+        expect(result.payload).toEqual(fetchedProfile);
+        expect(result.meta.requestStatus).toBe('fulfilled');
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     });
 
     test('Rejected fetching', async () => {
@@ -38,13 +34,9 @@ describe('fetchProfileData', () => {
         thunk.api.get.mockRejectedValue({ status: 403 });
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.get)
-            .toHaveBeenCalled();
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
-        expect(result.meta.requestStatus)
-            .toBe('rejected');
-        expect(result.payload)
-            .toBe('Ошибка при получения профиля');
+        expect(thunk.api.get).toHaveBeenCalled();
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toBe('Ошибка при получения профиля');
     });
 });

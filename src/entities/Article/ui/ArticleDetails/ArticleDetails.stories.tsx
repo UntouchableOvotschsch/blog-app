@@ -10,9 +10,7 @@ import { articleTemplate } from '../../model/templates/article';
 const meta: Meta<typeof ArticleDetails> = {
     title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
-    decorators: [
-        ThemeDecorator(Themes.LIGHT),
-    ],
+    decorators: [ThemeDecorator(Themes.LIGHT)],
     parameters: {
         mockData: [
             {
@@ -31,7 +29,7 @@ type Story = StoryObj<typeof ArticleDetails>;
 export const Normal: Story = {
     render: () => (
         <PageWrapper>
-            <ArticleDetails id="1" />
+            <ArticleDetails id='1' />
         </PageWrapper>
     ),
 };

@@ -6,16 +6,6 @@ import Comment from './ui/Comment';
 import CommentForm from './ui/CommentForm';
 import CommentsList from './ui/CommentsList';
 
-export {
-    Comment,
-    CommentType,
-    CommentsList,
-    commentFormActions,
-    CommentForm,
-    commentTemplate,
-    commentArrayTemplate,
-};
+export { Comment, CommentType, CommentsList, commentFormActions, CommentForm, commentTemplate, commentArrayTemplate };
 
-export type {
-    CommentFormSchema,
-};
+export type { CommentFormSchema };

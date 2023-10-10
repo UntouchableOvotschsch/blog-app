@@ -19,16 +19,10 @@ export default {
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const PrimaryLight = Template.bind({});
-PrimaryLight.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-    StoreDecorator({}),
-];
+PrimaryLight.decorators = [ThemeDecorator(Themes.LIGHT), StoreDecorator({})];
 
 export const PrimaryDark = Template.bind({});
-PrimaryDark.decorators = [
-    ThemeDecorator(Themes.DARK),
-    StoreDecorator({}),
-];
+PrimaryDark.decorators = [ThemeDecorator(Themes.DARK), StoreDecorator({})];
 
 export const Loading = Template.bind({});
 Loading.decorators = [

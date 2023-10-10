@@ -5,5 +5,4 @@ export const RouterDecorator = (StoryCom: Story) => (
     <BrowserRouter>
         <StoryCom />
     </BrowserRouter>
-
 );

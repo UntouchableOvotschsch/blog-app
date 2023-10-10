@@ -1,5 +1,3 @@
 import AvatarDropdown from './ui/AvatarDropdown';
 
-export {
-    AvatarDropdown,
-};
+export { AvatarDropdown };

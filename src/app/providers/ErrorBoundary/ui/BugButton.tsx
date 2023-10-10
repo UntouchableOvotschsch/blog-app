@@ -14,11 +14,5 @@ export const BugButton: FC = () => {
             throw new Error();
         }
     }, [error]);
-    return (
-        <Button
-            onClick={() => setError((prev) => !prev)}
-        >
-            {t('Кинуть ошибку')}
-        </Button>
-    );
+    return <Button onClick={() => setError((prev) => !prev)}>{t('Кинуть ошибку')}</Button>;
 };

@@ -6,10 +6,7 @@ import { ProfileType } from '@/entities/Profile';
 export const fetchProfileData = createAsyncThunk<ProfileType, string, ThunkConfigType<string>>(
     'profile/fetchProfileData',
     async (id, thunkAPI) => {
-        const {
-            extra,
-            rejectWithValue,
-        } = thunkAPI;
+        const { extra, rejectWithValue } = thunkAPI;
 
         try {
             const response = await extra.api.get<ProfileType>(`/profile/${id}`);

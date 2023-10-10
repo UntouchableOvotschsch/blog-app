@@ -12,10 +12,7 @@ interface UseThemeResult {
 }
 
 export const useTheme = (): UseThemeResult => {
-    const {
-        theme,
-        setTheme,
-    } = useContext(ThemeContext);
+    const { theme, setTheme } = useContext(ThemeContext);
 
     const toggleTheme = () => {
         const newTheme = infinityToggle(Object.values(Themes), theme) || Themes.LIGHT;

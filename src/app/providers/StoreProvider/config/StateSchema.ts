@@ -1,6 +1,4 @@
-import {
-    AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 
 import { createReduxStore } from '@/app/providers/StoreProvider';
@@ -16,16 +14,16 @@ import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema;
-    user: UserSchema,
-    ui: UISchema
-    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+    user: UserSchema;
+    ui: UISchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // Async
-    authByUsername?: AuthByUsernameSchema,
-    profile?: ProfileSchema
-    commentForm?: CommentFormSchema
-    articlesPage?: ArticlesPageSchema
-    articleComments?: ArticleCommentsSliceSchema
+    authByUsername?: AuthByUsernameSchema;
+    profile?: ProfileSchema;
+    commentForm?: CommentFormSchema;
+    articlesPage?: ArticlesPageSchema;
+    articleComments?: ArticleCommentsSliceSchema;
 }
 
 export interface ReducerManager {
@@ -33,7 +31,6 @@ export interface ReducerManager {
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
     add: (key: keyof StateSchema, reducer: Reducer) => void;
     remove: (key: keyof StateSchema) => void;
-
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
@@ -45,8 +42,8 @@ export interface ThunkExtraArg {
 }
 
 export type ThunkConfigType<T> = {
-    rejectValue: T,
-    extra: ThunkExtraArg
-    state: StateSchema
-}
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']
+    rejectValue: T;
+    extra: ThunkExtraArg;
+    state: StateSchema;
+};
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

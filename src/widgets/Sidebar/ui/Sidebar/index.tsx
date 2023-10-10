@@ -1,6 +1,4 @@
-import React, {
-    memo, useEffect, useMemo, useState,
-} from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -17,7 +15,7 @@ import { getItemsLinksList } from '../../model/selectors/getItemsLinksList';
 import LinkItem from '../LinkItem';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
@@ -30,47 +28,42 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         }
     }, [isMobile]);
 
-    const itemsList = useMemo(() => ItemsLinksList.map((item) => (
-        <LinkItem
-            item={item}
-            collapsed={collapsed}
-            key={item.path}
-        />
-    )), [ItemsLinksList, collapsed]);
+    const itemsList = useMemo(
+        () => ItemsLinksList.map((item) => <LinkItem item={item} collapsed={collapsed} key={item.path} />),
+        [ItemsLinksList, collapsed],
+    );
 
-    const sidebarContent = useMemo(() => (
-        <>
-            <div className={styles.menu}>
-                <VStack gap="16" align="start" role="navigation">
-                    {
-                        itemsList
-                    }
-                </VStack>
-            </div>
+    const sidebarContent = useMemo(
+        () => (
+            <>
+                <div className={styles.menu}>
+                    <VStack gap='16' align='start' role='navigation'>
+                        {itemsList}
+                    </VStack>
+                </div>
 
-            {
-                collapsed
-                    ? (
-                        <VStack className={styles.switchers}>
-                            <ThemeSwitcher />
-                            <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
-                        </VStack>
-                    ) : (
-                        <HStack className={styles.switchers} gap="8" justify="evenly">
-                            <ThemeSwitcher />
-                            <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
-                        </HStack>
-                    )
-            }
-        </>
-    ), [collapsed, itemsList]);
+                {collapsed ? (
+                    <VStack className={styles.switchers}>
+                        <ThemeSwitcher />
+                        <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
+                    </VStack>
+                ) : (
+                    <HStack className={styles.switchers} gap='8' justify='evenly'>
+                        <ThemeSwitcher />
+                        <LangSwitcher short={collapsed} className={styles.lngSwitcher} />
+                    </HStack>
+                )}
+            </>
+        ),
+        [collapsed, itemsList],
+    );
 
     if (isMobile) {
         return (
             <>
                 <Overlay visible={!collapsed} onClick={() => setCollapsed(true)} />
                 <aside
-                    data-testid="sidebar"
+                    data-testid='sidebar'
                     className={classNames(
                         styles.Sidebar,
                         {
@@ -81,43 +74,36 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 >
                     {!collapsed && sidebarContent}
                     <Button
-                        data-testid="sidebar-toggle"
-                        type="button"
+                        data-testid='sidebar-toggle'
+                        type='button'
                         onClick={() => setCollapsed((prevState) => !prevState)}
                         className={styles.collapsedBtn}
                         theme={ThemeButton.BACKGROUND_INVERTED}
                         size={SizeButton.L}
                         square
                     >
-
                         {collapsed ? '>' : '<'}
                     </Button>
                 </aside>
             </>
-
         );
     }
 
     return (
         <aside
-            data-testid="sidebar"
-            className={classNames(
-                styles.Sidebar,
-                { [styles.collapsed]: collapsed },
-                [className, styles.desktop],
-            )}
+            data-testid='sidebar'
+            className={classNames(styles.Sidebar, { [styles.collapsed]: collapsed }, [className, styles.desktop])}
         >
             {sidebarContent}
             <Button
-                data-testid="sidebar-toggle"
-                type="button"
+                data-testid='sidebar-toggle'
+                type='button'
                 onClick={() => setCollapsed((prevState) => !prevState)}
                 className={styles.collapsedBtn}
                 theme={ThemeButton.BACKGROUND_INVERTED}
                 size={SizeButton.L}
                 square
             >
-
                 {collapsed ? '>' : '<'}
             </Button>
         </aside>

@@ -217,10 +217,7 @@ ValidationErrorLight.decorators = [
             editable: true,
             isLoading: false,
             error: '',
-            validationError: [
-                ProfileValidationErrors.INCORRECT_USER_DATA,
-                ProfileValidationErrors.INCORRECT_AGE,
-            ],
+            validationError: [ProfileValidationErrors.INCORRECT_USER_DATA, ProfileValidationErrors.INCORRECT_AGE],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,
@@ -244,10 +241,7 @@ ValidationErrorDark.decorators = [
             editable: true,
             isLoading: false,
             error: '',
-            validationError: [
-                ProfileValidationErrors.INCORRECT_USER_DATA,
-                ProfileValidationErrors.INCORRECT_AGE,
-            ],
+            validationError: [ProfileValidationErrors.INCORRECT_USER_DATA, ProfileValidationErrors.INCORRECT_AGE],
             form: {
                 country: Countries.Russia,
                 currency: Currencies.RUB,

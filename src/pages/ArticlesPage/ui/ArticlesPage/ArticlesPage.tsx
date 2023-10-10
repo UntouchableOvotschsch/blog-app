@@ -51,26 +51,13 @@ const ArticlesPage = () => {
     }, [dispatch, search, searchParams, setSearchParams, sortField, sortOrder, types]);
 
     return (
-        <DynamicModuleLoader
-            reducerList={reducers}
-            dontRemoveAfterUnmount
-        >
-            <PageWrapper
-                className={classNames(styles.ArticlePage, mods, [])}
-                data-testid="ArticlesPage"
-            >
-                {
-                    error
-                        ? (
-                            <Text
-                                title={t('Произошла ошибка при загрузке статей')}
-                                theme={ThemeText.ERROR}
-                            />
-                        )
-                        : (
-                            <ArticleInfiniteList />
-                        )
-                }
+        <DynamicModuleLoader reducerList={reducers} dontRemoveAfterUnmount>
+            <PageWrapper className={classNames(styles.ArticlePage, mods, [])} data-testid='ArticlesPage'>
+                {error ? (
+                    <Text title={t('Произошла ошибка при загрузке статей')} theme={ThemeText.ERROR} />
+                ) : (
+                    <ArticleInfiniteList />
+                )}
             </PageWrapper>
         </DynamicModuleLoader>
     );

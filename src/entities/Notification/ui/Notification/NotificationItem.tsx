@@ -10,17 +10,18 @@ import { Notification } from '../../model/types/notification';
 
 interface NotificationItemProps {
     className?: string;
-    item: Notification
+    item: Notification;
 }
 
 const NotificationItem = ({ className, item }: NotificationItemProps) => {
-    const content = useMemo(() => (
-        <Card
-            className={classNames(styles.Notification, {}, [className])}
-        >
-            <Text title={item.title} text={item.description} />
-        </Card>
-    ), [className, item.description, item.title]);
+    const content = useMemo(
+        () => (
+            <Card className={classNames(styles.Notification, {}, [className])}>
+                <Text title={item.title} text={item.description} />
+            </Card>
+        ),
+        [className, item.description, item.title],
+    );
     if (item.href) {
         return (
             <AppLink to={item.href} className={styles.link}>

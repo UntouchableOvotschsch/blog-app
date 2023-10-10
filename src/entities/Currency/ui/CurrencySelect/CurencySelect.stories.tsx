@@ -31,15 +31,11 @@ EditableTrue.args = {
     editable: true,
     selectValue: Currencies.RUB,
 };
-EditableTrue.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+EditableTrue.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const EditableFalse = Template.bind({});
 EditableFalse.args = {
     editable: false,
     selectValue: Currencies.RUB,
 };
-EditableFalse.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+EditableFalse.decorators = [ThemeDecorator(Themes.LIGHT)];

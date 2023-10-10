@@ -11,8 +11,8 @@ import styles from './LinkItem.module.scss';
 import { ItemType } from '../../model/types/item';
 
 interface LinkItemProps {
-    item: ItemType
-    collapsed: boolean
+    item: ItemType;
+    collapsed: boolean;
 }
 const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
     const { t } = useTranslation();
@@ -26,15 +26,9 @@ const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
         return null;
     }
     return (
-        <AppLink
-            className={classNames(styles.link, mods, [])}
-            to={item.path || '/'}
-            theme={AppLinkTheme.SECONDARY}
-        >
+        <AppLink className={classNames(styles.link, mods, [])} to={item.path || '/'} theme={AppLinkTheme.SECONDARY}>
             <item.Icon className={styles.icon} />
-            <span>
-                {t(item.text)}
-            </span>
+            <span>{t(item.text)}</span>
         </AppLink>
     );
 });

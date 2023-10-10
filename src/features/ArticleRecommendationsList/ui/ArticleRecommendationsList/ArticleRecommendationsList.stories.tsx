@@ -10,9 +10,7 @@ import ArticleRecommendationsList from '.';
 const meta: Meta<typeof ArticleRecommendationsList> = {
     title: 'features/ArticleRecommendations',
     component: ArticleRecommendationsList,
-    decorators: [
-        ThemeDecorator(Themes.LIGHT),
-    ],
+    decorators: [ThemeDecorator(Themes.LIGHT)],
     parameters: {
         mockData: [
             {

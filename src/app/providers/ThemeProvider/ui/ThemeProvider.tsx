@@ -1,25 +1,26 @@
-import {
-    FC, ReactNode, useEffect, useMemo, useState,
-} from 'react';
+import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { Themes } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/context/ThemeContext';
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Themes || Themes.LIGHT;
+const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Themes) || Themes.LIGHT;
 
 interface ThemeProviderProps {
-    children: ReactNode
-    initialTheme?: Themes
+    children: ReactNode;
+    initialTheme?: Themes;
 }
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     const [theme, setTheme] = useState<Themes>(initialTheme || defaultTheme);
 
-    const memoizeTheme = useMemo(() => ({
-        theme,
-        setTheme,
-    }), [theme]);
+    const memoizeTheme = useMemo(
+        () => ({
+            theme,
+            setTheme,
+        }),
+        [theme],
+    );
 
     useEffect(() => {
         // Без подобных манипуляций плывут скрины в сторибуке (
@@ -28,11 +29,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
         return () => document.body.classList.remove(memoizeTheme.theme);
     }, [memoizeTheme]);
 
-    return (
-        <ThemeContext.Provider value={memoizeTheme}>
-            {children}
-        </ThemeContext.Provider>
-    );
+    return <ThemeContext.Provider value={memoizeTheme}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;

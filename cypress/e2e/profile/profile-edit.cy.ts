@@ -3,7 +3,9 @@ import { routes } from 'cypress/helpers/routes';
 describe('User enters the profile page', () => {
     let profileId: string;
     beforeEach(() => {
-        cy.login().then((data) => { profileId = data.id; });
+        cy.login().then((data) => {
+            profileId = data.id;
+        });
         cy.visit(routes.getRouteProfilePage(profileId));
     });
     afterEach(() => {

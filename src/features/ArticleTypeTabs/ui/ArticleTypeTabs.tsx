@@ -6,9 +6,9 @@ import { ArticleTypes } from '@/entities/Article';
 import Tabs, { TabItem } from '@/shared/ui/Tabs';
 
 interface ArticleTypeTabsProps {
-    className?: string
-    activeTypes: ArticleTypes[]
-    typeHandler: (type: ArticleTypes[]) => void
+    className?: string;
+    activeTypes: ArticleTypes[];
+    typeHandler: (type: ArticleTypes[]) => void;
 }
 
 const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
@@ -34,30 +34,24 @@ const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
         },
     ];
 
-    const tabHandler = useCallback((newType: TabItem<ArticleTypes>) => {
-        if (newType.value !== ArticleTypes.ALL) {
-            if (activeTypes.includes(newType.value)) {
-                const newForm = activeTypes.filter((type) => type !== newType.value);
-                typeHandler(newForm.length === 0 ? [ArticleTypes.ALL] : newForm);
+    const tabHandler = useCallback(
+        (newType: TabItem<ArticleTypes>) => {
+            if (newType.value !== ArticleTypes.ALL) {
+                if (activeTypes.includes(newType.value)) {
+                    const newForm = activeTypes.filter((type) => type !== newType.value);
+                    typeHandler(newForm.length === 0 ? [ArticleTypes.ALL] : newForm);
+                } else {
+                    const newForm = [...activeTypes, newType.value].filter((type) => type !== ArticleTypes.ALL);
+                    typeHandler(newForm.length === types.length - 1 ? [ArticleTypes.ALL] : newForm);
+                }
             } else {
-                const newForm = [...activeTypes, newType.value].filter((type) => (
-                    type !== ArticleTypes.ALL
-                ));
-                typeHandler(newForm.length === types.length - 1 ? [ArticleTypes.ALL] : newForm);
+                typeHandler([ArticleTypes.ALL]);
             }
-        } else {
-            typeHandler([ArticleTypes.ALL]);
-        }
-    }, [activeTypes, typeHandler, types.length]);
-
-    return (
-        <Tabs
-            className={className ?? ''}
-            tabs={types}
-            activeTabs={activeTypes}
-            tabHandler={tabHandler}
-        />
+        },
+        [activeTypes, typeHandler, types.length],
     );
+
+    return <Tabs className={className ?? ''} tabs={types} activeTabs={activeTypes} tabHandler={tabHandler} />;
 };
 
 export default ArticleTypeTabs;

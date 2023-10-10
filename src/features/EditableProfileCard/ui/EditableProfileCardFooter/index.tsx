@@ -9,16 +9,12 @@ import Text, { ThemeText } from '@/shared/ui/Text';
 import { ProfileValidationErrors } from '../../model/consts';
 
 interface EditableProfileCardFooterProps {
-    validationErrors: ProfileValidationErrors[]
-    editable: boolean
-    updateProfile: () => void
+    validationErrors: ProfileValidationErrors[];
+    editable: boolean;
+    updateProfile: () => void;
 }
 
-const EditableProfileCardFooter = ({
-    validationErrors,
-    editable,
-    updateProfile,
-}: EditableProfileCardFooterProps) => {
+const EditableProfileCardFooter = ({ validationErrors, editable, updateProfile }: EditableProfileCardFooterProps) => {
     const { t } = useTranslation('profile');
 
     const validationErrorsTranslation = {
@@ -31,31 +27,28 @@ const EditableProfileCardFooter = ({
     };
 
     return (
-        <HStack justify="between">
-            <VStack maxWidth={false} gap="4" align="start">
-                {!!validationErrors?.length && validationErrors?.map((error) => (
-                    <Text
-                        text={validationErrorsTranslation[error]}
-                        theme={ThemeText.ERROR}
-                        key={error}
-                        data-testid="EditableProfileCardFooter.Error"
-                    />
-                ))}
+        <HStack justify='between'>
+            <VStack maxWidth={false} gap='4' align='start'>
+                {!!validationErrors?.length &&
+                    validationErrors?.map((error) => (
+                        <Text
+                            text={validationErrorsTranslation[error]}
+                            theme={ThemeText.ERROR}
+                            key={error}
+                            data-testid='EditableProfileCardFooter.Error'
+                        />
+                    ))}
             </VStack>
-            {
-                editable
-                && (
-
-                    <Button
-                        theme={ThemeButton.OUTLINE}
-                        onClick={updateProfile}
-                        size={SizeButton.M}
-                        data-testid="EditableProfileCardFooter.SaveBtn"
-                    >
-                        {t('Сохранить')}
-                    </Button>
-                )
-            }
+            {editable && (
+                <Button
+                    theme={ThemeButton.OUTLINE}
+                    onClick={updateProfile}
+                    size={SizeButton.M}
+                    data-testid='EditableProfileCardFooter.SaveBtn'
+                >
+                    {t('Сохранить')}
+                </Button>
+            )}
         </HStack>
     );
 };

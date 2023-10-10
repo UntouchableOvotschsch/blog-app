@@ -4,7 +4,9 @@ describe('Routing', () => {
     let profileId: string;
     describe('Auth user', () => {
         beforeEach(() => {
-            cy.login('admin', '123').then((data) => { profileId = data.id; });
+            cy.login('admin', '123').then((data) => {
+                profileId = data.id;
+            });
         });
         it('Auth user routing to protected pages', () => {
             cy.visit(routes.getRouteArticlesPage());

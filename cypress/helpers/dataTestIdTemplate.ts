@@ -1,1 +1,1 @@
-export const dataTestIdTemplate = (dataTestID: string) => (`[data-testid="${dataTestID}"]`);
+export const dataTestIdTemplate = (dataTestID: string) => `[data-testid="${dataTestID}"]`;

@@ -20,20 +20,19 @@ import { Article, ArticleBlock, ArticleTextBlock } from '../../model/types/artic
 import ArticleTextBlockCom from '../ArticleTextBlockCom';
 
 interface BigTileItemProps {
-    article: Article
+    article: Article;
     target?: HTMLAttributeAnchorTarget;
-    className?: string
+    className?: string;
 }
 
 const BigTileItem = ({ article, target, className }: BigTileItemProps) => {
     const { t } = useTranslation('article');
 
-    const navigateToArticle = __PROJECT__ !== 'storybook'
-        ? getRouteArticleDetailsPage(article.id) : '#';
+    const navigateToArticle = __PROJECT__ !== 'storybook' ? getRouteArticleDetailsPage(article.id) : '#';
 
-    const articleText = article
-        ?.blocks
-        ?.find((block: ArticleBlock) => block.type === ArticleBlockTypes.TEXT) as ArticleTextBlock;
+    const articleText = article?.blocks?.find(
+        (block: ArticleBlock) => block.type === ArticleBlockTypes.TEXT,
+    ) as ArticleTextBlock;
 
     return (
         <Card className={classNames(styles.container, {}, [className])}>
@@ -42,8 +41,8 @@ const BigTileItem = ({ article, target, className }: BigTileItemProps) => {
                     <Avatar
                         avatar={article.user?.avatar}
                         alt={article.user?.username}
-                        width="50px"
-                        height="50px"
+                        width='50px'
+                        height='50px'
                     />
                     <Text title={article.user.username} />
                 </div>
@@ -60,19 +59,10 @@ const BigTileItem = ({ article, target, className }: BigTileItemProps) => {
                 />
             </div>
 
-            {
-                articleText && (
-                    <ArticleTextBlockCom
-                        block={articleText}
-                        className={styles.textBlock}
-                    />
-                )
-            }
+            {articleText && <ArticleTextBlockCom block={articleText} className={styles.textBlock} />}
             <div className={styles.footer}>
                 <AppLink to={navigateToArticle} className={styles.appLink} target={target}>
-                    <Button theme={ThemeButton.OUTLINE}>
-                        {t('Читать далее')}
-                    </Button>
+                    <Button theme={ThemeButton.OUTLINE}>{t('Читать далее')}</Button>
                 </AppLink>
                 <div className={styles.views}>
                     <Text title={String(article.views)} />

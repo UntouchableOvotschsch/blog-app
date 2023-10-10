@@ -6,7 +6,4 @@ import { UserRoles } from '../../consts';
 
 export const getUserRoles = (state: StateSchema) => state.user.authData?.roles;
 
-export const getUserIsAdmin = createSelector(
-    getUserRoles,
-    (role) => role?.includes(UserRoles.ADMIN),
-);
+export const getUserIsAdmin = createSelector(getUserRoles, (role) => role?.includes(UserRoles.ADMIN));

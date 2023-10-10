@@ -33,52 +33,46 @@ describe('profileSlice', () => {
         },
     };
     test('setEditable', () => {
-        expect(profileReducer(profileState, profileActions.setEditable(true)))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                editable: true,
-            });
+        expect(profileReducer(profileState, profileActions.setEditable(true))).toEqual<ProfileSchema>({
+            ...profileState,
+            editable: true,
+        });
     });
     test('cancelFormChanging', () => {
-        expect(profileReducer(profileState, profileActions.cancelFormChanging()))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                form: profileState.data,
-            });
+        expect(profileReducer(profileState, profileActions.cancelFormChanging())).toEqual<ProfileSchema>({
+            ...profileState,
+            form: profileState.data,
+        });
     });
 
     test('changeProfileData', () => {
-        expect(profileReducer(
-            profileState,
-            profileActions.changeProfileData({ username: 'Sergey' }),
-        ))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                form: {
-                    ...profileState.form,
-                    username: 'Sergey',
-                },
-            });
+        expect(
+            profileReducer(profileState, profileActions.changeProfileData({ username: 'Sergey' })),
+        ).toEqual<ProfileSchema>({
+            ...profileState,
+            form: {
+                ...profileState.form,
+                username: 'Sergey',
+            },
+        });
     });
 
     test('fetchProfileDataLoading', () => {
         const action = { type: fetchProfileData.pending };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                isLoading: true,
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            isLoading: true,
+        });
     });
     test('fetchProfileDataRejected', () => {
         const action = {
             type: fetchProfileData.rejected,
             payload: 'Ошибка при получения профиля',
         };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                error: 'Ошибка при получения профиля',
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            error: 'Ошибка при получения профиля',
+        });
     });
     test('fetchProfileDataFulfilled', () => {
         const action = {
@@ -87,36 +81,31 @@ describe('profileSlice', () => {
                 ...profileState.data,
             },
         };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                isLoading: false,
-                data: action.payload,
-                form: action.payload,
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            isLoading: false,
+            data: action.payload,
+            form: action.payload,
+        });
     });
     test('updateProfileDataLoading', () => {
         const action = { type: updateProfileData.pending };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                isLoading: true,
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            isLoading: true,
+        });
     });
 
     test('updateProfileDataRejected', () => {
         const action = {
             type: updateProfileData.rejected,
-            payload: [
-                ProfileValidationErrors.SERVER_ERROR,
-            ],
+            payload: [ProfileValidationErrors.SERVER_ERROR],
         };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                isLoading: false,
-                validationError: action.payload,
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            isLoading: false,
+            validationError: action.payload,
+        });
     });
 
     test('updateProfileDataFulfilled', () => {
@@ -124,18 +113,17 @@ describe('profileSlice', () => {
             type: updateProfileData.fulfilled,
             payload: { ...profileState.data },
         };
-        expect(profileReducer(profileState, action))
-            .toEqual<ProfileSchema>({
-                ...profileState,
-                data: {
-                    ...profileState.data,
-                },
-                form: {
-                    ...profileState.data,
-                },
-                isLoading: false,
-                editable: false,
-                validationError: undefined,
-            });
+        expect(profileReducer(profileState, action)).toEqual<ProfileSchema>({
+            ...profileState,
+            data: {
+                ...profileState.data,
+            },
+            form: {
+                ...profileState.data,
+            },
+            isLoading: false,
+            editable: false,
+            validationError: undefined,
+        });
     });
 });

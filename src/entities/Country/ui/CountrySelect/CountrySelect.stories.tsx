@@ -31,15 +31,11 @@ EditableTrue.args = {
     editable: true,
     selectValue: Countries.Russia,
 };
-EditableTrue.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+EditableTrue.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const EditableFalse = Template.bind({});
 EditableFalse.args = {
     editable: false,
     selectValue: Countries.Russia,
 };
-EditableFalse.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-];
+EditableFalse.decorators = [ThemeDecorator(Themes.LIGHT)];

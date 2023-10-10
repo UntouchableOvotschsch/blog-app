@@ -23,7 +23,7 @@ const reducers: ReducerList = {
 };
 
 interface EditableProfileCardProps {
-    id: string
+    id: string;
 }
 
 const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
@@ -34,17 +34,23 @@ const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
     const formData = useSelector(getFormData);
     const validationErrors = useSelector(getProfileValidationErrors);
 
-    const setEditMode = useCallback((value: boolean) => {
-        dispatch(profileActions.setEditable(value));
-    }, [dispatch]);
+    const setEditMode = useCallback(
+        (value: boolean) => {
+            dispatch(profileActions.setEditable(value));
+        },
+        [dispatch],
+    );
 
     const cancelEditMode = useCallback(() => {
         dispatch(profileActions.cancelFormChanging());
     }, [dispatch]);
 
-    const changeProfileData = useCallback((value: ProfileType) => {
-        dispatch(profileActions.changeProfileData(value));
-    }, [dispatch]);
+    const changeProfileData = useCallback(
+        (value: ProfileType) => {
+            dispatch(profileActions.changeProfileData(value));
+        },
+        [dispatch],
+    );
 
     const updateProfile = useCallback(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -59,7 +65,7 @@ const EditableProfileCard = ({ id }: EditableProfileCardProps) => {
     }, [dispatch, id]);
     return (
         <DynamicModuleLoader reducerList={reducers}>
-            <VStack gap="16">
+            <VStack gap='16'>
                 <EditableProfileCardHeader
                     editable={editable}
                     setEditMode={setEditMode}

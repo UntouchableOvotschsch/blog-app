@@ -1,6 +1,4 @@
-import {
-    useCallback, useEffect, useMemo, useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
@@ -19,13 +17,13 @@ import styles from './RatingCard.module.scss';
 
 interface RatingCardProps {
     className?: string;
-    initialTitle?: string
-    successTitle?: string
-    feedbackTitle?: string
-    feedbackText?: string
-    selectedStars?: number
-    onAcceptWithFeedback?: (starCount: number, feedback?: string) => void
-    onAcceptWithoutFeedback?: (starCount: number) => void
+    initialTitle?: string;
+    successTitle?: string;
+    feedbackTitle?: string;
+    feedbackText?: string;
+    selectedStars?: number;
+    onAcceptWithFeedback?: (starCount: number, feedback?: string) => void;
+    onAcceptWithoutFeedback?: (starCount: number) => void;
 }
 
 const RatingCard = (props: RatingCardProps) => {
@@ -61,10 +59,13 @@ const RatingCard = (props: RatingCardProps) => {
         setSelectedStarsCount(0);
     }, []);
 
-    const selectStarsHandler = useCallback((starsCount: number) => {
-        setSelectedStarsCount(starsCount);
-        changeFeedbackVisibility();
-    }, [changeFeedbackVisibility]);
+    const selectStarsHandler = useCallback(
+        (starsCount: number) => {
+            setSelectedStarsCount(starsCount);
+            changeFeedbackVisibility();
+        },
+        [changeFeedbackVisibility],
+    );
 
     const acceptWithFeedbackHandle = useCallback(() => {
         onAcceptWithFeedback?.(selectedStarsCount, feedbackValue);
@@ -84,41 +85,19 @@ const RatingCard = (props: RatingCardProps) => {
         if (isMobile) {
             return (
                 <Drawer visible={feedbackVisibility} changeVisibility={onModalClose}>
-                    <Card cardTheme="transparent" className={styles.feedbackContainer}>
-                        <VStack
-                            align="start"
-                            gap="32"
-                        >
+                    <Card cardTheme='transparent' className={styles.feedbackContainer}>
+                        <VStack align='start' gap='32'>
                             <Text title={feedbackTitle} />
-                            <Input
-                                value={feedbackValue}
-                                onChange={setFeedbackValue}
-                                placeholder={t('Введите отзыв')}
-                            />
-                            <HStack justify="between">
-                                <Button
-                                    theme={ThemeButton.OUTLINE_RED}
-                                    onClick={cancelHandle}
-                                >
+                            <Input value={feedbackValue} onChange={setFeedbackValue} placeholder={t('Введите отзыв')} />
+                            <HStack justify='between'>
+                                <Button theme={ThemeButton.OUTLINE_RED} onClick={cancelHandle}>
                                     {t('Отменить')}
                                 </Button>
-                                {
-                                    feedbackValue
-                                        ? (
-                                            <Button
-                                                onClick={acceptWithFeedbackHandle}
-                                            >
-                                                {t('Сохранить')}
-                                            </Button>
-                                        )
-                                        : (
-                                            <Button
-                                                onClick={acceptWithoutFeedbackHandle}
-                                            >
-                                                {t('Сохранить без отзыва')}
-                                            </Button>
-                                        )
-                                }
+                                {feedbackValue ? (
+                                    <Button onClick={acceptWithFeedbackHandle}>{t('Сохранить')}</Button>
+                                ) : (
+                                    <Button onClick={acceptWithoutFeedbackHandle}>{t('Сохранить без отзыва')}</Button>
+                                )}
                             </HStack>
                         </VStack>
                     </Card>
@@ -127,80 +106,73 @@ const RatingCard = (props: RatingCardProps) => {
         }
 
         return (
-            <Modal
-                visible={feedbackVisibility}
-                changeVisibility={onModalClose}
-            >
+            <Modal visible={feedbackVisibility} changeVisibility={onModalClose}>
                 <Card
-                    cardTheme="transparent"
+                    cardTheme='transparent'
                     className={styles.feedbackContainer}
-                    data-testid="RatingCard.Feedback.Content"
+                    data-testid='RatingCard.Feedback.Content'
                 >
-                    <VStack
-                        align="start"
-                        gap="32"
-                    >
+                    <VStack align='start' gap='32'>
                         <Text title={feedbackTitle} />
                         <Input
                             value={feedbackValue}
                             onChange={setFeedbackValue}
                             placeholder={t('Введите отзыв')}
-                            data-testid="RatingCard.Feedback.Input"
+                            data-testid='RatingCard.Feedback.Input'
                         />
-                        <HStack justify="between">
+                        <HStack justify='between'>
                             <Button
                                 theme={ThemeButton.OUTLINE_RED}
                                 onClick={cancelHandle}
-                                data-testid="RatingCard.Feedback.Button.Cancel"
+                                data-testid='RatingCard.Feedback.Button.Cancel'
                             >
                                 {t('Отменить')}
                             </Button>
-                            {
-                                feedbackValue
-                                    ? (
-                                        <Button
-                                            onClick={acceptWithFeedbackHandle}
-                                            data-testid="RatingCard.Feedback.Button.SaveWithFeedback"
-                                        >
-                                            {t('Сохранить')}
-                                        </Button>
-                                    )
-                                    : (
-                                        <Button
-                                            onClick={acceptWithoutFeedbackHandle}
-                                            data-testid="RatingCard.Feedback.Button.SaveWithoutFeedback"
-                                        >
-                                            {t('Сохранить без отзыва')}
-                                        </Button>
-                                    )
-                            }
+                            {feedbackValue ? (
+                                <Button
+                                    onClick={acceptWithFeedbackHandle}
+                                    data-testid='RatingCard.Feedback.Button.SaveWithFeedback'
+                                >
+                                    {t('Сохранить')}
+                                </Button>
+                            ) : (
+                                <Button
+                                    onClick={acceptWithoutFeedbackHandle}
+                                    data-testid='RatingCard.Feedback.Button.SaveWithoutFeedback'
+                                >
+                                    {t('Сохранить без отзыва')}
+                                </Button>
+                            )}
                         </HStack>
                     </VStack>
                 </Card>
             </Modal>
         );
     }, [
-        acceptWithFeedbackHandle, acceptWithoutFeedbackHandle, cancelHandle,
-        onModalClose, feedbackTitle, feedbackValue,
-        feedbackVisibility, isMobile, t,
+        acceptWithFeedbackHandle,
+        acceptWithoutFeedbackHandle,
+        cancelHandle,
+        onModalClose,
+        feedbackTitle,
+        feedbackValue,
+        feedbackVisibility,
+        isMobile,
+        t,
     ]);
 
     return (
-        <Card
-            className={classNames(styles.RatingCard, {}, [className])}
-            data-testid="RatingCard"
-        >
-            <VStack gap="8">
-                { (!selectedStars && initialTitle) && <Text title={initialTitle} /> }
-                { (!!selectedStars && successTitle) && <Text title={successTitle} /> }
+        <Card className={classNames(styles.RatingCard, {}, [className])} data-testid='RatingCard'>
+            <VStack gap='8'>
+                {!selectedStars && initialTitle && <Text title={initialTitle} />}
+                {!!selectedStars && successTitle && <Text title={successTitle} />}
                 <StarRating
                     selectedStars={selectedStarsCount}
                     onSelect={selectStarsHandler}
                     selected={Boolean(selectedStars)}
                 />
-                { feedbackText && (
+                {feedbackText && (
                     <Text
-                        data-testid="RatingCard.FeedbackText"
+                        data-testid='RatingCard.FeedbackText'
                         title={t('Ваш отзыв:')}
                         text={feedbackText}
                         align={TextAlign.CENTER}

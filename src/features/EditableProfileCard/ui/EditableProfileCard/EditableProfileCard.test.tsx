@@ -34,9 +34,7 @@ const state: DeepPartial<StateSchema> = {
     user: {
         authData: {
             id: '1',
-            roles: [
-                UserRoles.ADMIN,
-            ],
+            roles: [UserRoles.ADMIN],
         },
     },
 };
@@ -50,13 +48,13 @@ const options: RenderForTestsOptions = {
 
 describe('EditableProfileCard.test', () => {
     test('Change to Edit mode', async () => {
-        renderForTests(<EditableProfileCard id="1" />, options);
+        renderForTests(<EditableProfileCard id='1' />, options);
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
         expect(screen.getByTestId('EditableProfileCardHeader.CancelBtn')).toBeInTheDocument();
     });
 
     test('CancelEditMode', async () => {
-        renderForTests(<EditableProfileCard id="1" />, options);
+        renderForTests(<EditableProfileCard id='1' />, options);
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
 
         await userEvent.clear(screen.getByTestId('ProfileCard.FirstnameInput'));
@@ -75,7 +73,7 @@ describe('EditableProfileCard.test', () => {
     });
 
     test('with validation errors', async () => {
-        renderForTests(<EditableProfileCard id="1" />, options);
+        renderForTests(<EditableProfileCard id='1' />, options);
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));
 
         await userEvent.clear(screen.getByTestId('ProfileCard.FirstnameInput'));
@@ -87,7 +85,7 @@ describe('EditableProfileCard.test', () => {
     });
 
     test('Success Saving', async () => {
-        renderForTests(<EditableProfileCard id="1" />, options);
+        renderForTests(<EditableProfileCard id='1' />, options);
         const mockApi = jest.spyOn($api, 'put');
 
         await userEvent.click(screen.getByTestId('EditableProfileCardHeader.EditBtn'));

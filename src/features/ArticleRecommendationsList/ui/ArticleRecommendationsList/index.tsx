@@ -12,21 +12,16 @@ const ArticleRecommendationsList = () => {
     const { t } = useTranslation('articleRecommendationsList');
     const { data: articles, isLoading, isError } = useGetArticlesRecommendationsQuery(7);
     if ((!articles?.length || isError) && !isLoading) {
-        return (
-            <Text
-                theme={ThemeText.ERROR}
-                title={t('Произошла ошибка при получении рекомендаций')}
-            />
-        );
+        return <Text theme={ThemeText.ERROR} title={t('Произошла ошибка при получении рекомендаций')} />;
     }
     return (
-        <VStack align="start" data-testid="ArticleRecommendationsList">
+        <VStack align='start' data-testid='ArticleRecommendationsList'>
             <Text title={`${t('Рекомендации')}:`} size={TextSize.L} />
             <ArticleList
                 articles={articles}
                 isLoading={isLoading}
                 view={ArticleViewTypes.SMALL_TILE_ROW}
-                target="_blank"
+                target='_blank'
             />
         </VStack>
     );

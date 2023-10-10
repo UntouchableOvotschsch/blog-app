@@ -9,7 +9,7 @@ import Skeleton from '@/shared/ui/Skeleton';
 import styles from './SmallTileItem.module.scss';
 
 interface SmallTileItemSkeletonProps {
-    className?: string
+    className?: string;
 }
 
 const SmallTileItemSkeleton = ({ className }: SmallTileItemSkeletonProps) => (
@@ -19,13 +19,13 @@ const SmallTileItemSkeleton = ({ className }: SmallTileItemSkeletonProps) => (
         </div>
         <div className={styles.footer}>
             <div className={styles.infoWrapper} style={{ margin: '5px 0' }}>
-                <Skeleton className={styles.types} height="24px" />
+                <Skeleton className={styles.types} height='24px' />
                 <div className={styles.views} style={{ marginLeft: '5px' }}>
-                    <Skeleton height="24px" width="35px" />
+                    <Skeleton height='24px' width='35px' />
                     <Icon Icon={EyeIcon} className={styles.eyeIcon} />
                 </div>
             </div>
-            <Skeleton className={styles.title} height="24px" width="200px" />
+            <Skeleton className={styles.title} height='24px' width='200px' />
         </div>
     </Card>
 );

@@ -19,15 +19,14 @@ const NotificationList = ({ className }: NotificationListProps) => {
     const { data: notifications, isLoading } = useGetNotificationsQuery(user?.id!, {
         pollingInterval: 10000,
     });
-    const renderItems = useMemo(() => (
-        notifications?.map((item) => (
-            <NotificationItem item={item} key={item.id} />
-        ))
-    ), [notifications]);
+    const renderItems = useMemo(
+        () => notifications?.map((item) => <NotificationItem item={item} key={item.id} />),
+        [notifications],
+    );
 
     if (isLoading) {
         return (
-            <VStack gap="8" className={classNames('', {}, [className])}>
+            <VStack gap='8' className={classNames('', {}, [className])}>
                 <NotificationItemSkeleton />
                 <NotificationItemSkeleton />
                 <NotificationItemSkeleton />
@@ -36,7 +35,7 @@ const NotificationList = ({ className }: NotificationListProps) => {
     }
 
     return (
-        <VStack gap="8" className={classNames('', {}, [className])}>
+        <VStack gap='8' className={classNames('', {}, [className])}>
             {renderItems}
         </VStack>
     );

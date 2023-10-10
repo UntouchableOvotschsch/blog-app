@@ -11,7 +11,7 @@ import { CommentType } from '../../model/types/comment';
 
 interface CommentProps {
     className?: string;
-    comment: CommentType
+    comment: CommentType;
 }
 
 const Comment = ({ className, comment }: CommentProps) => {
@@ -19,21 +19,16 @@ const Comment = ({ className, comment }: CommentProps) => {
     const { text, user } = comment;
 
     return (
-        <div
-            className={classNames(styles.container, {}, [className])}
-            data-testid="CommentItem"
-        >
+        <div className={classNames(styles.container, {}, [className])} data-testid='CommentItem'>
             <AppLink className={styles.userInfo} to={getRouteProfilePage(user.id)}>
-                {
-                    user?.avatar && (
-                        <Avatar
-                            avatar={user?.avatar}
-                            alt={t('Аватар пользователя')}
-                            width="50px"
-                            height="50px"
-                        />
-                    )
-                }
+                {user?.avatar && (
+                    <Avatar
+                        avatar={user?.avatar}
+                        alt={t('Аватар пользователя')}
+                        width='50px'
+                        height='50px'
+                    />
+                )}
                 <Text text={user.username} size={TextSize.L} align={TextAlign.CENTER} />
             </AppLink>
             <div className={styles.comment}>

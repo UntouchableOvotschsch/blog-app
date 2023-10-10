@@ -31,46 +31,37 @@ const profileSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder
-            .addCase(fetchProfileData.pending, (state) => {
-                state.error = undefined;
-                state.isLoading = true;
-            });
-        builder
-            .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
-                state.isLoading = false;
-                state.error = undefined;
-                state.data = action.payload;
-                state.form = action.payload;
-            });
-        builder
-            .addCase(fetchProfileData.rejected, (state, action) => {
-                state.isLoading = false;
-                state.error = action.payload;
-            });
+        builder.addCase(fetchProfileData.pending, (state) => {
+            state.error = undefined;
+            state.isLoading = true;
+        });
+        builder.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
+            state.isLoading = false;
+            state.error = undefined;
+            state.data = action.payload;
+            state.form = action.payload;
+        });
+        builder.addCase(fetchProfileData.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        });
 
-        builder
-            .addCase(updateProfileData.pending, (state) => {
-                state.isLoading = true;
-                state.validationError = undefined;
-            });
-        builder
-            .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
-                state.data = action.payload;
-                state.form = action.payload;
-                state.isLoading = false;
-                state.editable = false;
-                state.validationError = undefined;
-            });
-        builder
-            .addCase(updateProfileData.rejected, (state, action) => {
-                state.isLoading = false;
-                state.validationError = action.payload;
-            });
+        builder.addCase(updateProfileData.pending, (state) => {
+            state.isLoading = true;
+            state.validationError = undefined;
+        });
+        builder.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<ProfileType>) => {
+            state.data = action.payload;
+            state.form = action.payload;
+            state.isLoading = false;
+            state.editable = false;
+            state.validationError = undefined;
+        });
+        builder.addCase(updateProfileData.rejected, (state, action) => {
+            state.isLoading = false;
+            state.validationError = action.payload;
+        });
     },
 });
 
-export const {
-    reducer: profileReducer,
-    actions: profileActions,
-} = profileSlice;
+export const { reducer: profileReducer, actions: profileActions } = profileSlice;

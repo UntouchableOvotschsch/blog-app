@@ -26,9 +26,7 @@ describe('updateProfileData', () => {
             },
             user: {
                 authData: {
-                    roles: [
-                        UserRoles.ADMIN,
-                    ],
+                    roles: [UserRoles.ADMIN],
                     id: '1',
                     avatar: '',
                     username: '',
@@ -38,14 +36,10 @@ describe('updateProfileData', () => {
         thunk.api.put.mockResolvedValue(Promise.resolve({ data: updatedProfile }));
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.put)
-            .toHaveBeenCalled();
-        expect(result.payload)
-            .toEqual(updatedProfile);
-        expect(result.meta.requestStatus)
-            .toBe('fulfilled');
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
+        expect(thunk.api.put).toHaveBeenCalled();
+        expect(result.payload).toEqual(updatedProfile);
+        expect(result.meta.requestStatus).toBe('fulfilled');
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     });
 
     test('Rejected updating', async () => {
@@ -55,30 +49,22 @@ describe('updateProfileData', () => {
             },
             user: {
                 authData: {
-                    roles: [
-                        UserRoles.ADMIN,
-                    ],
+                    roles: [UserRoles.ADMIN],
                     id: '1',
                     avatar: '',
                     username: '',
                 },
             },
         });
-        thunk.api.put.mockRejectedValue(
-            {
-                status: 403,
-            },
-        );
+        thunk.api.put.mockRejectedValue({
+            status: 403,
+        });
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.put)
-            .toHaveBeenCalled();
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
-        expect(result.meta.requestStatus)
-            .toBe('rejected');
-        expect(result.payload)
-            .toEqual(['SERVER_ERROR']);
+        expect(thunk.api.put).toHaveBeenCalled();
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toEqual(['SERVER_ERROR']);
     });
 
     test('Validation error', async () => {
@@ -91,9 +77,7 @@ describe('updateProfileData', () => {
             },
             user: {
                 authData: {
-                    roles: [
-                        UserRoles.ADMIN,
-                    ],
+                    roles: [UserRoles.ADMIN],
                     id: '1',
                     avatar: '',
                     username: '',
@@ -103,13 +87,9 @@ describe('updateProfileData', () => {
 
         const result = await thunk.callThunk('1');
 
-        expect(thunk.api.put)
-            .toHaveBeenCalledTimes(0);
-        expect(thunk.dispatch)
-            .toHaveBeenCalledTimes(2);
-        expect(result.meta.requestStatus)
-            .toBe('rejected');
-        expect(result.payload)
-            .toEqual(['INCORRECT_USER_DATA']);
+        expect(thunk.api.put).toHaveBeenCalledTimes(0);
+        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+        expect(result.meta.requestStatus).toBe('rejected');
+        expect(result.payload).toEqual(['INCORRECT_USER_DATA']);
     });
 });

@@ -21,48 +21,51 @@ import ArticleTextBlockCom from '../ArticleTextBlockCom';
 
 interface ArticleDetailsProps {
     className?: string;
-    id: string
-    wrapperRef?: RefObject<HTMLDivElement>
+    id: string;
+    wrapperRef?: RefObject<HTMLDivElement>;
 }
 
-const ArticleDetails = memo(({
-    className, id, wrapperRef,
-}: ArticleDetailsProps) => {
+const ArticleDetails = memo(({ className, id, wrapperRef }: ArticleDetailsProps) => {
     const { t } = useTranslation('articleDetails');
     const { data: article, isLoading, isError } = useGetArticleDetailsQuery(id);
 
-    const renderBlocks = useCallback((blocks: ArticleBlock[]) => blocks.map((block, index) => {
-        switch (block.type) {
-        case ArticleBlockTypes.TEXT:
-            return (
-                <ArticleTextBlockCom
-                    block={block}
-                    className={styles.block}
-                    /* eslint-disable-next-line react/no-array-index-key */
-                    key={index}
-                />
-            );
-        case ArticleBlockTypes.CODE:
-            return (
-                <ArticleCodeBlockCom
-                    block={block}
-                    className={styles.block}
-                    /* eslint-disable-next-line react/no-array-index-key */
-                    key={index}
-                />
-            );
-        case ArticleBlockTypes.IMAGE:
-            return (
-                <ArticleImageBlockCom
-                    block={block}
-                    className={styles.block}
-                    /* eslint-disable-next-line react/no-array-index-key */
-                    key={index}
-                />
-            );
-        default: return null;
-        }
-    }), []);
+    const renderBlocks = useCallback(
+        (blocks: ArticleBlock[]) =>
+            blocks.map((block, index) => {
+                switch (block.type) {
+                    case ArticleBlockTypes.TEXT:
+                        return (
+                            <ArticleTextBlockCom
+                                block={block}
+                                className={styles.block}
+                                /* eslint-disable-next-line react/no-array-index-key */
+                                key={index}
+                            />
+                        );
+                    case ArticleBlockTypes.CODE:
+                        return (
+                            <ArticleCodeBlockCom
+                                block={block}
+                                className={styles.block}
+                                /* eslint-disable-next-line react/no-array-index-key */
+                                key={index}
+                            />
+                        );
+                    case ArticleBlockTypes.IMAGE:
+                        return (
+                            <ArticleImageBlockCom
+                                block={block}
+                                className={styles.block}
+                                /* eslint-disable-next-line react/no-array-index-key */
+                                key={index}
+                            />
+                        );
+                    default:
+                        return null;
+                }
+            }),
+        [],
+    );
 
     if (isLoading || isError) {
         return (
@@ -82,34 +85,28 @@ const ArticleDetails = memo(({
         <div
             className={classNames(styles.ArticleDetails, {}, [className])}
             ref={wrapperRef}
-            data-testid="ArticleDetails.Content"
+            data-testid='ArticleDetails.Content'
         >
-            <div className={styles.header} data-testid="ArticleDetails.ArticleInfo">
+            <div className={styles.header} data-testid='ArticleDetails.ArticleInfo'>
                 <Avatar
                     avatar={article?.img}
                     alt={t('Аватар статьи')}
                     className={styles.avatar}
-                    width="150px"
-                    height="150px"
+                    width='150px'
+                    height='150px'
                 />
-                <Text
-                    title={article?.title}
-                    text={article?.subtitle}
-                    size={TextSize.XL}
-                />
+                <Text title={article?.title} text={article?.subtitle} size={TextSize.XL} />
                 <div className={styles.articleInfo}>
-                    <Icon Icon={EyeIcon} size="20" />
+                    <Icon Icon={EyeIcon} size='20' />
                     <Text text={article?.views?.toString()} size={TextSize.L} />
                 </div>
                 <div className={styles.articleInfo}>
-                    <Icon Icon={Calendar} size="20" />
+                    <Icon Icon={Calendar} size='20' />
                     <Text text={article?.createdAt} size={TextSize.L} />
                 </div>
             </div>
 
-            {
-                article?.blocks && renderBlocks(article.blocks)
-            }
+            {article?.blocks && renderBlocks(article.blocks)}
         </div>
     );
 });

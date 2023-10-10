@@ -6,6 +6,6 @@ export const notificationTemplate = {
     href: 'http://localhost:3000/admin',
 };
 
-export const notificationTemplateArray = new Array(7).fill(0).map((el, index) => (
-    { ...notificationTemplate, id: index + 1 }
-));
+export const notificationTemplateArray = new Array(7)
+    .fill(0)
+    .map((el, index) => ({ ...notificationTemplate, id: index + 1 }));

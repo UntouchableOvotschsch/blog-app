@@ -12,17 +12,9 @@ interface ModalProps {
     children: ReactNode;
     visible: boolean;
     changeVisibility: () => void;
-
 }
 
-export const Modal: FC<ModalProps> = (
-    {
-        className,
-        children,
-        visible,
-        changeVisibility,
-    },
-) => {
+export const Modal: FC<ModalProps> = ({ className, children, visible, changeVisibility }) => {
     const { closing, opening, setVisibleHandler } = useModal({
         visible,
         onClose: changeVisibility,
@@ -40,10 +32,7 @@ export const Modal: FC<ModalProps> = (
         <Portal>
             <div className={classNames(styles.Modal, mods, [className])}>
                 <Overlay visible={visible} onClick={setVisibleHandler} />
-                <div
-                    className={styles.content}
-                    onClick={(event) => event.stopPropagation()}
-                >
+                <div className={styles.content} onClick={(event) => event.stopPropagation()}>
                     {children}
                 </div>
             </div>

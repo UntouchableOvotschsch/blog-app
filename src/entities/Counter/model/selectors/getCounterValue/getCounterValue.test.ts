@@ -9,7 +9,6 @@ describe('getCounterValue', () => {
                 value: 10,
             },
         };
-        expect(getCounterValue(state as StateSchema))
-            .toBe(10);
+        expect(getCounterValue(state as StateSchema)).toBe(10);
     });
 });

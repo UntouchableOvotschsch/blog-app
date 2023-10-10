@@ -24,7 +24,7 @@ import { fetchArticles } from '../../model/service/fetchArticles';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 
 interface ArticleFiltersProps {
-    className?: string
+    className?: string;
 }
 
 const ArticleFilters = (props: ArticleFiltersProps) => {
@@ -47,38 +47,49 @@ const ArticleFilters = (props: ArticleFiltersProps) => {
 
     const debouncedFetch = useDebounce(fetchData, 500);
 
-    const changeView = useCallback((view: ArticleViewTypes) => {
-        dispatch(articlesPageActions.setArticlesView(view));
-        dispatch(articlesPageActions.setArticlesPage(1));
-        dispatch(articlesPageActions.initLimit());
-        localStorage.setItem(ARTICLE_VIEW_KEY, view);
-        fetchData();
-    }, [dispatch, fetchData]);
+    const changeView = useCallback(
+        (view: ArticleViewTypes) => {
+            dispatch(articlesPageActions.setArticlesView(view));
+            dispatch(articlesPageActions.setArticlesPage(1));
+            dispatch(articlesPageActions.initLimit());
+            localStorage.setItem(ARTICLE_VIEW_KEY, view);
+            fetchData();
+        },
+        [dispatch, fetchData],
+    );
 
-    const changeSearch = useCallback((value: string) => {
-        dispatch(articlesPageActions.setArticlesSearch(value));
-        dispatch(articlesPageActions.setArticlesPage(1));
-        debouncedFetch();
-    }, [debouncedFetch, dispatch]);
+    const changeSearch = useCallback(
+        (value: string) => {
+            dispatch(articlesPageActions.setArticlesSearch(value));
+            dispatch(articlesPageActions.setArticlesPage(1));
+            debouncedFetch();
+        },
+        [debouncedFetch, dispatch],
+    );
 
-    const changeSortField = useCallback((value: SortField) => {
-        dispatch(articlesPageActions.setArticlesSortField(value));
-        dispatch(articlesPageActions.setArticlesPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
+    const changeSortField = useCallback(
+        (value: SortField) => {
+            dispatch(articlesPageActions.setArticlesSortField(value));
+            dispatch(articlesPageActions.setArticlesPage(1));
+            fetchData();
+        },
+        [dispatch, fetchData],
+    );
 
     const changeSortOrder = useCallback(() => {
-        dispatch(articlesPageActions
-            .setArticlesSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'));
+        dispatch(articlesPageActions.setArticlesSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'));
         dispatch(articlesPageActions.setArticlesPage(1));
         fetchData();
     }, [dispatch, fetchData, sortOrder]);
 
-    const articleTypeHandler = useCallback((newTypes: ArticleTypes[]) => {
-        dispatch(articlesPageActions.setArticlesTypes(newTypes));
-        dispatch(articlesPageActions.setArticlesPage(1));
-        fetchData();
-    }, [dispatch, fetchData]);
+    const articleTypeHandler = useCallback(
+        (newTypes: ArticleTypes[]) => {
+            dispatch(articlesPageActions.setArticlesTypes(newTypes));
+            dispatch(articlesPageActions.setArticlesPage(1));
+            fetchData();
+        },
+        [dispatch, fetchData],
+    );
 
     return (
         <div className={classNames(styles.articleFilters, {}, [className])}>
@@ -89,15 +100,10 @@ const ArticleFilters = (props: ArticleFiltersProps) => {
                     changeSortField={changeSortField}
                     changeSortOrder={changeSortOrder}
                 />
-                <ChangeViewType
-                    currentView={view}
-                    changeView={changeView}
-                />
+                <ChangeViewType currentView={view} changeView={changeView} />
             </div>
 
-            <Card
-                className={styles.inputWrapper}
-            >
+            <Card className={styles.inputWrapper}>
                 <Input
                     value={search}
                     placeholder={t('Поиск')}
@@ -106,13 +112,8 @@ const ArticleFilters = (props: ArticleFiltersProps) => {
                     className={styles.input}
                 />
             </Card>
-            <ArticleTypeTabs
-                activeTypes={activeTypes}
-                typeHandler={articleTypeHandler}
-            />
-
+            <ArticleTypeTabs activeTypes={activeTypes} typeHandler={articleTypeHandler} />
         </div>
-
     );
 };
 

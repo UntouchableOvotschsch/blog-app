@@ -10,7 +10,7 @@ import { ArticleImageBlock } from '../../model/types/article';
 
 interface ArticleImageBlockComProps {
     className?: string;
-    block: ArticleImageBlock
+    block: ArticleImageBlock;
 }
 
 const ArticleImageBlockCom = memo(({ className, block }: ArticleImageBlockComProps) => {

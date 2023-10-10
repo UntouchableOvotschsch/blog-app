@@ -28,14 +28,10 @@ const NotificationButton = ({ className }: NotificationButtonProps) => {
         return (
             <div>
                 <Button theme={ThemeButton.CLEAR} onClick={drawerVisibility}>
-                    <Icon Icon={NotificationIcon} fill="inverted" />
+                    <Icon Icon={NotificationIcon} fill='inverted' />
                 </Button>
                 <Drawer visible={drawerVisible} changeVisibility={drawerVisibility}>
-                    <NotificationList
-                        className={
-                            classNames(styles.NotificationList, {}, [styles.mobile])
-                        }
-                    />
+                    <NotificationList className={classNames(styles.NotificationList, {}, [styles.mobile])} />
                 </Drawer>
             </div>
         );
@@ -43,18 +39,14 @@ const NotificationButton = ({ className }: NotificationButtonProps) => {
     return (
         <Popover
             className={classNames(styles.popover, {}, [className])}
-            position="bottom left"
-            trigger={(
+            position='bottom left'
+            trigger={
                 <Button theme={ThemeButton.CLEAR}>
-                    <Icon Icon={NotificationIcon} fill="inverted" />
+                    <Icon Icon={NotificationIcon} fill='inverted' />
                 </Button>
-            )}
+            }
         >
-            <NotificationList
-                className={
-                    classNames(styles.NotificationList, {}, [styles.desktop])
-                }
-            />
+            <NotificationList className={classNames(styles.NotificationList, {}, [styles.desktop])} />
         </Popover>
     );
 };

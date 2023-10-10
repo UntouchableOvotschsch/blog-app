@@ -8,17 +8,12 @@ import styles from './Skeleton.module.scss';
 
 interface SkeletonProps {
     className?: string;
-    height?: string | number
-    width?: string | number
-    border?: string
+    height?: string | number;
+    width?: string | number;
+    border?: string;
 }
 
-const Skeleton = ({
-    className,
-    height,
-    width,
-    border,
-}: SkeletonProps) => {
+const Skeleton = ({ className, height, width, border }: SkeletonProps) => {
     const { t } = useTranslation();
 
     const skeletonStyles: CSSProperties = {
@@ -28,10 +23,7 @@ const Skeleton = ({
     };
 
     return (
-        <div
-            className={classNames(styles.Skeleton, {}, [className])}
-            style={skeletonStyles}
-        >
+        <div className={classNames(styles.Skeleton, {}, [className])} style={skeletonStyles}>
             <div />
         </div>
     );

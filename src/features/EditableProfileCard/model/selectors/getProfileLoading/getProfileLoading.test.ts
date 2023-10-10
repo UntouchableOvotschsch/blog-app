@@ -9,11 +9,9 @@ describe('getProfileLoading.test', () => {
         },
     };
     test('should return state', () => {
-        expect(getProfileLoading(state as StateSchema))
-            .toBe(false);
+        expect(getProfileLoading(state as StateSchema)).toBe(false);
     });
     test('with empty state', () => {
-        expect(getProfileLoading({} as StateSchema))
-            .toBe(false);
+        expect(getProfileLoading({} as StateSchema)).toBe(false);
     });
 });

@@ -20,20 +20,18 @@ describe('getFromData.test', () => {
         },
     };
     test('should return state', () => {
-        expect(getFormData(state as StateSchema))
-            .toEqual({
-                country: Countries.Russia,
-                currency: Currencies.RUB,
-                avatar: '',
-                city: 'Moscow',
-                age: 22,
-                username: 'admin',
-                lastname: 'Solomatin',
-                firstname: 'Sergey',
-            });
+        expect(getFormData(state as StateSchema)).toEqual({
+            country: Countries.Russia,
+            currency: Currencies.RUB,
+            avatar: '',
+            city: 'Moscow',
+            age: 22,
+            username: 'admin',
+            lastname: 'Solomatin',
+            firstname: 'Sergey',
+        });
     });
     test('with empty state', () => {
-        expect(getFormData({} as StateSchema))
-            .toEqual(undefined);
+        expect(getFormData({} as StateSchema)).toEqual(undefined);
     });
 });

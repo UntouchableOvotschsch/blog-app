@@ -18,9 +18,10 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={{
-                padding: '150px',
-            }}
+            <div
+                style={{
+                    padding: '150px',
+                }}
             >
                 <Story />
             </div>
@@ -33,7 +34,7 @@ const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} 
 export const WithButton = Template.bind({});
 WithButton.args = {
     // eslint-disable-next-line i18next/no-literal-string
-    trigger: (<Button>Open</Button>),
+    trigger: <Button>Open</Button>,
     options: [
         {
             label: '123',
@@ -57,8 +58,15 @@ WithButton.decorators = [ThemeDecorator(Themes.LIGHT)];
 
 export const WithAvatar = Template.bind({});
 WithAvatar.args = {
-    // eslint-disable-next-line i18next/no-literal-string
-    trigger: <Avatar alt="Аватар" avatar="" width={60} height={60} />,
+    trigger: (
+        <Avatar
+            // eslint-disable-next-line i18next/no-literal-string
+            alt='Аватар'
+            avatar=''
+            width={60}
+            height={60}
+        />
+    ),
     options: [
         {
             label: '123123123123123',
@@ -82,8 +90,15 @@ WithAvatar.decorators = [ThemeDecorator(Themes.DARK)];
 
 export const WithPosition = Template.bind({});
 WithPosition.args = {
-    // eslint-disable-next-line i18next/no-literal-string
-    trigger: <Avatar alt="Аватар" avatar="" width={60} height={60} />,
+    trigger: (
+        <Avatar
+            // eslint-disable-next-line i18next/no-literal-string
+            alt='Аватар'
+            avatar=''
+            width={60}
+            height={60}
+        />
+    ),
     position: 'top right',
     options: [
         {

@@ -20,17 +20,11 @@ const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};
-Light.decorators = [
-    ThemeDecorator(Themes.LIGHT),
-    StoreDecorator({}),
-];
+Light.decorators = [ThemeDecorator(Themes.LIGHT), StoreDecorator({})];
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [
-    ThemeDecorator(Themes.DARK),
-    StoreDecorator({}),
-];
+Dark.decorators = [ThemeDecorator(Themes.DARK), StoreDecorator({})];
 
 export const Authed = Template.bind({});
 Authed.args = {};

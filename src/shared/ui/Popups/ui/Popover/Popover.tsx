@@ -9,30 +9,19 @@ import popupStyles from '../../styles/Popups.module.scss';
 
 interface PopoverProps {
     className?: string;
-    trigger: ReactNode
-    children: ReactNode
-    position?: DropdownPosition
+    trigger: ReactNode;
+    children: ReactNode;
+    position?: DropdownPosition;
 }
 
 const Popover = (props: PopoverProps) => {
-    const {
-        className, trigger, children, position,
-    } = props;
+    const { className, trigger, children, position } = props;
 
-    const classes = [
-        position && dropDownPositionClasses[position],
-    ];
+    const classes = [position && dropDownPositionClasses[position]];
     return (
-        <HPopover
-            as="div"
-            className={classNames(popupStyles.container, {}, [className])}
-        >
-            <HPopover.Button as="div">
-                {trigger}
-            </HPopover.Button>
-            <HPopover.Panel className={classNames(popupStyles.itemsContainer, {}, classes)}>
-                {children}
-            </HPopover.Panel>
+        <HPopover as='div' className={classNames(popupStyles.container, {}, [className])}>
+            <HPopover.Button as='div'>{trigger}</HPopover.Button>
+            <HPopover.Panel className={classNames(popupStyles.itemsContainer, {}, classes)}>{children}</HPopover.Panel>
         </HPopover>
     );
 };

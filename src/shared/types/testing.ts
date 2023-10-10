@@ -1,3 +1,3 @@
 export interface ComponentTestProps {
-    'data-testid'?: string
+    'data-testid'?: string;
 }

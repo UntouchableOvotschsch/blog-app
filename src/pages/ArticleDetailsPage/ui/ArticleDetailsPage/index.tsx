@@ -14,7 +14,7 @@ import styles from './ArticleDetailsPage.module.scss';
 import ArticleDetailsPageHeader from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 const ArticleDetailsPage = () => {
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
 
     const checkID = __PROJECT__ === 'storybook' ? '1' : id;
 
@@ -37,23 +37,16 @@ const ArticleDetailsPage = () => {
     };
 
     return (
-        <PageWrapper
-            className={styles.pageWrapper}
-            onScroll={scrollHandler}
-        >
+        <PageWrapper className={styles.pageWrapper} onScroll={scrollHandler}>
             {needBar && <ProgressBar width={width} />}
-            <VStack gap="8" align="start" className={styles.stackContainer}>
+            <VStack gap='8' align='start' className={styles.stackContainer}>
                 <ArticleDetailsPageHeader id={checkID!} />
-                <ArticleDetails
-                    id={checkID!}
-                    wrapperRef={wrapperRef}
-                />
+                <ArticleDetails id={checkID!} wrapperRef={wrapperRef} />
                 <ArticleRating articleId={checkID!} />
                 <ArticleRecommendationsList />
                 <ArticleComments id={checkID!} />
             </VStack>
         </PageWrapper>
-
     );
 };
 

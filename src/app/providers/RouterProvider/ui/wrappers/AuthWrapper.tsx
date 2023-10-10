@@ -6,8 +6,8 @@ import { useAuthDataChecker } from '@/entities/User';
 import { getRouteMainPage } from '@/shared/const/router';
 
 interface AuthWrapperProps {
-    children: React.ReactElement
-    navigateTo?: string
+    children: React.ReactElement;
+    navigateTo?: string;
 }
 const AuthWrapper = ({ children, navigateTo = getRouteMainPage() }: AuthWrapperProps) => {
     const isAuth = useAuthDataChecker();

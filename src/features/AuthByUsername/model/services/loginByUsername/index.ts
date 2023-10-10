@@ -5,26 +5,19 @@ import { User, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 
 interface LoginByUsername {
-    username: string,
-    password: string
+    username: string;
+    password: string;
 }
 
 enum LoginErrorsKeys {
     INCORRECT_DATA = 'Неверное имя пользователя или пароль',
-    FETCHING_ERROR = 'Произошла ошибка при авторизации'
+    FETCHING_ERROR = 'Произошла ошибка при авторизации',
 }
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsername, ThunkConfigType<string>>(
     'login/loginByUsername',
-    async ({
-        username,
-        password,
-    }: LoginByUsername, thunkAPI) => {
-        const {
-            extra,
-            dispatch,
-            rejectWithValue,
-        } = thunkAPI;
+    async ({ username, password }: LoginByUsername, thunkAPI) => {
+        const { extra, dispatch, rejectWithValue } = thunkAPI;
 
         try {
             const { data } = await extra.api.post<User>('/login', {

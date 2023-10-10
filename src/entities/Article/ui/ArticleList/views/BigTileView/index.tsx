@@ -12,43 +12,35 @@ import BigTileItem from '../../../BigTileItem';
 import BigTileItemSkeleton from '../../../BigTileItem/BigTileItem.skeleton';
 
 interface BigTileViewProps {
-    articles?: Article[]
-    isLoading?: boolean
-    onLoadNextPart?: () => void
+    articles?: Article[];
+    isLoading?: boolean;
+    onLoadNextPart?: () => void;
     target?: HTMLAttributeAnchorTarget;
-    Header?: ComponentType
+    Header?: ComponentType;
 }
 
-const BigTileView = ({
-    articles,
-    isLoading,
-    target,
-    onLoadNextPart,
-    Header,
-}: BigTileViewProps) => {
+const BigTileView = ({ articles, isLoading, target, onLoadNextPart, Header }: BigTileViewProps) => {
     const { t } = useTranslation('articleList');
 
-    const renderArticleItem = useCallback((index: number, article: Article) => (
-        <BigTileItem
-            article={article}
-            key={article.id}
-            target={target}
-            className={styles.card}
-        />
-    ), [target]);
+    const renderArticleItem = useCallback(
+        (index: number, article: Article) => (
+            <BigTileItem
+                article={article}
+                key={article.id}
+                target={target}
+                className={styles.card}
+            />
+        ),
+        [target],
+    );
 
     const Footer = useCallback(() => {
         if (isLoading) {
             return (
                 <div>
-                    {
-                        new Array(3).fill(0).map((_, index) => (
-                            <BigTileItemSkeleton
-                                key={index}
-                                className={styles.card}
-                            />
-                        ))
-                    }
+                    {new Array(3).fill(0).map((_, index) => (
+                        <BigTileItemSkeleton key={index} className={styles.card} />
+                    ))}
                 </div>
             );
         }

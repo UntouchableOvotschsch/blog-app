@@ -14,26 +14,20 @@ import styles from './ProfileCard.module.scss';
 import { ProfileType } from '../../model/types/profile';
 
 interface ProfileCardProps {
-    data?: ProfileType
-    editable?: boolean
-    changeProfileData: (value: ProfileType) => void
-    isLoading?: boolean
-    isError?: string
+    data?: ProfileType;
+    editable?: boolean;
+    changeProfileData: (value: ProfileType) => void;
+    isLoading?: boolean;
+    isError?: string;
 }
 
-const ProfileCard: FC<ProfileCardProps> = ({
-    data,
-    editable,
-    changeProfileData,
-    isLoading,
-    isError,
-}) => {
+const ProfileCard: FC<ProfileCardProps> = ({ data, editable, changeProfileData, isLoading, isError }) => {
     const { t } = useTranslation('profile');
 
     if (isLoading || isError) {
         return (
             <div className={styles.status}>
-                {isLoading && <Loader /> }
+                {isLoading && <Loader />}
                 {isError && (
                     <Text
                         theme={ThemeText.ERROR}
@@ -43,37 +37,28 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     />
                 )}
             </div>
-
         );
     }
     return (
         <VStack>
             <div className={styles.avatar}>
-                {
-                    data?.avatar
-                    && (
-                        <Avatar
-                            avatar={data?.avatar}
-                            alt={t('Ваш аватар')}
-                        />
-                    )
-                }
+                {data?.avatar && <Avatar avatar={data?.avatar} alt={t('Ваш аватар')} />}
             </div>
             <div className={styles.formContainer}>
-                <VStack gap="8">
+                <VStack gap='8'>
                     <Input
                         value={data?.firstname}
                         onChange={(value) => changeProfileData({ firstname: value })}
                         readOnly={!editable}
                         placeholder={t('Ваше имя')}
-                        data-testid="ProfileCard.FirstnameInput"
+                        data-testid='ProfileCard.FirstnameInput'
                     />
                     <Input
                         value={data?.lastname}
                         onChange={(value) => changeProfileData({ lastname: value })}
                         readOnly={!editable}
                         placeholder={t('Ваша фамилия')}
-                        data-testid="ProfileCard.LastnameInput"
+                        data-testid='ProfileCard.LastnameInput'
                     />
                     <Input
                         value={data?.username}
@@ -85,16 +70,18 @@ const ProfileCard: FC<ProfileCardProps> = ({
                         value={data?.age}
                         onChange={(value) => changeProfileData({ age: Number(value) })}
                         readOnly={!editable}
-                        type="number"
-                        min="0"
+                        type='number'
+                        min='0'
                         placeholder={t('Ваш возраст')}
                     />
                     <CountrySelect
                         selectValue={data?.country}
                         editable={editable}
-                        onChange={(country) => changeProfileData({
-                            country,
-                        })}
+                        onChange={(country) =>
+                            changeProfileData({
+                                country,
+                            })
+                        }
                     />
                     <Input
                         value={data?.city}
@@ -105,21 +92,20 @@ const ProfileCard: FC<ProfileCardProps> = ({
                     <CurrencySelect
                         selectValue={data?.currency}
                         editable={editable}
-                        onChange={(currency) => changeProfileData({
-                            currency,
-                        })}
+                        onChange={(currency) =>
+                            changeProfileData({
+                                currency,
+                            })
+                        }
                     />
 
-                    {
-                        editable
-                        && (
-                            <Input
-                                value={data?.avatar}
-                                onChange={(value) => changeProfileData({ avatar: value })}
-                                placeholder={t('Введите ссылку на аватар')}
-                            />
-                        )
-                    }
+                    {editable && (
+                        <Input
+                            value={data?.avatar}
+                            onChange={(value) => changeProfileData({ avatar: value })}
+                            placeholder={t('Введите ссылку на аватар')}
+                        />
+                    )}
                 </VStack>
             </div>
         </VStack>

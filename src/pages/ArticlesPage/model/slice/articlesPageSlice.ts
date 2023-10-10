@@ -7,11 +7,9 @@ import { SortField, SortOrder } from '@/features/SortSelector';
 import { fetchArticles } from '../service/fetchArticles';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 
-export const articlesAdapter = createEntityAdapter<Article>(
-    {
-        selectId: (article) => article.id,
-    },
-);
+export const articlesAdapter = createEntityAdapter<Article>({
+    selectId: (article) => article.id,
+});
 
 const articlesPageSlice = createSlice({
     name: 'pages/ArticlesPage',
@@ -86,7 +84,4 @@ export const articlesSelectors = articlesAdapter.getSelectors<StateSchema>(
     (state) => state.articlesPage || articlesAdapter.getInitialState(),
 );
 
-export const {
-    reducer: articlesPageReducer,
-    actions: articlesPageActions,
-} = articlesPageSlice;
+export const { reducer: articlesPageReducer, actions: articlesPageActions } = articlesPageSlice;

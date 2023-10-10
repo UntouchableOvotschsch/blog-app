@@ -10,14 +10,11 @@ export type ReducerList = {
 };
 
 interface DynamicModuleLoaderProps {
-    children: ReactNode
-    reducerList: ReducerList
-    dontRemoveAfterUnmount?: boolean
-
+    children: ReactNode;
+    reducerList: ReducerList;
+    dontRemoveAfterUnmount?: boolean;
 }
-const DynamicModuleLoader = ({
-    children, reducerList, dontRemoveAfterUnmount,
-}: DynamicModuleLoaderProps) => {
+const DynamicModuleLoader = ({ children, reducerList, dontRemoveAfterUnmount }: DynamicModuleLoaderProps) => {
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useDispatch();
     const reducers = store.reducerManager.getReducerMap();
@@ -39,7 +36,7 @@ const DynamicModuleLoader = ({
         // eslint-disable-next-line
     }, []);
     // eslint-disable-next-line react/jsx-no-useless-fragment
-    return <>{ children }</>;
+    return <>{children}</>;
 };
 
 export default DynamicModuleLoader;

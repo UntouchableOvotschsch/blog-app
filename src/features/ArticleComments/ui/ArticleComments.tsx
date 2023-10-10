@@ -17,7 +17,7 @@ import { articleCommentsSelectors, articleCommentsSliceReducer } from '../model/
 
 interface ArticleCommentsProps {
     className?: string;
-    id: string
+    id: string;
 }
 
 const reducers: ReducerList = {
@@ -46,16 +46,13 @@ const ArticleComments = ({ className, id }: ArticleCommentsProps) => {
 
     return (
         <DynamicModuleLoader reducerList={reducers}>
-            <VStack gap="4" className={classNames('', {}, [className])} align="start">
+            <VStack gap='4' className={classNames('', {}, [className])} align='start'>
                 <Text title={`${t('Комментарии')}:`} size={TextSize.L} />
                 {/* TODO сделать скелетон на подгрузку формы */}
-                <Suspense fallback="">
+                <Suspense fallback=''>
                     <CommentForm addNewCommentTo={addNewComment} />
                 </Suspense>
-                <CommentsList
-                    isLoading={isLoading}
-                    comments={comments}
-                />
+                <CommentsList isLoading={isLoading} comments={comments} />
             </VStack>
         </DynamicModuleLoader>
     );

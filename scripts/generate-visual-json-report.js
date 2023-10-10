@@ -13,16 +13,19 @@ const reportPath = joinPath(__dirname, '..', 'reports');
 (async function main() {
     const diffs = await asyncReaddir(diffDir);
 
-    await writeFileAsync(joinPath(lokiDir, 'report.json'), JSON.stringify({
-        newItems: [],
-        deletedItems: [],
-        passedItems: [],
-        failedItems: diffs,
-        expectedItems: diffs,
-        actualItems: diffs,
-        diffItems: diffs,
-        actualDir: relative(reportPath, actualDir),
-        expectedDir: relative(reportPath, expectedDir),
-        diffDir: relative(reportPath, diffDir),
-    }));
-}());
+    await writeFileAsync(
+        joinPath(lokiDir, 'report.json'),
+        JSON.stringify({
+            newItems: [],
+            deletedItems: [],
+            passedItems: [],
+            failedItems: diffs,
+            expectedItems: diffs,
+            actualItems: diffs,
+            diffItems: diffs,
+            actualDir: relative(reportPath, actualDir),
+            expectedDir: relative(reportPath, expectedDir),
+            diffDir: relative(reportPath, diffDir),
+        }),
+    );
+})();

@@ -10,8 +10,8 @@ import Comment from '../Comment';
 
 interface CommentsListProps {
     className?: string;
-    comments?: CommentType[]
-    isLoading?: boolean
+    comments?: CommentType[];
+    isLoading?: boolean;
 }
 
 const CommentsList = ({ className, comments, isLoading }: CommentsListProps) => {
@@ -26,20 +26,12 @@ const CommentsList = ({ className, comments, isLoading }: CommentsListProps) => 
     }
 
     return (
-        <div
-            className={classNames(styles.CommentsList, {}, [className])}
-            data-testid="CommentList.Content"
-        >
-            {
-                comments?.length
-                    ? comments?.map((comment) => (
-                        <Comment key={comment.id} comment={comment} />
-                    ))
-                    : (
-                        <Text text={t('Комментарии отсутствуют')} />
-                    )
-
-            }
+        <div className={classNames(styles.CommentsList, {}, [className])} data-testid='CommentList.Content'>
+            {comments?.length ? (
+                comments?.map((comment) => <Comment key={comment.id} comment={comment} />)
+            ) : (
+                <Text text={t('Комментарии отсутствуют')} />
+            )}
         </div>
     );
 };

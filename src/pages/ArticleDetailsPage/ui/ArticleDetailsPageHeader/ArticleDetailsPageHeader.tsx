@@ -12,7 +12,7 @@ import Text from '@/shared/ui/Text';
 import styles from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
-    id: string
+    id: string;
 }
 
 const ArticleDetailsPageHeader = ({ id }: ArticleDetailsPageHeaderProps) => {
@@ -24,28 +24,19 @@ const ArticleDetailsPageHeader = ({ id }: ArticleDetailsPageHeaderProps) => {
     const canEdit = userData?.id === article?.user?.id || isAdmin;
 
     return (
-        <HStack justify="between">
-            <Button
-                theme={ThemeButton.OUTLINE}
-            >
+        <HStack justify='between'>
+            <Button theme={ThemeButton.OUTLINE}>
                 <AppLink to={getRouteArticlesPage()} className={styles.appLink}>
                     <Text title={t('Назад к списку')} />
                 </AppLink>
             </Button>
-            {
-                canEdit && (
-                    <Button
-                        theme={ThemeButton.OUTLINE}
-                    >
-                        <AppLink
-                            to={getRouteArticleEditPage(id)}
-                            className={styles.appLink}
-                        >
-                            <Text title={t('Редактировать')} />
-                        </AppLink>
-                    </Button>
-                )
-            }
+            {canEdit && (
+                <Button theme={ThemeButton.OUTLINE}>
+                    <AppLink to={getRouteArticleEditPage(id)} className={styles.appLink}>
+                        <Text title={t('Редактировать')} />
+                    </AppLink>
+                </Button>
+            )}
         </HStack>
     );
 };

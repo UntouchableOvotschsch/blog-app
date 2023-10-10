@@ -16,11 +16,7 @@ const counterSlice = createSlice({
         decrement(state) {
             state.value -= 1;
         },
-
     },
 });
 
-export const {
-    actions: counterActions,
-    reducer: counterReducer,
-} = counterSlice;
+export const { actions: counterActions, reducer: counterReducer } = counterSlice;

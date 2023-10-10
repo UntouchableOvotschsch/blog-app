@@ -9,36 +9,30 @@ import Skeleton from '@/shared/ui/Skeleton';
 import styles from './BigTileItem.module.scss';
 
 interface BigTileItemSkeletonProps {
-    className?: string
+    className?: string;
 }
 
 const BigTileItemSkeleton = ({ className }: BigTileItemSkeletonProps) => (
     <Card className={classNames(styles.container, {}, [className])}>
         <div className={styles.header}>
             <div className={styles.userInfo}>
-                <Skeleton
-                    width="50px"
-                    height="50px"
-                    border="50%"
-                />
-                <Skeleton width="100px" height="20px" />
+                <Skeleton width='50px' height='50px' border='50%' />
+                <Skeleton width='100px' height='20px' />
             </div>
-            <Skeleton width="100px" height="20px" />
+            <Skeleton width='100px' height='20px' />
         </div>
-        <Skeleton width="300px" height="35px" className={styles.title} />
+        <Skeleton width='300px' height='35px' className={styles.title} />
 
-        <Skeleton width="200px" height="30px" />
+        <Skeleton width='200px' height='30px' />
 
         <Skeleton className={styles.articleImg} />
 
-        <Skeleton
-            className={styles.textBlock}
-        />
+        <Skeleton className={styles.textBlock} />
 
         <div className={styles.footer}>
-            <Skeleton width="140px" height="40px" />
+            <Skeleton width='140px' height='40px' />
             <div className={styles.views}>
-                <Skeleton height="24px" width="35px" />
+                <Skeleton height='24px' width='35px' />
                 <Icon Icon={EyeIcon} />
             </div>
         </div>

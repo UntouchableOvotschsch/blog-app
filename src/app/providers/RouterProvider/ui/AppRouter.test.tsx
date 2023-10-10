@@ -2,7 +2,10 @@ import { screen } from '@testing-library/react';
 
 import { renderForTests } from '@/shared/config/jest/renderForTests';
 import {
-    getRouteAboutPage, getRouteAdminPage, getRouteForbiddenPage, getRouteProfilePage,
+    getRouteAboutPage,
+    getRouteAdminPage,
+    getRouteForbiddenPage,
+    getRouteProfilePage,
 } from '@/shared/const/router';
 import { UserRoles } from '@/entities/User';
 
@@ -34,19 +37,16 @@ describe('app/AppRouter', () => {
     });
 
     test('Authorized routing to ProfilePage', async () => {
-        renderForTests(
-            <AppRouter />,
-            {
-                route: getRouteProfilePage('1'),
-                initialState: {
-                    user: {
-                        authData: {
-                            id: '1',
-                        },
+        renderForTests(<AppRouter />, {
+            route: getRouteProfilePage('1'),
+            initialState: {
+                user: {
+                    authData: {
+                        id: '1',
                     },
                 },
             },
-        );
+        });
 
         const page = await screen.findByTestId('ProfilePage');
 
@@ -54,20 +54,17 @@ describe('app/AppRouter', () => {
     });
 
     test('Routing to admin page without Admin role', async () => {
-        renderForTests(
-            <AppRouter />,
-            {
-                route: getRouteForbiddenPage(),
-                initialState: {
-                    user: {
-                        authData: {
-                            id: '1',
-                            roles: [UserRoles.USER],
-                        },
+        renderForTests(<AppRouter />, {
+            route: getRouteForbiddenPage(),
+            initialState: {
+                user: {
+                    authData: {
+                        id: '1',
+                        roles: [UserRoles.USER],
                     },
                 },
             },
-        );
+        });
 
         const page = await screen.findByTestId('ForbiddenPage');
 
@@ -75,20 +72,17 @@ describe('app/AppRouter', () => {
     });
 
     test('Routing to admin page with Admin role', async () => {
-        renderForTests(
-            <AppRouter />,
-            {
-                route: getRouteAdminPage(),
-                initialState: {
-                    user: {
-                        authData: {
-                            id: '1',
-                            roles: [UserRoles.ADMIN],
-                        },
+        renderForTests(<AppRouter />, {
+            route: getRouteAdminPage(),
+            initialState: {
+                user: {
+                    authData: {
+                        id: '1',
+                        roles: [UserRoles.ADMIN],
                     },
                 },
             },
-        );
+        });
 
         const page = await screen.findByTestId('AdminPage');
 

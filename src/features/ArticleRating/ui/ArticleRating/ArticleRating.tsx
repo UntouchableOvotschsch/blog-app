@@ -10,7 +10,7 @@ import Skeleton from '@/shared/ui/Skeleton';
 import { getArticleRating, rateArticle } from '../../api/articleRatingApi';
 
 interface ArticleRatingProps {
-    articleId: string
+    articleId: string;
 }
 
 const ArticleRating = ({ articleId }: ArticleRatingProps) => {
@@ -21,19 +21,20 @@ const ArticleRating = ({ articleId }: ArticleRatingProps) => {
 
     const articleRating = data?.[0];
 
-    const acceptWithFeedback = useCallback((starCount: number, feedback?: string) => {
-        rateArticleMutation({
-            rating: starCount,
-            userId: userData?.id!,
-            feedback,
-            articleId,
-        });
-    }, [articleId, rateArticleMutation, userData?.id]);
+    const acceptWithFeedback = useCallback(
+        (starCount: number, feedback?: string) => {
+            rateArticleMutation({
+                rating: starCount,
+                userId: userData?.id!,
+                feedback,
+                articleId,
+            });
+        },
+        [articleId, rateArticleMutation, userData?.id],
+    );
 
     if (isRatingLoading || isMutationLoading) {
-        return (
-            <Skeleton width="100%" height="200px" />
-        );
+        return <Skeleton width='100%' height='200px' />;
     }
 
     return (

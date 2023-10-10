@@ -4,7 +4,7 @@ import { ArticleRatingType } from '../model/types/articleRating';
 
 const articleRatingApi = rtkApi.enhanceEndpoints({ addTagTypes: ['ArticleRating'] }).injectEndpoints({
     endpoints: (build) => ({
-        getArticleRating: build.query<ArticleRatingType[], { articleId: string, userId: string }>({
+        getArticleRating: build.query<ArticleRatingType[], { articleId: string; userId: string }>({
             query: ({ articleId, userId }) => ({
                 url: '/article-rating',
                 params: {

@@ -9,8 +9,8 @@ import { Button, ThemeButton } from '../Button';
 import Icon from '../Icon';
 
 interface CodeProps {
-    className?: string
-    textCode: string
+    className?: string;
+    textCode: string;
 }
 const Code = ({ textCode, className }: CodeProps) => {
     const [copied, setCopied] = useState(false);
@@ -21,32 +21,14 @@ const Code = ({ textCode, className }: CodeProps) => {
     return (
         <div className={classNames(styles.Code, {}, [className])}>
             <pre className={styles.container}>
-                <code className={styles.codeWrapper}>
-                    {textCode}
-                </code>
+                <code className={styles.codeWrapper}>{textCode}</code>
                 <div>
-                    <Button
-                        theme={ThemeButton.CLEAR}
-                        className={styles.copyBtn}
-                        onClick={onCopy}
-                    >
-                        {
-                            copied ? (
-                                <Icon
-                                    Icon={OkIcon}
-                                />
-                            ) : (
-                                <CopyIcon
-                                    className={styles.icon}
-                                />
-                            )
-                        }
-
+                    <Button theme={ThemeButton.CLEAR} className={styles.copyBtn} onClick={onCopy}>
+                        {copied ? <Icon Icon={OkIcon} /> : <CopyIcon className={styles.icon} />}
                     </Button>
                 </div>
             </pre>
         </div>
-
     );
 };
 

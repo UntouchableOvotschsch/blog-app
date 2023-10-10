@@ -5,11 +5,9 @@ import { CreateSliceOptions, SliceCaseReducers } from '@reduxjs/toolkit/dist';
 
 import { useAppDispatch } from '../hooks/useAppDispatch';
 
-export const buildSlice = <
-    State,
-    CaseReducers extends SliceCaseReducers<State>,
-    Name extends string = string
->(options: CreateSliceOptions<State, CaseReducers, Name>) => {
+export const buildSlice = <State, CaseReducers extends SliceCaseReducers<State>, Name extends string = string>(
+    options: CreateSliceOptions<State, CaseReducers, Name>,
+) => {
     const slice = createSlice(options);
 
     const useActions = (): typeof slice.actions => {

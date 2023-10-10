@@ -28,11 +28,11 @@ Light.args = {
     children: (
         <>
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text text="el1" />
+            <Text text='el1' />
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text text="el1" />
+            <Text text='el1' />
             {/* eslint-disable-next-line i18next/no-literal-string */}
-            <Text text="el1" />
+            <Text text='el1' />
         </>
     ),
 };

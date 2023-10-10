@@ -9,20 +9,14 @@ import { Portal } from '../Portal';
 
 interface DrawerProps {
     className?: string;
-    children?: ReactNode
+    children?: ReactNode;
     visible: boolean;
     changeVisibility: () => void;
-
 }
 
 const height = window.innerHeight - 100;
 
-const DrawerContent = ({
-    className,
-    children,
-    visible,
-    changeVisibility,
-}: DrawerProps) => {
+const DrawerContent = ({ className, children, visible, changeVisibility }: DrawerProps) => {
     const { Gesture, Spring } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
@@ -44,13 +38,7 @@ const DrawerContent = ({
         });
     };
     const bind = Gesture.useDrag(
-        ({
-            last,
-            velocity: [, vy],
-            direction: [, dy],
-            movement: [, my],
-            cancel,
-        }) => {
+        ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
             if (my < -70) cancel();
 
             if (last) {
@@ -64,7 +52,10 @@ const DrawerContent = ({
             }
         },
         {
-            from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
+            from: () => [0, y.get()],
+            filterTaps: true,
+            bounds: { top: 0 },
+            rubberband: true,
         },
     );
     const display = y.to((py) => (py < height ? 'block' : 'none'));

@@ -19,11 +19,5 @@ export default function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRu
 
     const cssLoader = buildCssLoader(isDev);
 
-    return [
-        fileLoader,
-        svgLoader,
-        tsBabelLoader,
-        tsxbabelLoader,
-        cssLoader,
-    ];
+    return [fileLoader, svgLoader, tsBabelLoader, tsxbabelLoader, cssLoader];
 }

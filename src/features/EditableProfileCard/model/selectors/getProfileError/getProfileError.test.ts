@@ -9,11 +9,9 @@ describe('getProfileError.test', () => {
         },
     };
     test('should return state', () => {
-        expect(getProfileError(state as StateSchema))
-            .toBe('Произошла ошибка');
+        expect(getProfileError(state as StateSchema)).toBe('Произошла ошибка');
     });
     test('with empty state', () => {
-        expect(getProfileError({} as StateSchema))
-            .toBe('');
+        expect(getProfileError({} as StateSchema)).toBe('');
     });
 });

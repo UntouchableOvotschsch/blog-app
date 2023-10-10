@@ -4,7 +4,7 @@ import styles from './ProgressBar.module.scss';
 
 interface ProgressBarProps {
     className?: string;
-    width?: string | number
+    width?: string | number;
 }
 
 const ProgressBar = ({ className, width }: ProgressBarProps) => (

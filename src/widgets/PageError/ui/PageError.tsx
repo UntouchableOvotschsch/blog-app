@@ -9,7 +9,7 @@ import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
 import styles from './PageError.module.scss';
 
 interface PageErrorProps {
-    className?: string
+    className?: string;
 }
 
 const reloadPage = () => {

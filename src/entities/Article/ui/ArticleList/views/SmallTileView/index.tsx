@@ -14,16 +14,16 @@ import SmallTileItemSkeleton from '../../../SmallTileItem/SmallTileItem.skeleton
 
 export enum SmallTileViewTypes {
     LIST = ArticleViewTypes.SMALL_TILE,
-    ROW = ArticleViewTypes.SMALL_TILE_ROW
+    ROW = ArticleViewTypes.SMALL_TILE_ROW,
 }
 
 interface SmallTileViewProps {
-    articles?: Article[]
-    isLoading?: boolean
-    onLoadNextPart?: () => void
+    articles?: Article[];
+    isLoading?: boolean;
+    onLoadNextPart?: () => void;
     target?: HTMLAttributeAnchorTarget;
-    view?: SmallTileViewTypes
-    Header?: ComponentType
+    view?: SmallTileViewTypes;
+    Header?: ComponentType;
 }
 
 const SmallTileView = ({
@@ -36,24 +36,25 @@ const SmallTileView = ({
 }: SmallTileViewProps) => {
     const { t } = useTranslation('articleList');
 
-    const renderArticleItem = useCallback((index: number, article: Article) => (
-        <SmallTileItem
-            article={article}
-            key={article.id}
-            target={target}
-            className={styles.card}
-        />
-    ), [target]);
+    const renderArticleItem = useCallback(
+        (index: number, article: Article) => (
+            <SmallTileItem
+                article={article}
+                key={article.id}
+                target={target}
+                className={styles.card}
+            />
+        ),
+        [target],
+    );
 
     const Footer = useCallback(() => {
         if (isLoading) {
             return (
                 <div className={styles.gridRow}>
-                    {
-                        new Array(20).fill(0).map((_, index) => (
-                            <SmallTileItemSkeleton className={styles.card} key={index} />
-                        ))
-                    }
+                    {new Array(20).fill(0).map((_, index) => (
+                        <SmallTileItemSkeleton className={styles.card} key={index} />
+                    ))}
                 </div>
             );
         }
@@ -89,18 +90,12 @@ const SmallTileView = ({
         }
         return (
             <div className={styles.SMALL_TILE_ROW}>
-                {
-                    articles?.map((article, index) => renderArticleItem(index, article))
-                }
+                {articles?.map((article, index) => renderArticleItem(index, article))}
             </div>
         );
     }, [Footer, Header, articles, onLoadNextPart, renderArticleItem, view]);
 
-    return (
-        <>
-            {renderList()}
-        </>
-    );
+    return <>{renderList()}</>;
 };
 
 export default SmallTileView;

@@ -6,21 +6,13 @@ import { getProfileValidationErrors } from '../getProfileValidationErrors';
 describe('getProfileValidationErrors.test', () => {
     const state: DeepPartial<StateSchema> = {
         profile: {
-            validationError: [
-                ProfileValidationErrors.INCORRECT_USER_DATA,
-                ProfileValidationErrors.INCORRECT_AGE,
-            ],
+            validationError: [ProfileValidationErrors.INCORRECT_USER_DATA, ProfileValidationErrors.INCORRECT_AGE],
         },
     };
     test('should return state', () => {
-        expect(getProfileValidationErrors(state as StateSchema))
-            .toEqual([
-                'INCORRECT_USER_DATA',
-                'INCORRECT_AGE',
-            ]);
+        expect(getProfileValidationErrors(state as StateSchema)).toEqual(['INCORRECT_USER_DATA', 'INCORRECT_AGE']);
     });
     test('with empty state', () => {
-        expect(getProfileValidationErrors({} as StateSchema))
-            .toEqual([]);
+        expect(getProfileValidationErrors({} as StateSchema)).toEqual([]);
     });
 });

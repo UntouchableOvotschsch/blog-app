@@ -28,9 +28,9 @@ import AuthWrapper from '../ui/wrappers/AuthWrapper';
 import RoleWrapper from '../ui/wrappers/RoleWrapper';
 
 export type AppRoutesProps = RouteProps & {
-    authOnly?: boolean
-    roles?: UserRoles[]
-}
+    authOnly?: boolean;
+    roles?: UserRoles[];
+};
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: getRouteMainPage(),

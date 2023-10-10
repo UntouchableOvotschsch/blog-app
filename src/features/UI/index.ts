@@ -3,13 +3,6 @@ import { getScrollPositions } from './model/selectors/getScrollPositions';
 import { uiActions, uiReducer } from './model/slice/uiSlice';
 import { UISchema } from './model/types/uiSchema';
 
-export {
-    uiReducer,
-    uiActions,
-    getScrollPositions,
-    getScrollPositionByPage,
-};
+export { uiReducer, uiActions, getScrollPositions, getScrollPositionByPage };
 
-export type {
-    UISchema,
-};
+export type { UISchema };
