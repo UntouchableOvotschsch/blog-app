@@ -1,20 +1,22 @@
 import { UserRoles } from '@/entities/User';
+import userImage from '@/shared/assets/tests/profileImage.jpg'
+import articleImage from '@/shared/assets/tests/articleLogo.png'
 
 import { ArticleBlockTypes, ArticleTypes } from '../consts';
 import { Article } from '../types/article';
+
 
 export const articleTemplate: Article = {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: articleImage,
     views: 1022,
     createdAt: '26.02.2022',
     user: {
         id: '1',
         username: 'Sergey',
-        // eslint-disable-next-line max-len
-        avatar: 'https://sun9-53.userapi.com/impg/Uv1iXOqHQ01p0t_9DosTyZ8xQ7XLTBmrmetw_w/N05oIgf44j0.jpg?size=2560x1707&quality=96&sign=af5a1bb22fdd9df08551bf2b4322a067&c_uniq_tag=5G-EKJZpc7rD0ixPEKBrzR81EReq-A4tMp4clyJWhCw&type=album',
+        avatar: userImage,
         roles: [UserRoles.ADMIN],
     },
     type: [ArticleTypes.IT, ArticleTypes.SCIENCE, ArticleTypes.ECONOMICS],

@@ -21,7 +21,7 @@
         "test:e2e": "npx cypress open",
         "test:ui": "npx loki test",
         "test:ui:approve": "npx loki approve",
-        "test:ui:ci": "npx loki --requireReference --reactUri file: ./storybook-static --chromeFlags=\"--headless --no-sandbox\"",
+        "test:ui:ci": "npx loki --requireReference --verboseRenderer --reactUri https://ornate-froyo-22b468.netlify.app",
         "storybook": "storybook dev -p 6006 -c ./config/storybook",
         "storybook:build": "storybook build -c ./config/storybook",
         "test:ui:report": "npm run visual:report:json && npm run visual:report:html",
@@ -88,7 +88,7 @@
         "jest-html-reporters": "^3.0.10",
         "json-server": "^0.17.0",
         "lint-staged": "^14.0.1",
-        "loki": "^0.31.2",
+        "loki": "^0.31.0",
         "mini-css-extract-plugin": "^2.5.3",
         "prettier": "3.0.3",
         "react-refresh": "^0.12.0",
@@ -130,6 +130,7 @@
         "react-virtuoso": "^4.5.0"
     },
     "loki": {
+        "chromeSelector": "#storybook-root > *",
         "fetchFailIgnore": "^http(.*)$",
         "chromeLoadTimeout": 5000,
         "looks-same": {
@@ -137,14 +138,14 @@
         },
         "configurations": {
             "chrome.laptop": {
-                "target": "chrome.app",
+                "target": "chrome.docker",
                 "width": 1366,
                 "height": 768,
                 "deviceScaleFactor": 1,
                 "mobile": false
             },
             "chrome.iphone7": {
-                "target": "chrome.app",
+                "target": "chrome.docker",
                 "preset": "iPhone 7"
             }
         }

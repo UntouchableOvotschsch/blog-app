@@ -10,28 +10,28 @@ npm run start:dev:vite - запуск frontend проекта в режиме р
 
 ## Скрипты
 
--   `npm run start` - запуск frontend проекта в режиме разработки на webpack
--   `npm run start:server` - запуск backend сервера
--   `npm run start:dev` - запуск frontend проекта в режиме разработки на webpack и backend сервера
--   `npm run start:dev:vite` - запуск frontend проекта в режиме разработки на vite и backend сервера
--   `npm run build:prod` - сборка проекта в production режиме на webpack
--   `npm run build:prod:vite` - сборка проекта в production режиме на vite
--   `npm run build:dev` - сборка проекта в development режиме на webpack (без минимизации)
--   `npm run lint:ts` - проверка ts/x файлов линтером
--   `npm run lint:ts:errors` - проверка ts/x файлов линтером только с выводом ошибок
--   `npm run lint:ts:fix` - исправление ts/x файлов линтером
--   `npm run lint:scss` - проверка scss файлов style линтером
--   `npm run lint:scss:fix` - исправление scss файлов style линтером
--   `npm run test:unit` - запуск unit тестов с jest
--   `npm run test:ui` - запуск скриншотных тестов с loki
--   `npm run test:ui:approve` - подтверждение новых скриншотов
--   `npm run test:ui:ci` - запуск скришотных тестов c loki для CI
--   `npm run storybook` - запуск витрины компонентов в storybook
--   `npm run storybook:build` - сборка storybook билда
--   `npm run test:ui:report` генерация отчета для скриншотных тестов
--   `npm run visual:report:json` - генерация json отчета для скриншотных тестов
--   `npm run visual:report:html` - генерация HTML отчета для скриншотных тестов
--   `npm run prepare` - запуск pre-commit хуков
+- `npm run start` - запуск frontend проекта в режиме разработки на webpack
+- `npm run start:server` - запуск backend сервера
+- `npm run start:dev` - запуск frontend проекта в режиме разработки на webpack и backend сервера
+- `npm run start:dev:vite` - запуск frontend проекта в режиме разработки на vite и backend сервера
+- `npm run build:prod` - сборка проекта в production режиме на webpack
+- `npm run build:prod:vite` - сборка проекта в production режиме на vite
+- `npm run build:dev` - сборка проекта в development режиме на webpack (без минимизации)
+- `npm run lint:ts` - проверка ts/x файлов линтером
+- `npm run lint:ts:errors` - проверка ts/x файлов линтером только с выводом ошибок
+- `npm run lint:ts:fix` - исправление ts/x файлов линтером
+- `npm run lint:scss` - проверка scss файлов style линтером
+- `npm run lint:scss:fix` - исправление scss файлов style линтером
+- `npm run test:unit` - запуск unit тестов с jest
+- `npm run test:ui` - запуск скриншотных тестов с loki
+- `npm run test:ui:approve` - подтверждение новых скриншотов
+- `npm run test:ui:ci` - запуск скришотных тестов c loki для CI
+- `npm run storybook` - запуск витрины компонентов в storybook
+- `npm run storybook:build` - сборка storybook билда
+- `npm run test:ui:report` генерация отчета для скриншотных тестов
+- `npm run visual:report:json` - генерация json отчета для скриншотных тестов
+- `npm run visual:report:html` - генерация HTML отчета для скриншотных тестов
+- `npm run prepare` - запуск pre-commit хуков
 
 ---
 
@@ -76,10 +76,10 @@ npm run start:dev:vite - запуск frontend проекта в режиме р
 
 ##### Запуск линтеров
 
--   `npm run lint:ts` - проверка ts файлов линтером
--   `npm run lint:ts:fix` - исправление ts файлов линтером
--   `npm run lint:scss` - проверка scss файлов style линтером
--   `npm run lint:scss:fix` - исправление scss файлов style линтером
+- `npm run lint:ts` - проверка ts файлов линтером
+- `npm run lint:ts:fix` - исправление ts файлов линтером
+- `npm run lint:scss` - проверка scss файлов style линтером
+- `npm run lint:scss:fix` - исправление scss файлов style линтером
 
 ---
 
@@ -184,9 +184,9 @@ export const Normal: Story = {
 
 Все конфигурации хранятся в /config
 
--   [/config/build](./config/build) - конфигурация webpack
--   [/config/jest](./config/jest) - конфигурация тестовой среды jest
--   [/config/storybook](./config/storybook) - конфигурация storybook
+- [/config/build](./config/build) - конфигурация webpack
+- [/config/jest](./config/jest) - конфигурация тестовой среды jest
+- [/config/storybook](./config/storybook) - конфигурация storybook
 
 В папке `scripts` находятся различные скрипты для рефакторинга и упрощения написания кода, генерации отчетов и тд.
 
@@ -294,53 +294,53 @@ export default Drawer;
 
 ## Страницы (pages)
 
--   [AboutPage](./src/pages/AboutPage)
--   [AdminPage](./src/pages/AdminPage)
--   [ArticleDetailsPage](./src/pages/ArticleDetailsPage)
--   [ArticleEditPage](./src/pages/ArticleEditPage)
--   [ArticlesPage](./src/pages/ArticlesPage)
--   [ForbiddenPage](./src/pages/ForbiddenPage)
--   [MainPage](./src/pages/MainPage)
--   [NotFoundPage](./src/pages/NotFoundPage)
--   [ProfilePage](./src/pages/ProfilePage)
+- [AboutPage](./src/pages/AboutPage)
+- [AdminPage](./src/pages/AdminPage)
+- [ArticleDetailsPage](./src/pages/ArticleDetailsPage)
+- [ArticleEditPage](./src/pages/ArticleEditPage)
+- [ArticlesPage](./src/pages/ArticlesPage)
+- [ForbiddenPage](./src/pages/ForbiddenPage)
+- [MainPage](./src/pages/MainPage)
+- [NotFoundPage](./src/pages/NotFoundPage)
+- [ProfilePage](./src/pages/ProfilePage)
 
 ## Виджеты (widgets)
 
--   [Navbar](./src/widgets/Navbar)
--   [PageError](./src/widgets/PageError)
--   [PageLoader](./src/widgets/PageLoader)
--   [Sidebar](./src/widgets/Sidebar)
+- [Navbar](./src/widgets/Navbar)
+- [PageError](./src/widgets/PageError)
+- [PageLoader](./src/widgets/PageLoader)
+- [Sidebar](./src/widgets/Sidebar)
 
 ## Фичи (features)
 
--   [ArticleComments](./src/features/ArticleComments)
--   [ArticleRating](./src/features/ArticleRating)
--   [ArticleRecommendationsList](./src/features/ArticleRecommendationsList)
--   [ArticleTypeTabs](./src/features/ArticleTypeTabs)
--   [AuthByUsername](./src/features/AuthByUsername)
--   [AvatarDropdown](./src/features/AvatarDropdown)
--   [ChangeViewType](./src/features/ChangeViewType)
--   [EditableProfileCard](./src/features/EditableProfileCard)
--   [LangSwitcher](./src/features/LangSwitcher)
--   [NotificationButton](./src/features/NotificationButton)
--   [SortSelector](./src/features/SortSelector)
--   [ThemeSwitcher](./src/features/ThemeSwitcher)
--   [UI](./src/features/UI)
+- [ArticleComments](./src/features/ArticleComments)
+- [ArticleRating](./src/features/ArticleRating)
+- [ArticleRecommendationsList](./src/features/ArticleRecommendationsList)
+- [ArticleTypeTabs](./src/features/ArticleTypeTabs)
+- [AuthByUsername](./src/features/AuthByUsername)
+- [AvatarDropdown](./src/features/AvatarDropdown)
+- [ChangeViewType](./src/features/ChangeViewType)
+- [EditableProfileCard](./src/features/EditableProfileCard)
+- [LangSwitcher](./src/features/LangSwitcher)
+- [NotificationButton](./src/features/NotificationButton)
+- [SortSelector](./src/features/SortSelector)
+- [ThemeSwitcher](./src/features/ThemeSwitcher)
+- [UI](./src/features/UI)
 
 ## Сущности (entities)
 
--   [Article](./src/entities/Article)
--   [Comment](./src/entities/Comment)
--   [Counter](./src/entities/Counter)
--   [Country](./src/entities/Country)
--   [Currency](./src/entities/Currency)
--   [Notification](./src/entities/Notification)
--   [Profile](./src/entities/Profile)
--   [Rating](./src/entities/Rating)
--   [User](./src/entities/User)
+- [Article](./src/entities/Article)
+- [Comment](./src/entities/Comment)
+- [Counter](./src/entities/Counter)
+- [Country](./src/entities/Country)
+- [Currency](./src/entities/Currency)
+- [Notification](./src/entities/Notification)
+- [Profile](./src/entities/Profile)
+- [Rating](./src/entities/Rating)
+- [User](./src/entities/User)
 
 # Доступ к проекту
 
--   [Демо проекта](https://master--mellifluous-zuccutto-14ad61.netlify.app/)
--   [API проекта](https://blogappserver-sergeypost.b4a.run)
--   Тестовые доступы: login - admin, password - 123
+- [Демо проекта](https://master--mellifluous-zuccutto-14ad61.netlify.app/)
+- [API проекта](https://blogappserver-sergeypost.b4a.run)
+- Тестовые доступы: login - admin, password - 123
