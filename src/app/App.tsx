@@ -2,7 +2,7 @@ import { FC, Suspense, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { getUserInited, userActions } from '@/entities/User';
+import { getUserInited, User, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Navbar } from '@/widgets/Navbar';
@@ -17,7 +17,7 @@ const App: FC = () => {
         //  Иначе стреляет стремной ошибкой о невозможности парсить такой JSON
         const user: string | null = localStorage.getItem(USER_LOCALSTORAGE_KEY);
         if (user) {
-            const parsedUser = JSON.parse(user);
+            const parsedUser: User = JSON.parse(user);
             dispatch(userActions.setAuthData(parsedUser));
         }
         dispatch(userActions.setInited(true));

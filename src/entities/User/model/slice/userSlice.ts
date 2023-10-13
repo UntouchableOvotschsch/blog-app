@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { setFeatureFlags } from '@/shared/lib/features/featureFlagsHandler';
+
 import { User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
@@ -12,12 +14,14 @@ const userSlice = createSlice({
     reducers: {
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
+            setFeatureFlags(action.payload?.features);
         },
         setInited: (state, { payload }: PayloadAction<boolean>) => {
             state._inited = payload;
         },
         removeAuthData: (state) => {
             state.authData = undefined;
+            setFeatureFlags({});
         },
     },
 });
