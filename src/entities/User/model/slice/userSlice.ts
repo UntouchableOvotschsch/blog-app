@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { setFeatureFlags } from '@/shared/lib/features/featureFlagsHandler';
 
+import { updateJsonSettingsService } from '../service/updateJsonSettings';
 import { User, UserSchema } from '../types/user';
 
 const initialState: UserSchema = {
@@ -23,6 +24,13 @@ const userSlice = createSlice({
             state.authData = undefined;
             setFeatureFlags({});
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(updateJsonSettingsService.fulfilled, (state, action) => {
+            if (state.authData) {
+                state.authData.jsonSettings = action.payload.jsonSettings;
+            }
+        });
     },
 });
 

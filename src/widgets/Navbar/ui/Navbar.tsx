@@ -1,13 +1,14 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
-import { getRouteArticleCreatePage } from '@/shared/const/router';
+import { getRouteArticleCreatePage, getRouteLogin } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ThemeButton } from '@/shared/ui/Button';
@@ -21,12 +22,19 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
+    const location = useLocation();
     const authData = useSelector(getUserAuthData);
     const [loginModal, setLoginModal] = useState(false);
 
     const loginModalVisibility = useCallback(() => {
         setLoginModal((prevState) => !prevState);
     }, []);
+
+    useEffect(() => {
+        if (location.pathname === getRouteLogin() && !authData) {
+            setLoginModal(true);
+        }
+    }, [authData, location.pathname, loginModalVisibility]);
 
     if (authData) {
         return (

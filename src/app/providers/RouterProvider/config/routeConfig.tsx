@@ -19,6 +19,7 @@ import {
     getRouteArticleEditPage,
     getRouteArticlesPage,
     getRouteForbiddenPage,
+    getRouteLogin,
     getRouteMainPage,
     getRouteNotFoundPage,
     getRouteProfilePage,
@@ -105,6 +106,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
                 <ForbiddenPage />
             </AuthWrapper>
         ),
+    },
+    [AppRoutes.LOGIN]: {
+        path: getRouteLogin(),
+        element: <MainPage />,
     },
 
     // last

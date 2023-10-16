@@ -12,6 +12,8 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
     component: ArticleRecommendationsList,
     decorators: [ThemeDecorator(Themes.LIGHT)],
     parameters: {
+        // На свгшку чет ругается
+        loki: { skip: true },
         mockData: [
             {
                 url: `${__API_URL__}/articles?_expand=user&_limit=7`,

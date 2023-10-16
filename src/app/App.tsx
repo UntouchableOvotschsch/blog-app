@@ -1,36 +1,61 @@
-import { FC, Suspense, useEffect } from 'react';
+import { FC, Suspense, useCallback, useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { getUserInited, User, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
+import { loginByUsername } from '@/features/AuthByUsername';
+import { Loader } from '@/shared/ui/Loader';
+import { getRouteLogin } from '@/shared/const/router';
 
 import { AppRouter } from './providers/RouterProvider';
 
 const App: FC = () => {
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
-    useEffect(() => {
-        //  Иначе стреляет стремной ошибкой о невозможности парсить такой JSON
-        const user: string | null = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+    const [loading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
+
+    const loginByLocalStorageData = useCallback(async () => {
+        const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
         if (user) {
-            const parsedUser: User = JSON.parse(user);
-            dispatch(userActions.setAuthData(parsedUser));
+            const { username, password }: User = JSON.parse(user);
+            try {
+                await dispatch(loginByUsername({ username, password: password! })).unwrap();
+            } catch (e) {
+                navigate(getRouteLogin());
+            } finally {
+                dispatch(userActions.setInited(true));
+                setIsLoading(false);
+            }
+        } else {
+            setIsLoading(false);
+            dispatch(userActions.setInited(true));
         }
-        dispatch(userActions.setInited(true));
-    }, [dispatch]);
+    }, [dispatch, navigate]);
+
+    useEffect(() => {
+        loginByLocalStorageData().then();
+    }, [loginByLocalStorageData]);
 
     return (
         <div className='app'>
             <Suspense fallback=''>
-                <Navbar />
-                <div className='content'>
-                    <Sidebar />
-                    {inited && <AppRouter />}
-                </div>
+                {loading ? (
+                    <Loader className='appLoader' />
+                ) : (
+                    <>
+                        <Navbar />
+                        <div className='content'>
+                            <Sidebar />
+                            {inited && <AppRouter />}
+                        </div>
+                    </>
+                )}
             </Suspense>
         </div>
     );

@@ -26,6 +26,12 @@ body {
     width: 100%;
 }
 
+.appLoader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
 *::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: var(--bg-color);
