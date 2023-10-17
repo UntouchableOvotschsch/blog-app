@@ -36,6 +36,9 @@ const ArticleDetailsPage = () => {
         }
     };
 
+
+
+
     return (
         <PageWrapper className={styles.pageWrapper} onScroll={scrollHandler}>
             {needBar && <ProgressBar width={width} />}
