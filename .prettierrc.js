@@ -3,10 +3,11 @@ module.exports = {
     semi: true,
     singleQuote: true,
     jsxSingleQuote: true,
-    trailingComma: "all",
+    trailingComma: 'all',
     bracketSpacing: true,
     bracketSameLine: false,
-    arrowParens: "always",
+    arrowParens: 'always',
     printWidth: 120,
-    endOfLine: process.platform === 'win32' ? 'crlf' : 'lf'
-}
+    endOfLine: process.platform === 'win32' ? 'crlf' : 'lf',
+    jsxBracketSameLine: true,
+};

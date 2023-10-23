@@ -4,26 +4,22 @@
 @import "./themes/dark";
 @import "./themes/orange";
 
-body {
+.app {
+    background: var(--bg-color);
+    min-height: 100vh;
     font: var(--font-m);
     color: var(--primary-color);
 }
 
-.app {
-    background: var(--bg-color);
+.app_redesigned {
+    background: var(--bg-color-redesigned);
     min-height: 100vh;
+    font: var(--font-m-redesigned);
+    color: var(--text-color);
 }
 
 .content {
     display: flex;
-}
-
-.wrapper {
-    flex-grow: 1;
-    padding: 20px;
-    height: calc(100vh - var(--navbar-height));
-    overflow-y: auto;
-    width: 100%;
 }
 
 .appLoader {

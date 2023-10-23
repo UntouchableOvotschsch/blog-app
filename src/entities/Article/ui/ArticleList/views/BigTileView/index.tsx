@@ -5,6 +5,7 @@ import { Virtuoso } from 'react-virtuoso';
 
 import { Button } from '@/shared/ui/Button';
 import Text, { TextSize } from '@/shared/ui/Text';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import styles from './BigTileView.module.scss';
 import { Article } from '../../../../model/types/article';
@@ -24,12 +25,7 @@ const BigTileView = ({ articles, isLoading, target, onLoadNextPart, Header }: Bi
 
     const renderArticleItem = useCallback(
         (index: number, article: Article) => (
-            <BigTileItem
-                article={article}
-                key={article.id}
-                target={target}
-                className={styles.card}
-            />
+            <BigTileItem article={article} key={article.id} target={target} className={styles.card} />
         ),
         [target],
     );
@@ -58,15 +54,34 @@ const BigTileView = ({ articles, isLoading, target, onLoadNextPart, Header }: Bi
     }, [isLoading, t]);
 
     return (
-        <Virtuoso
-            data={articles}
-            totalCount={articles?.length}
-            itemContent={renderArticleItem}
-            components={{
-                Header,
-                Footer,
-            }}
-            endReached={onLoadNextPart}
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            on={
+                <Virtuoso
+                    useWindowScroll
+                    data={articles}
+                    totalCount={articles?.length}
+                    itemContent={renderArticleItem}
+                    components={{
+                        Header,
+                        Footer,
+                    }}
+                    endReached={onLoadNextPart}
+                />
+            }
+            off={
+                <Virtuoso
+                    data={articles}
+                    totalCount={articles?.length}
+                    itemContent={renderArticleItem}
+                    components={{
+                        Header,
+                        Footer,
+                    }}
+                    endReached={onLoadNextPart}
+                />
+            }
         />
     );
 };

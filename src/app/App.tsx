@@ -11,6 +11,8 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { loginByUsername } from '@/features/AuthByUsername';
 import { Loader } from '@/shared/ui/Loader';
 import { getRouteLogin } from '@/shared/const/router';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import { MainLayout } from '@/shared/layouts';
 
 import { AppRouter } from './providers/RouterProvider';
 
@@ -43,21 +45,40 @@ const App: FC = () => {
     }, [loginByLocalStorageData]);
 
     return (
-        <div className='app'>
-            <Suspense fallback=''>
-                {loading ? (
-                    <Loader className='appLoader' />
-                ) : (
-                    <>
-                        <Navbar />
-                        <div className='content'>
-                            <Sidebar />
-                            {inited && <AppRouter />}
-                        </div>
-                    </>
-                )}
-            </Suspense>
-        </div>
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            off={
+                <div className='app'>
+                    <Suspense fallback=''>
+                        {loading ? (
+                            <Loader className='appLoader' />
+                        ) : (
+                            <>
+                                <Navbar />
+                                <div className='content'>
+                                    <Sidebar />
+                                    {inited && <AppRouter />}
+                                </div>
+                            </>
+                        )}
+                    </Suspense>
+                </div>
+            }
+            on={
+                <div className='app_redesigned'>
+                    <Suspense fallback=''>
+                        {loading ? (
+                            <Loader className='appLoader' />
+                        ) : (
+                            <Suspense fallback=''>
+                                <MainLayout sidebar={<Sidebar />} content={<AppRouter />} header={<Navbar />} />
+                            </Suspense>
+                        )}
+                    </Suspense>
+                </div>
+            }
+        />
     );
 };
 

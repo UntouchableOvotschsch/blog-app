@@ -9,6 +9,7 @@ import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import PageWrapper from '@/shared/ui/PageWrapper';
 import Text, { ThemeText } from '@/shared/ui/Text';
+import { toggleFeature } from '@/shared/lib/features/toggleFeature';
 
 import styles from './ArticlesPage.module.scss';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
@@ -50,9 +51,15 @@ const ArticlesPage = () => {
         }
     }, [dispatch, search, searchParams, setSearchParams, sortField, sortOrder, types]);
 
+    const pageWrapperClassName = toggleFeature({
+        name: 'isAppRedesigned',
+        on: () => classNames('', mods, []),
+        off: () => classNames(styles.ArticlePage, mods, []),
+    });
+
     return (
         <DynamicModuleLoader reducerList={reducers} dontRemoveAfterUnmount>
-            <PageWrapper className={classNames(styles.ArticlePage, mods, [])} data-testid='ArticlesPage'>
+            <PageWrapper className={pageWrapperClassName} data-testid='ArticlesPage'>
                 {error ? (
                     <Text title={t('Произошла ошибка при загрузке статей')} theme={ThemeText.ERROR} />
                 ) : (

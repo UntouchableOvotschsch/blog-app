@@ -5,12 +5,14 @@ import { VirtuosoGrid } from 'react-virtuoso';
 
 import { Button } from '@/shared/ui/Button';
 import Text, { TextSize } from '@/shared/ui/Text';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
-import styles from './SmallTileView.module.scss';
+
 import { ArticleViewTypes } from '../../../../model/consts';
 import { Article } from '../../../../model/types/article';
 import SmallTileItem from '../../../SmallTileItem';
 import SmallTileItemSkeleton from '../../../SmallTileItem/SmallTileItem.skeleton';
+import styles from './SmallTileView.module.scss';
 
 export enum SmallTileViewTypes {
     LIST = ArticleViewTypes.SMALL_TILE,
@@ -74,17 +76,37 @@ const SmallTileView = ({
     const renderList = useCallback(() => {
         if (view === SmallTileViewTypes.LIST) {
             return (
-                <VirtuosoGrid
-                    style={{ overflowX: 'hidden' }}
-                    data={articles}
-                    totalCount={articles?.length}
-                    itemContent={renderArticleItem}
-                    components={{
-                        Header,
-                        Footer,
-                    }}
-                    endReached={onLoadNextPart}
-                    listClassName={styles.gridRow}
+                <ToggleFeatureComponent
+                    /* eslint-disable-next-line i18next/no-literal-string */
+                    name="isAppRedesigned"
+                    on={(
+                        <VirtuosoGrid
+                            style={{ overflowX: 'hidden' }}
+                            data={articles}
+                            totalCount={articles?.length}
+                            itemContent={renderArticleItem}
+                            components={{
+                                Header,
+                                Footer,
+                            }}
+                            endReached={onLoadNextPart}
+                            listClassName={styles.gridRow}
+                        />
+                    )}
+                    off={(
+                        <VirtuosoGrid
+                            style={{ overflowX: 'hidden' }}
+                            data={articles}
+                            totalCount={articles?.length}
+                            itemContent={renderArticleItem}
+                            components={{
+                                Header,
+                                Footer,
+                            }}
+                            endReached={onLoadNextPart}
+                            listClassName={styles.gridRow}
+                        />
+                    )}
                 />
             );
         }

@@ -1,0 +1,51 @@
+.Sidebar {
+    height: calc(100vh - var(--navbar-height));
+    width: var(--sidebar-width);
+    background: var(--inverted-bg-color);
+    transition: width 0.2s;
+    flex-shrink: 0;
+
+    &.mobile {
+        z-index: var(--z-index-modal);
+        position: absolute;
+    }
+
+    &.desktop {
+        position: relative;
+    }
+}
+
+.menu {
+    margin: 20px 0 0 30px;
+}
+
+.switchers {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.lngSwitcher {
+    color: var(--bg-color);
+}
+
+.lngBtn {
+    background-color: red;
+}
+
+.collapsedBtn {
+    position: absolute;
+    bottom: 32px;
+    right: -32px;
+    z-index: 10;
+}
+
+.collapsed {
+    &.mobile {
+        width: 0;
+    }
+
+    &.desktop {
+        width: var(--sidebar-width-collapsed);
+    }
+}
