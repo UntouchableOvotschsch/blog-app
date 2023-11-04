@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
 
-import DarkLogo from '@/shared/assets/icons/theme-dark.svg';
-import LightLogo from '@/shared/assets/icons/theme-light.svg';
-import OrangeLogo from '@/shared/assets/icons/theme-orange.svg';
+import ThemeLogo from '@/shared/assets/icons/theme-dark.svg';
+import Icon from '@/shared/ui/Icon';
 
 export enum Themes {
     LIGHT = 'app_light_theme',
@@ -11,7 +10,7 @@ export enum Themes {
 }
 
 export const ThemesConfig: Record<Themes, ReactNode> = {
-    [Themes.LIGHT]: <LightLogo />,
-    [Themes.DARK]: <DarkLogo />,
-    [Themes.ORANGE]: <OrangeLogo />,
+    [Themes.LIGHT]: <Icon Icon={ThemeLogo} size='40' fill='inverted' />,
+    [Themes.DARK]: <Icon Icon={ThemeLogo} size='40' fill='inverted' />,
+    [Themes.ORANGE]: <Icon Icon={ThemeLogo} size='40' fill='inverted' />,
 };

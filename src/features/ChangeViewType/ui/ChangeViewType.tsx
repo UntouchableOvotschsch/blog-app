@@ -42,8 +42,7 @@ const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewT
                     theme={ThemeButton.CLEAR}
                     onClick={changeViewType(view.type)}
                     key={view.type}
-                    disabled={currentView === view.type}
-                >
+                    disabled={currentView === view.type}>
                     <Icon
                         Icon={view.icon}
                         className={classNames(
