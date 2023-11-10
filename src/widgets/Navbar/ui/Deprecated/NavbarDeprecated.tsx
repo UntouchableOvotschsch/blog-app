@@ -10,8 +10,8 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreatePage, getRouteLogin } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/Stack';
 
 import styles from './Navbar.Deprecated.module.scss';

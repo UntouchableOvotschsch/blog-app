@@ -2,9 +2,9 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button';
+import { Button, SizeButton, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import Text, { ThemeText } from '@/shared/ui/Text';
+import Text, { ThemeText } from '@/shared/ui/deprecated/Text';
 
 import { ProfileValidationErrors } from '../../model/consts';
 
@@ -44,8 +44,7 @@ const EditableProfileCardFooter = ({ validationErrors, editable, updateProfile }
                     theme={ThemeButton.OUTLINE}
                     onClick={updateProfile}
                     size={SizeButton.M}
-                    data-testid='EditableProfileCardFooter.SaveBtn'
-                >
+                    data-testid='EditableProfileCardFooter.SaveBtn'>
                     {t('Сохранить')}
                 </Button>
             )}

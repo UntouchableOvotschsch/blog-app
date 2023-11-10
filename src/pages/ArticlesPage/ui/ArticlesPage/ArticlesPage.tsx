@@ -7,8 +7,8 @@ import { useSearchParams } from 'react-router-dom';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import Text, { ThemeText } from '@/shared/ui/Text';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
+import Text, { ThemeText } from '@/shared/ui/deprecated/Text';
 import { toggleFeature } from '@/shared/lib/features/toggleFeature';
 
 import styles from './ArticlesPage.module.scss';

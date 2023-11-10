@@ -4,10 +4,10 @@ import { NotificationList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import Drawer from '@/shared/ui/Drawer';
-import Icon from '@/shared/ui/Icon';
-import { Popover } from '@/shared/ui/Popups';
+import Icon from '@/shared/ui/deprecated/Icon';
+import { Popover } from '@/shared/ui/deprecated/Popups';
 
 import styles from './NotificationButton.module.scss';
 
@@ -44,8 +44,7 @@ const NotificationButton = ({ className }: NotificationButtonProps) => {
                 <Button theme={ThemeButton.CLEAR}>
                     <Icon Icon={NotificationIcon} fill='inverted' />
                 </Button>
-            }
-        >
+            }>
             <NotificationList className={classNames(styles.NotificationList, {}, [styles.desktop])} />
         </Popover>
     );

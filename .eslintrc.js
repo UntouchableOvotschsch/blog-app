@@ -46,6 +46,8 @@ module.exports = {
                     'cardTheme',
                     'fill',
                     'size',
+                    'variant',
+                    'theme'
                 ],
             },
         ],

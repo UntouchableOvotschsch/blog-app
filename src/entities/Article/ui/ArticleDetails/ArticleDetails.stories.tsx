@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
-import PageWrapper from '@/shared/ui/PageWrapper';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 
 import ArticleDetails from '.';
 import { articleTemplate } from '../../model/templates/article';

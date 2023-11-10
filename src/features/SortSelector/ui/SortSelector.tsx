@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 
 import SortArrow from '@/shared/assets/icons/sort-arrow.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import Icon from '@/shared/ui/Icon';
-import { Select, SelectContainerTheme, SelectOptions } from '@/shared/ui/Popups';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Icon from '@/shared/ui/deprecated/Icon';
+import { Select, SelectContainerTheme, SelectOptions } from '@/shared/ui/deprecated/Popups';
 import { HStack } from '@/shared/ui/Stack';
 
 import styles from './SortSelector.module.scss';

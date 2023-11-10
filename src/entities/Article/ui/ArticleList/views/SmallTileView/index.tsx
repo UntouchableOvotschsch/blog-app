@@ -3,10 +3,9 @@ import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 're
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 
-import { Button } from '@/shared/ui/Button';
-import Text, { TextSize } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/deprecated/Button';
+import Text, { TextSize } from '@/shared/ui/deprecated/Text';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
-
 
 import { ArticleViewTypes } from '../../../../model/consts';
 import { Article } from '../../../../model/types/article';
@@ -40,12 +39,7 @@ const SmallTileView = ({
 
     const renderArticleItem = useCallback(
         (index: number, article: Article) => (
-            <SmallTileItem
-                article={article}
-                key={article.id}
-                target={target}
-                className={styles.card}
-            />
+            <SmallTileItem article={article} key={article.id} target={target} className={styles.card} />
         ),
         [target],
     );
@@ -78,8 +72,8 @@ const SmallTileView = ({
             return (
                 <ToggleFeatureComponent
                     /* eslint-disable-next-line i18next/no-literal-string */
-                    name="isAppRedesigned"
-                    on={(
+                    name='isAppRedesigned'
+                    on={
                         <VirtuosoGrid
                             style={{ overflowX: 'hidden' }}
                             data={articles}
@@ -92,8 +86,8 @@ const SmallTileView = ({
                             endReached={onLoadNextPart}
                             listClassName={styles.gridRow}
                         />
-                    )}
-                    off={(
+                    }
+                    off={
                         <VirtuosoGrid
                             style={{ overflowX: 'hidden' }}
                             data={articles}
@@ -106,7 +100,7 @@ const SmallTileView = ({
                             endReached={onLoadNextPart}
                             listClassName={styles.gridRow}
                         />
-                    )}
+                    }
                 />
             );
         }

@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { useGetArticleDetailsQuery } from '@/entities/Article';
 import { getUserAuthData, getUserIsAdmin } from '@/entities/User';
 import { getRouteArticleEditPage, getRouteArticlesPage } from '@/shared/const/router';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/Stack';
-import Text from '@/shared/ui/Text';
+import Text from '@/shared/ui/deprecated/Text';
 
 import styles from './ArticleDetailsPageHeader.module.scss';
 

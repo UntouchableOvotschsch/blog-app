@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Code from '@/shared/ui/Code';
+import Code from '@/shared/ui/deprecated/Code';
 
 import styles from './ArticleCodeBlockCom.module.scss';
 import { ArticleCodeBlock } from '../../model/types/article';

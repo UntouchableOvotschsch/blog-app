@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 import { CountrySelect } from '@/entities/Country';
 import { CurrencySelect } from '@/entities/Currency';
-import Avatar from '@/shared/ui/Avatar';
-import Input from '@/shared/ui/Input';
-import { Loader } from '@/shared/ui/Loader';
+import Avatar from '@/shared/ui/deprecated/Avatar';
+import Input from '@/shared/ui/deprecated/Input';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 import { VStack } from '@/shared/ui/Stack';
-import Text, { TextAlign, ThemeText } from '@/shared/ui/Text';
+import Text, { TextAlign, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import styles from './ProfileCard.module.scss';
 import { ProfileType } from '../../model/types/profile';

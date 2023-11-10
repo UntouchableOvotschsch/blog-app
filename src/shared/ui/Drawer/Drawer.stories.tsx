@@ -7,7 +7,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
 
 import Drawer from '../Drawer';
-import Text from '../Text';
+import Text from '../deprecated/Text';
 
 export default {
     title: 'shared/Drawer',

@@ -3,8 +3,8 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button } from '@/shared/ui/Button';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/deprecated/Button';
+import Text, { TextSize, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import styles from './PageError.module.scss';
 

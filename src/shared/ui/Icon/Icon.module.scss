@@ -1,9 +1,8 @@
-.primary {
-    fill: var(--primary-color);
-    color: var(--primary-color);
+.Icon {
+    fill: var(--icon-color);
+    color: var(--icon-color);
 }
 
-.inverted {
-    fill: var(--inverted-primary-color);
-    color: var(--inverted-primary-color);
+.button:hover .Icon {
+    color: var(--accent-color);
 }

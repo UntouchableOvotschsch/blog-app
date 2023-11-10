@@ -6,8 +6,8 @@ import { ArticleDetails } from '@/entities/Article';
 import { ArticleComments } from '@/features/ArticleComments';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
-import PageWrapper from '@/shared/ui/PageWrapper';
-import ProgressBar from '@/shared/ui/ProgressBar';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
+import ProgressBar from '@/shared/ui/deprecated/ProgressBar';
 import { VStack } from '@/shared/ui/Stack';
 
 import styles from './ArticleDetailsPage.module.scss';
@@ -35,9 +35,6 @@ const ArticleDetailsPage = () => {
             setWidth(percent > 100 ? 100 : percent);
         }
     };
-
-
-
 
     return (
         <PageWrapper className={styles.pageWrapper} onScroll={scrollHandler}>

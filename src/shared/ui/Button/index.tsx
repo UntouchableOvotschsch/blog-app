@@ -1,62 +1,34 @@
-import React, { memo } from 'react';
+import React from 'react';
 
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
-import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
+import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './Button.module.scss';
 
-export enum ThemeButton {
-    CLEAR = 'clear',
-    CLEAR_INVERTED = 'clearInverted',
-    OUTLINE = 'outline',
-    OUTLINE_RED = 'outlineRed',
-    BACKGROUND = 'background',
-    BACKGROUND_INVERTED = 'background_inverted',
-}
+type ThemeVariant = 'clear' | 'outline';
 
-export enum SizeButton {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl',
-}
+type SizeVariant = 'size_m' | 'size_l' | 'size_xl';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme?: ThemeButton;
-    square?: boolean;
-    size?: SizeButton;
+    theme?: ThemeVariant;
+    size?: SizeVariant;
     disabled?: boolean;
 }
 
-export const Button = memo((props: ButtonProps) => {
-    const isMobile = useDeviceDetect();
-    const {
-        className,
-        children,
-        theme = ThemeButton.OUTLINE,
-        square,
-        size = SizeButton.M,
-        disabled,
-        ...otherProps
-    } = props;
+export const Button = typedMemo((props: ButtonProps) => {
+    const { className, children, theme = 'clear', size = 'size_m', disabled, ...otherProps } = props;
 
     const mods: Mods = {
-        [styles.square]: square,
         [styles.disabled]: disabled,
     };
 
     return (
         <button
             type='button'
-            className={classNames(styles.Button, mods, [
-                !isMobile && styles.desktop,
-                styles[theme],
-                styles[size],
-                className,
-            ])}
+            className={classNames(styles.Button, mods, [styles[theme], styles[size], className])}
             disabled={disabled}
-            {...otherProps}
-        >
+            {...otherProps}>
             {children}
         </button>
     );

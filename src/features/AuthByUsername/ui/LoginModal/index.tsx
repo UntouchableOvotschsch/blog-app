@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
 import Drawer from '@/shared/ui/Drawer';
-import { Loader } from '@/shared/ui/Loader';
-import { Modal } from '@/shared/ui/Modal';
+import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Modal } from '@/shared/ui/deprecated/Modal';
 
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 

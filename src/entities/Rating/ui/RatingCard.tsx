@@ -4,14 +4,14 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import Card from '@/shared/ui/Card';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Card from '@/shared/ui/deprecated/Card';
 import Drawer from '@/shared/ui/Drawer';
-import Input from '@/shared/ui/Input';
-import { Modal } from '@/shared/ui/Modal';
+import Input from '@/shared/ui/deprecated/Input';
+import { Modal } from '@/shared/ui/deprecated/Modal';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import StarRating from '@/shared/ui/StarRating';
-import Text, { TextAlign } from '@/shared/ui/Text';
+import StarRating from '@/shared/ui/deprecated/StarRating';
+import Text, { TextAlign } from '@/shared/ui/deprecated/Text';
 
 import styles from './RatingCard.module.scss';
 
@@ -110,8 +110,7 @@ const RatingCard = (props: RatingCardProps) => {
                 <Card
                     cardTheme='transparent'
                     className={styles.feedbackContainer}
-                    data-testid='RatingCard.Feedback.Content'
-                >
+                    data-testid='RatingCard.Feedback.Content'>
                     <VStack align='start' gap='32'>
                         <Text title={feedbackTitle} />
                         <Input
@@ -124,22 +123,19 @@ const RatingCard = (props: RatingCardProps) => {
                             <Button
                                 theme={ThemeButton.OUTLINE_RED}
                                 onClick={cancelHandle}
-                                data-testid='RatingCard.Feedback.Button.Cancel'
-                            >
+                                data-testid='RatingCard.Feedback.Button.Cancel'>
                                 {t('Отменить')}
                             </Button>
                             {feedbackValue ? (
                                 <Button
                                     onClick={acceptWithFeedbackHandle}
-                                    data-testid='RatingCard.Feedback.Button.SaveWithFeedback'
-                                >
+                                    data-testid='RatingCard.Feedback.Button.SaveWithFeedback'>
                                     {t('Сохранить')}
                                 </Button>
                             ) : (
                                 <Button
                                     onClick={acceptWithoutFeedbackHandle}
-                                    data-testid='RatingCard.Feedback.Button.SaveWithoutFeedback'
-                                >
+                                    data-testid='RatingCard.Feedback.Button.SaveWithoutFeedback'>
                                     {t('Сохранить без отзыва')}
                                 </Button>
                             )}

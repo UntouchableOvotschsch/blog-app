@@ -3,8 +3,8 @@ import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 're
 import { useTranslation } from 'react-i18next';
 import { Virtuoso } from 'react-virtuoso';
 
-import { Button } from '@/shared/ui/Button';
-import Text, { TextSize } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/deprecated/Button';
+import Text, { TextSize } from '@/shared/ui/deprecated/Text';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import styles from './BigTileView.module.scss';

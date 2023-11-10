@@ -5,7 +5,7 @@ import { UserRoles } from '@/entities/User';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
-import PageWrapper from '@/shared/ui/PageWrapper';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 
 import ArticleDetailsPage from '.';
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Card from '@/shared/ui/Card';
-import Icon from '@/shared/ui/Icon';
-import Skeleton from '@/shared/ui/Skeleton';
+import Card from '@/shared/ui/deprecated/Card';
+import Icon from '@/shared/ui/deprecated/Icon';
+import Skeleton from '@/shared/ui/deprecated/Skeleton';
 
 import styles from './SmallTileItem.module.scss';
 

@@ -4,7 +4,7 @@ import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/Ani
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import styles from './Drawer.module.scss';
-import Overlay from '../Overlay';
+import Overlay from '../deprecated/Overlay';
 import { Portal } from '../Portal';
 
 interface DrawerProps {
@@ -72,8 +72,7 @@ const DrawerContent = ({ className, children, visible, changeVisibility }: Drawe
                     className={styles.content}
                     onClick={(event) => event.stopPropagation()}
                     style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-                    {...bind()}
-                >
+                    {...bind()}>
                     {children}
                 </Spring.a.div>
             </div>

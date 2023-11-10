@@ -1,29 +1,24 @@
-import React, { memo } from 'react';
+import React, { ReactNode } from 'react';
 
 import { Link, LinkProps } from 'react-router-dom';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
+import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './AppLink.module.scss';
 
-export enum AppLinkTheme {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-}
+type AppLinkVariant = 'primary' | 'red';
 
 interface AppLinkProps extends LinkProps {
     className?: string;
-    theme?: AppLinkTheme;
+    variant?: AppLinkVariant;
+    children?: ReactNode;
 }
 
-export const AppLink = memo((props: AppLinkProps) => {
-    const { className, children, to, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
+export const AppLink = typedMemo((props: AppLinkProps) => {
+    const { className, children, to, variant = 'primary', ...otherProps } = props;
     return (
-        <Link
-            to={__PROJECT__ !== 'storybook' ? to : '#'}
-            className={classNames(styles.AppLink, {}, [styles[theme], className])}
-            {...otherProps}
-        >
+        <Link to={to} className={classNames(styles.AppLink, {}, [className, styles[variant]])} {...otherProps}>
             {children}
         </Link>
     );

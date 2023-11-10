@@ -11,8 +11,8 @@ import { ARTICLE_VIEW_KEY } from '@/shared/const/localStorage';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import Card from '@/shared/ui/Card';
-import Input, { InputAlign } from '@/shared/ui/Input';
+import Card from '@/shared/ui/deprecated/Card';
+import Input, { InputAlign } from '@/shared/ui/deprecated/Input';
 
 import styles from './ArticleFilters.module.scss';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';

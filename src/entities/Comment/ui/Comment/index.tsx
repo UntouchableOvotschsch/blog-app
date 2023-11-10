@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next';
 
 import { getRouteProfilePage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import Avatar from '@/shared/ui/Avatar';
-import Text, { TextAlign, TextSize } from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import Avatar from '@/shared/ui/deprecated/Avatar';
+import Text, { TextAlign, TextSize } from '@/shared/ui/deprecated/Text';
 
 import styles from './Comment.module.scss';
 import { CommentType } from '../../model/types/comment';
@@ -22,12 +22,7 @@ const Comment = ({ className, comment }: CommentProps) => {
         <div className={classNames(styles.container, {}, [className])} data-testid='CommentItem'>
             <AppLink className={styles.userInfo} to={getRouteProfilePage(user.id)}>
                 {user?.avatar && (
-                    <Avatar
-                        avatar={user?.avatar}
-                        alt={t('Аватар пользователя')}
-                        width='50px'
-                        height='50px'
-                    />
+                    <Avatar avatar={user?.avatar} alt={t('Аватар пользователя')} width='50px' height='50px' />
                 )}
                 <Text text={user.username} size={TextSize.L} align={TextAlign.CENTER} />
             </AppLink>

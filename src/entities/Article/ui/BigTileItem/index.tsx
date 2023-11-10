@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getRouteArticleDetailsPage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import Card from '@/shared/ui/Card';
-import Icon from '@/shared/ui/Icon';
-import Text from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Card from '@/shared/ui/deprecated/Card';
+import Icon from '@/shared/ui/deprecated/Icon';
+import Text from '@/shared/ui/deprecated/Text';
 import AppImage from '@/shared/ui/AppImage';
-import Skeleton from '@/shared/ui/Skeleton';
-import Avatar from '@/shared/ui/Avatar';
+import Skeleton from '@/shared/ui/deprecated/Skeleton';
+import Avatar from '@/shared/ui/deprecated/Avatar';
 
 import styles from './BigTileItem.module.scss';
 import { ArticleBlockTypes } from '../../model/consts';
@@ -38,12 +38,7 @@ const BigTileItem = ({ article, target, className }: BigTileItemProps) => {
         <Card className={classNames(styles.container, {}, [className])}>
             <div className={styles.header}>
                 <div className={styles.userInfo}>
-                    <Avatar
-                        avatar={article.user?.avatar}
-                        alt={article.user?.username}
-                        width='50px'
-                        height='50px'
-                    />
+                    <Avatar avatar={article.user?.avatar} alt={article.user?.username} width='50px' height='50px' />
                     <Text title={article.user.username} />
                 </div>
                 <Text title={article.createdAt} />

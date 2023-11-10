@@ -8,7 +8,7 @@ import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/Dynami
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { VStack } from '@/shared/ui/Stack';
-import Text, { TextSize } from '@/shared/ui/Text';
+import Text, { TextSize } from '@/shared/ui/deprecated/Text';
 
 import { getArticleCommentsLoading } from '../model/selectors/getArticleCommentsLoading';
 import { addNewCommentToArticleService } from '../model/service/addNewCommentToArticle';

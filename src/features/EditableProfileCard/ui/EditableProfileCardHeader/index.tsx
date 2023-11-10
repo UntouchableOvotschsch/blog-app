@@ -3,9 +3,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/Stack';
-import Text from '@/shared/ui/Text';
+import Text from '@/shared/ui/deprecated/Text';
 
 import { getProfileCanEdit } from '../../model/selectors/getProfileCanEdit';
 
@@ -34,8 +34,7 @@ const EditableProfileCardHeader = ({
                         <Button
                             theme={ThemeButton.OUTLINE_RED}
                             onClick={cancelEditMode}
-                            data-testid='EditableProfileCardHeader.CancelBtn'
-                        >
+                            data-testid='EditableProfileCardHeader.CancelBtn'>
                             {t('Отменить')}
                         </Button>
                     ) : (
@@ -43,8 +42,7 @@ const EditableProfileCardHeader = ({
                             disabled={!!isError}
                             theme={ThemeButton.OUTLINE}
                             onClick={() => setEditMode(true)}
-                            data-testid='EditableProfileCardHeader.EditBtn'
-                        >
+                            data-testid='EditableProfileCardHeader.EditBtn'>
                             {t('Редактировать')}
                         </Button>
                     )}

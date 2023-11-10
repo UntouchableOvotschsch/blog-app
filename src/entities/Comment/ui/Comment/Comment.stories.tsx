@@ -5,7 +5,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { UserRoles } from '@/entities/User';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
 import { Themes } from '@/shared/const/theme';
-import PageWrapper from '@/shared/ui/PageWrapper';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 import profileImage from '@/shared/assets/tests/profileImage.jpg';
 
 import Comment from '.';

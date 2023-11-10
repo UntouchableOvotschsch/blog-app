@@ -5,10 +5,12 @@ import { useSelector } from 'react-redux';
 import { ThemesConfig } from '@/shared/const/theme';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getUserAuthData, updateJsonSettingsService } from '@/entities/User';
-import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+
+import { ThemeSwitcherDeprecated } from './Deprecated/ThemeSwitcher';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -22,20 +24,22 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     const user = useSelector(getUserAuthData);
 
     const toggleThemeHandler = useCallback(() => {
-        if (user) {
-            return toggleTheme((newTheme) => {
-                dispatch(updateJsonSettingsService({ userId: user?.id, newSettings: { theme: newTheme } }));
-                localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-            });
-        }
+        if (!user) return undefined;
         return toggleTheme((newTheme) => {
-            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+            dispatch(updateJsonSettingsService({ userId: user?.id, newSettings: { theme: newTheme } }));
         });
     }, [dispatch, toggleTheme, user]);
 
     return (
-        <Button className={classNames('', {}, [className])} theme={ThemeButton.CLEAR} onClick={toggleThemeHandler}>
-            {ThemesConfig[theme]}
-        </Button>
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            on={
+                <Button className={classNames('', {}, [className])} onClick={toggleThemeHandler}>
+                    {ThemesConfig[theme]}
+                </Button>
+            }
+            off={<ThemeSwitcherDeprecated className={className} />}
+        />
     );
 });

@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { getRouteProfilePage } from '@/shared/const/router';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import Input from '@/shared/ui/Input';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Input from '@/shared/ui/deprecated/Input';
+import Text, { TextSize, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import styles from './LoginForm.module.scss';
 import { getLoginState } from '../../model/selectors/getLoginState';
@@ -86,8 +86,7 @@ const LoginForm = memo(({ changeVisibility }: LoginFormProps) => {
                             disabled={isLoading}
                             /* eslint-disable-next-line i18next/no-literal-string */
                             form='login-form'
-                            type='submit'
-                        >
+                            type='submit'>
                             {t('Войти')}
                         </Button>
                     </div>

@@ -1,22 +1,28 @@
 .link {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-
-    .icon {
-        width: 25px;
-        height: 25px;
-        fill: var(--inverted-primary-color);
-    }
+    width: 100%;
+    padding-left: 16px;
 
     &.collapsed {
         span {
             display: none;
         }
+
+        padding-left: 0;
     }
 
-    &.disabled {
+    &.active {
         pointer-events: none;
         text-decoration: none;
+        background: linear-gradient(89.97deg, rgb(29 89 255 / 30%) 1.15%, rgb(94 211 243 / 0%) 99.97%);
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 100%;
+            left: 0;
+            width: 2px;
+            background: var(--accent-color);
+        }
     }
 }

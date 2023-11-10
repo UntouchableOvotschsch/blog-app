@@ -4,8 +4,8 @@ import { ArticleViewTypes } from '@/entities/Article';
 import ListViewIcon from '@/shared/assets/icons/list-view-icon.svg';
 import TileViewIcon from '@/shared/assets/icons/tile-view-icon.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import Icon from '@/shared/ui/Icon';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Icon from '@/shared/ui/deprecated/Icon';
 
 import styles from './ChangeViewType.module.scss';
 

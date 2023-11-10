@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { Select } from '@/shared/ui/Popups';
+import { Select } from '@/shared/ui/deprecated/Popups';
 
 import { Countries } from '../../model/consts';
 

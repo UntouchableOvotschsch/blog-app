@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux';
 import CheckIcon from '@/shared/assets/icons/ok.svg';
 import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Button } from '@/shared/ui/Button';
-import Input, { InputAlign } from '@/shared/ui/Input';
+import { Button } from '@/shared/ui/deprecated/Button';
+import Input, { InputAlign } from '@/shared/ui/deprecated/Input';
 import { HStack } from '@/shared/ui/Stack';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+import Text, { TextSize, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import styles from './AddNewCommentForm.module.scss';
 import { getAddNewCommentError } from '../../model/selectors/getAddNewCommentError';
@@ -77,8 +77,7 @@ const CommentForm = memo(({ addNewCommentTo }: CommentFormProps) => {
                             <Button
                                 onClick={sendComment}
                                 disabled={isLoading || !commentText}
-                                data-testid='CommentForm.Button.Send'
-                            >
+                                data-testid='CommentForm.Button.Send'>
                                 {t('Отправить')}
                             </Button>
                         )}

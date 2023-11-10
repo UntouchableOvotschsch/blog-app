@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { loginByUsername } from '@/features/AuthByUsername';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 import { getRouteLogin } from '@/shared/const/router';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 import { MainLayout } from '@/shared/layouts';

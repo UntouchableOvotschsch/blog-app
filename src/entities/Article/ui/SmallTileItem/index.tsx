@@ -3,12 +3,12 @@ import React, { HTMLAttributeAnchorTarget } from 'react';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getRouteArticleDetailsPage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import Card from '@/shared/ui/Card';
-import Icon from '@/shared/ui/Icon';
-import Text from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import Card from '@/shared/ui/deprecated/Card';
+import Icon from '@/shared/ui/deprecated/Icon';
+import Text from '@/shared/ui/deprecated/Text';
 import AppImage from '@/shared/ui/AppImage';
-import Skeleton from '@/shared/ui/Skeleton';
+import Skeleton from '@/shared/ui/deprecated/Skeleton';
 
 import styles from './SmallTileItem.module.scss';
 import { Article } from '../../model/types/article';

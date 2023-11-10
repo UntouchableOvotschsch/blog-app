@@ -6,8 +6,8 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
-import { Button, SizeButton, ThemeButton } from '@/shared/ui/Button';
-import Overlay from '@/shared/ui/Overlay';
+import { Button, SizeButton, ThemeButton } from '@/shared/ui/deprecated/Button';
+import Overlay from '@/shared/ui/deprecated/Overlay';
 import { HStack, VStack } from '@/shared/ui/Stack';
 
 import styles from './Sidebar.Deprecated.module.scss';
@@ -70,8 +70,7 @@ export const SidebarDeprecated = memo(({ className }: SidebarProps) => {
                             [styles.collapsed]: collapsed,
                         },
                         [className, styles.mobile],
-                    )}
-                >
+                    )}>
                     {!collapsed && sidebarContent}
                     <Button
                         data-testid='sidebar-toggle'
@@ -80,8 +79,7 @@ export const SidebarDeprecated = memo(({ className }: SidebarProps) => {
                         className={styles.collapsedBtn}
                         theme={ThemeButton.BACKGROUND_INVERTED}
                         size={SizeButton.L}
-                        square
-                    >
+                        square>
                         {collapsed ? '>' : '<'}
                     </Button>
                 </aside>
@@ -92,8 +90,7 @@ export const SidebarDeprecated = memo(({ className }: SidebarProps) => {
     return (
         <aside
             data-testid='sidebar'
-            className={classNames(styles.Sidebar, { [styles.collapsed]: collapsed }, [className, styles.desktop])}
-        >
+            className={classNames(styles.Sidebar, { [styles.collapsed]: collapsed }, [className, styles.desktop])}>
             {sidebarContent}
             <Button
                 data-testid='sidebar-toggle'
@@ -102,8 +99,7 @@ export const SidebarDeprecated = memo(({ className }: SidebarProps) => {
                 className={styles.collapsedBtn}
                 theme={ThemeButton.BACKGROUND_INVERTED}
                 size={SizeButton.L}
-                square
-            >
+                square>
                 {collapsed ? '>' : '<'}
             </Button>
         </aside>

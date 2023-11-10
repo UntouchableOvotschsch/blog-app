@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ArticleList, ArticleViewTypes } from '@/entities/Article';
 import { VStack } from '@/shared/ui/Stack';
-import Text, { TextSize, ThemeText } from '@/shared/ui/Text';
+import Text, { TextSize, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import { useGetArticlesRecommendationsQuery } from '../../model/api';
 

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import PageWrapper from '@/shared/ui/PageWrapper';
+import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 
 const MainPage: FC = () => {
     const { t } = useTranslation('main');

@@ -8,8 +8,8 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { getRouteAdminPage, getRouteProfilePage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import Avatar from '@/shared/ui/Avatar';
-import { Dropdown } from '@/shared/ui/Popups';
+import Avatar from '@/shared/ui/deprecated/Avatar';
+import { Dropdown } from '@/shared/ui/deprecated/Popups';
 
 import styles from './AvatarDropdown.module.scss';
 

@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import Calendar from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Avatar from '@/shared/ui/Avatar';
-import Icon from '@/shared/ui/Icon';
+import Avatar from '@/shared/ui/deprecated/Avatar';
+import Icon from '@/shared/ui/deprecated/Icon';
 import { VStack } from '@/shared/ui/Stack';
-import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/Text';
+import Text, { TextAlign, TextSize, ThemeText } from '@/shared/ui/deprecated/Text';
 
 import styles from './ArticleDetails.module.scss';
 import ArticleDetailsSkeleton from './ArticleDetailsSkeleton';
@@ -85,8 +85,7 @@ const ArticleDetails = memo(({ className, id, wrapperRef }: ArticleDetailsProps)
         <div
             className={classNames(styles.ArticleDetails, {}, [className])}
             ref={wrapperRef}
-            data-testid='ArticleDetails.Content'
-        >
+            data-testid='ArticleDetails.Content'>
             <div className={styles.header} data-testid='ArticleDetails.ArticleInfo'>
                 <Avatar
                     avatar={article?.img}
