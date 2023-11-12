@@ -1,6 +1,5 @@
 .NotificationList {
     overflow-y: auto;
-    padding: 15px;
 
     &.mobile {
         height: 100%;
@@ -15,22 +14,56 @@
 }
 
 .NotificationList::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: var(--inverted-bg-color);
+    border-radius: 0 10px 10px 0;
+    background-color: var(--dark-bg-color);
 }
 
 .NotificationList::-webkit-scrollbar {
     width: 12px;
     height: 8px;
-    border-radius: 10px;
-    background-color: var(--bg-color);
+    background-color: var(--dark-bg-color);
 }
 
 .NotificationList::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: var(--bg-color);
+    background-color: var(--accent-color);
 }
 
-.popover {
-    height: 20px;
+.NotificationListDeprecated {
+    .NotificationList {
+        overflow-y: auto;
+        padding: 15px;
+
+        &.mobile {
+            height: 100%;
+            width: 100%;
+        }
+
+        &.desktop {
+            min-height: 150px;
+            max-height: 300px;
+            width: 400px;
+        }
+    }
+
+    .NotificationList::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: var(--inverted-bg-color);
+    }
+
+    .NotificationList::-webkit-scrollbar {
+        width: 12px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: var(--bg-color);
+    }
+
+    .NotificationList::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: var(--bg-color);
+    }
+
+    .popover {
+        height: 20px;
+    }
 }

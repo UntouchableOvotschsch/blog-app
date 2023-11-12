@@ -26,7 +26,7 @@ const NotificationList = ({ className }: NotificationListProps) => {
 
     if (isLoading) {
         return (
-            <VStack gap='8' className={classNames('', {}, [className])}>
+            <VStack gap='16' className={classNames('', {}, [className])}>
                 <NotificationItemSkeleton />
                 <NotificationItemSkeleton />
                 <NotificationItemSkeleton />
@@ -34,11 +34,7 @@ const NotificationList = ({ className }: NotificationListProps) => {
         );
     }
 
-    return (
-        <VStack gap='8' className={classNames('', {}, [className])}>
-            {renderItems}
-        </VStack>
-    );
+    return <VStack className={classNames('', {}, [className])}>{renderItems}</VStack>;
 };
 
 export default NotificationList;

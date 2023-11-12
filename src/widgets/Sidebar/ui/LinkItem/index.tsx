@@ -23,9 +23,11 @@ const LinkItem = memo(({ item, collapsed }: LinkItemProps) => {
     const isAuthed = useAuthDataChecker();
     const location = useLocation();
 
+    const isActive = item.path === location.pathname;
+
     const mods: Mods = {
         [styles.collapsed]: collapsed,
-        [styles.active]: item.path === location.pathname,
+        [styles.active]: isActive,
     };
     if (item.authOnly && !isAuthed) {
         return null;

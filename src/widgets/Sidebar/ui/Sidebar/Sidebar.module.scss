@@ -8,6 +8,11 @@
     right: 5px;
 }
 
+.appLogo {
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
 .Sidebar {
     width: var(--sidebar-width-redesigned);
     background: var(--light-bg-color);
@@ -22,12 +27,11 @@
             transform: rotate(180deg);
             right: 30%;
         }
-    }
-}
 
-.appLogo {
-    margin: 0 auto;
-    padding-top: 20px;
+        .appLogo {
+            padding-top: 10px;
+        }
+    }
 }
 
 .switchers {

@@ -8,8 +8,11 @@ import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { getRouteAdminPage, getRouteProfilePage } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import Avatar from '@/shared/ui/deprecated/Avatar';
-import { Dropdown } from '@/shared/ui/deprecated/Popups';
+import AvatarDeprecated from '@/shared/ui/deprecated/Avatar';
+import Avatar from '@/shared/ui/Avatar';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import { Dropdown } from '@/shared/ui/Popups';
 
 import styles from './AvatarDropdown.module.scss';
 
@@ -31,31 +34,54 @@ const AvatarDropdown = ({ className }: AvatarDropdownProps) => {
     if (!authData) {
         return null;
     }
+
+    const options = [
+        {
+            label: t('Профиль'),
+            href: getRouteProfilePage(authData.id),
+        },
+        ...(isAdmin
+            ? [
+                  {
+                      label: t('Админка'),
+                      href: getRouteAdminPage(),
+                  },
+              ]
+            : []),
+        {
+            label: t('Выйти'),
+            onClick: logoutBtn,
+        },
+    ];
+
     return (
-        <Dropdown
-            className={classNames('', {}, [className])}
-            position='bottom left'
-            trigger={
-                <Avatar avatar={authData.avatar} alt={t('Аватар')} width={50} height={50} className={styles.avatar} />
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            on={
+                <Dropdown
+                    className={classNames('', {}, [className])}
+                    position='bottom left'
+                    trigger={<Avatar avatar={authData.avatar} alt={t('Аватар')} width={48} height={48} />}
+                    options={options}
+                />
             }
-            options={[
-                {
-                    label: t('Профиль'),
-                    href: getRouteProfilePage(authData.id),
-                },
-                ...(isAdmin
-                    ? [
-                          {
-                              label: t('Админка'),
-                              href: getRouteAdminPage(),
-                          },
-                      ]
-                    : []),
-                {
-                    label: t('Выйти'),
-                    onClick: logoutBtn,
-                },
-            ]}
+            off={
+                <DropdownDeprecated
+                    className={classNames(styles.AvatarDropdownDeprecated, {}, [className])}
+                    position='bottom left'
+                    trigger={
+                        <AvatarDeprecated
+                            avatar={authData.avatar}
+                            alt={t('Аватар')}
+                            width={50}
+                            height={50}
+                            className={styles.avatar}
+                        />
+                    }
+                    options={options}
+                />
+            }
         />
     );
 };

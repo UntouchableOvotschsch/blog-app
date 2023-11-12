@@ -13,12 +13,16 @@ interface AppLinkProps extends LinkProps {
     className?: string;
     variant?: AppLinkVariant;
     children?: ReactNode;
+    withHover?: boolean;
 }
 
 export const AppLink = typedMemo((props: AppLinkProps) => {
-    const { className, children, to, variant = 'primary', ...otherProps } = props;
+    const { className, children, to, variant = 'primary', withHover = true, ...otherProps } = props;
     return (
-        <Link to={to} className={classNames(styles.AppLink, {}, [className, styles[variant]])} {...otherProps}>
+        <Link
+            to={to}
+            className={classNames(styles.AppLink, { [styles.hovered]: withHover }, [className, styles[variant]])}
+            {...otherProps}>
             {children}
         </Link>
     );
