@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { ArticleList } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import styles from './ArticleInfiniteList.module.scss';
 import { getArticlesHasMore } from '../../model/selectors/getArticlesHasMore';
@@ -13,6 +14,7 @@ import { getArticleView } from '../../model/selectors/getArticleView';
 import { fetchArticles } from '../../model/service/fetchArticles';
 import { articlesPageActions, articlesSelectors } from '../../model/slice/articlesPageSlice';
 import ArticleFilters from '../ArticleFilters';
+
 
 const ArticleListHeader = () => <ArticleFilters className={styles.header} />;
 const ArticleInfiniteList = () => {
@@ -32,13 +34,28 @@ const ArticleInfiniteList = () => {
     }, [dispatch, hasMore, isLoading, page]);
 
     return (
-        <ArticleList
-            articles={articles}
-            view={view}
-            isLoading={isLoading}
-            onLoadNextPart={fetchNextArticlesPage}
-            Header={ArticleListHeader}
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name="isAppRedesigned"
+            on={(
+                <ArticleList
+                    articles={articles}
+                    view={view}
+                    isLoading={isLoading}
+                    onLoadNextPart={fetchNextArticlesPage}
+                />
+            )}
+            off={(
+                <ArticleList
+                    articles={articles}
+                    view={view}
+                    isLoading={isLoading}
+                    onLoadNextPart={fetchNextArticlesPage}
+                    Header={ArticleListHeader}
+                />
+            )}
         />
+
     );
 };
 

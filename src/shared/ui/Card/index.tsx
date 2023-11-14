@@ -5,7 +5,7 @@ import { ComponentTestProps } from '@/shared/types/testing';
 
 import styles from './Card.module.scss';
 
-type CardVariant = 'primary' | 'outlined' | 'transparent';
+type CardVariant = 'primary' | 'outlined' | 'light' |'transparent';
 type CardPadding = '0' | '8' | '16' | '24';
 
 const mapPaddingToClass: Record<CardPadding, string> = {

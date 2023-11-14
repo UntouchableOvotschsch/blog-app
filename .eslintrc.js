@@ -47,7 +47,8 @@ module.exports = {
                     'fill',
                     'size',
                     'variant',
-                    'theme'
+                    'theme',
+                    'directionVariant'
                 ],
             },
         ],

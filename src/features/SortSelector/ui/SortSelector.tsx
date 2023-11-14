@@ -5,9 +5,12 @@ import { useTranslation } from 'react-i18next';
 import SortArrow from '@/shared/assets/icons/sort-arrow.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
-import Icon from '@/shared/ui/deprecated/Icon';
-import { Select, SelectContainerTheme, SelectOptions } from '@/shared/ui/deprecated/Popups';
+import IconDeprecated from '@/shared/ui/deprecated/Icon';
+import { Select as SelectDeprecated, SelectContainerTheme, SelectOptions } from '@/shared/ui/deprecated/Popups';
 import { HStack } from '@/shared/ui/Stack';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import Icon from '@/shared/ui/Icon';
+import { Select } from '@/shared/ui/Popups';
 
 import styles from './SortSelector.module.scss';
 import { SortField } from '../model/consts';
@@ -43,19 +46,43 @@ const SortSelector = (props: SortSelectorProps) => {
     );
 
     return (
-        <HStack gap='4' maxWidth={false}>
-            <Select
-                label={t('Сортировать по:')}
-                selectValue={sortField}
-                options={sortFields}
-                onChange={changeSortField}
-                containerTheme={SelectContainerTheme.ROW}
-                className={styles.select}
-            />
-            <Button onClick={changeSortOrder} theme={ThemeButton.CLEAR} className={styles.btn}>
-                <Icon className={classNames('', {}, [styles[sortOrder]])} Icon={SortArrow} />
-            </Button>
-        </HStack>
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name="isAppRedesigned"
+            on={(
+                <HStack maxWidth={false}>
+                    <Select
+                        label={t('Сортировать по:')}
+                        selectValue={sortField}
+                        options={sortFields}
+                        onChange={changeSortField}
+                        directionVariant="row"
+                    />
+                    <Icon
+                        className={classNames('', {}, [styles[sortOrder]])}
+                        Icon={SortArrow}
+                        onClick={changeSortOrder}
+                        clickable
+                    />
+                </HStack>
+            )}
+            off={(
+                <HStack gap='4' maxWidth={false}>
+                    <SelectDeprecated
+                        label={t('Сортировать по:')}
+                        selectValue={sortField}
+                        options={sortFields}
+                        onChange={changeSortField}
+                        containerTheme={SelectContainerTheme.ROW}
+                        className={styles.select}
+                    />
+                    <Button onClick={changeSortOrder} theme={ThemeButton.CLEAR} className={styles.btn}>
+                        <IconDeprecated className={classNames('', {}, [styles[sortOrder]])} Icon={SortArrow} />
+                    </Button>
+                </HStack>
+            )}
+        />
+
     );
 };
 

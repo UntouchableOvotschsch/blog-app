@@ -9,8 +9,11 @@ import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 import Text, { ThemeText } from '@/shared/ui/deprecated/Text';
-import { toggleFeature } from '@/shared/lib/features/toggleFeature';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import StickyContentLayout from '@/shared/layouts/StickyContentLayout';
 
+import ChangeViewContainer from '../ChangeViewContainer';
+import ArticleFiltersContainer from '../ArticleFiltersContainer';
 import styles from './ArticlesPage.module.scss';
 import { getArticlesActiveTypes } from '../../model/selectors/getArticlesActiveTypes';
 import { getArticleError } from '../../model/selectors/getArticlesError';
@@ -20,6 +23,7 @@ import { getArticlesSortOrder } from '../../model/selectors/getArticlesSortOrder
 import { initArticlesPage } from '../../model/service/initArticlesPage';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticleInfiniteList from '../ArticleInfiniteList/ArticleInfiniteList';
+
 
 const reducers: ReducerList = {
     articlesPage: articlesPageReducer,
@@ -51,23 +55,33 @@ const ArticlesPage = () => {
         }
     }, [dispatch, search, searchParams, setSearchParams, sortField, sortOrder, types]);
 
-    const pageWrapperClassName = toggleFeature({
-        name: 'isAppRedesigned',
-        on: () => classNames('', mods, []),
-        off: () => classNames(styles.ArticlePage, mods, []),
-    });
 
     return (
-        <DynamicModuleLoader reducerList={reducers} dontRemoveAfterUnmount>
-            <PageWrapper className={pageWrapperClassName} data-testid='ArticlesPage'>
-                {error ? (
-                    <Text title={t('Произошла ошибка при загрузке статей')} theme={ThemeText.ERROR} />
-                ) : (
-                    <ArticleInfiniteList />
-                )}
-            </PageWrapper>
-        </DynamicModuleLoader>
-    );
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name="isAppRedesigned"
+            on={(
+                <DynamicModuleLoader reducerList={reducers} dontRemoveAfterUnmount>
+                    <StickyContentLayout
+                        leftContent={<ChangeViewContainer/>}
+                        content={<ArticleInfiniteList />}
+                        rightContent={<ArticleFiltersContainer />}
+                    />
+                </DynamicModuleLoader>
+            )}
+            off={(
+                <DynamicModuleLoader reducerList={reducers} dontRemoveAfterUnmount>
+                    <PageWrapper className={classNames(styles.ArticlePage, mods, [])} data-testid='ArticlesPage'>
+                        {error ? (
+                            <Text title={t('Произошла ошибка при загрузке статей')} theme={ThemeText.ERROR} />
+                        ) : (
+                            <ArticleInfiniteList />
+                        )}
+                    </PageWrapper>
+                </DynamicModuleLoader>
+            )}
+        />
+    )
 };
 
 export default ArticlesPage;

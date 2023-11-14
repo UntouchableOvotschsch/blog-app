@@ -11,10 +11,8 @@ import Text from '../../../Text';
 import popupStyles from '../../styles/Popups.module.scss';
 import styles from './Select.module.scss';
 
-export enum SelectContainerTheme {
-    ROW = 'row',
-    COLUMN = 'column',
-}
+type SelectDirectionVariant = 'row' | 'column'
+
 
 export interface SelectOptions<T extends string> {
     value: T;
@@ -27,8 +25,9 @@ interface SelectProps<T extends string> {
     selectValue?: T;
     onChange?: (value: T) => void;
     editable?: boolean;
-    containerTheme?: SelectContainerTheme;
+    directionVariant?: SelectDirectionVariant;
     className?: string;
+    maxWidth?: boolean
 }
 
 const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
@@ -38,8 +37,9 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
         selectValue,
         onChange,
         editable = true,
-        containerTheme = SelectContainerTheme.COLUMN,
+        directionVariant = 'column',
         className,
+        maxWidth = false
     } = props;
 
     const optionList = useMemo(
@@ -67,18 +67,18 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
     const contentSelectValue = options.find((el) => el.value === selectValue)?.content;
 
     return useMemo(() => {
-        if (containerTheme === SelectContainerTheme.COLUMN) {
+        if (directionVariant === 'column') {
             return (
                 <VStack gap='4'>
-                    {label && <Text title={label} />}
+                    {label && <Text text={label} />}
                     <Listbox
                         as='div'
                         value={selectValue}
                         onChange={onChange}
-                        className={classNames(popupStyles.container, {}, [className, styles.container])}
+                        className={classNames(popupStyles.container, {[styles.maxWidth]: maxWidth}, [className])}
                         disabled={!editable}>
                         <Listbox.Button as='div'>
-                            <Button className={styles.listBoxBtn} disabled={!editable} theme='clear'>
+                            <Button disabled={!editable} theme='clear'>
                                 {contentSelectValue}
                             </Button>
                         </Listbox.Button>
@@ -89,15 +89,15 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
         }
         return (
             <HStack gap='4'>
-                {label && <Text title={label} />}
+                {label && <Text text={label} />}
                 <Listbox
                     as='div'
                     value={selectValue}
                     onChange={onChange}
-                    className={classNames(popupStyles.container, {}, [className, styles.container])}
+                    className={classNames(popupStyles.container, {[styles.maxWidth]: maxWidth}, [className])}
                     disabled={!editable}>
                     <Listbox.Button as='div'>
-                        <Button className={styles.listBoxBtn} disabled={!editable} theme='clear'>
+                        <Button disabled={!editable} theme='clear'>
                             {contentSelectValue}
                         </Button>
                     </Listbox.Button>
@@ -105,7 +105,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                 </Listbox>
             </HStack>
         );
-    }, [className, containerTheme, contentSelectValue, editable, label, onChange, optionList, selectValue]);
+    }, [directionVariant, label, selectValue, onChange, maxWidth, className, editable, contentSelectValue, optionList]);
 });
 
 export default Select;

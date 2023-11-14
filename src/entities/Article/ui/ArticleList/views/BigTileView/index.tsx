@@ -63,11 +63,10 @@ const BigTileView = ({ articles, isLoading, target, onLoadNextPart, Header }: Bi
                     data={articles}
                     totalCount={articles?.length}
                     itemContent={renderArticleItem}
+                    endReached={onLoadNextPart}
                     components={{
-                        Header,
                         Footer,
                     }}
-                    endReached={onLoadNextPart}
                 />
             }
             off={

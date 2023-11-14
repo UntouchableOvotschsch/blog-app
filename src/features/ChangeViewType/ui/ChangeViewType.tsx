@@ -1,64 +1,37 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo } from 'react';
 
 import { ArticleViewTypes } from '@/entities/Article';
-import ListViewIcon from '@/shared/assets/icons/list-view-icon.svg';
-import TileViewIcon from '@/shared/assets/icons/tile-view-icon.svg';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
-import Icon from '@/shared/ui/deprecated/Icon';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import GridSwitcher from '@/shared/ui/GridSwitcher';
+import Icon from '@/shared/ui/Icon';
+import BurgerIcon from '@/shared/assets/icons/Redesigned/burger-icon.svg';
+import TileIcon from '@/shared/assets/icons/Redesigned/tile-icon.svg'
 
-import styles from './ChangeViewType.module.scss';
+import ChangeViewTypeDeprecated from './Deprecated/ChangeViewType';
 
 const views = [
     {
-        type: ArticleViewTypes.BIG_TILE,
-        icon: ListViewIcon,
+        value: ArticleViewTypes.BIG_TILE,
+        content: <Icon Icon={BurgerIcon} width={16} height={16}/>,
     },
     {
-        type: ArticleViewTypes.SMALL_TILE,
-        icon: TileViewIcon,
+        value: ArticleViewTypes.SMALL_TILE,
+        content: <Icon Icon={TileIcon} width={16} height={16}/>,
     },
 ];
 
 interface ChangeViewTypeProps {
     className?: string;
-    currentView?: ArticleViewTypes;
-    changeView?: (view: ArticleViewTypes) => void;
+    currentView: ArticleViewTypes;
+    changeView: (view: ArticleViewTypes) => void;
 }
 
-const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewTypeProps) => {
-    const changeViewType = useCallback(
-        (view: ArticleViewTypes) => () => {
-            changeView?.(view);
-        },
-        [changeView],
-    );
-
-    const renderViews = useMemo(
-        () =>
-            views.map((view) => (
-                <Button
-                    className={styles.btn}
-                    theme={ThemeButton.CLEAR}
-                    onClick={changeViewType(view.type)}
-                    key={view.type}
-                    disabled={currentView === view.type}>
-                    <Icon
-                        Icon={view.icon}
-                        className={classNames(
-                            '',
-                            {
-                                [styles.active]: currentView === view.type,
-                            },
-                            [],
-                        )}
-                    />
-                </Button>
-            )),
-        [changeViewType, currentView],
-    );
-
-    return <div className={classNames(styles.container, {}, [className])}>{renderViews}</div>;
-});
+const ChangeViewType = memo(({ changeView, currentView, className }: ChangeViewTypeProps) => (
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name="isAppRedesigned"
+            on={<GridSwitcher options={views} onClick={changeView} selectedValue={currentView}/>}
+            off={<ChangeViewTypeDeprecated changeView={changeView} currentView={currentView} className={className}/>} />
+    ));
 
 export default ChangeViewType;

@@ -1,0 +1,7 @@
+.itemContainer:first-child {
+    border-radius: 50% 0 0 50%;
+}
+
+.itemContainer:last-child {
+    border-radius: 0 50% 50% 0;
+}
