@@ -48,7 +48,9 @@ module.exports = {
                     'size',
                     'variant',
                     'theme',
-                    'directionVariant'
+                    'directionVariant',
+                    'tabAlign',
+                    'typeVariant',
                 ],
             },
         ],
@@ -128,4 +130,4 @@ module.exports = {
             },
         },
     ],
-}
+};

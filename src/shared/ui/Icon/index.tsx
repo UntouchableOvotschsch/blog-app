@@ -39,7 +39,7 @@ const Icon = typedMemo((props: IconProps) => {
     if (clickable) {
         return (
             // eslint-disable-next-line i18next/no-literal-string
-            <Button theme='clear' onClick={props.onClick} className={styles.button}>
+            <Button theme='clear' onClick={props.onClick} className={styles.button} style={{ width, height }}>
                 {icon}
             </Button>
         );

@@ -1,18 +1,18 @@
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 import { Listbox } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
+import Card from '../../../Card';
 import { Button } from '../../../Button';
 import { HStack, VStack } from '../../../Stack';
 import Text from '../../../Text';
 import popupStyles from '../../styles/Popups.module.scss';
 import styles from './Select.module.scss';
 
-type SelectDirectionVariant = 'row' | 'column'
-
+type SelectDirectionVariant = 'row' | 'column';
 
 export interface SelectOptions<T extends string> {
     value: T;
@@ -27,7 +27,8 @@ interface SelectProps<T extends string> {
     editable?: boolean;
     directionVariant?: SelectDirectionVariant;
     className?: string;
-    maxWidth?: boolean
+    maxWidth?: boolean;
+    additionalTrigger?: ReactNode;
 }
 
 const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
@@ -39,21 +40,17 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
         editable = true,
         directionVariant = 'column',
         className,
-        maxWidth = false
+        maxWidth = false,
+        additionalTrigger,
     } = props;
 
     const optionList = useMemo(
         () =>
             options?.map((el) => (
-                <Listbox.Option
-                    as='div'
-                    key={el.value}
-                    value={el.value}
-                    disabled={el.disabled}
-                    className={popupStyles.option}>
+                <Listbox.Option as='div' key={el.value} value={el.value} disabled={el.disabled}>
                     {({ active, selected }) => (
                         <li
-                            className={classNames(popupStyles.optionItem, {
+                            className={classNames(popupStyles.option, {
                                 [popupStyles.active]: active || selected,
                             })}>
                             {el.content}
@@ -75,7 +72,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                         as='div'
                         value={selectValue}
                         onChange={onChange}
-                        className={classNames(popupStyles.container, {[styles.maxWidth]: maxWidth}, [className])}
+                        className={classNames(popupStyles.container, { [styles.maxWidth]: maxWidth }, [className])}
                         disabled={!editable}>
                         <Listbox.Button as='div'>
                             <Button disabled={!editable} theme='clear'>
@@ -88,24 +85,40 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
             );
         }
         return (
-            <HStack gap='4'>
+            <HStack justify='between'>
                 {label && <Text text={label} />}
                 <Listbox
                     as='div'
                     value={selectValue}
                     onChange={onChange}
-                    className={classNames(popupStyles.container, {[styles.maxWidth]: maxWidth}, [className])}
+                    className={classNames(popupStyles.container, { [styles.maxWidth]: maxWidth }, [className])}
                     disabled={!editable}>
-                    <Listbox.Button as='div'>
-                        <Button disabled={!editable} theme='clear'>
-                            {contentSelectValue}
-                        </Button>
-                    </Listbox.Button>
+                    <Card theme='light' rounded>
+                        <HStack gap='4' maxWidth={false}>
+                            <Listbox.Button as='div'>
+                                <Button disabled={!editable} theme='clear'>
+                                    {contentSelectValue}
+                                </Button>
+                            </Listbox.Button>
+                            {additionalTrigger}
+                        </HStack>
+                    </Card>
                     <Listbox.Options className={popupStyles.itemsContainer}>{optionList}</Listbox.Options>
                 </Listbox>
             </HStack>
         );
-    }, [directionVariant, label, selectValue, onChange, maxWidth, className, editable, contentSelectValue, optionList]);
+    }, [
+        directionVariant,
+        label,
+        selectValue,
+        onChange,
+        maxWidth,
+        className,
+        editable,
+        contentSelectValue,
+        optionList,
+        additionalTrigger,
+    ]);
 });
 
 export default Select;

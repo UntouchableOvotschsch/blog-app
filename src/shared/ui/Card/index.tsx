@@ -5,7 +5,7 @@ import { ComponentTestProps } from '@/shared/types/testing';
 
 import styles from './Card.module.scss';
 
-type CardVariant = 'primary' | 'outlined' | 'light' |'transparent';
+type CardVariant = 'primary' | 'outlined' | 'light' | 'transparent';
 type CardPadding = '0' | '8' | '16' | '24';
 
 const mapPaddingToClass: Record<CardPadding, string> = {
@@ -20,11 +20,16 @@ interface CardProps extends HTMLAttributes<HTMLDivElement>, ComponentTestProps {
     children: ReactNode;
     theme?: CardVariant;
     padding?: CardPadding;
+    rounded?: boolean;
 }
 
-const Card = ({ className, children, theme = 'primary', padding = '8', ...otherProps }: CardProps) => (
+const Card = ({ className, children, theme = 'primary', padding = '8', rounded = false, ...otherProps }: CardProps) => (
     <div
-        className={classNames(styles.Card, {}, [className, styles[theme], mapPaddingToClass[padding]])}
+        className={classNames(styles.Card, { [styles.rounded]: rounded }, [
+            className,
+            styles[theme],
+            mapPaddingToClass[padding],
+        ])}
         {...otherProps}>
         {children}
     </div>

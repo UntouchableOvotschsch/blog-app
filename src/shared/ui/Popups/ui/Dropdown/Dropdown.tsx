@@ -37,9 +37,7 @@ const Dropdown = (props: DropdownProps) => {
                         <Menu.Item key={el.label} as='div' disabled={el.disabled}>
                             {({ active }) => (
                                 <AppLink
-                                    className={classNames(popupStyles.option, { [popupStyles.active]: active }, [
-                                        styles.link,
-                                    ])}
+                                    className={classNames(popupStyles.option, { [popupStyles.active]: active }, [])}
                                     withHover={false}
                                     to={el.href!}>
                                     {el.label}

@@ -3,7 +3,9 @@ import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ArticleTypes } from '@/entities/Article';
-import Tabs, { TabItem } from '@/shared/ui/deprecated/Tabs';
+import TabsDeprecated from '@/shared/ui/deprecated/Tabs';
+import Tabs, { TabItem } from '@/shared/ui/Tabs';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 interface ArticleTypeTabsProps {
     className?: string;
@@ -51,7 +53,30 @@ const ArticleTypeTabs = (props: ArticleTypeTabsProps) => {
         [activeTypes, typeHandler, types.length],
     );
 
-    return <Tabs className={className ?? ''} tabs={types} activeTabs={activeTypes} tabHandler={tabHandler} />;
+    return (
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            on={
+                <Tabs
+                    className={className}
+                    tabs={types}
+                    activeTabs={activeTypes}
+                    tabHandler={tabHandler}
+                    direction='column'
+                    tabAlign='start'
+                />
+            }
+            off={
+                <TabsDeprecated
+                    className={className ?? ''}
+                    tabs={types}
+                    activeTabs={activeTypes}
+                    tabHandler={tabHandler}
+                />
+            }
+        />
+    );
 };
 
 export default ArticleTypeTabs;

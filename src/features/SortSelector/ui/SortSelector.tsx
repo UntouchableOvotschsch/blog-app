@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import SortArrow from '@/shared/assets/icons/sort-arrow.svg';
+import SortArrow from '@/shared/assets/icons/Redesigned/arrow-icon.svg';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import IconDeprecated from '@/shared/ui/deprecated/Icon';
@@ -48,25 +48,25 @@ const SortSelector = (props: SortSelectorProps) => {
     return (
         <ToggleFeatureComponent
             /* eslint-disable-next-line i18next/no-literal-string */
-            name="isAppRedesigned"
-            on={(
-                <HStack maxWidth={false}>
-                    <Select
-                        label={t('Сортировать по:')}
-                        selectValue={sortField}
-                        options={sortFields}
-                        onChange={changeSortField}
-                        directionVariant="row"
-                    />
-                    <Icon
-                        className={classNames('', {}, [styles[sortOrder]])}
-                        Icon={SortArrow}
-                        onClick={changeSortOrder}
-                        clickable
-                    />
-                </HStack>
-            )}
-            off={(
+            name='isAppRedesigned'
+            on={
+                <Select
+                    label={t('Сортировать по:')}
+                    selectValue={sortField}
+                    options={sortFields}
+                    onChange={changeSortField}
+                    directionVariant='row'
+                    additionalTrigger={
+                        <Icon
+                            className={classNames('', {}, [styles[sortOrder]])}
+                            Icon={SortArrow}
+                            onClick={changeSortOrder}
+                            clickable
+                        />
+                    }
+                />
+            }
+            off={
                 <HStack gap='4' maxWidth={false}>
                     <SelectDeprecated
                         label={t('Сортировать по:')}
@@ -80,9 +80,8 @@ const SortSelector = (props: SortSelectorProps) => {
                         <IconDeprecated className={classNames('', {}, [styles[sortOrder]])} Icon={SortArrow} />
                     </Button>
                 </HStack>
-            )}
+            }
         />
-
     );
 };
 
