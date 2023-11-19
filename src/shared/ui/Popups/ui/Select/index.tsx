@@ -13,7 +13,6 @@ import popupStyles from '../../styles/Popups.module.scss';
 import styles from './Select.module.scss';
 
 type SelectDirectionVariant = 'row' | 'column';
-
 export interface SelectOptions<T extends string> {
     value: T;
     content: string;
@@ -85,7 +84,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
             );
         }
         return (
-            <HStack justify='between'>
+            <HStack gap='16'>
                 {label && <Text text={label} />}
                 <Listbox
                     as='div'
@@ -93,10 +92,12 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                     onChange={onChange}
                     className={classNames(popupStyles.container, { [styles.maxWidth]: maxWidth }, [className])}
                     disabled={!editable}>
-                    <Card theme='light' rounded>
-                        <HStack gap='4' maxWidth={false}>
-                            <Listbox.Button as='div'>
-                                <Button disabled={!editable} theme='clear'>
+                    <Card theme='light' rounded maxWidth>
+                        <HStack gap='4' justify='center'>
+                            <Listbox.Button
+                                as='div'
+                                className={classNames('', { [styles.button]: !additionalTrigger })}>
+                                <Button disabled={!editable} theme='clear' maxWidth={!additionalTrigger}>
                                     {contentSelectValue}
                                 </Button>
                             </Listbox.Button>

@@ -10,7 +10,7 @@ type AlignTypes = 'start' | 'center' | 'end';
 
 type DirectionTypes = 'column' | 'row';
 
-type GapTypes = '2' | '4' | '8' | '16' | '32';
+type GapTypes = '2' | '4' | '8' | '16' | '24' | '32';
 
 const justifyClasses: Record<JustifyTypes, string> = {
     start: styles.justifyStart,
@@ -37,6 +37,7 @@ const gapClasses: Record<GapTypes, string> = {
     4: styles.gap4,
     8: styles.gap8,
     16: styles.gap16,
+    24: styles.gap24,
     32: styles.gap32,
 };
 

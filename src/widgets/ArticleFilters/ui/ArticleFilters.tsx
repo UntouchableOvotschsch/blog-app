@@ -38,7 +38,7 @@ const ArticleFilters = (props: ArticleFiltersProps) => {
     const { t } = useTranslation('article');
 
     return (
-        <Card className={classNames(styles.container, {}, [className])} padding='24' rounded>
+        <Card className={classNames(styles.container, {}, [className])} padding='16' rounded>
             <VStack gap='32' maxWidth justify='center'>
                 <Input
                     value={searchValue}

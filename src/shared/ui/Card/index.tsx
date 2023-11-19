@@ -21,11 +21,20 @@ interface CardProps extends HTMLAttributes<HTMLDivElement>, ComponentTestProps {
     theme?: CardVariant;
     padding?: CardPadding;
     rounded?: boolean;
+    maxWidth?: boolean;
 }
 
-const Card = ({ className, children, theme = 'primary', padding = '8', rounded = false, ...otherProps }: CardProps) => (
+const Card = ({
+    className,
+    children,
+    theme = 'primary',
+    padding = '8',
+    rounded = false,
+    maxWidth = true,
+    ...otherProps
+}: CardProps) => (
     <div
-        className={classNames(styles.Card, { [styles.rounded]: rounded }, [
+        className={classNames(styles.Card, { [styles.rounded]: rounded, [styles.maxWidth]: maxWidth }, [
             className,
             styles[theme],
             mapPaddingToClass[padding],

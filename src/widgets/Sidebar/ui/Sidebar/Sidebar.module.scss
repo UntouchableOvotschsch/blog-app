@@ -6,6 +6,7 @@
     position: absolute;
     top: 50%;
     right: 5px;
+    transform: rotate(-90deg);
 }
 
 .appLogo {
@@ -24,8 +25,8 @@
         width: var(--sidebar-width-redesigned-collapsed);
 
         .collapsedBtn {
-            transform: rotate(180deg);
-            right: 30%;
+            transform: rotate(90deg);
+            right: 20%;
         }
 
         .appLogo {

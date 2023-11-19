@@ -51,6 +51,8 @@ module.exports = {
                     'directionVariant',
                     'tabAlign',
                     'typeVariant',
+                    'labelJustify',
+                    'labelGap',
                 ],
             },
         ],

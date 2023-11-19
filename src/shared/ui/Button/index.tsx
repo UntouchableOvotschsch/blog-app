@@ -14,13 +14,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ThemeVariant;
     size?: SizeVariant;
     disabled?: boolean;
+    maxWidth?: boolean;
 }
 
 export const Button = typedMemo((props: ButtonProps) => {
-    const { className, children, theme = 'clear', size = 'size_m', disabled, ...otherProps } = props;
+    const { className, children, theme = 'clear', size = 'size_m', disabled, maxWidth, ...otherProps } = props;
 
     const mods: Mods = {
         [styles.disabled]: disabled,
+        [styles.maxWidth]: maxWidth,
     };
 
     return (
