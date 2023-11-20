@@ -20,6 +20,13 @@
     }
 }
 
+.gridRowRedesigned {
+    width: 715px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
 .SMALL_TILE_ROW {
     display: flex;
     flex-wrap: nowrap;

@@ -1,0 +1,53 @@
+.container {
+    width: 1000px;
+    transition: 0.2s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.imageWrapper {
+    height: 250px;
+    margin: 20px 0;
+}
+
+.articleImg {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.textBlock {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.views {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title {
+    margin: 10px 0;
+}
+
+.appLink {
+    text-decoration: none;
+}

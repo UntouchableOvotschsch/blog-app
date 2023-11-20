@@ -35,7 +35,10 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
             on={
-                <Button className={classNames('', {}, [className])} onClick={toggleThemeHandler}>
+                <Button
+                    className={classNames('', {}, [className])}
+                    onClick={toggleThemeHandler}
+                    style={{ display: 'flex' }}>
                     {ThemesConfig[theme]}
                 </Button>
             }

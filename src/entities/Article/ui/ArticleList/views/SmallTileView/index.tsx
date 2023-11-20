@@ -75,16 +75,15 @@ const SmallTileView = ({
                     name='isAppRedesigned'
                     on={
                         <VirtuosoGrid
-                            style={{ overflowX: 'hidden' }}
                             data={articles}
                             totalCount={articles?.length}
                             itemContent={renderArticleItem}
+                            useWindowScroll
                             components={{
-                                Header,
                                 Footer,
                             }}
                             endReached={onLoadNextPart}
-                            listClassName={styles.gridRow}
+                            listClassName={styles.gridRowRedesigned}
                         />
                     }
                     off={

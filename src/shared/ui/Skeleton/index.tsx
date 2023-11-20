@@ -11,10 +11,6 @@ interface SkeletonProps {
     border?: string;
 }
 
-/**
- * @deprecated
- */
-
 const Skeleton = ({ className, height, width, border }: SkeletonProps) => {
     const skeletonStyles: CSSProperties = {
         width,

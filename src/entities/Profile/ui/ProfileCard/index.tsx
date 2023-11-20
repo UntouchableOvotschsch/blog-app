@@ -12,7 +12,7 @@ import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent
 import Avatar from '@/shared/ui/Avatar';
 import Input from '@/shared/ui/Input';
 import Card from '@/shared/ui/Card';
-import Skeleton from '@/shared/ui/deprecated/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 
 import ProfileCardDeprecated from './Deprecated';
 import styles from './ProfileCard.module.scss';

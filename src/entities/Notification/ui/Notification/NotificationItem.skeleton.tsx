@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Skeleton from '@/shared/ui/deprecated/Skeleton';
+import SkeletonDeprecated from '@/shared/ui/deprecated/Skeleton';
+import Skeleton from '@/shared/ui/Skeleton';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 import { VStack } from '@/shared/ui/Stack';
 
@@ -14,7 +15,7 @@ const NotificationItemSkeleton = () => (
                 <Skeleton width='100%' height='32px' border='5px' />
             </VStack>
         }
-        off={<Skeleton width='100%' border='8px' height='80px' />}
+        off={<SkeletonDeprecated width='100%' border='8px' height='80px' />}
     />
 );
 

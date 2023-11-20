@@ -20,28 +20,36 @@ const mapSizeToHeaderTag: Record<SizeVariant, HeaderTagType> = {
 };
 
 interface TextProps {
-    classname?: string;
+    className?: string;
     title?: string;
     text?: string;
     theme?: ThemeVariant;
     align?: AlignVariant;
     size?: SizeVariant;
+    bold?: boolean;
     'data-testid'?: string;
 }
 
 const Text = typedMemo(
     ({
-        classname,
+        className,
         title,
         text,
         theme = 'primary',
         align = 'left',
         size = 'size_m',
+        bold,
         'data-testid': dataTestId = 'Text',
     }: TextProps) => {
         const HeaderTag = mapSizeToHeaderTag[size];
         return (
-            <div className={classNames('', {}, [classname, styles[theme], styles[align], styles[size]])}>
+            <div
+                className={classNames('', { [styles.bold]: bold }, [
+                    className,
+                    styles[theme],
+                    styles[align],
+                    styles[size],
+                ])}>
                 {title && (
                     <HeaderTag className={styles.title} data-testid={`${dataTestId}.Title`}>
                         {title}
