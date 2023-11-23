@@ -1,11 +1,12 @@
 import React from 'react';
 
-import EyeIcon from '@/shared/assets/icons/eye.svg';
+import Skeleton from '@/shared/ui/Skeleton';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import Card from '@/shared/ui/Card';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import Card from '@/shared/ui/deprecated/Card';
-import Icon from '@/shared/ui/deprecated/Icon';
-import Skeleton from '@/shared/ui/deprecated/Skeleton';
 
+import SmallTileItemDeprecatedSkeleton from './Deprecated/SmallTileItem.Deprecated.skeleton';
 import styles from './SmallTileItem.module.scss';
 
 interface SmallTileItemSkeletonProps {
@@ -13,21 +14,30 @@ interface SmallTileItemSkeletonProps {
 }
 
 const SmallTileItemSkeleton = ({ className }: SmallTileItemSkeletonProps) => (
-    <Card className={classNames(styles.container, {}, [className])}>
-        <div className={styles.imageWrapper} style={{ marginBottom: '5px' }}>
-            <Skeleton className={styles.image} />
-        </div>
-        <div className={styles.footer}>
-            <div className={styles.infoWrapper} style={{ margin: '5px 0' }}>
-                <Skeleton className={styles.types} height='24px' />
-                <div className={styles.views} style={{ marginLeft: '5px' }}>
-                    <Skeleton height='24px' width='35px' />
-                    <Icon Icon={EyeIcon} className={styles.eyeIcon} />
-                </div>
-            </div>
-            <Skeleton className={styles.title} height='24px' width='200px' />
-        </div>
-    </Card>
+    <ToggleFeatureComponent
+        /* eslint-disable-next-line i18next/no-literal-string */
+        name='isAppRedesigned'
+        on={
+            <Card className={classNames(styles.container, {}, [className])} rounded padding='0'>
+                <Skeleton width='100%' height='130px' />
+                <VStack className={styles.infoContainer} gap='4'>
+                    <Skeleton width='100%' height='128px' />
+                    <HStack justify='between'>
+                        <Skeleton height={24} width={85} />
+                        <HStack gap='8' maxWidth={false}>
+                            <Skeleton height={32} width={32} border='50%' />
+                            <Skeleton height={24} width={29} />
+                        </HStack>
+                    </HStack>
+                    <HStack gap='4'>
+                        <Skeleton width={32} height={32} border='50%' />
+                        <Skeleton width={50} height={24} />
+                    </HStack>
+                </VStack>
+            </Card>
+        }
+        off={<SmallTileItemDeprecatedSkeleton className={className} />}
+    />
 );
 
 export default SmallTileItemSkeleton;

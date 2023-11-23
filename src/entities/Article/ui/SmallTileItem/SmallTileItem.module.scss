@@ -1,62 +1,14 @@
-.createdAt {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
-}
-
 .container {
-    width: 230px;
-    margin-bottom: 8px;
-    margin-right: 8px;
-    transition: 0.2s;
-
-    &:hover {
-        transform: scale(1.01);
-        opacity: 0.8;
-
-        .createdAt {
-            display: block;
-        }
-    }
-}
-
-.imageWrapper {
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
-
-.image {
-    width: 200px;
-    height: 200px;
-}
-
-.infoWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.types h3 {
-    width: 130px;
+    width: 249px;
+    height: 345px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-.title h3 {
+.articleText {
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: 128px;
 }
 
-.views {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.appLink {
-    text-decoration: none;
+.infoContainer {
+    padding: 8px;
 }

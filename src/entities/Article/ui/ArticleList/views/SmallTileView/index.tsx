@@ -1,10 +1,7 @@
 import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 'react';
 
-import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid } from 'react-virtuoso';
 
-import { Button } from '@/shared/ui/deprecated/Button';
-import Text, { TextSize } from '@/shared/ui/deprecated/Text';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import { ArticleViewTypes } from '../../../../model/consts';
@@ -35,37 +32,24 @@ const SmallTileView = ({
     view = SmallTileViewTypes.LIST,
     Header,
 }: SmallTileViewProps) => {
-    const { t } = useTranslation('articleList');
-
     const renderArticleItem = useCallback(
-        (index: number, article: Article) => (
-            <SmallTileItem article={article} key={article.id} target={target} className={styles.card} />
-        ),
+        (index: number, article: Article) => <SmallTileItem article={article} key={article.id} target={target} />,
         [target],
     );
 
     const Footer = useCallback(() => {
         if (isLoading) {
             return (
-                <div className={styles.gridRow}>
+                <div className={styles.gridRowRedesigned}>
                     {new Array(20).fill(0).map((_, index) => (
-                        <SmallTileItemSkeleton className={styles.card} key={index} />
+                        <SmallTileItemSkeleton key={index} />
                     ))}
                 </div>
             );
         }
-        if (!isLoading) {
-            return (
-                <div className={styles.footer}>
-                    <Text text={t('Статьи закончились')} size={TextSize.L} />
-                    <Button>
-                        <Text text={t('Вернуться в начало')} size={TextSize.L} />
-                    </Button>
-                </div>
-            );
-        }
+
         return null;
-    }, [isLoading, t]);
+    }, [isLoading]);
 
     const renderList = useCallback(() => {
         if (view === SmallTileViewTypes.LIST) {
