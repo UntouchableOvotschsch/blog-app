@@ -114,7 +114,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.SETTINGS]: {
         path: getRouteSettings(),
-        element: <SettingsPage />
+        element: (
+            <AuthWrapper>
+                <SettingsPage />
+            </AuthWrapper>
+        )
     },
     // last
     [AppRoutes.NOTFOUND]: {

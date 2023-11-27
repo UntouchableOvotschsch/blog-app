@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -11,32 +11,41 @@ import { updateFeaturesService , getUserAuthData } from '@/entities/User';
 import Text from '@/shared/ui/Text';
 
 
-type DesignVariants = 'old' | 'new'
+enum DesignVariants {
+    old = 'old',
+    new = 'new',
+}
+
+
 
 const SettingsPage = () => {
     const {t} = useTranslation()
-    const currentDesign = getFeatureFlag('isAppRedesigned')
+
+    const isRedesigned = getFeatureFlag('isAppRedesigned')
+
     const dispatch = useAppDispatch()
     const userId = useSelector(getUserAuthData)?.id
     const [loading, setIsLoading] = useState(false)
 
-    const designSelectOptions: SelectOptions<DesignVariants>[] = [
+    const designSelectOptions = useMemo<SelectOptions<DesignVariants>[]>(() => [
         {
-            value: 'new',
-            disabled: currentDesign,
-            content: 'Новый'
+            value: DesignVariants.old,
+            disabled: !isRedesigned ?? true,
+            content: 'Старый',
         },
-        {
-            value: 'old',
-            disabled: !currentDesign,
-            content: 'Старый'
-        }
-    ]
+        ...(typeof isRedesigned !== 'undefined' ? [{
+            value: DesignVariants.new,
+            disabled: isRedesigned ?? true,
+            content: 'Новый'
+        }] : []),
+    ], [isRedesigned])
 
     const changeDesignVariant = useCallback(async (value: DesignVariants) => {
         if(userId) {
             setIsLoading(true)
-            await dispatch(updateFeaturesService({userId, newFeatures: {isAppRedesigned: value !== 'old'}})).unwrap()
+            await dispatch(updateFeaturesService({
+                userId, newFeatures: {isAppRedesigned: value !== DesignVariants.old}
+            })).unwrap()
             setIsLoading(false)
         }
     }, [dispatch, userId])
@@ -47,7 +56,7 @@ const SettingsPage = () => {
             <Select
                 label={t('Вариант дизайна:')}
                 options={designSelectOptions}
-                selectValue={currentDesign ? 'new' : 'old'}
+                selectValue={isRedesigned ? DesignVariants.new : DesignVariants.old}
                 directionVariant="row"
                 onChange={changeDesignVariant}
                 editable={!loading}
