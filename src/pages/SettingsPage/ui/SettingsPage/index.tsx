@@ -35,7 +35,7 @@ const SettingsPage = () => {
         },
         ...(typeof isRedesigned !== 'undefined' ? [{
             value: DesignVariants.new,
-            disabled: isRedesigned ?? true,
+            disabled: isRedesigned,
             content: 'Новый'
         }] : []),
     ], [isRedesigned])
