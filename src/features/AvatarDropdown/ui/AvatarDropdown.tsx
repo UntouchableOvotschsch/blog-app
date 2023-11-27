@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
-import { getRouteAdminPage, getRouteProfilePage } from '@/shared/const/router';
+import { getRouteAdminPage, getRouteProfilePage, getRouteSettings } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import AvatarDeprecated from '@/shared/ui/deprecated/Avatar';
@@ -39,6 +39,10 @@ const AvatarDropdown = ({ className }: AvatarDropdownProps) => {
         {
             label: t('Профиль'),
             href: getRouteProfilePage(authData.id),
+        },
+        {
+            label: t('Настройки'),
+            href: getRouteSettings(),
         },
         ...(isAdmin
             ? [

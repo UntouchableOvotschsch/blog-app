@@ -11,6 +11,7 @@ import EyeIcon from '@/shared/assets/icons/Redesigned/eye-icon.svg';
 import Icon from '@/shared/ui/Icon';
 import Avatar from '@/shared/ui/Avatar';
 import { AppLink } from '@/shared/ui/AppLink';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import { ArticleBlockTypes } from '../../model/consts';
 import { Article, ArticleTextBlock } from '../../model/types/article';
@@ -27,7 +28,7 @@ const SmallTileItem = (props: BigTileItemProps) => {
     const { target, className, article } = props;
     const navigateToArticle = getRouteArticleDetailsPage(article.id);
 
-    const [firstParagraph, ...other] = (
+    const [firstParagraph, ..._] = (
         article?.blocks?.find((block) => block.type === ArticleBlockTypes.TEXT) as ArticleTextBlock
     ).paragraphs;
 
@@ -37,7 +38,7 @@ const SmallTileItem = (props: BigTileItemProps) => {
             name='isAppRedesigned'
             on={
                 <AppLink to={navigateToArticle} target={target}>
-                    <Card className={styles.container} rounded padding='0'>
+                    <Card className={classNames(styles.container, {}, [className])} rounded padding='0'>
                         <AppImage
                             fallback={<Skeleton width='100%' height='130px' />}
                             src={article.img}

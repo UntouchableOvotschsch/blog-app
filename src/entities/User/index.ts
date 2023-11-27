@@ -7,6 +7,7 @@ import { getUserIsAdmin, getUserRoles } from './model/selectors/getUserRoles';
 import { userActions, userReducer } from './model/slice/userSlice';
 import type { User, UserSchema } from './model/types/user';
 import { updateJsonSettingsService } from './model/service/updateJsonSettings';
+import { updateFeaturesService } from './model/service/updateFeatures';
 
 export {
     userReducer,
@@ -21,4 +22,5 @@ export {
     useAuthDataChecker,
     useJsonSettings,
     updateJsonSettingsService,
+    updateFeaturesService
 };

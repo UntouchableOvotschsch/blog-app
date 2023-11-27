@@ -22,8 +22,9 @@ import {
     getRouteLogin,
     getRouteMainPage,
     getRouteNotFoundPage,
-    getRouteProfilePage,
+    getRouteProfilePage, getRouteSettings,
 } from '@/shared/const/router';
+import { SettingsPage } from '@/pages/SettingsPage';
 
 import AuthWrapper from '../ui/wrappers/AuthWrapper';
 import RoleWrapper from '../ui/wrappers/RoleWrapper';
@@ -111,7 +112,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: getRouteLogin(),
         element: <MainPage />,
     },
-
+    [AppRoutes.SETTINGS]: {
+        path: getRouteSettings(),
+        element: <SettingsPage />
+    },
     // last
     [AppRoutes.NOTFOUND]: {
         path: getRouteNotFoundPage(),

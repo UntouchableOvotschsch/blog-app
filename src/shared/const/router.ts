@@ -9,6 +9,7 @@ export enum AppRoutes {
     ADMIN = 'admin',
     FORBIDDEN = 'forbidden',
     LOGIN = 'login',
+    SETTINGS = 'settings',
     // last
     NOTFOUND = 'notfound',
 }
@@ -24,3 +25,4 @@ export const getRouteAdminPage = () => '/admin';
 export const getRouteForbiddenPage = () => '/forbidden';
 export const getRouteNotFoundPage = () => '*';
 export const getRouteLogin = () => '/login';
+export const getRouteSettings = () => '/settings'
