@@ -23,6 +23,18 @@
     }
 }
 
+.outline_red {
+    padding: 8px 16px;
+    border: 1px solid var(--cancel-color);
+    background: none;
+    border-radius: 16px;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
 .size_m {
     font-size: var(--font-m-redesigned);
 }

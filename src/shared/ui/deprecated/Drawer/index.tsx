@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 import styles from './Drawer.module.scss';
 import Overlay from '../Overlay';
-import { Portal } from '../Portal';
+import { Portal } from '../../Portal';
 
 interface DrawerProps {
     className?: string;

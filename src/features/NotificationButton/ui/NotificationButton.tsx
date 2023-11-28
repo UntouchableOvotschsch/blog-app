@@ -7,6 +7,7 @@ import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
 import { Button as ButtonDeprecated, ThemeButton } from '@/shared/ui/deprecated/Button';
 import Drawer from '@/shared/ui/Drawer';
+import DrawerDeprecated from '@/shared/ui/deprecated/Drawer';
 import IconDeprecated from '@/shared/ui/deprecated/Icon';
 import Icon from '@/shared/ui/Icon';
 import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
@@ -46,9 +47,9 @@ const NotificationButton = ({ className }: NotificationButtonProps) => {
                         <ButtonDeprecated theme={ThemeButton.CLEAR} onClick={drawerVisibility}>
                             <IconDeprecated Icon={NotificationIconDeprecated} fill='inverted' />
                         </ButtonDeprecated>
-                        <Drawer visible={drawerVisible} changeVisibility={drawerVisibility}>
+                        <DrawerDeprecated visible={drawerVisible} changeVisibility={drawerVisibility}>
                             <NotificationList className={classNames(styles.NotificationList, {}, [styles.mobile])} />
-                        </Drawer>
+                        </DrawerDeprecated>
                     </div>
                 }
             />

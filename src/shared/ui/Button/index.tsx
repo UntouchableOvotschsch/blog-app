@@ -5,7 +5,7 @@ import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './Button.module.scss';
 
-type ThemeVariant = 'clear' | 'outline';
+type ThemeVariant = 'clear' | 'outline' | 'outline_red';
 
 type SizeVariant = 'size_m' | 'size_l' | 'size_xl';
 

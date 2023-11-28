@@ -153,6 +153,7 @@ const ProfileCard: FC<ProfileCardProps> = (props) => {
                                 />
                                 <Input
                                     value={data?.avatar}
+                                    readOnly={!editable}
                                     onChange={(value) => changeProfileData({ avatar: value })}
                                     label={t('Аватар: ')}
                                 />

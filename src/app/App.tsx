@@ -49,7 +49,7 @@ const App: FC = () => {
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
             off={
-                <div className='app'>
+                <div className='app' id='app'>
                     <Suspense fallback=''>
                         {loading ? (
                             <Loader className='appLoader' />
@@ -66,7 +66,7 @@ const App: FC = () => {
                 </div>
             }
             on={
-                <div className='app_redesigned'>
+                <div className='app_redesigned' id='app'>
                     <Suspense fallback=''>
                         {loading ? (
                             <Loader className='appLoader' />

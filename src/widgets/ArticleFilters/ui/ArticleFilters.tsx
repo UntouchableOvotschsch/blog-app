@@ -39,7 +39,7 @@ const ArticleFilters = (props: ArticleFiltersProps) => {
 
     return (
         <Card className={classNames(styles.container, {}, [className])} padding='16' rounded>
-            <VStack gap='32' maxWidth justify='center'>
+            <VStack gap='32' maxWidth align='start'>
                 <Input
                     value={searchValue}
                     placeholder={t('Поиск')}

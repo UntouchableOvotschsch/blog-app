@@ -51,7 +51,7 @@ const SortSelector = (props: SortSelectorProps) => {
             name='isAppRedesigned'
             on={
                 <Select
-                    label={t('Сортировать по:')}
+                    label={t('Фильтр: ')}
                     selectValue={sortField}
                     options={sortFields}
                     onChange={changeSortField}

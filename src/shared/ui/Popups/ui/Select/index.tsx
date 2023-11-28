@@ -84,7 +84,7 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
             );
         }
         return (
-            <HStack gap='16'>
+            <HStack gap='16' maxWidth={maxWidth}>
                 {label && <Text text={label} />}
                 <Listbox
                     as='div'

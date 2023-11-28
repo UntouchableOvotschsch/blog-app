@@ -1,9 +1,12 @@
 import React, { Suspense } from 'react';
 
 import { useDeviceDetect } from '@/shared/lib/hooks/useDeviceDetect';
+import DrawerDeprecated from '@/shared/ui/deprecated/Drawer';
 import Drawer from '@/shared/ui/Drawer';
 import { Loader } from '@/shared/ui/deprecated/Loader';
-import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Modal as ModalDeprecated } from '@/shared/ui/deprecated/Modal';
+import { Modal } from '@/shared/ui/Modal';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
@@ -16,20 +19,46 @@ const LoginModal = ({ visible, changeVisibility }: LoginModalProps) => {
 
     if (isMobile) {
         return (
-            <Drawer visible={visible} changeVisibility={changeVisibility}>
-                <Suspense fallback={<Loader />}>
-                    <LoginFormAsync changeVisibility={changeVisibility} />
-                </Suspense>
-            </Drawer>
+            <ToggleFeatureComponent
+                /* eslint-disable-next-line i18next/no-literal-string */
+                name='isAppRedesigned'
+                on={
+                    <Drawer visible={visible} changeVisibility={changeVisibility}>
+                        <Suspense fallback={<Loader />}>
+                            <LoginFormAsync changeVisibility={changeVisibility} />
+                        </Suspense>
+                    </Drawer>
+                }
+                off={
+                    <DrawerDeprecated visible={visible} changeVisibility={changeVisibility}>
+                        <Suspense fallback={<Loader />}>
+                            <LoginFormAsync changeVisibility={changeVisibility} />
+                        </Suspense>
+                    </DrawerDeprecated>
+                }
+            />
         );
     }
 
     return (
-        <Modal visible={visible} changeVisibility={changeVisibility}>
-            <Suspense fallback={<Loader />}>
-                <LoginFormAsync changeVisibility={changeVisibility} />
-            </Suspense>
-        </Modal>
+        <ToggleFeatureComponent
+            /* eslint-disable-next-line i18next/no-literal-string */
+            name='isAppRedesigned'
+            on={
+                <Modal visible={visible} changeVisibility={changeVisibility}>
+                    <Suspense fallback={<Loader />}>
+                        <LoginFormAsync changeVisibility={changeVisibility} />
+                    </Suspense>
+                </Modal>
+            }
+            off={
+                <ModalDeprecated visible={visible} changeVisibility={changeVisibility}>
+                    <Suspense fallback={<Loader />}>
+                        <LoginFormAsync changeVisibility={changeVisibility} />
+                    </Suspense>
+                </ModalDeprecated>
+            }
+        />
     );
 };
 

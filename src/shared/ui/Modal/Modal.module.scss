@@ -1,0 +1,39 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: var(--z-index-modal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--light-bg-color);
+    transition: 0.3s transform;
+    transform: scale(0.5);
+    min-width: 400px;
+    min-height: 240px;
+    z-index: var(--z-index-modal);
+}
+
+.visible {
+    pointer-events: auto;
+    opacity: 1;
+
+    .content {
+        transform: scale(1);
+    }
+}
+
+.closing {
+    .content {
+        transform: scale(0.2);
+    }
+}
