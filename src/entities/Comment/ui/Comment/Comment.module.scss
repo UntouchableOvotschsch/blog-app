@@ -1,5 +1,5 @@
 .container {
-    margin: 10px 0;
+    width: 100%;
     border: 1px solid var(--inverted-bg-color);
     padding: 10px;
     border-radius: 15px;
@@ -10,4 +10,8 @@
     align-items: center;
     gap: 15px;
     width: fit-content;
+}
+
+.cardContainer {
+    overflow: hidden;
 }

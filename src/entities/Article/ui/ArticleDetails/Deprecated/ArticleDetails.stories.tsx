@@ -5,7 +5,7 @@ import { Themes } from '@/shared/const/theme';
 import PageWrapper from '@/shared/ui/deprecated/PageWrapper';
 
 import ArticleDetails from '.';
-import { articleTemplate } from '../../model/templates/article';
+import { articleTemplate } from '../../../model/templates/article';
 
 const meta: Meta<typeof ArticleDetails> = {
     title: 'entities/Article/ArticleDetails',

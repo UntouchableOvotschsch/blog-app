@@ -1,0 +1,15 @@
+.container {
+    overflow: auto;
+    position: relative;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}

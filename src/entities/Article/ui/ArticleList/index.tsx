@@ -1,16 +1,13 @@
 import { ComponentType, HTMLAttributeAnchorTarget, useMemo } from 'react';
 
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useResizeObserverHelper } from '@/shared/lib/helpers/useResizeObserverHelper';
 
-import styles from './ArticleList.module.scss';
 import BigTileView from './views/BigTileView';
 import SmallTileView, { SmallTileViewTypes } from './views/SmallTileView';
 import { ArticleViewTypes } from '../../model/consts';
 import { Article } from '../../model/types/article';
 
 interface ArticleListProps {
-    className?: string;
     articles?: Article[];
     isLoading?: boolean;
     view?: ArticleViewTypes;
@@ -20,7 +17,6 @@ interface ArticleListProps {
 }
 
 const ArticleList = ({
-    className,
     articles,
     isLoading,
     view = ArticleViewTypes.SMALL_TILE,
@@ -30,7 +26,7 @@ const ArticleList = ({
 }: ArticleListProps) => {
     // Нужно для фикса ошибки с ResizeObserver
     useResizeObserverHelper();
-    const renderList = useMemo(() => {
+    return useMemo(() => {
         if (view === ArticleViewTypes.BIG_TILE) {
             return (
                 <BigTileView
@@ -56,8 +52,6 @@ const ArticleList = ({
         }
         return null;
     }, [Header, articles, isLoading, onLoadNextPart, target, view]);
-
-    return <div className={classNames(styles.container, {}, [className, styles[view]])}>{renderList}</div>;
 };
 
 export default ArticleList;

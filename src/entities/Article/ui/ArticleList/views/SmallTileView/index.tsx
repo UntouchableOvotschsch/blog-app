@@ -3,6 +3,7 @@ import React, { ComponentType, HTMLAttributeAnchorTarget, useCallback } from 're
 import { VirtuosoGrid } from 'react-virtuoso';
 
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
+import { HStack } from '@/shared/ui/Stack';
 
 import { ArticleViewTypes } from '../../../../model/consts';
 import { Article } from '../../../../model/types/article';
@@ -88,9 +89,9 @@ const SmallTileView = ({
             );
         }
         return (
-            <div className={styles.SMALL_TILE_ROW}>
+            <HStack gap='16' className={styles.SMALL_TILE_ROW}>
                 {articles?.map((article, index) => renderArticleItem(index, article))}
-            </div>
+            </HStack>
         );
     }, [Footer, Header, articles, onLoadNextPart, renderArticleItem, view]);
 

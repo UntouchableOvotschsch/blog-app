@@ -7,7 +7,7 @@ import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './AppLink.module.scss';
 
-type AppLinkVariant = 'primary' | 'red';
+type AppLinkVariant = 'primary' | 'red' | 'outline';
 
 interface AppLinkProps extends LinkProps {
     className?: string;

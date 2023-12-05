@@ -7,6 +7,9 @@ export const articleDetailsApi = rtkApi.injectEndpoints({
         getArticleDetails: build.query<Article, string>({
             query: (id) => ({
                 url: `/articles/${id}`,
+                params: {
+                    _expand: 'user',
+                },
             }),
         }),
     }),

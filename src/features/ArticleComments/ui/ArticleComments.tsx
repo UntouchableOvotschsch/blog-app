@@ -8,7 +8,9 @@ import DynamicModuleLoader, { ReducerList } from '@/shared/lib/components/Dynami
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { VStack } from '@/shared/ui/Stack';
-import Text, { TextSize } from '@/shared/ui/deprecated/Text';
+import TextDeprecated, { TextSize } from '@/shared/ui/deprecated/Text';
+import Text from '@/shared/ui/Text';
+import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 
 import { getArticleCommentsLoading } from '../model/selectors/getArticleCommentsLoading';
 import { addNewCommentToArticleService } from '../model/service/addNewCommentToArticle';
@@ -46,14 +48,30 @@ const ArticleComments = ({ className, id }: ArticleCommentsProps) => {
 
     return (
         <DynamicModuleLoader reducerList={reducers}>
-            <VStack gap='4' className={classNames('', {}, [className])} align='start'>
-                <Text title={`${t('Комментарии')}:`} size={TextSize.L} />
-                {/* TODO сделать скелетон на подгрузку формы */}
-                <Suspense fallback=''>
-                    <CommentForm addNewCommentTo={addNewComment} />
-                </Suspense>
-                <CommentsList isLoading={isLoading} comments={comments} />
-            </VStack>
+            <ToggleFeatureComponent
+                /* eslint-disable-next-line i18next/no-literal-string */
+                name='isAppRedesigned'
+                on={
+                    <VStack gap='16' className={classNames('', {}, [className])} align='start'>
+                        <Text title={`${t('Комментарии')}:`} size='size_l' />
+                        {/* TODO сделать скелетон на подгрузку формы */}
+                        <Suspense fallback=''>
+                            <CommentForm addNewCommentTo={addNewComment} />
+                        </Suspense>
+                        <CommentsList isLoading={isLoading} comments={comments} />
+                    </VStack>
+                }
+                off={
+                    <VStack gap='4' className={classNames('', {}, [className])} align='start'>
+                        <TextDeprecated title={`${t('Комментарии')}:`} size={TextSize.L} />
+                        {/* TODO сделать скелетон на подгрузку формы */}
+                        <Suspense fallback=''>
+                            <CommentForm addNewCommentTo={addNewComment} />
+                        </Suspense>
+                        <CommentsList isLoading={isLoading} comments={comments} />
+                    </VStack>
+                }
+            />
         </DynamicModuleLoader>
     );
 };
