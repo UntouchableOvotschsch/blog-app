@@ -13,6 +13,7 @@ import Avatar from '@/shared/ui/Avatar';
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 import { Dropdown } from '@/shared/ui/Popups';
+import { useForceUpdate } from '@/shared/render/ForceUpdateProvider';
 
 import styles from './AvatarDropdown.module.scss';
 
@@ -25,11 +26,13 @@ const AvatarDropdown = ({ className }: AvatarDropdownProps) => {
     const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(getUserIsAdmin);
     const { t } = useTranslation();
+    const forceUpdate = useForceUpdate()
 
     const logoutBtn = useCallback(() => {
         localStorage.removeItem(USER_LOCALSTORAGE_KEY);
         dispatch(userActions.removeAuthData());
-    }, [dispatch]);
+        forceUpdate()
+    }, [dispatch, forceUpdate]);
 
     if (!authData) {
         return null;

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import ThemeLogoDeprecated from '@/shared/assets/icons/theme-dark.svg';
 import IconDeprecated from '@/shared/ui/deprecated/Icon';
@@ -12,28 +12,34 @@ export enum Themes {
     ORANGE = 'app_orange_theme',
 }
 
-export const ThemesConfig: Record<Themes, ReactElement> = {
-    [Themes.LIGHT]: (
+type IconProps = Omit<React.ComponentProps<typeof Icon>, 'Icon' | 'clickable'> & {
+    onClick: () => void
+}
+
+
+
+export const ThemesConfig: Record<Themes, (props: IconProps) => ReactElement> = {
+    [Themes.LIGHT]: ({onClick, ...otherProps}: IconProps) => (
         <ToggleFeatureComponent
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
-            on={<Icon Icon={ThemeLogo} />}
+            on={<Icon Icon={ThemeLogo} clickable onClick={onClick} {...otherProps} />}
             off={<IconDeprecated Icon={ThemeLogoDeprecated} size='40' fill='inverted' />}
         />
     ),
-    [Themes.DARK]: (
+    [Themes.DARK]: ({onClick, ...otherProps}: IconProps) => (
         <ToggleFeatureComponent
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
-            on={<Icon Icon={ThemeLogo} />}
+            on={<Icon Icon={ThemeLogo} clickable onClick={onClick} {...otherProps}/>}
             off={<IconDeprecated Icon={ThemeLogoDeprecated} size='40' fill='inverted' />}
         />
     ),
-    [Themes.ORANGE]: (
+    [Themes.ORANGE]: ({onClick, ...otherProps}: IconProps) => (
         <ToggleFeatureComponent
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
-            on={<Icon Icon={ThemeLogo} />}
+            on={<Icon Icon={ThemeLogo} clickable onClick={onClick} {...otherProps}/>}
             off={<IconDeprecated Icon={ThemeLogoDeprecated} size='40' fill='inverted' />}
         />
     ),

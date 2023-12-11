@@ -3,9 +3,7 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import { ThemesConfig } from '@/shared/const/theme';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Button } from '@/shared/ui/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getUserAuthData, updateJsonSettingsService } from '@/entities/User';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
@@ -30,17 +28,14 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
         });
     }, [dispatch, toggleTheme, user]);
 
+    const ThemeTag = ThemesConfig[theme]
+
     return (
         <ToggleFeatureComponent
             /* eslint-disable-next-line i18next/no-literal-string */
             name='isAppRedesigned'
             on={
-                <Button
-                    className={classNames('', {}, [className])}
-                    onClick={toggleThemeHandler}
-                    style={{ display: 'flex' }}>
-                    {ThemesConfig[theme]}
-                </Button>
+                <ThemeTag onClick={toggleThemeHandler} className={className}/>
             }
             off={<ThemeSwitcherDeprecated className={className} />}
         />

@@ -90,7 +90,7 @@ const RatingCard = (props: RatingCardProps) => {
                             <Text title={feedbackTitle} />
                             <Input value={feedbackValue} onChange={setFeedbackValue} placeholder={t('Введите отзыв')} />
                             <HStack justify='between'>
-                                <Button theme='outline_red' onClick={cancelHandle}>
+                                <Button theme='outline' onClick={cancelHandle} color="cancel">
                                     {t('Отменить')}
                                 </Button>
                                 {feedbackValue ? (
@@ -118,13 +118,15 @@ const RatingCard = (props: RatingCardProps) => {
                         />
                         <HStack justify='between'>
                             <Button
-                                theme='outline_red'
+                                theme='outline'
+                                color='cancel'
                                 onClick={cancelHandle}
                                 data-testid='RatingCard.Feedback.Button.Cancel'>
                                 {t('Отменить')}
                             </Button>
                             <Button
-                                theme='outline_green'
+                                theme='outline'
+                                color='success'
                                 onClick={feedbackValue ? acceptWithFeedbackHandle : acceptWithoutFeedbackHandle}
                                 data-testid='RatingCard.Feedback.Button.SaveWithFeedback'>
                                 {feedbackValue ? t('Сохранить') : t('Сохранить без отзыва')}

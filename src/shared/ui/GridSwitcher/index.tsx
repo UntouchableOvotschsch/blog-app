@@ -36,7 +36,8 @@ const GridSwitcher = typedMemo(<T,>(props: GridSwitcherProps<T>) => {
                     <Button
                         onClick={onClickHandler(el.value)}
                         disabled={selectedValue === el.value}
-                        style={{ display: 'flex' }}>
+                        style={{display: 'flex'}}
+                    >
                         {el.content}
                     </Button>
                 </Card>

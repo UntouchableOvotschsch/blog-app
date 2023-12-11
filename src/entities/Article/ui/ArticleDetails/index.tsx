@@ -126,7 +126,7 @@ const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     <AppImage
                         alt={article?.title}
                         src={article?.img}
-                        height='420'
+                        height='420px'
                         width='100%'
                         style={{ objectFit: 'cover' }}
                     />

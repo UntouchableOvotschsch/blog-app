@@ -37,7 +37,8 @@ const EditableProfileCardHeader = ({
                     <Text title={t('Профиль')} />
                     {canEdit && (
                         <Button
-                            theme={editable ? 'outline_red' : 'outline'}
+                            theme="outline"
+                            color={editable ? 'cancel' : 'normal'}
                             onClick={editable ? cancelEditMode : () => setEditMode(true)}
                             data-testid='EditableProfileCardHeader.CancelBtn'>
                             {editable ? t('Отменить') : t('Редактировать')}

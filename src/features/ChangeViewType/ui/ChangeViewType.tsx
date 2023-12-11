@@ -12,11 +12,11 @@ import ChangeViewTypeDeprecated from './Deprecated/ChangeViewType';
 const views = [
     {
         value: ArticleViewTypes.BIG_TILE,
-        content: <Icon Icon={BurgerIcon} width={16} height={16}/>,
+        content: <Icon Icon={BurgerIcon} width={16} height={16} />,
     },
     {
         value: ArticleViewTypes.SMALL_TILE,
-        content: <Icon Icon={TileIcon} width={16} height={16}/>,
+        content: <Icon Icon={TileIcon} width={16} height={16} />,
     },
 ];
 

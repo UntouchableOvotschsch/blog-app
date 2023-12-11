@@ -47,7 +47,12 @@ const EditableProfileCardFooter = ({ validationErrors, editable, updateProfile }
                             ))}
                     </VStack>
                     {editable && (
-                        <Button theme='outline' onClick={updateProfile} data-testid='EditableProfileCardFooter.SaveBtn'>
+                        <Button
+                            theme='outline'
+                            color="success"
+                            onClick={updateProfile}
+                            data-testid='EditableProfileCardFooter.SaveBtn'
+                        >
                             {t('Сохранить')}
                         </Button>
                     )}

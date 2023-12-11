@@ -27,9 +27,11 @@ export const ThemeSwitcherDeprecated = memo(({ className }: ThemeSwitcherProps) 
         });
     }, [dispatch, toggleTheme, user]);
 
+    const ThemeTag = ThemesConfig[theme]
+
     return (
         <Button className={classNames('', {}, [className])} theme={ThemeButton.CLEAR} onClick={toggleThemeHandler}>
-            {ThemesConfig[theme]}
+            <ThemeTag onClick={() => undefined}/>
         </Button>
     );
 });

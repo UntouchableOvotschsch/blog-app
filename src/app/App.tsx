@@ -1,48 +1,18 @@
-import { FC, Suspense, useCallback, useEffect, useState } from 'react';
+import { FC, Suspense } from 'react';
 
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
-import { getUserInited, User, userActions } from '@/entities/User';
-import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
-import { loginByUsername } from '@/features/AuthByUsername';
 import { Loader } from '@/shared/ui/deprecated/Loader';
-import { getRouteLogin } from '@/shared/const/router';
 import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent';
 import { MainLayout } from '@/shared/layouts';
 
 import { AppRouter } from './providers/RouterProvider';
+import { useLoginByLocalStorageData } from './lib/useLoginByLocalStorageData';
 
 const App: FC = () => {
-    const dispatch = useAppDispatch();
-    const inited = useSelector(getUserInited);
-    const [loading, setIsLoading] = useState(true);
-    const navigate = useNavigate();
 
-    const loginByLocalStorageData = useCallback(async () => {
-        const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-        if (user) {
-            const { username, password }: User = JSON.parse(user);
-            try {
-                await dispatch(loginByUsername({ username, password: password! })).unwrap();
-            } catch (e) {
-                navigate(getRouteLogin());
-            } finally {
-                dispatch(userActions.setInited(true));
-                setIsLoading(false);
-            }
-        } else {
-            setIsLoading(false);
-            dispatch(userActions.setInited(true));
-        }
-    }, [dispatch, navigate]);
-
-    useEffect(() => {
-        loginByLocalStorageData().then();
-    }, [loginByLocalStorageData]);
+    const {loading, inited} = useLoginByLocalStorageData()
 
     return (
         <ToggleFeatureComponent

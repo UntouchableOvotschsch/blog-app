@@ -53,6 +53,7 @@ module.exports = {
                     'typeVariant',
                     'labelJustify',
                     'labelGap',
+                    'color'
                 ],
             },
         ],

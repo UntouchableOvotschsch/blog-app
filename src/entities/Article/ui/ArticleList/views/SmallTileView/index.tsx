@@ -42,7 +42,7 @@ const SmallTileView = ({
         if (isLoading) {
             return (
                 <div className={styles.gridRowRedesigned}>
-                    {new Array(20).fill(0).map((_, index) => (
+                    {new Array(10).fill(0).map((_, index) => (
                         <SmallTileItemSkeleton key={index} />
                     ))}
                 </div>
