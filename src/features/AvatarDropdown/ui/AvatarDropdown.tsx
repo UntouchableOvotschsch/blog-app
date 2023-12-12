@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
-import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { LOCAL_STORAGE_FEATURE_FLAGS_KEY, USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 import { getRouteAdminPage, getRouteProfilePage, getRouteSettings } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -26,12 +26,13 @@ const AvatarDropdown = ({ className }: AvatarDropdownProps) => {
     const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(getUserIsAdmin);
     const { t } = useTranslation();
-    const forceUpdate = useForceUpdate()
+    const forceUpdate = useForceUpdate();
 
     const logoutBtn = useCallback(() => {
         localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+        localStorage.removeItem(LOCAL_STORAGE_FEATURE_FLAGS_KEY);
         dispatch(userActions.removeAuthData());
-        forceUpdate()
+        forceUpdate();
     }, [dispatch, forceUpdate]);
 
     if (!authData) {

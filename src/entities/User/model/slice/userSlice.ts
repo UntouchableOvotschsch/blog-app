@@ -22,9 +22,8 @@ const userSlice = createSlice({
             state._inited = payload;
         },
         removeAuthData: (state) => {
-            state.authData = undefined;
             setFeatureFlags({});
-            setFeatureFlagsToLocalStorage({});
+            state.authData = undefined;
         },
     },
     extraReducers: (builder) => {
