@@ -7,7 +7,6 @@ import { getAllFeatureFlags } from '@/shared/lib/features/featureFlagsHandler';
 import { updateFeaturesApi } from '../../api/userApi';
 import { User } from '../types/user';
 
-
 interface UpdateFeaturesProps {
     newFeatures: FeatureFlags;
     userId: string;
@@ -15,7 +14,7 @@ interface UpdateFeaturesProps {
 
 export const updateFeaturesService = createAsyncThunk<User, UpdateFeaturesProps, ThunkConfigType<string>>(
     'user/updateFeatures',
-    async ({userId, newFeatures}, thunkAPI) => {
+    async ({ userId, newFeatures }, thunkAPI) => {
         const { rejectWithValue, dispatch } = thunkAPI;
 
         const currentFeatures = getAllFeatureFlags();
@@ -25,7 +24,7 @@ export const updateFeaturesService = createAsyncThunk<User, UpdateFeaturesProps,
                 updateFeaturesApi({
                     features: {
                         ...currentFeatures,
-                        ...newFeatures
+                        ...newFeatures,
                     },
                     userId,
                 }),
@@ -35,10 +34,9 @@ export const updateFeaturesService = createAsyncThunk<User, UpdateFeaturesProps,
                 return rejectWithValue('Произошла ошибка при обновлении фичей');
             }
 
-            window.location.reload()
+            window.location.reload();
 
-            return response
-
+            return response;
         } catch (e) {
             return rejectWithValue('Произошла ошибка при обновлении фичей');
         }

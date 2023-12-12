@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { setFeatureFlags } from '@/shared/lib/features/featureFlagsHandler';
+import { setFeatureFlags, setFeatureFlagsToLocalStorage } from '@/shared/lib/features/featureFlagsHandler';
 
 import { updateJsonSettingsService } from '../service/updateJsonSettings';
 import { User, UserSchema } from '../types/user';
@@ -15,7 +15,8 @@ const userSlice = createSlice({
     reducers: {
         setAuthData: (state, action: PayloadAction<User>) => {
             state.authData = action.payload;
-            setFeatureFlags(action.payload?.features);
+            setFeatureFlags(action.payload.features);
+            setFeatureFlagsToLocalStorage(action.payload.features);
         },
         setInited: (state, { payload }: PayloadAction<boolean>) => {
             state._inited = payload;
@@ -23,6 +24,7 @@ const userSlice = createSlice({
         removeAuthData: (state) => {
             state.authData = undefined;
             setFeatureFlags({});
+            setFeatureFlagsToLocalStorage({});
         },
     },
     extraReducers: (builder) => {
