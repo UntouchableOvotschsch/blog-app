@@ -25,4 +25,20 @@ export const getRouteAdminPage = () => '/admin';
 export const getRouteForbiddenPage = () => '/forbidden';
 export const getRouteNotFoundPage = () => '*';
 export const getRouteLogin = () => '/login';
-export const getRouteSettings = () => '/settings'
+export const getRouteSettings = () => '/settings';
+
+export const matchRouteToPattern: Record<string, AppRoutes> = {
+    [getRouteMainPage()]: AppRoutes.MAIN,
+    [getRouteAboutPage()]: AppRoutes.ABOUT,
+    [getRouteProfilePage(':id')]: AppRoutes.PROFILE,
+    [getRouteArticlesPage()]: AppRoutes.ARTICLES,
+    [getRouteArticleDetailsPage(':id')]: AppRoutes.ARTICLE_DETAILS,
+    [getRouteArticleCreatePage()]: AppRoutes.ARTICLE_CREATE,
+    [getRouteArticleEditPage(':id')]: AppRoutes.ARTICLE_EDIT,
+    [getRouteAdminPage()]: AppRoutes.ADMIN,
+    [getRouteLogin()]: AppRoutes.LOGIN,
+    [getRouteSettings()]: AppRoutes.SETTINGS,
+    [getRouteForbiddenPage()]: AppRoutes.FORBIDDEN,
+    // last
+    [getRouteNotFoundPage()]: AppRoutes.NOTFOUND,
+};

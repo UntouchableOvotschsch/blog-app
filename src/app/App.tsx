@@ -7,11 +7,13 @@ import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent
 import { MainLayout } from '@/shared/layouts';
 import AppLoaderLayout from '@/shared/layouts/AppLoaderLayout';
 
+import { useAppToolbar } from './lib/useAppToolbar';
 import { AppRouter } from './providers/RouterProvider';
 import { useLoginByLocalStorageData } from './lib/useLoginByLocalStorageData';
 
 const App: FC = () => {
     const { loading, inited } = useLoginByLocalStorageData();
+    const toolbar = useAppToolbar();
 
     if (loading || !inited) {
         return (
@@ -51,7 +53,12 @@ const App: FC = () => {
                 <div className='app_redesigned' id='app'>
                     <Suspense fallback=''>
                         <Suspense fallback=''>
-                            <MainLayout sidebar={<Sidebar />} content={<AppRouter />} header={<Navbar />} />
+                            <MainLayout
+                                sidebar={<Sidebar />}
+                                content={<AppRouter />}
+                                header={<Navbar />}
+                                toolbar={toolbar}
+                            />
                         </Suspense>
                     </Suspense>
                 </div>
