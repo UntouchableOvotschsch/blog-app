@@ -25,7 +25,7 @@ interface SelectProps<T extends string> {
     label?: string;
     options: SelectOptions<T>[];
     selectValue?: T;
-    onChange?: (value: T) => void;
+    onChange: (value: T) => void;
     editable?: boolean;
     containerTheme?: SelectContainerTheme;
     className?: string;

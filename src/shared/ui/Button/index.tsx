@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 
 import { classNames, Mods } from '@/shared/lib/helpers/classNames/classNames';
-import { typedMemo } from '@/shared/lib/helpers/typedMemo';
 
 import styles from './Button.module.scss';
 
@@ -9,7 +8,7 @@ type ThemeVariant = 'clear' | 'outline';
 
 type SizeVariant = 'size_m' | 'size_l' | 'size_xl';
 
-type ColorVariant = 'cancel' | 'success' | 'normal'
+type ColorVariant = 'cancel' | 'success' | 'normal';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -17,16 +16,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size?: SizeVariant;
     disabled?: boolean;
     maxWidth?: boolean;
-    color?: ColorVariant
+    color?: ColorVariant;
 }
 
-export const Button = typedMemo((props: ButtonProps) => {
+export const Button = forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         className,
         children,
         theme = 'clear',
         size = 'size_m',
-        color = 'normal' ,
+        color = 'normal',
         disabled,
         maxWidth,
         ...otherProps
@@ -40,9 +39,10 @@ export const Button = typedMemo((props: ButtonProps) => {
     return (
         <button
             type='button'
-            className={classNames(styles.Button, mods, [styles[theme], styles[size], styles[color] ,className])}
+            className={classNames(styles.Button, mods, [styles[theme], styles[size], styles[color], className])}
             disabled={disabled}
-            {...otherProps}>
+            {...otherProps}
+            ref={ref}>
             {children}
         </button>
     );

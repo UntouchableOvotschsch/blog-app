@@ -22,7 +22,7 @@ interface SelectProps<T extends string> {
     label?: string;
     options: SelectOptions<T>[];
     selectValue?: T;
-    onChange?: (value: T) => void;
+    onChange: (value: T) => void;
     editable?: boolean;
     directionVariant?: SelectDirectionVariant;
     className?: string;
@@ -73,10 +73,8 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                         onChange={onChange}
                         className={classNames(popupStyles.container, { [styles.maxWidth]: maxWidth }, [className])}
                         disabled={!editable}>
-                        <Listbox.Button as='div'>
-                            <Button disabled={!editable} theme='clear'>
-                                {contentSelectValue}
-                            </Button>
+                        <Listbox.Button as={Button} disabled={!editable} theme='clear'>
+                            {contentSelectValue}
                         </Listbox.Button>
                         <Listbox.Options className={popupStyles.itemsContainer}>{optionList}</Listbox.Options>
                     </Listbox>
@@ -95,11 +93,12 @@ const Select = typedMemo(<T extends string>(props: SelectProps<T>) => {
                     <Card theme='light' rounded maxWidth>
                         <HStack gap='4' justify='center'>
                             <Listbox.Button
-                                as='div'
-                                className={classNames('', { [styles.button]: !additionalTrigger })}>
-                                <Button disabled={!editable} theme='clear' maxWidth={!additionalTrigger}>
-                                    {contentSelectValue}
-                                </Button>
+                                as={Button}
+                                className={classNames('', { [styles.button]: !additionalTrigger })}
+                                disabled={!editable}
+                                theme='clear'
+                                maxWidth={!additionalTrigger}>
+                                {contentSelectValue}
                             </Listbox.Button>
                             {additionalTrigger}
                         </HStack>

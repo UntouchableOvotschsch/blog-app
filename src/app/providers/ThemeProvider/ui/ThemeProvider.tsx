@@ -3,7 +3,6 @@ import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { Themes } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/context/ThemeContext';
-import { useJsonSettings } from '@/entities/User';
 
 const themeFromLocalStorage = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Themes;
 
@@ -13,18 +12,9 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
-    const { theme: themeFromState } = useJsonSettings();
-
     const defaultTheme: Themes = themeFromLocalStorage ?? Themes.LIGHT;
 
     const [theme, setTheme] = useState<Themes>(initialTheme ?? defaultTheme);
-
-    useEffect(() => {
-        if (themeFromState) {
-            setTheme(themeFromState);
-            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, themeFromState);
-        }
-    }, [themeFromState]);
 
     const memoizeTheme = useMemo(
         () => ({

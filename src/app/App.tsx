@@ -7,6 +7,7 @@ import ToggleFeatureComponent from '@/shared/lib/features/ToggleFeatureComponent
 import { MainLayout } from '@/shared/layouts';
 import AppLoaderLayout from '@/shared/layouts/AppLoaderLayout';
 
+import { withTheme } from './providers/ThemeProvider';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { AppRouter } from './providers/RouterProvider';
 import { useLoginByLocalStorageData } from './lib/useLoginByLocalStorageData';
@@ -67,4 +68,4 @@ const App: FC = () => {
     );
 };
 
-export default App;
+export default withTheme(App);
